@@ -1,0 +1,14 @@
+shader ModuloGPU_ShaderFX : ComputeUInt
+{
+    compose ComputeUInt ShaderInput;
+    
+    [Default(2)] 
+    compose ComputeUInt ShaderInput2;
+
+    override uint Compute()
+    {
+        uint result = ShaderInput.Compute();
+
+        return result % ShaderInput2.Compute();
+    }
+};

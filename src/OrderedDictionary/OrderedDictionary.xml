@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrderedDictionary</name>
+    </assembly>
+    <members>
+        <member name="T:Collections.Generic.OrderedDictionary`2">
+            <summary>
+            Represents a dictionary where the items are in an explicit and indexable order
+            </summary>
+            <typeparam name="TKey">The type of the keys in this dictionary</typeparam>
+            <typeparam name="TValue">The type of the values in this dictionary</typeparam>
+        </member>
+        <member name="P:Collections.Generic.OrderedDictionary`2.Count">
+            <summary>
+            Returns the count of items in the dictionary
+            </summary>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.Clear">
+            <summary>
+            Clears all the items from the dictionary
+            </summary>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            Copies the items in the dictionary to the specified array, starting at the specified destination index
+            </summary>
+            <param name="array">The array to copy to</param>
+            <param name="arrayIndex">The index into <paramref name="array"/> at which copying begins</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Creates an ordered dictionary with the specified capacity and comparer
+            </summary>
+            <param name="capacity">The initial capacity</param>
+            <param name="comparer">The comparer</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Creates an ordered dictionary with the specified items and the specified comparer
+            </summary>
+            <param name="collection">The collection or dictionary to copy from</param>
+            <param name="comparer">The comparer to use</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor(System.Int32)">
+            <summary>
+            Creates an ordered dictionary with the specified capacity
+            </summary>
+            <param name="capacity">The initial capacity</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})">
+            <summary>
+            Creates an ordered dictionary filled with the specified collection or dictionary
+            </summary>
+            <param name="collection">The collection or dictionary to copy</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Creates an ordered dictionary with the specified comparer
+            </summary>
+            <param name="comparer">The equality comparer to use for the keys</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.#ctor">
+            <summary>
+            Creates a default instance of the ordered dictionary
+            </summary>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.GetAt(System.Int32)">
+            <summary>
+            Gets the value at the specified index
+            </summary>
+            <param name="index">The index of the value to retrieve</param>
+            <returns>The value of the item at the specified index</returns>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.SetAt(System.Int32,`1)">
+            <summary>
+            Sets the value at the specified index
+            </summary>
+            <param name="index">The index of the value to set</param>
+            <param name="value">The new value to assign</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.Insert(System.Int32,`0,`1)">
+            <summary>
+            Inserts an item into the ordered dictionary at the specified position
+            </summary>
+            <param name="index">The index to insert the item before</param>
+            <param name="key">The key of the new item</param>
+            <param name="value">The value of the new item</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.Add(`0,`1)">
+            <summary>
+            Adds an item to the end of the dictionary
+            </summary>
+            <param name="key">The key to add</param>
+            <param name="value">The value to add</param>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.ContainsKey(`0)">
+            <summary>
+            Indicates whether the specified key is contained in the dictionary
+            </summary>
+            <param name="key">The key to look for</param>
+            <returns>True if the key is present in the dictionary, otherwise false</returns>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.Remove(`0)">
+            <summary>
+            Removes an item from the dictionary
+            </summary>
+            <param name="key">The key of the item to remove</param>
+            <returns>True if the item was removed, or false if not found</returns>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            Attempts to retrieve the value for the specified key
+            </summary>
+            <param name="key">The key to look up</param>
+            <param name="value">The value to return</param>
+            <returns>True if the key is present, otherwise false</returns>
+        </member>
+        <member name="P:Collections.Generic.OrderedDictionary`2.Item(`0)">
+            <summary>
+            Gets or sets the value at the specified key
+            </summary>
+            <param name="key">The key to look up</param>
+            <returns>The value</returns>
+        </member>
+        <member name="P:Collections.Generic.OrderedDictionary`2.Keys">
+            <summary>
+            Indicates the keys in this dictionary
+            </summary>
+        </member>
+        <member name="P:Collections.Generic.OrderedDictionary`2.Values">
+            <summary>
+            Indicates the value in this dictionary
+            </summary>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.GetEnumerator">
+            <summary>
+            Gets an enumerator for this dictionary
+            </summary>
+            <returns>A new enumerator suitable for iterating through the items in the dictionary in stored order</returns>
+        </member>
+        <member name="M:Collections.Generic.OrderedDictionary`2.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index
+            </summary>
+            <param name="index">The index of the item to remove</param>
+        </member>
+    </members>
+</doc>

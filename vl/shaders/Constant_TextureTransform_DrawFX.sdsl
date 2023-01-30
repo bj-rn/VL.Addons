@@ -1,0 +1,20 @@
+shader Constant_TextureTransform_DrawFX : VS_PS_Base, ColorBase, ShaderUtils, Texturing
+{
+    [Color]
+    stage float4 ColorInput = float4(1, 1, 1, 1);
+
+    stage matrix TextureTransform;
+    
+    SamplerState MySampler;
+
+    override stage void VSMain()
+    {
+        streams.TexCoord = mul(float4((streams.TexCoord * 2 - 1) * float2(1,-1) * .5, 0, 1), TextureTransform).xy * float2(1,-1) + 0.5;
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+        streams.ColorTarget = Texture0.Sample(MySampler, streams.TexCoord) * ColorInput;
+    }
+};

@@ -1,0 +1,19 @@
+shader ArrayTextureInstanced_DrawFX : VS_PS_Base, Texturing, InstanceWorldBuffer
+{
+    uint ArrayTextureSize = 1;
+    Texture2DArray ArrayTexture;
+
+    stage override void VSMain()
+    {
+        float4x4 iw = InstanceWorld[streams.InstanceID].Matrix;
+        float4x4 wvp = mul(mul(World, iw), ViewProjection); //PreMultiply
+        //float4x4 wvp = mul(mul(iw, World), ViewProjection); //PostMultiply
+        streams.ShadingPosition = mul(streams.Position, wvp);
+    }
+
+    stage override void PSMain()
+    {
+        float3 uvz = float3(streams.TexCoord, streams.InstanceID % ArrayTextureSize);
+        streams.ColorTarget = ArrayTexture.Sample(LinearSampler, uvz);
+    }
+};

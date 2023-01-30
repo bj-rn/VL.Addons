@@ -1,0 +1,21 @@
+shader SampleTextureArrayVector4WithIndex : ComputeFloat4, ShaderBaseStream, Texturing
+{
+    cbuffer PerMaterial //when used in materials
+    {
+        stage uint ArrayTextureSize = 1;
+        stage uint IndicesSize = 1;
+    }
+
+    rgroup PerMaterial //when used in materials
+    {
+        stage Texture2DArray ArrayTexture;
+        stage Buffer<int> Indices;
+    }
+
+    override float4 Compute()
+    {
+        int index = Indices[streams.InstanceID % IndicesSize];
+        float3 uvz = float3(streams.TexCoord, index % ArrayTextureSize);
+        return ArrayTexture.Sample(LinearSampler, uvz);
+    }
+};
