@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="Cp8BLHoIN3nMQUGZkhFpJw" LanguageVersion="2022.5.0-0735-ge3039d4101" Version="0.128">
-  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2022.5.0-0735-ge3039d4101" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="Cp8BLHoIN3nMQUGZkhFpJw" LanguageVersion="2023.5.0" Version="0.128">
+  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2023.5.0" />
   <Patch Id="VeJSap7sIKJNwnBokjEoI8">
     <Canvas Id="KAeiw0WXEdQNQT9FSe5ubO" DefaultCategory="Stride" CanvasType="FullCategory">
       <Canvas Id="La2rwazVWI1LNRD2Wi4LG0" Name="Graphics" Position="298,128">
@@ -2045,7 +2045,7 @@
               <Patch Id="KsztQwaa0EtLZLfMSuX6sI">
                 <Canvas Id="SMXx88tA1XKNxwPSyAysJ1" CanvasType="Group">
                   <Node Bounds="102,367,305,19" Id="LlpKgw4B0EJQB6EICoKo0K">
-                    <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                    <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
                       <Choice Kind="ProcessNode" Name="ArrayTextureInstancedShader" />
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     </p:NodeReference>
@@ -3843,7 +3843,7 @@
                   </Patch>
                 </Node>
                 <Node Bounds="174,251,69,19" Id="VY07dFv3kzNMy0UhBHKQL3">
-                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="ProcessNode" Name="ModuloGPU" />
                   </p:NodeReference>
@@ -3968,7 +3968,7 @@
                 <ControlPoint Id="DnintNMoEKtNstJuO9F6Dc" Bounds="99,335" />
                 <ControlPoint Id="SJKALEdMddkMdN0GOiSB0n" Bounds="239,98" />
                 <Node Bounds="171,233,69,19" Id="Api3iZOoI4UQJulM7DqHjM">
-                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="ProcessNode" Name="ModuloGPU" />
                   </p:NodeReference>
@@ -4211,7 +4211,7 @@
                       <Pin Id="AYDpRDInBfYNZk7WEyBGyq" Name="Output" Kind="OutputPin" />
                     </Node>
                     <Node Bounds="327,398,316,19" Id="NDoO1nMnlTwLWA3hZPGwPG">
-                      <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                      <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
                         <Choice Kind="ProcessNode" Name="ConstantShader (TextureTransform)" />
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       </p:NodeReference>
@@ -9147,6 +9147,56 @@
           </Node>
         </Canvas>
       </Canvas>
+      <Canvas Id="HS6lP6GRfg2PYCKO5JvOwj" Name="Effects" Position="302,226">
+        <Canvas Id="U64UzTThy5uMmz1v2wwktU" Name="Common" Position="243,231">
+          <!--
+
+    ************************ BlendMode ************************
+
+-->
+          <Node Name="BlendMode" Aspects="Advanced" Bounds="260,283" Id="IptRl5mmW6RN0aUy1A5vyS">
+            <p:NodeReference>
+              <Choice Kind="ForwardDefinition" Name="Forward" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:NodeReference>
+            <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.Common.BlendModeEnums" LastDependency="TextureFX.dll">
+              <Choice Kind="EnumType" Name="BlendMode" />
+            </p:TypeAnnotation>
+            <Patch Id="PUyKQkjSJY1PIV99bVpLca">
+              <Canvas Id="U4Xa5ebeAxkPcEIvzgBGxZ" CanvasType="Group">
+                <!--
+
+    ************************ CreateDefault ************************
+
+-->
+                <Node Name="CreateDefault" Bounds="442,304,168,86" Id="BcPk7Ml5qDiPFE7nBXoKOm">
+                  <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                    <Choice Kind="OperationDefinition" Name="Operation" />
+                  </p:NodeReference>
+                  <Patch Id="PXSO3GJVQ6ZQKVLBEn9AQn">
+                    <ControlPoint Id="C1QiWpzqFk4PZEs7IAZBnw" Bounds="458,373" />
+                    <Link Id="MvRvIsnVik6M9LEwkc2V47" Ids="C1QiWpzqFk4PZEs7IAZBnw,J6ROtxC0Pm3NQlmpmpFtVk" IsHidden="true" />
+                    <Pin Id="J6ROtxC0Pm3NQlmpmpFtVk" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="BlendMode" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                    <Pad Id="JUIv1rwjbndObVT7tjc04j" Comment="" Bounds="458,332,121,15" ShowValueBox="true" isIOBox="true" Value="Black">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="BlendMode" />
+                      </p:TypeAnnotation>
+                    </Pad>
+                    <Link Id="Gjy8twbtGbdP4ncpfikcsT" Ids="JUIv1rwjbndObVT7tjc04j,C1QiWpzqFk4PZEs7IAZBnw" />
+                  </Patch>
+                </Node>
+              </Canvas>
+              <ProcessDefinition Id="Se48QL3k7izNSTxY5FA68y" IsHidden="true">
+                <Fragment Id="CVgXgDLOTChNSsrSU0Uh8s" Patch="BcPk7Ml5qDiPFE7nBXoKOm" Enabled="true" />
+              </ProcessDefinition>
+            </Patch>
+          </Node>
+        </Canvas>
+      </Canvas>
     </Canvas>
     <!--
 
@@ -9169,10 +9219,11 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2022.5.0-0735-ge3039d4101" />
+  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2023.5.0" />
   <PlatformDependency Id="MLVA0izfRMkORdIZzd9kvt" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.dll" />
   <PlatformDependency Id="CvdCU2DNQlRMaSdivNSZJy" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Graphics.dll" />
   <PlatformDependency Id="CfSqI9CZTJZLV5hRh33DGP" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Core.dll" />
   <PlatformDependency Id="SEQydrLh01WMEAHXpGWY7a" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Engine.dll" />
   <PlatformDependency Id="Uzy6MwcCUiROzoqMwy6LOV" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Core.Mathematics.dll" />
+  <PlatformDependency Id="KgwcnAh4sCPL3p4VbAWicR" Location="../lib/net6.0/TextureFX.dll" />
 </Document>
