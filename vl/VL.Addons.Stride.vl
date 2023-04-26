@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="Cp8BLHoIN3nMQUGZkhFpJw" LanguageVersion="2022.5.0-0735-ge3039d4101" Version="0.128">
-  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2022.5.0-0735-ge3039d4101" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="Cp8BLHoIN3nMQUGZkhFpJw" LanguageVersion="2023.5.0" Version="0.128">
+  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2023.5.0" />
   <Patch Id="VeJSap7sIKJNwnBokjEoI8">
     <Canvas Id="KAeiw0WXEdQNQT9FSe5ubO" DefaultCategory="Stride" CanvasType="FullCategory">
       <Canvas Id="La2rwazVWI1LNRD2Wi4LG0" Name="Graphics" Position="298,128">
@@ -692,7 +692,7 @@
             <ControlPoint Id="SUjiQn1EzyLOu4YBrRtmau" Bounds="1009,871" />
           </Patch>
         </Node>
-        <Canvas Id="RwE0RyrJMf0QZK9wzmRIVc" Name="Texture" Position="84,134">
+        <Canvas Id="RwE0RyrJMf0QZK9wzmRIVc" Name="Texture" Position="399,132">
           <Canvas Id="SmqDdoiPFojPLZchL0lLX4" Name="TextureArray" Position="97,129">
             <!--
 
@@ -2045,7 +2045,7 @@
               <Patch Id="KsztQwaa0EtLZLfMSuX6sI">
                 <Canvas Id="SMXx88tA1XKNxwPSyAysJ1" CanvasType="Group">
                   <Node Bounds="102,367,305,19" Id="LlpKgw4B0EJQB6EICoKo0K">
-                    <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                    <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                       <Choice Kind="ProcessNode" Name="ArrayTextureInstancedShader" />
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     </p:NodeReference>
@@ -3704,6 +3704,113 @@
             </Node>
           </Canvas>
         </Canvas>
+        <Canvas Id="ORCBJGGVqguNgPT8huOa1s" Name="BlendStateDescription" Position="98,130">
+          <!--
+
+    ************************ AlphaAdd ************************
+
+-->
+          <Node Name="AlphaAdd" Bounds="115,130" Id="EozMTXIbbeIOQrVmuYaEYj">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="ContainerDefinition" Name="Process" />
+            </p:NodeReference>
+            <Patch Id="NUcyU0qJLFHQLrlsYxaDB2">
+              <Canvas Id="Uu6Xx0p1VT1MxwHT6B8JeO" CanvasType="Group">
+                <Node Bounds="272,330,177,19" Id="SoPF1Cnb27RNs5BcyNeCzD">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateRenderTargetDescription" />
+                  </p:NodeReference>
+                  <Pin Id="MeVcUZxtzxPMiZbbMRe1rL" Name="Blend Enable" Kind="InputPin" DefaultValue="True" />
+                  <Pin Id="Qf1MoxNxFQzQLEG8NwbtHt" Name="Color Source Blend" Kind="InputPin" />
+                  <Pin Id="CfIfXXkdq5ZPCPDbUHi7Es" Name="Color Destination Blend" Kind="InputPin" />
+                  <Pin Id="Vt1btX7C6kgMlhnJeVxK0q" Name="Color Blend Function" Kind="InputPin" />
+                  <Pin Id="AO38Ns8biQxQITAQYfkyvW" Name="Alpha Source Blend" Kind="InputPin" />
+                  <Pin Id="O1vWQzEo3gMLc1Sv5hPRim" Name="Alpha Destination Blend" Kind="InputPin" />
+                  <Pin Id="LvYCZeN6rx7O2tsZgQTDDf" Name="Alpha Blend Function" Kind="InputPin" />
+                  <Pin Id="A3ZLHyrGcJsPXQZ5fpCzwy" Name="Color Write Channels" Kind="InputPin" />
+                  <Pin Id="KEDKBf3xbnjMnEzlHqWDh2" Name="Output" Kind="OutputPin" />
+                </Node>
+                <Node Bounds="232,380,185,19" Id="Hs0QK87c0n3QQ3IV7wsjvL">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateDescription" />
+                  </p:NodeReference>
+                  <Pin Id="Eu53wvMJ0FsOdhrR2A6cB3" Name="Alpha To Coverage Enable" Kind="InputPin" />
+                  <Pin Id="DPWOiMjIGZ3OkrEo8N0GC5" Name="Independent Blend Enable" Kind="InputPin" />
+                  <Pin Id="OXISzJbGQcnO9JKz3TEZ82" Name="Render Target 0" Kind="InputPin" />
+                  <Pin Id="AY4tnZJ4ZpCL0o0N6UP8wh" Name="Render Target 1" Kind="InputPin" />
+                  <Pin Id="ShZt3jpzm5OM8hCwn4J4Ir" Name="Render Target 2" Kind="InputPin" />
+                  <Pin Id="NBCufEw5dBWMbU3AUjcMOh" Name="Render Target 3" Kind="InputPin" />
+                  <Pin Id="QiiG07iUrWtNMD6YQJMWLR" Name="Render Target 4" Kind="InputPin" />
+                  <Pin Id="SnmyHKWYwSSLdS77WCaMTf" Name="Render Target 5" Kind="InputPin" />
+                  <Pin Id="IMcJ0QImWQ8LnZ8innZtd2" Name="Render Target 6" Kind="InputPin" />
+                  <Pin Id="OVrE571e5yKPa5yUis44e8" Name="Render Target 7" Kind="InputPin" />
+                  <Pin Id="FHo89AQc7EGOG8t2eOWugV" Name="Output" Kind="OutputPin" />
+                </Node>
+                <ControlPoint Id="A6aWVGRsnGEOwcx8JsJHpz" Bounds="234,449" />
+                <Pad Id="MpuuSe4kkjeNFkgivmV0oP" Comment="Color Source Blend" Bounds="298,178,163,15" ShowValueBox="true" isIOBox="true" Value="SourceAlpha">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="TmGvmoIPtSpM1U0CLZTojB" Comment="Color Destination Blend" Bounds="323,202,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="EIZgDeWoqOaOYwURd1tFlh" Comment="Color Blend Function" Bounds="348,227,101,15" ShowValueBox="true" isIOBox="true" Value="Add">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="MRQ4vgspn7oNBfFRMQKoBw" Comment="Alpha Source Blend" Bounds="372,253,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="PR4i6MXgFkKPh3oJDlS1XX" Comment="Alpha Destination Blend" Bounds="397,275,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="LByNWe57agqNSBOhPpNotM" Comment="Alpha Blend Function" Bounds="421,295,101,15" ShowValueBox="true" isIOBox="true" Value="Max">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="Lmp1MkvwyQyPY077D192BY" Comment="Color Write Channels" Bounds="446,316,55,15" ShowValueBox="true" isIOBox="true" Value="All">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="ColorWriteChannels" />
+                  </p:TypeAnnotation>
+                </Pad>
+              </Canvas>
+              <Patch Id="Us77qe2HAkkQCIDCz77s4U" Name="Create" />
+              <Patch Id="MOwCkLFoeEsN8dpGn6t4B6" Name="Update">
+                <Pin Id="NasvuDnSEHLOsxYqilmRgn" Name="Output" Kind="OutputPin" Bounds="228,489" />
+              </Patch>
+              <!--
+
+    ************************  ************************
+
+-->
+              <ProcessDefinition Id="MhUz74yQWUwPsxcyM00piT">
+                <Fragment Id="OSH8XzSCUCMPCNDNDekEWP" Patch="Us77qe2HAkkQCIDCz77s4U" Enabled="true" />
+                <Fragment Id="LMrxWqCMD0oM9uCNkkcpkv" Patch="MOwCkLFoeEsN8dpGn6t4B6" Enabled="true" />
+              </ProcessDefinition>
+              <Link Id="Emf7h5SsBDiMf8hzzocAyS" Ids="KEDKBf3xbnjMnEzlHqWDh2,OXISzJbGQcnO9JKz3TEZ82" />
+              <Link Id="MeXkuUAc1eOLm6wF7wiTJn" Ids="FHo89AQc7EGOG8t2eOWugV,A6aWVGRsnGEOwcx8JsJHpz" />
+              <Link Id="RuW0jpK5tU8NIHgLVGEOIk" Ids="A6aWVGRsnGEOwcx8JsJHpz,NasvuDnSEHLOsxYqilmRgn" IsHidden="true" />
+              <Link Id="J4vrt6IAbs6Ln0vj1BkfRZ" Ids="MpuuSe4kkjeNFkgivmV0oP,Qf1MoxNxFQzQLEG8NwbtHt" />
+              <Link Id="RvQdDHMhhn3Oo1YU9SbOwO" Ids="TmGvmoIPtSpM1U0CLZTojB,CfIfXXkdq5ZPCPDbUHi7Es" />
+              <Link Id="L0axDrpCLHEPce4HRsZlkG" Ids="EIZgDeWoqOaOYwURd1tFlh,Vt1btX7C6kgMlhnJeVxK0q" />
+              <Link Id="OserKke8Gn8ME1NyyoeOQV" Ids="MRQ4vgspn7oNBfFRMQKoBw,AO38Ns8biQxQITAQYfkyvW" />
+              <Link Id="DLpGE1f1RedN160srCYTZ6" Ids="PR4i6MXgFkKPh3oJDlS1XX,O1vWQzEo3gMLc1Sv5hPRim" />
+              <Link Id="RMacyub8N3qQBOQMFjZIrN" Ids="LByNWe57agqNSBOhPpNotM,LvYCZeN6rx7O2tsZgQTDDf" />
+              <Link Id="NEMjm7mddwbMZ7bMKQLt1M" Ids="Lmp1MkvwyQyPY077D192BY,A3ZLHyrGcJsPXQZ5fpCzwy" />
+            </Patch>
+          </Node>
+        </Canvas>
       </Canvas>
       <Canvas Id="R44ulCOeyvsOUeYmv9RLQY" Name="Materials" Position="498,128">
         <Canvas Id="HXhOgIIcd6kOR9LDlGkVNR" Name="Inputs" Position="99,130">
@@ -3843,7 +3950,7 @@
                   </Patch>
                 </Node>
                 <Node Bounds="174,251,69,19" Id="VY07dFv3kzNMy0UhBHKQL3">
-                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="ProcessNode" Name="ModuloGPU" />
                   </p:NodeReference>
@@ -3968,7 +4075,7 @@
                 <ControlPoint Id="DnintNMoEKtNstJuO9F6Dc" Bounds="99,335" />
                 <ControlPoint Id="SJKALEdMddkMdN0GOiSB0n" Bounds="239,98" />
                 <Node Bounds="171,233,69,19" Id="Api3iZOoI4UQJulM7DqHjM">
-                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                  <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="ProcessNode" Name="ModuloGPU" />
                   </p:NodeReference>
@@ -4155,7 +4262,7 @@
                 <ControlPoint Id="V6X9FCZPQSMLTnVfW2sj0t" Bounds="249,536" />
                 <ControlPoint Id="HRIgaR1s0NDPwYRbveckDa" Bounds="599,127" />
                 <ControlPoint Id="GGvMRLAWMtHQINbbHhKUbS" Bounds="393,12" />
-                <Node Bounds="315,180,378,263" Id="OhYRbTjDaH0OLSmJyKvw4e">
+                <Node Bounds="315,180,378,264" Id="OhYRbTjDaH0OLSmJyKvw4e">
                   <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                     <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
                     <Choice Kind="ApplicationStatefulRegion" Name="If" />
@@ -4163,7 +4270,7 @@
                   </p:NodeReference>
                   <Pin Id="Jp5kVnM0qheLBreOiGTAnw" Name="Condition" Kind="InputPin" />
                   <ControlPoint Id="HdFLP7CsAXPN6L6eXDX3Uk" Bounds="329,438" Name="effect" Alignment="Bottom" />
-                  <ControlPoint Id="DKTTdgkflsCPMY0KPJjPBS" Bounds="334,187" Name="effect" Alignment="Top" />
+                  <ControlPoint Id="DKTTdgkflsCPMY0KPJjPBS" Bounds="334,186" Name="effect" Alignment="Top" />
                   <Patch Id="DcOmpvBKOYjNl70QMhp6Xb" ManuallySortedPins="true">
                     <Patch Id="BVlPwYtv5nWLq0E06bV3h8" Name="Create" ManuallySortedPins="true" />
                     <Patch Id="DSCbyvx7GgUPqtZB4anEv0" Name="Then" ManuallySortedPins="true" />
@@ -4211,7 +4318,7 @@
                       <Pin Id="AYDpRDInBfYNZk7WEyBGyq" Name="Output" Kind="OutputPin" />
                     </Node>
                     <Node Bounds="327,398,316,19" Id="NDoO1nMnlTwLWA3hZPGwPG">
-                      <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (C:\dev\vvvv\vl-libs_22-5\VL.Addons\vl)">
+                      <p:NodeReference LastCategoryFullName="Stride.Rendering.DrawShaders" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                         <Choice Kind="ProcessNode" Name="ConstantShader (TextureTransform)" />
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       </p:NodeReference>
@@ -9147,6 +9254,7 @@
           </Node>
         </Canvas>
       </Canvas>
+      <Canvas Id="LSLaD1sgq0lNzBZEDCIMpg" Name="API" Position="301,222" BordersChecked="false" />
     </Canvas>
     <!--
 
@@ -9169,7 +9277,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2022.5.0-0735-ge3039d4101" />
+  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2023.5.0" />
   <PlatformDependency Id="MLVA0izfRMkORdIZzd9kvt" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.dll" />
   <PlatformDependency Id="CvdCU2DNQlRMaSdivNSZJy" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Graphics.dll" />
   <PlatformDependency Id="CfSqI9CZTJZLV5hRh33DGP" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Core.dll" />
