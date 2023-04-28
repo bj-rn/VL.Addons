@@ -9146,6 +9146,64 @@
             </Patch>
           </Node>
         </Canvas>
+        <Canvas Id="V3s4YUnWeXEPsiJLtuS2Ms" Name="Filter" Position="97,177">
+          <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="129,261">
+            <!--
+
+    ************************ Blend ************************
+
+-->
+            <Node Name="Blend" Bounds="99,129" Id="CL8DaEQho2YMObhmBQmthm">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ContainerDefinition" Name="Process" />
+              </p:NodeReference>
+              <Patch Id="EdHG82dIZllMzoZxNph8VR">
+                <Canvas Id="CcffSpVAdv9MaiWlSetlW5" CanvasType="Group">
+                  <Node Bounds="388,532,105,19" AutoConnect="true" Id="BWr8hLt6ujyNjDk4uU5lya">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Mixer" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <CategoryReference Kind="Category" Name="Mixer" NeedsToBeDirectParent="true" />
+                      <Choice Kind="ProcessAppFlag" Name="Blend" />
+                      <PinReference Kind="InputPin" Name="Type" />
+                      <PinReference Kind="InputPin" Name="Compute Alpha" />
+                      <PinReference Kind="InputPin" Name="Render Format" />
+                    </p:NodeReference>
+                    <Pin Id="KPI9A9FrCFyOdn95RYYqJD" Name="Input" Kind="InputPin" />
+                    <Pin Id="BnzmYWk4wkSQbebdzMab8i" Name="Input 2" Kind="InputPin" />
+                    <Pin Id="HF0kxpP2iWKP24GtzufrEz" Name="Type" Kind="InputPin" />
+                    <Pin Id="Jz81MO1BQpQNLYU8sskyts" Name="Compute Alpha" Kind="InputPin" />
+                    <Pin Id="TW5T8m2kvKjMzgai0K87T1" Name="Fader" Kind="InputPin" />
+                    <Pin Id="HlT77iTVbmfQUbhZiRZM9A" Name="Apply" Kind="InputPin" />
+                    <Pin Id="UOoLLvofY1vNLNFtMkd6sg" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="Ejybk4EsZCPLvwKg1Izo7z" Bounds="366,491" />
+                </Canvas>
+                <ProcessDefinition Id="I33YjDU2vO8NMCEk9Qiew1">
+                  <Fragment Id="GWAcx8rQ0GQPaJFPVwTvPS" Patch="NvbOEx2PKBfPS4r9QyMTy8" Enabled="true" />
+                  <Fragment Id="Fvg2OYd7VfAOk4Rzv67ttW" Patch="EeWapRyXSrPN8397cS7Y3K" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="KWaeWGRiywZPC0vFXXhH2H" Ids="Ejybk4EsZCPLvwKg1Izo7z,HF0kxpP2iWKP24GtzufrEz" />
+                <Link Id="HEUZlWAoISJMAnjsf3sdXw" Ids="RAl6Gnydg9wL773q89mmXt,Ejybk4EsZCPLvwKg1Izo7z" IsHidden="true" />
+                <Patch Id="NvbOEx2PKBfPS4r9QyMTy8" Name="Create" />
+                <Patch Id="EeWapRyXSrPN8397cS7Y3K" Name="Update">
+                  <Pin Id="RAl6Gnydg9wL773q89mmXt" Name="Mode" Kind="InputPin" Bounds="430,445">
+                    <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
+                      <Choice Kind="TypeFlag" Name="BlendMode" />
+                    </p:TypeAnnotation>
+                  </Pin>
+                  <Pin Id="NQN0aCnLealMmbu9fsalEa" Name="Input" Kind="InputPin" />
+                  <Pin Id="AI97bnJNkmBMYOMizUjlK5" Name="Input 2" Kind="InputPin" />
+                  <Pin Id="LDmnCMJgnTEOwvbHM3wJB5" Name="Compute Alpha" Kind="InputPin" />
+                  <Pin Id="VkgDPwAevNSPEK6dsYCMjJ" Name="Fader" Kind="InputPin" />
+                  <Pin Id="HDdgKORbaYSOS2MxXw0BnP" Name="Apply" Kind="InputPin" />
+                  <Pin Id="M8baGuitoZbOGwX0jUiyoR" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Patch>
+            </Node>
+          </Canvas>
+        </Canvas>
+        <Canvas Id="OC04dEsgDLWOqDwk7Sfgpn" Name="Mixer" Position="96,215" BordersChecked="false" />
+        <Canvas Id="C1VZNFjd7UfOcq6i3ztsC3" Name="Source" Position="96,253" BordersChecked="false" />
       </Canvas>
       <Canvas Id="HS6lP6GRfg2PYCKO5JvOwj" Name="Effects" Position="302,226">
         <Canvas Id="U64UzTThy5uMmz1v2wwktU" Name="Common" Position="243,231">
