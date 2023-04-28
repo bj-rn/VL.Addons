@@ -9147,7 +9147,67 @@
           </Node>
         </Canvas>
         <Canvas Id="V3s4YUnWeXEPsiJLtuS2Ms" Name="Filter" Position="97,177">
-          <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="129,261" />
+          <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="129,261">
+            <!--
+
+    ************************ CircleSpread ************************
+
+-->
+            <Node Name="CircleSpread" Bounds="115,237" Id="VaFZ4OmOJaiN2Bar7D00EL">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ContainerDefinition" Name="Process" />
+              </p:NodeReference>
+              <Patch Id="RsnYmSxNv0NPPAbRAtZp8a">
+                <Canvas Id="CL462hlAQifOUZYGoFcCxW" CanvasType="Group">
+                  <Node Bounds="262,295,165,19" AutoConnect="true" Id="R8iRnNV4ExpNwKUgnMfsEC">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessNode" Name="CircleSpreadSampling" />
+                    </p:NodeReference>
+                    <Pin Id="Sx7cJWpDc9SQQZuDO7UZyd" Name="Input" Kind="InputPin" />
+                    <Pin Id="LjHRjSueRAOPrt3QNqjw3i" Name="Count" Kind="InputPin" />
+                    <Pin Id="BXF6HBafyyeLbxEDzg3M8F" Name="Type" Kind="InputPin" />
+                    <Pin Id="ASiKgHJ62fUOBqsUIiWuuL" Name="Factor" Kind="InputPin" />
+                    <Pin Id="VfbHaxn0L7eP72PmpkNs2S" Name="Phase" Kind="InputPin" />
+                    <Pin Id="J7vfYtzLrs8MYI7LJWT8Nz" Name="Center" Kind="InputPin" />
+                    <Pin Id="OOgqFI3UCl4PLVrPBqkj56" Name="Width" Kind="InputPin" />
+                    <Pin Id="HlTjUwWF40dPl9YvsXRCPP" Name="Control" Kind="InputPin" />
+                    <Pin Id="Qlhf2KRTxeOLXJuJiNilEb" Name="Apply" Kind="InputPin" />
+                    <Pin Id="S946Jg8zLsGQUr7Sky3zf4" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="K8Cygy28aGrQJoR7mPnLrI" Bounds="266,267" />
+                </Canvas>
+                <!--
+
+    ************************  ************************
+
+-->
+                <ProcessDefinition Id="Qd3rcutMR49N1Hr0D7bE5E">
+                  <Fragment Id="SKQRZ9SYiqPPlnQTZS9mKq" Patch="V8iDiLdePz2QH8o1gRYLgC" Enabled="true" />
+                  <Fragment Id="PwPv63xQGB6M7sqInSse06" Patch="VRrt8qMDM2WN3upsuIlgOm" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="GwqUIOBWbBCN6l974CwRO2" Ids="K8Cygy28aGrQJoR7mPnLrI,BXF6HBafyyeLbxEDzg3M8F" />
+                <Link Id="UENss1MPCO4Ll9qpjGah2I" Ids="LhDQL59kTG1NPMS5sf91qh,K8Cygy28aGrQJoR7mPnLrI" IsHidden="true" />
+                <Patch Id="V8iDiLdePz2QH8o1gRYLgC" Name="Create" />
+                <Patch Id="VRrt8qMDM2WN3upsuIlgOm" Name="Update">
+                  <Pin Id="BKvS6nL3CTPMZ16xkl9AsK" Name="Input" Kind="InputPin" />
+                  <Pin Id="FhL4RTjs8wILMWKzCdIjiS" Name="Count" Kind="InputPin" />
+                  <Pin Id="LilHTLEGEaCP79pVVpMv83" Name="Factor" Kind="InputPin" />
+                  <Pin Id="BTROAkCx2mmNtOBnyfpkR1" Name="Phase" Kind="InputPin" />
+                  <Pin Id="LhDQL59kTG1NPMS5sf91qh" Name="BlendMode" Kind="InputPin" Bounds="307,225">
+                    <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
+                      <Choice Kind="TypeFlag" Name="BlendMode" />
+                    </p:TypeAnnotation>
+                  </Pin>
+                  <Pin Id="NO33plCOZdMPMGM7yrlrmH" Name="Center" Kind="InputPin" />
+                  <Pin Id="FMAOUclJKfYOGLutNdm9oQ" Name="Width" Kind="InputPin" />
+                  <Pin Id="HhWJBGQiqG2O9cd9nnxJ8b" Name="Control" Kind="InputPin" />
+                  <Pin Id="H7dU25t6FskN7ODE29bBQz" Name="Apply" Kind="InputPin" />
+                  <Pin Id="DI10ZR22yTUMmNaGYpS5W2" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Patch>
+            </Node>
+          </Canvas>
         </Canvas>
         <Canvas Id="OC04dEsgDLWOqDwk7Sfgpn" Name="Mixer" Position="96,215">
           <Canvas Id="AzDsdDyl3OqO4lrWRXqlrD" Name="Advanced" Position="151,226">
