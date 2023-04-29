@@ -1,0 +1,99 @@
+﻿shader ColorUtilityTemp
+{
+
+    // simple screen gamma conversion
+    float4 GammaToLinear (float4 RGBa, float Gamma)
+    {
+        RGBa.rgb = pow(RGBa.rgb, 1.0/Gamma);
+        return RGBa;
+    }
+
+    float4 LinearToGamma (float4 RGBa, float Gamma)
+    {
+        RGBa.rgb = pow(RGBa.rgb, Gamma);
+        return RGBa;
+    }
+
+    //https://chilliant.blogspot.com/2012/08/srgb-approximations-for-hlsl.html
+    // Converts an sRGB color to linear space
+    float4 SRgbToLinear(float4 sRGBa)
+    {
+        float3 sRGB = sRGBa.rgb;
+        return float4(sRGB * (sRGB * (sRGB * 0.305306011 + 0.682171111) + 0.012522878), sRGBa.a);
+    }
+
+    // Converts an linear color to sRGB space
+    float4 LinearToSRgb(float4 RGBa)
+    {
+        float3 RGB = RGBa.rgb;
+
+        float3 S1 = sqrt(RGB);
+        float3 S2 = sqrt(S1);
+        float3 S3 = sqrt(S2);
+
+        return float4(0.662002687f * S1 + 0.684122060f * S2 - 0.323583601f * S3 - 0.0225411470f * RGB, RGBa.a);
+    }
+
+    //https://github.com/vvvv/VL.Stride/pull/395#issuecomment-760253956
+
+    // Converts a color from linear to sRGB
+    float4 LinearToSRgbPrecise(float4 RGBa)
+    {
+        float3 rgb = RGBa.rgb;
+        float3 higher = 1.055 * pow(rgb, 1.0/2.4) - 0.055;
+        float3 lower = rgb * 12.92f;
+
+        float3 cutoff = step(rgb, 0.0031308);
+        RGBa.rgb = lerp(higher, lower, cutoff);
+        return RGBa;
+    }
+
+    // Converts a color from sRGB to linear
+    float4 SRgbToLinearPrecise(float4 sRGBa)
+    {
+        float3 srgb = sRGBa.rgb;
+        float3 higher = pow((srgb + 0.055) / 1.055, 2.4);
+        float3 lower = srgb / 12.92;
+
+        float3 cutoff = step(srgb, 0.04045);
+        sRGBa.rgb = lerp(higher, lower, cutoff);
+        return sRGBa;
+    }
+
+
+    float4 LinearToOklab(float4 c) 
+    {
+        float l = 0.4122214708f * c.r + 0.5363325363f * c.g + 0.0514459929f * c.b;
+	    float m = 0.2119034982f * c.r + 0.6806995451f * c.g + 0.1073969566f * c.b;
+	    float s = 0.0883024619f * c.r + 0.2817188376f * c.g + 0.6299787005f * c.b;
+
+        float l_ = pow(l, 1.0f/3.0f);
+        float m_ = pow(m, 1.0f/3.0f);
+        float s_ = pow(s, 1.0f/3.0f);
+
+        return float4(
+            0.2104542553f * l_ + 0.7936177850f * m_ - 0.0040720468f * s_,
+            1.9779984951f * l_ - 2.4285922050f * m_ + 0.4505937099f * s_,
+            0.0259040371f * l_ + 0.7827717662f * m_ - 0.8086757660f * s_,
+            c.a
+        );
+    }
+
+    float4 OklabToLinear(float4 c) 
+    {
+        float l_ = c.x + 0.3963377774f * c.y + 0.2158037573f * c.z;
+        float m_ = c.x - 0.1055613458f * c.y - 0.0638541728f * c.z;
+        float s_ = c.x - 0.0894841775f * c.y - 1.2914855480f * c.z;
+
+        float l = l_ * l_ * l_;
+        float m = m_ * m_* m_;
+        float s = s_ * s_ * s_;
+
+        return float4(
+		    +4.0767416621f * l - 3.3077115913f * m + 0.2309699292f * s,
+		    -1.2684380046f * l + 2.6097574011f * m - 0.3413193965f * s,
+		    -0.0041960863f * l - 0.7034186147f * m + 1.7076147010f * s,
+            c.a
+        );
+    }
+};
