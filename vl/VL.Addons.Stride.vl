@@ -9642,6 +9642,84 @@
                   <Link Id="QJ2Y9Np7kFiL9USMaQPwoI" Ids="SkowjEaPdamPLjcCKXqChz,TnMZFj8Fe9OLVirbyBFDWr" />
                 </Patch>
               </Node>
+              <!--
+
+    ************************ DisplaceWarp (Advanced) ************************
+
+-->
+              <Node Name="DisplaceWarp (Advanced)" Bounds="331,423" Id="JJLd4hnLPbMOolN9KlAzcV">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="ODhoLvVfOw7NilaNw8iz4o">
+                  <Canvas Id="MJL8YXnqawFLMP7z5CEA3W" CanvasType="Group">
+                    <Node Bounds="431,378,145,19" Id="CGYQ9Si2wdOOyciIybLvA6">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessNode" Name="DisplaceWarp" />
+                      </p:NodeReference>
+                      <Pin Id="MMcr2ZXDhfRP9QNcJJ13Gl" Name="Input" Kind="InputPin" />
+                      <Pin Id="UFP9w5MWO8ULJLid3bieKX" Name="Input 2" Kind="InputPin" />
+                      <Pin Id="IbVBXsohCtmNoLMQg5cfeI" Name="Direction" Kind="InputPin" />
+                      <Pin Id="CLfLdIKB46LMWHzz4DE4c9" Name="Twirl" Kind="InputPin" />
+                      <Pin Id="H9Eik3FiWbIM2ACB4U0LcE" Name="Map Smooth" Kind="InputPin" />
+                      <Pin Id="I0eKEgaxyeePoMuGxw61FT" Name="Width" Kind="InputPin" />
+                      <Pin Id="UxeeIFhOcgSOzg3v0oDF6j" Name="Control" Kind="InputPin" />
+                      <Pin Id="EbcSDYPpqqPOIJXG7lqUbE" Name="Apply" Kind="InputPin" />
+                      <Pin Id="OCu4gGkVn9RQSTM7R1tdfG" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="KftTyu4hHBxLHdvA3gn1LS" Bounds="434,246" />
+                    <ControlPoint Id="J6HiPs8PpZQOBFBf4QIxsZ" Bounds="454,274" />
+                    <ControlPoint Id="PeNKEL2fTMTO4i7sMtw5O7" Bounds="474,306" />
+                    <ControlPoint Id="QiYS09M3FT3LEkUvJdw1CW" Bounds="548,306" />
+                    <ControlPoint Id="IyIjLOnkASgMxw9DyevGjM" Bounds="603,306" />
+                    <ControlPoint Id="BNfxDCughxBL0TnLYfZq9q" Bounds="692,306" />
+                    <ControlPoint Id="Sj6naGOR2PzNjXadbSHVop" Bounds="750,306" />
+                    <ControlPoint Id="JUI0PqG6SMBMSYhK5z61GF" Bounds="816,306" />
+                    <ControlPoint Id="Sp4bYt8UJAgLO3Vm4gWZBm" Bounds="433,429" />
+                  </Canvas>
+                  <Patch Id="NSORPBAMJehLdslxsHiGkS" Name="Create" />
+                  <Patch Id="HNFf6tsJp05Ohds1Fox62I" Name="Update">
+                    <Pin Id="Byn0Jlc0ZEpPeeG28lmLFU" Name="Texture" Kind="InputPin" />
+                    <Pin Id="J1O3UXFoPJtQYEd6s5iI04" Name="Displace Texture" Kind="InputPin" />
+                    <Pin Id="OIzg0A62pXmLSNlVgC5E3w" Name="Direction" Kind="InputPin" />
+                    <Pin Id="TbguNzANdmmL4NwGbYv852" Name="Twirl" Kind="InputPin" />
+                    <Pin Id="LSsQzA2ZI44M6Y8FDoFZr6" Name="Map Smooth" Kind="InputPin" />
+                    <Pin Id="CH3t0fS0ebnPubtzk9AvNm" Name="Width" Kind="InputPin" />
+                    <Pin Id="HUbfBkX1Jx3QLwsgtzou18" Name="Control" Kind="InputPin" />
+                    <Pin Id="AasvyzYSmEnM5ihpN8J2zL" Name="Apply" Kind="InputPin" />
+                    <Pin Id="N7DPtsUjfm0MDcMRBsdRDO" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="PMPdljrvLSkLwiO8n6fs3E">
+                    <Fragment Id="JlIxC2vXfNqMD1H2V1BuZ1" Patch="NSORPBAMJehLdslxsHiGkS" Enabled="true" />
+                    <Fragment Id="Eco3wmsuTDwPqz8xAqvh2Y" Patch="HNFf6tsJp05Ohds1Fox62I" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="Tu83Ghpogv0OzM3qK0RWi4" Ids="Byn0Jlc0ZEpPeeG28lmLFU,KftTyu4hHBxLHdvA3gn1LS" IsHidden="true" />
+                  <Link Id="VPZ8gk25L98Mcn21A3X6e2" Ids="KftTyu4hHBxLHdvA3gn1LS,MMcr2ZXDhfRP9QNcJJ13Gl" />
+                  <Link Id="Oz4v1OtKnJCNFwU1vLzcDx" Ids="J1O3UXFoPJtQYEd6s5iI04,J6HiPs8PpZQOBFBf4QIxsZ" IsHidden="true" />
+                  <Link Id="J2SzXWCy4RzOAFW2uUkb47" Ids="J6HiPs8PpZQOBFBf4QIxsZ,UFP9w5MWO8ULJLid3bieKX" />
+                  <Link Id="EEFjQnhZFmbMwNkb8LIGZ2" Ids="OIzg0A62pXmLSNlVgC5E3w,PeNKEL2fTMTO4i7sMtw5O7" IsHidden="true" />
+                  <Link Id="HeRBmWYBlpLPU7bWDYB65d" Ids="PeNKEL2fTMTO4i7sMtw5O7,IbVBXsohCtmNoLMQg5cfeI" />
+                  <Link Id="DLQRtp5mHNNNoR1AUdDpsb" Ids="TbguNzANdmmL4NwGbYv852,QiYS09M3FT3LEkUvJdw1CW" IsHidden="true" />
+                  <Link Id="HXKTvtMAeq8Lheip4nxK7E" Ids="QiYS09M3FT3LEkUvJdw1CW,CLfLdIKB46LMWHzz4DE4c9" />
+                  <Link Id="JvjY4BrB5gXLhGdVF72G4K" Ids="LSsQzA2ZI44M6Y8FDoFZr6,IyIjLOnkASgMxw9DyevGjM" IsHidden="true" />
+                  <Link Id="R2D2Gc30vPXMlXNUE0jOdl" Ids="IyIjLOnkASgMxw9DyevGjM,H9Eik3FiWbIM2ACB4U0LcE" />
+                  <Link Id="ROM7hNHEs6WQE5Q5L4nMoR" Ids="CH3t0fS0ebnPubtzk9AvNm,BNfxDCughxBL0TnLYfZq9q" IsHidden="true" />
+                  <Link Id="H4B1csVVnpbO5D3ClFpYX2" Ids="BNfxDCughxBL0TnLYfZq9q,I0eKEgaxyeePoMuGxw61FT" />
+                  <Link Id="OwYWgQEVMnULnW4ktOIOmI" Ids="HUbfBkX1Jx3QLwsgtzou18,Sj6naGOR2PzNjXadbSHVop" IsHidden="true" />
+                  <Link Id="USGDA7qb0KhMwUMb1DYh1H" Ids="Sj6naGOR2PzNjXadbSHVop,UxeeIFhOcgSOzg3v0oDF6j" />
+                  <Link Id="M2MjAKa3vFmL55T1LSTCZ5" Ids="AasvyzYSmEnM5ihpN8J2zL,JUI0PqG6SMBMSYhK5z61GF" IsHidden="true" />
+                  <Link Id="DvfUPPrwXkeLgqclWtxRa8" Ids="JUI0PqG6SMBMSYhK5z61GF,EbcSDYPpqqPOIJXG7lqUbE" />
+                  <Link Id="QiIXJHBJCCgLf0Esh6nVCO" Ids="Sp4bYt8UJAgLO3Vm4gWZBm,N7DPtsUjfm0MDcMRBsdRDO" IsHidden="true" />
+                  <Link Id="CPHzcxVwLpDNNvRmsYDNOT" Ids="OCu4gGkVn9RQSTM7R1tdfG,Sp4bYt8UJAgLO3Vm4gWZBm" />
+                </Patch>
+              </Node>
             </Canvas>
             <Canvas Id="D13kQdTJ5t6PE1fvyfKVA9" Name="Rendering" Position="133,490">
               <!--
@@ -9649,7 +9727,7 @@
     ************************ Bump (Advanced) ************************
 
 -->
-              <Node Name="Bump (Advanced)" Bounds="533,475" Id="T37Qxg9R3ciNED2WRSFl1E">
+              <Node Name="Bump (Advanced)" Bounds="506,480" Id="T37Qxg9R3ciNED2WRSFl1E">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -9657,11 +9735,6 @@
                   <Canvas Id="KOQQIUoGmUMM09S7Q5sf8d" CanvasType="Group" />
                   <Patch Id="MkBBPWL9a8NPWrqkKFLwOG" Name="Create" />
                   <Patch Id="MXEkbyFFmEQOWVhCs64fWi" Name="Update" />
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="Aw1vLeEFgNGP25Qbs4W1Ux">
                     <Fragment Id="DvF98bM9X1gM88ULdIT7mb" Patch="MkBBPWL9a8NPWrqkKFLwOG" Enabled="true" />
                     <Fragment Id="UYlSG42ZzBtO8yicLgzB42" Patch="MXEkbyFFmEQOWVhCs64fWi" Enabled="true" />
