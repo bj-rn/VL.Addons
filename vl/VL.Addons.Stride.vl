@@ -9148,7 +9148,7 @@
         </Canvas>
         <Canvas Id="V3s4YUnWeXEPsiJLtuS2Ms" Name="Filter" Position="96,177">
           <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="129,261">
-            <Canvas Id="H2hZ6i12niIOectaFUUvoW" Name="Spread" Position="139,345">
+            <Canvas Id="H2hZ6i12niIOectaFUUvoW" Name="Spread" Position="133,366">
               <!--
 
     ************************ CircleSpread ************************
@@ -9233,7 +9233,7 @@
                 </Patch>
               </Node>
             </Canvas>
-            <Canvas Id="EXjNIitd0iWPGASLrmxroD" Name="ColorManipulation" Position="136,399">
+            <Canvas Id="EXjNIitd0iWPGASLrmxroD" Name="ColorManipulation" Position="133,407">
               <!--
 
     ************************ Invert ************************
@@ -9580,17 +9580,18 @@
                 </p:NodeReference>
                 <Patch Id="OXRiuDv83mIOs57uHSseDf">
                   <Canvas Id="VaBLd8AOhIHMRPCwHiDC94" CanvasType="Group">
-                    <Node Bounds="445,478,125,19" Id="KexmTUd2L84MaqoqKV5PtS">
+                    <Node Bounds="445,478,145,19" Id="KexmTUd2L84MaqoqKV5PtS">
                       <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                         <CategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
                         <Choice Kind="ProcessAppFlag" Name="DisplaceChannel" />
                       </p:NodeReference>
                       <Pin Id="OuCJE9XKxvaNg6Wx6TMWNk" Name="Input" Kind="InputPin" />
-                      <Pin Id="HuVn6qiBTuCMzZ1f72kmYP" Name="Input 2" Kind="InputPin" />
+                      <Pin Id="TnMZFj8Fe9OLVirbyBFDWr" Name="Input 2" Kind="InputPin" />
                       <Pin Id="AnVY9kbQX1lNuLxqbjIOs3" Name="Type" Kind="InputPin" />
                       <Pin Id="GQr37gIQBpZQH8jORZDaMt" Name="Offset" Kind="InputPin" />
                       <Pin Id="OdzfOWeozGlQHmMoPY1q0i" Name="Offset Scale" Kind="InputPin" />
+                      <Pin Id="BXtMtT6dTq1PSnNQM55qJr" Name="Displace" Kind="InputPin" />
                       <Pin Id="GOplHoDyy8aN31eFwHF3NX" Name="Control" Kind="InputPin" />
                       <Pin Id="DvVPTuYbmnOLAtOGoS4j7B" Name="Apply" Kind="InputPin" />
                       <Pin Id="FRcasQEhq7ZORXudDZgeQ5" Name="Output" Kind="OutputPin" />
@@ -9604,26 +9605,6 @@
                     <ControlPoint Id="TQo85tY5qiJPcUN7D36ZiF" Bounds="719,413" />
                     <ControlPoint Id="QbJeDNrqsVILyPspf2zWRU" Bounds="447,524" />
                   </Canvas>
-                  <Patch Id="LkJPQjLXMUqPkgCk6JLCva" Name="Create" />
-                  <Patch Id="QtcNgOaNG6uQR83Qycv9f6" Name="Update">
-                    <Pin Id="UjgD4TZodzJOzrkeqdtTdr" Name="Texture" Kind="InputPin" />
-                    <Pin Id="GLgZVhtll7cN9V2GLjVrAM" Name="Displace Texture" Kind="InputPin" />
-                    <Pin Id="J1fkEWt1hFtLZBQDHl0eNa" Name="Type" Kind="InputPin">
-                      <p:TypeAnnotation>
-                        <Choice Kind="TypeFlag" Name="DisplaceChannel" />
-                      </p:TypeAnnotation>
-                    </Pin>
-                    <Pin Id="CzROUIFJGAuMkcVYZf56D7" Name="Offset" Kind="InputPin" />
-                    <Pin Id="CqxBCjAaYloPEoraGnHViG" Name="Offset Scale" Kind="InputPin" />
-                    <Pin Id="VZhbJ7rWiWQQFmCEQCuoKR" Name="Control" Kind="InputPin" />
-                    <Pin Id="LpsYavGvfmPLMrKyfCu9SS" Name="Apply" Kind="InputPin" />
-                    <Pin Id="JCMUrBkckwWNlCrNbtpK2W" Name="Output" Kind="OutputPin" />
-                  </Patch>
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="IrArpaV7JEzOwzm4Gh2txf">
                     <Fragment Id="VegQwiKykkwLAYGRldUsfw" Patch="LkJPQjLXMUqPkgCk6JLCva" Enabled="true" />
                     <Fragment Id="EmjT2ERXLRnNiMCQUP5NsF" Patch="QtcNgOaNG6uQR83Qycv9f6" Enabled="true" />
@@ -9631,7 +9612,6 @@
                   <Link Id="QCCW7Aq9jRfNzTeAi26otx" Ids="UjgD4TZodzJOzrkeqdtTdr,VgOkzpmBqXOMyOyiMX6wpv" IsHidden="true" />
                   <Link Id="EtkmBrNzyvKPILfUyaGK00" Ids="VgOkzpmBqXOMyOyiMX6wpv,OuCJE9XKxvaNg6Wx6TMWNk" />
                   <Link Id="RYWURCAE8GIL3lOF46URhR" Ids="GLgZVhtll7cN9V2GLjVrAM,SkowjEaPdamPLjcCKXqChz" IsHidden="true" />
-                  <Link Id="Rfiy9A0zPEpMFZQQbf0bAM" Ids="SkowjEaPdamPLjcCKXqChz,HuVn6qiBTuCMzZ1f72kmYP" />
                   <Link Id="E0GDKVS8E4DM1uN2kUqxkY" Ids="J1fkEWt1hFtLZBQDHl0eNa,R6RKHhmaVsWPNU69RRov76" IsHidden="true" />
                   <Link Id="FIQyAoUXFLGODFKUVmSjaM" Ids="R6RKHhmaVsWPNU69RRov76,AnVY9kbQX1lNuLxqbjIOs3" />
                   <Link Id="QFSXVm0WaNrLQNFvKWIMPu" Ids="CzROUIFJGAuMkcVYZf56D7,FGpDn3gxwPGPclL0TXXoMR" IsHidden="true" />
@@ -9644,6 +9624,48 @@
                   <Link Id="KGbDaSJw3XPO49nOHZvVb8" Ids="TQo85tY5qiJPcUN7D36ZiF,DvVPTuYbmnOLAtOGoS4j7B" />
                   <Link Id="JGAeFIe8WsKMaqPflGSWWN" Ids="QbJeDNrqsVILyPspf2zWRU,JCMUrBkckwWNlCrNbtpK2W" IsHidden="true" />
                   <Link Id="Bl0m4fAp4jOLMHpuQfl6T1" Ids="FRcasQEhq7ZORXudDZgeQ5,QbJeDNrqsVILyPspf2zWRU" />
+                  <Patch Id="LkJPQjLXMUqPkgCk6JLCva" Name="Create" />
+                  <Patch Id="QtcNgOaNG6uQR83Qycv9f6" Name="Update">
+                    <Pin Id="UjgD4TZodzJOzrkeqdtTdr" Name="Texture" Kind="InputPin" />
+                    <Pin Id="GLgZVhtll7cN9V2GLjVrAM" Name="Displace Texture" Kind="InputPin" />
+                    <Pin Id="J1fkEWt1hFtLZBQDHl0eNa" Name="Type" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.Common" LastDependency="TextureFX.dll">
+                        <Choice Kind="TypeFlag" Name="DisplaceChannel" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                    <Pin Id="CzROUIFJGAuMkcVYZf56D7" Name="Offset" Kind="InputPin" />
+                    <Pin Id="CqxBCjAaYloPEoraGnHViG" Name="Offset Scale" Kind="InputPin" />
+                    <Pin Id="VZhbJ7rWiWQQFmCEQCuoKR" Name="Control" Kind="InputPin" />
+                    <Pin Id="LpsYavGvfmPLMrKyfCu9SS" Name="Apply" Kind="InputPin" />
+                    <Pin Id="JCMUrBkckwWNlCrNbtpK2W" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                  <Link Id="QJ2Y9Np7kFiL9USMaQPwoI" Ids="SkowjEaPdamPLjcCKXqChz,TnMZFj8Fe9OLVirbyBFDWr" />
+                </Patch>
+              </Node>
+            </Canvas>
+            <Canvas Id="D13kQdTJ5t6PE1fvyfKVA9" Name="Rendering" Position="133,490">
+              <!--
+
+    ************************ Bump (Advanced) ************************
+
+-->
+              <Node Name="Bump (Advanced)" Bounds="533,475" Id="T37Qxg9R3ciNED2WRSFl1E">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="EtvJU8PCRVHMPHeqPaweUv">
+                  <Canvas Id="KOQQIUoGmUMM09S7Q5sf8d" CanvasType="Group" />
+                  <Patch Id="MkBBPWL9a8NPWrqkKFLwOG" Name="Create" />
+                  <Patch Id="MXEkbyFFmEQOWVhCs64fWi" Name="Update" />
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="Aw1vLeEFgNGP25Qbs4W1Ux">
+                    <Fragment Id="DvF98bM9X1gM88ULdIT7mb" Patch="MkBBPWL9a8NPWrqkKFLwOG" Enabled="true" />
+                    <Fragment Id="UYlSG42ZzBtO8yicLgzB42" Patch="MXEkbyFFmEQOWVhCs64fWi" Enabled="true" />
+                  </ProcessDefinition>
                 </Patch>
               </Node>
             </Canvas>
