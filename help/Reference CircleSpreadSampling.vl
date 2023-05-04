@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RvxsB2youApNm8TsV07qny" LanguageVersion="2023.5.0" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="FKYoREwzdsDNdUXAu3Rdah" LanguageVersion="2023.5.0" Version="0.128">
   <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
@@ -21,15 +21,15 @@
               <CategoryReference Kind="Category" Name="Spread" NeedsToBeDirectParent="true">
                 <p:OuterCategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
               </CategoryReference>
-              <Choice Kind="ProcessAppFlag" Name="CircleSpread" />
+              <Choice Kind="ProcessAppFlag" Name="CircleSpreadSampling" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
             <Pin Id="AkTnGkQ0sbtOcgGYbSejeD" Name="Input" Kind="InputPin" />
             <Pin Id="CiCGNqRhxGAP9JxUL8TMdv" Name="Count" Kind="InputPin" />
+            <Pin Id="CQhWKgEiLF7NYFPpcKcZWo" Name="BlendMode" Kind="InputPin" />
             <Pin Id="IyT5FRkOGXmNGr9Ph20Oa0" Name="Factor" Kind="InputPin" />
             <Pin Id="Gj8Y0SLJJQUMNIJskbaXdp" Name="Phase" Kind="InputPin" />
             <Pin Id="FwR5ROUhQ0yLU2vkehbDd3" Name="Center" Kind="InputPin" />
-            <Pin Id="CQhWKgEiLF7NYFPpcKcZWo" Name="BlendMode" Kind="InputPin" />
             <Pin Id="K9skOq8s80YMYpX0qhnVzh" Name="Width" Kind="InputPin" />
             <Pin Id="FEsqGwDynjNQWu0n5gWzqA" Name="Control" Kind="InputPin" />
             <Pin Id="P3keFnmysu8OczwhH06Vwf" Name="Apply" Kind="InputPin" DefaultValue="True" />
@@ -85,7 +85,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="Jb8oejGHkKBPSOeRJaMT0G" Name="Bounds" Kind="InputPin" DefaultValue="1182.2858, 98.28571, 700, 338.85715" />
+            <Pin Id="Jb8oejGHkKBPSOeRJaMT0G" Name="Bounds" Kind="InputPin" DefaultValue="1214.6666, 318.66666, 700, 338.66666" />
             <Pin Id="IkHFmsEgRZuMaSMtLGP7F5" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="Sznoj0jbbFIMJhO9cPepzd" Name="Input" Kind="InputPin" />
             <Pin Id="QxJMo8ocvq5LTRSMXO81AK" Name="Title" Kind="InputPin" DefaultValue="CircleSpread" />
@@ -101,6 +101,21 @@
             <Pin Id="OPSUhJbHwQLMq4q6QtkPH5" Name="Client Bounds" Kind="OutputPin" />
             <Pin Id="TDXDuwxyJ0GNBV4H8bCyhY" Name="Input Source" Kind="OutputPin" />
           </Node>
+          <Node Bounds="296,266,62,19" Id="BuoDkinEG8SLIcNjh4FL9L">
+            <p:NodeReference LastCategoryFullName="Animation.FrameBased" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Integrator" />
+            </p:NodeReference>
+            <Pin Id="BSqkrY0rCv0OrUKwSZBlJ0" Name="Initial Value" Kind="InputPin" />
+            <Pin Id="AkZRfulvQLNPzyByySLyFx" Name="Offset" Kind="InputPin" />
+            <Pin Id="FfjcGsZC65XOE7lMcaF7Bu" Name="Reset Value" Kind="InputPin" />
+            <Pin Id="APgLWGMyMPBMiYGy2Uyp0H" Name="Value" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Az9SvLK87ZsM7e4L9mFEZh" Comment="Offset" Bounds="325,240,35,15" ShowValueBox="true" isIOBox="true" Value="0.004">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -116,6 +131,8 @@
         <Link Id="M9jcWcTuNFhMnRXfdwkAXM" Ids="CHgfk438Z49L5ITcx5qWDq,FwR5ROUhQ0yLU2vkehbDd3" />
         <Link Id="Ipfg934FhpXPBsbbzvEcAk" Ids="VB61awgVqqgQagKJ4IMv1A,CQhWKgEiLF7NYFPpcKcZWo" />
         <Link Id="Fa7tolshZaGPUViQ6D0jqz" Ids="QqkODL5iFJeQacKtiW8VhH,Sznoj0jbbFIMJhO9cPepzd" />
+        <Link Id="JZQYzZbvP2aL5Ydq1qUyKM" Ids="APgLWGMyMPBMiYGy2Uyp0H,Gj8Y0SLJJQUMNIJskbaXdp" />
+        <Link Id="LDCqz7lTtrZNL6TF1YvJSA" Ids="Az9SvLK87ZsM7e4L9mFEZh,AkZRfulvQLNPzyByySLyFx" />
       </Patch>
     </Node>
   </Patch>

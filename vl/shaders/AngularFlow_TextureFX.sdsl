@@ -31,7 +31,7 @@ shader AngularFlow_TextureFX : FilterBase, AddonShaderUtils
 		float4 from;
 		float4 to;
 
-		float pixels = 100 * SquareSize.Compute();
+		float pixels = SquareSize.Compute() * 0.01;
 
 		float2 newUV = round(streams.TexCoord * pixels) / pixels;	
 		float4 pixelTexture = Texture2.SampleLevel(LinearSampler, newUV, 0);
@@ -43,12 +43,12 @@ shader AngularFlow_TextureFX : FilterBase, AddonShaderUtils
 
 		float2 offset = float2(0, 0);
 		
-		float scale = Scale.Compute() / 100;
+		float scale = Scale.Compute() * 0.01;
 
 		if (pixelTexture.r > 0.5) {offset.x += scale;} else {offset.x -= scale;}
 		if (pixelTexture.g < 0.5) {offset.y += scale;} else {offset.y -= scale;}
 
-		offset += Direction.Compute() / 100;
+		offset += Direction.Compute() * 0.01;
 
 		from = Texture0.SampleLevel(LinearSampler, streams.TexCoord, 0);
 		to = Texture1.SampleLevel(LinearSampler, streams.TexCoord + offset.xy, 0);
