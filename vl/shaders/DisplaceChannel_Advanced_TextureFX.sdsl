@@ -3,7 +3,7 @@
 [Tags("uv, offset, distort")]
 [DontConvertToLinearOnRead("Texture1")]
 
-shader DisplaceColorSpace_TextureFX : FilterBase, ShaderUtils
+shader DisplaceColorSpace_Advanced_TextureFX : FilterBase, AddonShaderUtils
 {
     [Default(0.5f, 0.5f)]
 	compose ComputeFloat2 Offset;
@@ -11,7 +11,7 @@ shader DisplaceColorSpace_TextureFX : FilterBase, ShaderUtils
     [Default(0.1f, 0.1f)]
 	compose ComputeFloat2 OffsetScale;
 
-    [EnumType("VL.Stride.Effects.Common.DisplaceColorSpace")]
+    //[EnumType("VL.Stride.Effects.Common.DisplaceColorSpace")]
     int type;
 
     float4 Filter(float4 tex0col)
