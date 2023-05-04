@@ -5,7 +5,7 @@
 [Summary("Applies edge detection")]
 [WantsMips("Texture0")]
 
-shader Edge_Advanced_TextureFX : FilterBase, ShaderUtils
+shader Edge_Advanced_TextureFX : FilterBase, AddonShaderUtils
 {
     [Default(1.0f)]
     compose ComputeFloat Brightness;
@@ -22,8 +22,8 @@ shader Edge_Advanced_TextureFX : FilterBase, ShaderUtils
     [Color]
     float4 BackgroundColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
 
-    [EnumType("VL.Stride.Effects.Common.Edge")]
-    uint Type;
+    //[EnumType("VL.Stride.Effects.Common.Edge")]
+    int Type;
 
     bool Desaturate;
 
@@ -113,8 +113,5 @@ shader Edge_Advanced_TextureFX : FilterBase, ShaderUtils
         return lerp(BackgroundColor, EdgeColor, col);
     }
 
-    float Lod(float2 viewSize)
-    {
-        return log2(max(viewSize.x, viewSize.y));
-    }
+
 };

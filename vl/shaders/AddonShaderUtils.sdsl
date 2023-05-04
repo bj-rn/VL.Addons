@@ -1,6 +1,11 @@
 ﻿
 shader AddonShaderUtils
 {
+    float Lod(float2 viewSize)
+    {
+        return log2(max(viewSize.x, viewSize.y));
+    }
+
     // CONSTANTS ==============================================================
  
     static const float Pi =             3.1415926535897932384626433832795;
