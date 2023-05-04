@@ -28,15 +28,13 @@ namespace VL.Stride.Effects.Common
         Saturation = 9,
         [Description("Hue")]
         Hue = 10,
-        [Description("RGBShift")]
-        RGBShift = 11,
         [Description("Cyan")]
-        Cyan = 12,
+        Cyan = 11,
         [Description("Magenta")]
-        Magenta = 13,
+        Magenta = 12,
         [Description("Yellow")]
-        Yellow = 14,
+        Yellow = 13,
         [Description("Black")]
-        Black = 15,
+        Black = 14,
     }
 }
