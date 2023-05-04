@@ -9326,11 +9326,6 @@
                     <ControlPoint Id="QM4W5hI6ImlNZRHtq0vInt" Bounds="489,565" />
                     <ControlPoint Id="FIlt3mqPLWYNx90igKbDgS" Bounds="528,387" />
                   </Canvas>
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="VwT63Ad5HSKMq7s2cNTvcj">
                     <Fragment Id="J5HGEDl8ZkVOXT9MYC456a" Patch="O5WHpm50qwKOnBDRIRUXte" Enabled="true" />
                     <Fragment Id="DIpqu4jkDXWOBPPbRFsO0l" Patch="Lj2utSAlroVMcYTCc2k4SL" Enabled="true" />
@@ -9948,7 +9943,7 @@
     ************************ Echo (Advanced) ************************
 
 -->
-            <Node Name="Echo (Advanced)" Bounds="136,575" Id="Aupc8sBTsO8QSbGq6hOYrT">
+            <Node Name="Echo (Advanced)" Bounds="140,614" Id="Aupc8sBTsO8QSbGq6hOYrT">
               <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                 <Choice Kind="ContainerDefinition" Name="Process" />
               </p:NodeReference>
@@ -10334,6 +10329,42 @@
                 <Link Id="Gkku8RIR1TELHT8wD5lmZy" Ids="S8A3KZb0rwNN0KyEFwH9n6,C2QIiFYiBMON7497LQP9R6" />
               </Patch>
             </Node>
+            <Canvas Id="SuPnHTG6DkRPaqrjqS4XOj" Name="Stylize" Position="133,527">
+              <!--
+
+    ************************ Edge ************************
+
+-->
+              <Node Name="Edge" Bounds="190,431" Id="BG33rCA5L5PPpPf8kW6iNK">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="RyrPCKH3GwVMKMVCj8RTVW">
+                  <Canvas Id="FfnBoukRAT9OSPIne09TZL" CanvasType="Group">
+                    <Node Bounds="232,397,43,19" Id="VbV6QodKWWVP2FESL7daAn">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Edge" />
+                      </p:NodeReference>
+                      <Pin Id="MUwkGUhuh2PQD3nz3tEQsT" Name="Apply" Kind="InputPin" />
+                      <Pin Id="AVTdFr8EnjrPjRAqnjMkMy" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <Patch Id="Vv8iapyKDdKP846uqNuSy9" Name="Create" />
+                  <Patch Id="Towwrig6fVDOLvwWAcxCSb" Name="Update" />
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="S4uZVTvXtUgPHhwgleWBQC">
+                    <Fragment Id="IIlyCG9VDmYLMvPu2prkdY" Patch="Vv8iapyKDdKP846uqNuSy9" Enabled="true" />
+                    <Fragment Id="A6Tw6KbZMH7QayukygSHwn" Patch="Towwrig6fVDOLvwWAcxCSb" Enabled="true" />
+                  </ProcessDefinition>
+                </Patch>
+              </Node>
+            </Canvas>
           </Canvas>
         </Canvas>
         <Canvas Id="OC04dEsgDLWOqDwk7Sfgpn" Name="Mixer" Position="96,215">

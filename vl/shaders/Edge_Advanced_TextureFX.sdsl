@@ -5,7 +5,7 @@
 [Summary("Applies edge detection")]
 [WantsMips("Texture0")]
 
-shader Edge_TextureFX : FilterBase, ShaderUtils
+shader Edge_Advanced_TextureFX : FilterBase, ShaderUtils
 {
     [Default(1.0f)]
     compose ComputeFloat Brightness;
@@ -111,5 +111,10 @@ shader Edge_TextureFX : FilterBase, ShaderUtils
         if(Desaturate) col.rgb = float3(luma, luma, luma);
 
         return lerp(BackgroundColor, EdgeColor, col);
+    }
+
+    float Lod(float2 viewSize)
+    {
+        return log2(max(viewSize.x, viewSize.y));
     }
 };
