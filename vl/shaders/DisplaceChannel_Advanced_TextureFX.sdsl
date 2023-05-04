@@ -11,16 +11,13 @@ shader DisplaceChannel_Advanced_TextureFX : FilterBase, AddonShaderUtils
     [Default(0.1f, 0.1f)]
 	compose ComputeFloat2 OffsetScale;
 
+    [Default(0.0f, 0.0f, 0.0f, 0.0f)]
+    compose ComputeFloat4 Displace;
     //[EnumType("VL.Stride.Effects.Common.DisplaceColorSpace")]
     int type;
 
     float4 Filter(float4 tex0col)
     {
-        float4 offset = InTex1();
-        float2 off = (offset.rg - Offset.Compute()) * OffsetScale.Compute(); 
-
-        float2 uv = streams.TexCoord;
-        
         float4 c;
 
         switch(type)
