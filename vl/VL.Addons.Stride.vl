@@ -9792,6 +9792,73 @@
                   </Patch>
                 </Patch>
               </Node>
+              <!--
+
+    ************************ Pulse ************************
+
+-->
+              <Node Name="Pulse" Bounds="132,844" Id="F3ejRMm4O2YMyzYsHq2tnR">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="VQTzwYZiWIHLgm7gVeFIdI">
+                  <Canvas Id="Lew86lBI88iP7m50zJkZx5" CanvasType="Group">
+                    <Node Bounds="444,695,145,19" AutoConnect="true" Id="KKSxP5lg7cnM2qcgOVB1Au">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Pulse" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Invert" />
+                        <PinReference Kind="InputPin" Name="Channel Type" />
+                        <PinReference Kind="InputPin" Name="Center" />
+                        <PinReference Kind="InputPin" Name="Slope Width" />
+                        <PinReference Kind="InputPin" Name="Center Width" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="Kl5uqSPKTM2PAqTQBTbN0N" Name="Input" Kind="InputPin" />
+                      <Pin Id="NWCHohP8FkRLddy7QkPwF1" Name="Invert" Kind="InputPin" />
+                      <Pin Id="VV1ECHgNyBPPSt1PQZ0Dm3" Name="Channel Type" Kind="InputPin" />
+                      <Pin Id="QxlBfholGbuOdo5jgIIAaJ" Name="Center" Kind="InputPin" />
+                      <Pin Id="OtDbzqjuoghOyqxoEWntUP" Name="Slope Width" Kind="InputPin" />
+                      <Pin Id="U9xYqdQtpuDOifcUew71xK" Name="Center Width" Kind="InputPin" />
+                      <Pin Id="JsWNXuEooAlO0AbWj89irA" Name="Control" Kind="InputPin" />
+                      <Pin Id="JIUKzn0F7BjNDU3aJTTmwW" Name="Apply" Kind="InputPin" />
+                      <Pin Id="K6Qaatdf7bVMVYjWZ38t05" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="Tl9HplfAO1tLilt0FbOdxp" Bounds="486,629" />
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="SZDTTijftWGOYLwXvifNoo">
+                    <Fragment Id="VndUlXItGXfNKw09jEfXgw" Patch="BD60XHLXyPJPjShLdxt5Lp" Enabled="true" />
+                    <Fragment Id="IRD2QiU58uAN45d7NFFJmX" Patch="NPW4DtJHfR0OIBL0CboB3R" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="B5xsJFYGuGrMFMm0YLipb1" Ids="Tl9HplfAO1tLilt0FbOdxp,VV1ECHgNyBPPSt1PQZ0Dm3" />
+                  <Link Id="Jq1o7dE2W2nL87dWUjNwS2" Ids="QidIrlqWMQjLJdTdpU32xD,Tl9HplfAO1tLilt0FbOdxp" IsHidden="true" />
+                  <Patch Id="BD60XHLXyPJPjShLdxt5Lp" Name="Create" />
+                  <Patch Id="NPW4DtJHfR0OIBL0CboB3R" Name="Update" ManuallySortedPins="true">
+                    <Pin Id="OZBmn0N7UkLLYPq9oIAcic" Name="Input" Kind="InputPin" />
+                    <Pin Id="QidIrlqWMQjLJdTdpU32xD" Name="Channel" Kind="InputPin" Bounds="484,626" />
+                    <Pin Id="A5Tx9oue9v6LqFG2lTAObS" Name="Invert" Kind="InputPin" />
+                    <Pin Id="MJrVu9TZsHiOG1W68wJMr7" Name="Center" Kind="InputPin" />
+                    <Pin Id="Kr14QcbQxcFP7UWXPtKW2U" Name="Slope Width" Kind="InputPin" />
+                    <Pin Id="CG37mEHh6rKMihL0oC6iF4" Name="Center Width" Kind="InputPin" />
+                    <Pin Id="JnY8xukOLHYP8ThzcZAe68" Name="Control" Kind="InputPin" />
+                    <Pin Id="A0p10zPn2GeNMEvCGZ4K1T" Name="Apply" Kind="InputPin" />
+                    <Pin Id="UF9LUXXlvCvNsApdLlofKA" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
             </Canvas>
             <Canvas Id="LHk87PU0oAtP0Q7Crj4dnl" Name="Distortion" Position="99,227">
               <!--
@@ -10885,11 +10952,6 @@
                     <ControlPoint Id="Ij2qLcGjfNXM1CGV3Ih5Ie" Bounds="395,354" />
                     <ControlPoint Id="Oqc0kyUSAYDLJvgKJcfUuz" Bounds="415,381" />
                   </Canvas>
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="VUx1oYMZnqFLCbemOaSsHI">
                     <Fragment Id="T4QyTJHozj1MJgABmP9eJU" Patch="FYlD4HrOalDNXVerBag5uF" Enabled="true" />
                     <Fragment Id="PwhQEcQFxyVLxr4QsARi1p" Patch="GIyNHsQA3frPRGNdJeFTzi" Enabled="true" />
