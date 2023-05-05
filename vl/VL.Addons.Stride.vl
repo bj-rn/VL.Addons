@@ -9743,6 +9743,65 @@
                   </Patch>
                 </Patch>
               </Node>
+              <!--
+
+    ************************ ThresholdDiscard ************************
+
+-->
+              <Node Name="ThresholdDiscard" Bounds="132,752" Id="I2KdPvWiKerNcBrn8PNVrh">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="BMJeKrGBbJwMzqpdwnwlcv">
+                  <Canvas Id="CkvPAnKruCtLAx0w9ZceIC" CanvasType="Group">
+                    <Node Bounds="373,563,105,19" AutoConnect="true" Id="MaoOkON5xFDN1jQs4hLqVL">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessAppFlag" Name="ThresholdDiscard" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Input 2" />
+                        <PinReference Kind="InputPin" Name="Linear Sampler" />
+                        <PinReference Kind="InputPin" Name="Discard" />
+                        <PinReference Kind="InputPin" Name="Threshold" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="JKOXV76cQ5TLCQ0fYqZTtr" Name="Input" Kind="InputPin" />
+                      <Pin Id="IeehNdj6B0xMHjCxc4qSx8" Name="Input 2" Kind="InputPin" />
+                      <Pin Id="AuWsDO0sjYENQrSD7Bm6R6" Name="Discard" Kind="InputPin" />
+                      <Pin Id="ETJ99u2s2i6NEwX8TPGa9f" Name="Threshold" Kind="InputPin" />
+                      <Pin Id="NcKUo8tknOdMFv0BdxxbWc" Name="Control" Kind="InputPin" />
+                      <Pin Id="CsPwknglxKfNu1VHb4Kqk9" Name="Apply" Kind="InputPin" />
+                      <Pin Id="Qiu2MQvTce7MX3JnxHKfdO" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="JC60cwihl8QOOCnnzSEpBc">
+                    <Fragment Id="SnmoamYN0GtPOYjXvqEP3X" Patch="EdP2EgiYd3iOs1lwTdxj14" Enabled="true" />
+                    <Fragment Id="LVaqbDL2Y3uMJHg0rfHNKr" Patch="Qb5B8fCgKSALd5brkl1Hxr" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="EdP2EgiYd3iOs1lwTdxj14" Name="Create" />
+                  <Patch Id="Qb5B8fCgKSALd5brkl1Hxr" Name="Update">
+                    <Pin Id="FcGQulRCis5O6X2UYCVOJg" Name="Output" Kind="OutputPin" />
+                    <Pin Id="H2cVY2zihtCLw0K1VF7bj6" Name="Input" Kind="InputPin" />
+                    <Pin Id="IK0Vd3G9DDuOIMGFxbGqbH" Name="Input 2" Kind="InputPin" />
+                    <Pin Id="RickpWZeoOnO3QuTv1nOKf" Name="Discard" Kind="InputPin" />
+                    <Pin Id="CttQNq0PcQ3PeUC1uCnsur" Name="Threshold" Kind="InputPin" />
+                    <Pin Id="BaMsNAwjpCALpS121tqqo8" Name="Control" Kind="InputPin" />
+                    <Pin Id="LO13ZO83xWtLAXLasMFlDp" Name="Apply" Kind="InputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
             </Canvas>
             <Canvas Id="LHk87PU0oAtP0Q7Crj4dnl" Name="Distortion" Position="99,227">
               <!--
