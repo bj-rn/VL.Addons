@@ -9618,6 +9618,63 @@
                   </Patch>
                 </Patch>
               </Node>
+              <!--
+
+    ************************ ColorGrading ************************
+
+-->
+              <Node Name="ColorGrading" Bounds="127,528" Id="GgIMNrFvMzBQQ9g6zhCCpD">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="NV9whfzEfWGPdPHF42jNIa">
+                  <Canvas Id="Uoyqz0PRzYHPW0iZUctTHZ" CanvasType="Group">
+                    <Node Bounds="484,639,125,19" AutoConnect="true" Id="CS0Noia1TsbPrYxFzgfALO">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessNode" Name="ColorGrading" />
+                      </p:NodeReference>
+                      <Pin Id="EGyh5T8SIXBNqT6AMqsgbj" Name="Input" Kind="InputPin" />
+                      <Pin Id="M5ajKt089S9NWi7MonFaem" Name="Grading Function" Kind="InputPin" />
+                      <Pin Id="NTizYyM2KTxLeYMISVaXDF" Name="Adjustement Weight" Kind="InputPin" />
+                      <Pin Id="Iyxoz5hazO9QQBIXzatVNo" Name="Strength" Kind="InputPin" />
+                      <Pin Id="P09hSXXS1KHPoJ1W21Jnab" Name="Color" Kind="InputPin" />
+                      <Pin Id="QBK4mYlnAHELIdL1nlvREB" Name="Control" Kind="InputPin" />
+                      <Pin Id="HoLo0oEer69LNneEt0k3wp" Name="Apply" Kind="InputPin" />
+                      <Pin Id="OuktWVJVxZ0OM8H0wpNVkY" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="HNbyN650LuCNO7ErMnQDRP" Bounds="506,573" />
+                    <ControlPoint Id="QRsbgleOiBqP9Jwn0oVjQP" Bounds="526,598" />
+                  </Canvas>
+                  <ProcessDefinition Id="KtQaUUDuJovPZM4UddjzO1">
+                    <Fragment Id="CST76QLR7h6LP5gEV1Yrnt" Patch="Lq8MBkC4GxvLNoHvhKLw63" Enabled="true" />
+                    <Fragment Id="MOhB3988FXaOwCQZeUErOV" Patch="I6KmadLikuXPksPO66P8cz" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="U6TbP9bRRyfPRB5eEzoUuV" Ids="HNbyN650LuCNO7ErMnQDRP,M5ajKt089S9NWi7MonFaem" />
+                  <Link Id="UvfitItqno3P0X3y5KCcUk" Ids="NWWcNN9WWp7LhQHAhIEFgB,HNbyN650LuCNO7ErMnQDRP" IsHidden="true" />
+                  <Link Id="VyzQhTnyG3aLxYjuh7N4vJ" Ids="QRsbgleOiBqP9Jwn0oVjQP,NTizYyM2KTxLeYMISVaXDF" />
+                  <Link Id="MNdK7e4mcfNMKpin4KUTQL" Ids="Dc0xiPozlftMFlV9bSvRp5,QRsbgleOiBqP9Jwn0oVjQP" IsHidden="true" />
+                  <Patch Id="Lq8MBkC4GxvLNoHvhKLw63" Name="Create" />
+                  <Patch Id="I6KmadLikuXPksPO66P8cz" Name="Update" ManuallySortedPins="true">
+                    <Pin Id="AxLRRDqyXjDOnVBIyAW6ei" Name="Input" Kind="InputPin" />
+                    <Pin Id="NWWcNN9WWp7LhQHAhIEFgB" Name="Grading Function" Kind="InputPin" Bounds="493,533">
+                      <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.Common" LastDependency="TextureFX.dll">
+                        <Choice Kind="TypeFlag" Name="ColorGradingFunction" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                    <Pin Id="Dc0xiPozlftMFlV9bSvRp5" Name="Adjustement Weight" Kind="InputPin" Bounds="608,539">
+                      <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.Common" LastDependency="TextureFX.dll">
+                        <Choice Kind="TypeFlag" Name="AdjustementWeight" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                    <Pin Id="IcPaf5gho12MfbYbKHaPda" Name="Strength" Kind="InputPin" />
+                    <Pin Id="NXskIVfuIqhNA03wiETT1H" Name="Color" Kind="InputPin" />
+                    <Pin Id="UUzCsT0MrMuM7SqnNB6EMO" Name="Control" Kind="InputPin" />
+                    <Pin Id="QBEvXKeELN5LkOR91IABHs" Name="Apply" Kind="InputPin" />
+                    <Pin Id="EyTwhgaRGsyQKMjcawZ3JF" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
             </Canvas>
             <Canvas Id="LHk87PU0oAtP0Q7Crj4dnl" Name="Distortion" Position="99,227">
               <!--
