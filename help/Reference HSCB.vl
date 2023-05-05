@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="BGc0rL3WwvINlYtEvIWCLC" LanguageVersion="2023.5.0" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+  <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
+    <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="FTnHEHJoABVMZpE9wKWWCv">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="Q8sCQ8DMW8YME67P0dnYWX">
+        <Canvas Id="H5BgwWBaGwNPnrRZzEF23u" CanvasType="Group">
+          <Node Bounds="427,654,165,19" Id="D2iWEVgO2GKMRN7O4P3yhg">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="ColorManipulation" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="HSCB" />
+              <PinReference Kind="InputPin" Name="Node Context" />
+            </p:NodeReference>
+            <Pin Id="F5AhdsQiuFuQd7wc8SYEQU" Name="Input" Kind="InputPin" />
+            <Pin Id="J6SPTsLfvIfLKhLZTMJLkY" Name="Hue" Kind="InputPin" />
+            <Pin Id="LIDZv5tyiirP0C2xLzmkhD" Name="Hue Cycles" Kind="InputPin" />
+            <Pin Id="JmcnBlDNL6tQKvAj68jqBR" Name="Saturation Balance" Kind="InputPin" />
+            <Pin Id="KDlxh3tXSQgOxtF0Lgx5dB" Name="Saturation" Kind="InputPin" />
+            <Pin Id="CPYCA47vXG5LRCsK11Smkm" Name="Contrast" Kind="InputPin" />
+            <Pin Id="JcyKthfMnQbNFP6O2Iq89U" Name="Brightness" Kind="InputPin" />
+            <Pin Id="TvyByyrIljOK9lUU4EQkE8" Name="Control" Kind="InputPin" />
+            <Pin Id="RDrG3OR1JDHLiFnbqcTWHd" Name="Apply" Kind="InputPin" />
+            <Pin Id="Gd4mO5H0L5YOhejtE8H8kV" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="426,436,105,19" Id="NcjxMjkYUBcOGGCzJulrVw">
+            <p:NodeReference LastCategoryFullName="Stride.Assets" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="FileTexture" />
+            </p:NodeReference>
+            <Pin Id="CNSoJgXd2ClOwVGS4I7ULJ" Name="Path" Kind="InputPin" />
+            <Pin Id="IuoQLIulG81N9KrqMNKDvD" Name="Generate Mipmaps" Kind="InputPin" />
+            <Pin Id="GN5jyox6T0fLlDM1A4cXWq" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="BheWzBeZDrVLcrI2GsooAb" Name="Compress" Kind="InputPin" />
+            <Pin Id="LOHIIrLdlRsOPCRO9L601z" Name="Alpha Format" Kind="InputPin" />
+            <Pin Id="Dex6qkH6bE8NMhsYLZRtuT" Name="Reload" Kind="InputPin" />
+            <Pin Id="LJm4FgGinIqP5Wxo3g2ao4" Name="Texture" Kind="OutputPin" />
+            <Pin Id="PpJ4uBjoUPEOWQQqyRYh7U" Name="Is Loading" Kind="OutputPin" />
+            <Pin Id="PAxZTLKJwNnLcwut8Fx2z9" Name="Already Loaded" Kind="OutputPin" />
+          </Node>
+          <Pad Id="JXRqvMc2NLdPIaSJt50AAF" Comment="" Bounds="429,694,190,132" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="H21UeCqWWXqQZWshwyzCmO" Comment="Path" Bounds="428,415,133,15" ShowValueBox="true" isIOBox="true" Value="..\resources\textures\002.dds">
+            <p:TypeAnnotation LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Path" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Tvjz21GYGVVPyYBXvQkfMQ" Comment="Hue" Bounds="448,478,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="U2l9mxnZXeYMbWIeJHXAGG" Comment="Hue Cycles" Bounds="469,505,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="PWzzegXsboWPm8b2nKa9X9" Comment="Saturation Balance" Bounds="488,535,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="EXVK3KfE81wPHr66Iqeeyf" Comment="Saturation" Bounds="509,560,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="A7S513bsHpJN1oHroLLrVs" Comment="Contrast" Bounds="528,585,35,15" ShowValueBox="true" isIOBox="true" Value="0.099999994">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="KzPnlKfH7NBQAEvU9ou54s" Comment="Brightness" Bounds="549,611,35,15" ShowValueBox="true" isIOBox="true" Value="1.55">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+        </Canvas>
+        <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
+        <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
+        <ProcessDefinition Id="MXjph1Jl3YTLTpnVfu9i5N">
+          <Fragment Id="ItPcigYZrenP4rS45rZYvB" Patch="PUlzAtkreEKOlH9onlCQls" Enabled="true" />
+          <Fragment Id="Lwu9TKkNC7hNyqQtkuD3t2" Patch="E3o2of9KQaVPZakiXXm9Xe" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="PJbo7oiR1pnLr7zowgbUSw" Ids="LJm4FgGinIqP5Wxo3g2ao4,F5AhdsQiuFuQd7wc8SYEQU" />
+        <Link Id="EIGQI93hHWLNbeWmDcQaM1" Ids="Gd4mO5H0L5YOhejtE8H8kV,JXRqvMc2NLdPIaSJt50AAF" />
+        <Link Id="P0AVzTZ16W9OUMTdArENoy" Ids="H21UeCqWWXqQZWshwyzCmO,CNSoJgXd2ClOwVGS4I7ULJ" />
+        <Link Id="PcOy8NpN8gOM8Y0xBXWpMC" Ids="Tvjz21GYGVVPyYBXvQkfMQ,J6SPTsLfvIfLKhLZTMJLkY" />
+        <Link Id="ULbqvv9NMYGQbI2KIGHkrd" Ids="U2l9mxnZXeYMbWIeJHXAGG,LIDZv5tyiirP0C2xLzmkhD" />
+        <Link Id="KUNPMymFkiAO6ck80CC33p" Ids="PWzzegXsboWPm8b2nKa9X9,JmcnBlDNL6tQKvAj68jqBR" />
+        <Link Id="HrGl0TlHS86Lunw6DSSqF0" Ids="EXVK3KfE81wPHr66Iqeeyf,KDlxh3tXSQgOxtF0Lgx5dB" />
+        <Link Id="KvxsZXad8VjOYTXAI7LF20" Ids="A7S513bsHpJN1oHroLLrVs,CPYCA47vXG5LRCsK11Smkm" />
+        <Link Id="PBJOKyscWgKNCyKCOGUNjO" Ids="KzPnlKfH7NBQAEvU9ou54s,JcyKthfMnQbNFP6O2Iq89U" />
+      </Patch>
+    </Node>
+  </Patch>
+  <DocumentDependency Id="FZlWMQeoYNaNw8eKS2eCxd" Location="../vl/VL.Addons.Stride.vl" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+</Document>
