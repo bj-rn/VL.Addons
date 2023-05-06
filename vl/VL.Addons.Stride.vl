@@ -9834,11 +9834,6 @@
                     </Node>
                     <ControlPoint Id="Tl9HplfAO1tLilt0FbOdxp" Bounds="486,629" />
                   </Canvas>
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="SZDTTijftWGOYLwXvifNoo">
                     <Fragment Id="VndUlXItGXfNKw09jEfXgw" Patch="BD60XHLXyPJPjShLdxt5Lp" Enabled="true" />
                     <Fragment Id="IRD2QiU58uAN45d7NFFJmX" Patch="NPW4DtJHfR0OIBL0CboB3R" Enabled="true" />
@@ -9856,6 +9851,65 @@
                     <Pin Id="JnY8xukOLHYP8ThzcZAe68" Name="Control" Kind="InputPin" />
                     <Pin Id="A0p10zPn2GeNMEvCGZ4K1T" Name="Apply" Kind="InputPin" />
                     <Pin Id="UF9LUXXlvCvNsApdLlofKA" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ AdaptiveSharpen ************************
+
+-->
+              <Node Name="AdaptiveSharpen" Bounds="139,936" Id="DiL3RGlbHC1PFy5mNpk2as">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="VLP3u1z4xj1NTkcdbfxAf1">
+                  <Canvas Id="C9HG9qLmOzwPvCECJo4eD8" CanvasType="Group">
+                    <Node Bounds="376,578,118,19" AutoConnect="true" Id="HObjTgT2ugJOUzHh67R9J6">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessNode" Name="AdaptiveSharpenPass0" />
+                      </p:NodeReference>
+                      <Pin Id="O47ZdBUsEPbNGN2h05IqCT" Name="Input" Kind="InputPin" />
+                      <Pin Id="Fn05ljA3vYOLd6rnEAwTYN" Name="P 1" Kind="InputPin" />
+                      <Pin Id="HYq2A5rfptlLxk6Ic6W4Ff" Name="A_offset" Kind="InputPin" />
+                      <Pin Id="UlW38kp50XWM4AsgZgqGcN" Name="Control" Kind="InputPin" />
+                      <Pin Id="GqXgyasUnJfLurrvBVLZL1" Name="Apply" Kind="InputPin" />
+                      <Pin Id="KGx3gc0t8CFLDRftSyjoGA" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <Node Bounds="376,647,118,19" AutoConnect="true" Id="VEi3Dudze2DLeyg7VyTVNg">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessNode" Name="AdaptiveSharpenPass1" />
+                      </p:NodeReference>
+                      <Pin Id="AnlboFThpTDOZGKkNwc0HF" Name="Input" Kind="InputPin" />
+                      <Pin Id="Me9W0cqkDiDLmacl9bh8bK" Name="P 1" Kind="InputPin" />
+                      <Pin Id="UsrLJ85sqdkPbomwcUnSvK" Name="Curve_height" Kind="InputPin" />
+                      <Pin Id="NtQO6Duo4sFM0CCM1rrsu3" Name="A_offset" Kind="InputPin" />
+                      <Pin Id="Gj4hX324nXZLamrXYfUqJB" Name="Control" Kind="InputPin" />
+                      <Pin Id="E4kKHmQTmNkOZzs8PBAb8q" Name="Apply" Kind="InputPin" />
+                      <Pin Id="CnP0J9BMn7ZPd8YtYroa6P" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="Eys0mza05NfLQc5lri1VX5">
+                    <Fragment Id="AK8ttSmipHeMGXzmRiuSMs" Patch="FO0RlFy4RKWMXzTxtujaew" Enabled="true" />
+                    <Fragment Id="ASPkcSFRVOEM5RhPsGOHjX" Patch="VThnOsjbaEKOW2jUWUjIfZ" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="NZG6I0yUAmVLVodoirfZqf" Ids="KGx3gc0t8CFLDRftSyjoGA,AnlboFThpTDOZGKkNwc0HF" />
+                  <Patch Id="FO0RlFy4RKWMXzTxtujaew" Name="Create" />
+                  <Patch Id="VThnOsjbaEKOW2jUWUjIfZ" Name="Update">
+                    <Pin Id="Gk3MN4ez4ovQQ7c33jw71Y" Name="Input" Kind="InputPin" />
+                    <Pin Id="U2skXeYQoXVQRvFlLbgCfH" Name="P 1" Kind="InputPin" />
+                    <Pin Id="TIIhwMEizRuNwnThiM2dp9" Name="A_offset" Kind="InputPin" />
+                    <Pin Id="BCc6Dd2eJS8NICfbbAwoMW" Name="Curve_height" Kind="InputPin" />
+                    <Pin Id="QjU7YCrhPdfO587TVSvL8D" Name="Control" Kind="InputPin" />
+                    <Pin Id="C4idFbl6fIBQTykK52MbVE" Name="Apply" Kind="InputPin" />
+                    <Pin Id="CcrRZtOgU5nMWq3ekuUqmr" Name="Output" Kind="OutputPin" />
                   </Patch>
                 </Patch>
               </Node>
