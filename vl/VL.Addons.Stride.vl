@@ -10298,6 +10298,71 @@
                   </Patch>
                 </Patch>
               </Node>
+              <!--
+
+    ************************ Median ************************
+
+-->
+              <Node Name="Median" Bounds="150,1615" Id="U3XDpfZFkOHLPUYgxbaCWM">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="QBoVED2tAuTOkFoPaiVpIU">
+                  <Canvas Id="NOzvCRlfq3RQXvmjgFzG1z" CanvasType="Group">
+                    <Pad Id="MpqzawPhusBPEgUzWx0C6L" Bounds="445,571,35,19" ShowValueBox="true" isIOBox="true" Value="">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="String" />
+                      </p:TypeAnnotation>
+                      <p:ValueBoxSettings>
+                        <p:fontsize p:Type="Int32">9</p:fontsize>
+                        <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+                      </p:ValueBoxSettings>
+                    </Pad>
+                    <Node Bounds="529,596,85,19" AutoConnect="true" Id="LeS8tVMCwJPP5yhyZ9RJEg">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="ColorManipulation" />
+                        <Choice Kind="ProcessAppFlag" Name="Median" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Radius" />
+                        <PinReference Kind="InputPin" Name="Pos" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="MzjoECYBmKONLKaWSgwySP" Name="Input" Kind="InputPin" />
+                      <Pin Id="QzhXqGfPgpbLnTrpKqTpUH" Name="Radius" Kind="InputPin" />
+                      <Pin Id="TXwfn3obuOpOfFHGlsxvHj" Name="Pos" Kind="InputPin" />
+                      <Pin Id="VbErGZdMWjrONUOFZriADf" Name="Control" Kind="InputPin" />
+                      <Pin Id="FSr1oJC4xXrMrc7BPmApJx" Name="Apply" Kind="InputPin" />
+                      <Pin Id="JL39mmBQZtxMAM7x0clUPv" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="LWTahne8iJ3Pxf9S2rF5zO">
+                    <Fragment Id="JoqD61GzymoM6edXNk6dqW" Patch="ODCbZs1yOIgQKtWyKvnCvv" Enabled="true" />
+                    <Fragment Id="T4flHR8udOCMPSimGxvEuC" Patch="KIOy9AzRK2rMHGlSp95rcO" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="ODCbZs1yOIgQKtWyKvnCvv" Name="Create" />
+                  <Patch Id="KIOy9AzRK2rMHGlSp95rcO" Name="Update">
+                    <Pin Id="MEuKAEQ0NmDPfjmzKvkqup" Name="Output" Kind="OutputPin" />
+                    <Pin Id="C2lQOSR8xEaOCijQ1blQLj" Name="Input" Kind="InputPin" />
+                    <Pin Id="T9NvbThgj9MLgIRoVA9eP1" Name="Radius" Kind="InputPin" />
+                    <Pin Id="GhtqQGyZHXJONKuHqB43um" Name="Pos" Kind="InputPin" />
+                    <Pin Id="AF2Go8PSxn3POr7tSjQYRK" Name="Control" Kind="InputPin" />
+                    <Pin Id="A6l6qCm8eEWLAvaCMMqwrm" Name="Apply" Kind="InputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
             </Canvas>
             <Canvas Id="LHk87PU0oAtP0Q7Crj4dnl" Name="Distortion" Position="99,227">
               <!--
@@ -11768,11 +11833,6 @@
                     <Pin Id="Akk4ivRhQN3LAgxys4bKN0" Name="Output" Kind="OutputPin" />
                   </Node>
                 </Canvas>
-                <!--
-
-    ************************  ************************
-
--->
                 <ProcessDefinition Id="VYrJjp3Knm5PA2sMci52JH">
                   <Fragment Id="F8WUJEQksIBL3MKSI9H2IN" Patch="K2yPGd2XS1jMTSz3jpLHsR" Enabled="true" />
                   <Fragment Id="BkNTwz3FnuZLmPE8WoZPuH" Patch="LMVefrRCLoKPrc2rZxGfib" Enabled="true" />
