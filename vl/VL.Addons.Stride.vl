@@ -9997,11 +9997,6 @@
                     </Node>
                     <ControlPoint Id="Lduj42gD4LXLEC8ZUZBxBS" Bounds="360,465" />
                   </Canvas>
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="GHNi5mAXSuZLCHzRHz7ual">
                     <Fragment Id="H7Mm6OEJB8HLDz9l2spxBj" Patch="LWMqo3be63oQBZJQxrnUAY" Enabled="true" />
                     <Fragment Id="KhuRpFoDgd1LnmNdHQ6vGF" Patch="R9gxXHlBr1dMaC6ZZISuG1" Enabled="true" />
@@ -10022,6 +10017,111 @@
                       </p:TypeAnnotation>
                     </Pin>
                     <Pin Id="QdhXTOSWTIZOo1yVMXrH0J" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Anaglyph ************************
+
+-->
+              <Node Name="Anaglyph" Bounds="134,1291" Id="HaGD9FYe5PXL4DBIkaCULP">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="GeFfiew7iFaO6PFsLc2dnR">
+                  <Canvas Id="H0AwIDrncwYPlLeEsh1M2b" CanvasType="Group">
+                    <Node Bounds="424,645,125,19" AutoConnect="true" Id="HGj9jTeF0HrOISWA2GIqKH">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="ColorManipulation" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Anaglyph" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="B1PqB7HhsqjLjyc1XsAPgf" Name="Input" Kind="InputPin" />
+                      <Pin Id="Csqun02GsZcPHQ6qCdOQ14" Name="Map Blur" Kind="InputPin" />
+                      <Pin Id="UHA1MnjRPHLMwqbHnBqzMv" Name="Boost" Kind="InputPin" />
+                      <Pin Id="IxP9duflyfwPZxkOreF9sO" Name="Distance" Kind="InputPin" />
+                      <Pin Id="KWgW7yIP80zPbnIxYxugmW" Name="Control" Kind="InputPin" />
+                      <Pin Id="Kb8kzShJKgTO7JP0fD8aoR" Name="Apply" Kind="InputPin" />
+                      <Pin Id="E2gpRanAQEgPCmhFD5ONUD" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="QZrT4UizV3XOiUSlGmVeRj">
+                    <Fragment Id="GPLK5S32PFTP1MUh8hkeOE" Patch="AEKg2wskExyN4ktthfZENa" Enabled="true" />
+                    <Fragment Id="POCLDlpXkFHMlCGZII2ZZ0" Patch="LVwjYpdSCPALEVBm6PiEcp" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="AEKg2wskExyN4ktthfZENa" Name="Create" />
+                  <Patch Id="LVwjYpdSCPALEVBm6PiEcp" Name="Update">
+                    <Pin Id="RgDQDS76UjeNOF2N63tuXR" Name="Input" Kind="InputPin" />
+                    <Pin Id="QM7O1JyU8PcQBFAJzzfQY2" Name="Map Blur" Kind="InputPin" />
+                    <Pin Id="NiFclJvV3MZMWyfd5smrT6" Name="Boost" Kind="InputPin" />
+                    <Pin Id="OpwdWCgboTjPHyFDQZ8ou1" Name="Distance" Kind="InputPin" />
+                    <Pin Id="TGiY9oUY3wENABxkDFgzNM" Name="Control" Kind="InputPin" />
+                    <Pin Id="IjAUyQy9klIOBKeiFlgnZV" Name="Apply" Kind="InputPin" />
+                    <Pin Id="TMf5aiMVImaO8NF2ItPOp6" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Bias ************************
+
+-->
+              <Node Name="Bias" Bounds="147,1203" Id="TYx6p1jYpKpL3WgXRxgK19">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="HIhtLZQgWcFQXHHmbp3Bn4">
+                  <Canvas Id="FDfxvgVYmUDPdH6xlAhLXW" CanvasType="Group">
+                    <Node Bounds="376,483,65,19" AutoConnect="true" Id="QYGi65gr6N3PerOLm5TIu7">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Bias" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Amount" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="BhxPodMlOCVLQzV6aWVGAF" Name="Input" Kind="InputPin" />
+                      <Pin Id="OTmpXibH8HuOsAcPxTeCpf" Name="Amount" Kind="InputPin" />
+                      <Pin Id="AGirFM8F7nSQTMPoRMnhrv" Name="Control" Kind="InputPin" />
+                      <Pin Id="LYRxdeG88spMggH875quBX" Name="Apply" Kind="InputPin" />
+                      <Pin Id="O9BcyW9I2heOsZr09jS9f4" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="OOaF623RyJqLZN7Yw3JLy8">
+                    <Fragment Id="H33JMbiMhxJOUkKT3ydDXT" Patch="RVGqWWyNjNbMgPJ7G45Dno" Enabled="true" />
+                    <Fragment Id="PvdTSP7Oxp6QVCz53mWsVo" Patch="QUbjpYli4BuNWQvz7101dl" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="RVGqWWyNjNbMgPJ7G45Dno" Name="Create" />
+                  <Patch Id="QUbjpYli4BuNWQvz7101dl" Name="Update">
+                    <Pin Id="H2V1Qat5AUnLQKHkvj5bly" Name="Output" Kind="OutputPin" />
+                    <Pin Id="UzQiXCdVLB0PaLY7TlakbR" Name="Input" Kind="InputPin" />
+                    <Pin Id="UIyZot69duaPI1URVT7LEJ" Name="Amount" Kind="InputPin" />
+                    <Pin Id="A9PxWp9yKEDQRBYd44mV6z" Name="Control" Kind="InputPin" />
+                    <Pin Id="OKctlFjn86zMCLlfrkoC6G" Name="Apply" Kind="InputPin" />
                   </Patch>
                 </Patch>
               </Node>
