@@ -11634,7 +11634,163 @@
             </Node>
           </Canvas>
         </Canvas>
-        <Canvas Id="C1VZNFjd7UfOcq6i3ztsC3" Name="Source" Position="97,329" />
+        <Canvas Id="C1VZNFjd7UfOcq6i3ztsC3" Name="Source" Position="97,329">
+          <Canvas Id="PKKUbgqOPyGLI76rVSMfdA" Name="Advanced" Position="169,46">
+            <!--
+
+    ************************ QuasiCrystal ************************
+
+-->
+            <Node Name="QuasiCrystal" Bounds="379,386" Id="Tcpm10Me7cHLdPM8Y8hIEo">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ContainerDefinition" Name="Process" />
+              </p:NodeReference>
+              <Patch Id="GJj0ldk5vnAOJGdR4qzl2k">
+                <Canvas Id="HJm0TJyzp7vN1XBwoIGNqw" CanvasType="Group">
+                  <Node Bounds="451,471,125,19" AutoConnect="true" Id="OOVbeo32bErMuq9FPs3D9k">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessAppFlag" Name="QuasiCrystal" />
+                      <PinReference Kind="InputPin" Name="Output Size" />
+                      <PinReference Kind="InputPin" Name="Output Format" />
+                      <PinReference Kind="InputPin" Name="Render Format" />
+                      <PinReference Kind="InputPin" Name="Output Texture" />
+                      <PinReference Kind="InputPin" Name="Enabled" />
+                      <PinReference Kind="OutputPin" Name="Output" />
+                    </p:NodeReference>
+                    <Pin Id="Q9LqT9rRI9SLAyXYhs3ZO3" Name="Color A" Kind="InputPin" />
+                    <Pin Id="H6ogG6RE8dhPEwV2RB4ImD" Name="Color B" Kind="InputPin" />
+                    <Pin Id="MY25vz0CA6nOACmuEba68A" Name="Time" Kind="InputPin" />
+                    <Pin Id="D34aQXYfVePOh7RvFAPQxl" Name="Scale" Kind="InputPin" />
+                    <Pin Id="RZYu42UagM0NBTG0ljmB76" Name="N" Kind="InputPin" />
+                    <Pin Id="KOL8WzWqyBQMmCFz318si1" Name="Output Size" Kind="InputPin" />
+                    <Pin Id="Q7p9wplT9d7MJH714g9Lf4" Name="Enabled" Kind="InputPin" />
+                    <Pin Id="U4t4ktTTl4sLK0TDY519yB" Name="Output" Kind="OutputPin" />
+                  </Node>
+                </Canvas>
+                <ProcessDefinition Id="TX9Hd2SjJEmObH0rgaee9s">
+                  <Fragment Id="Bxr2N1PMsOGNPFMtONUQwm" Patch="EgfYn6iZYxtMsdWTezMpio" Enabled="true" />
+                  <Fragment Id="QrDN10ggzZnQX0rGsxZqcg" Patch="T4bJlbC97kMMqDCMi8ZXkl" Enabled="true" />
+                </ProcessDefinition>
+                <Patch Id="EgfYn6iZYxtMsdWTezMpio" Name="Create" />
+                <Patch Id="T4bJlbC97kMMqDCMi8ZXkl" Name="Update">
+                  <Pin Id="OVg3BuiV61VO9V442gE350" Name="Output" Kind="OutputPin" />
+                  <Pin Id="UZlIDta4jbqLNVPRTf1gcb" Name="Color A" Kind="InputPin" />
+                  <Pin Id="CA1cFxpyMtZMMtlwxfE5ev" Name="Color B" Kind="InputPin" />
+                  <Pin Id="GnNeK3dMljrOFz1kN8UZQL" Name="Time" Kind="InputPin" />
+                  <Pin Id="RQ0zFAiuD0sNgrrm3bhtZ2" Name="Scale" Kind="InputPin" />
+                  <Pin Id="TtQaVFIin0KNCW8l7oRMVE" Name="N" Kind="InputPin" />
+                  <Pin Id="RZacdE3tw85N2kvCcbeDac" Name="Output Size" Kind="InputPin" />
+                  <Pin Id="QyfMYmCHHpXLLqeBxN6ahZ" Name="Enabled" Kind="InputPin" />
+                </Patch>
+              </Patch>
+            </Node>
+            <Canvas Id="DyEWPWv1xVmMfzBJUstuOc" Name="Noises" Position="375,534">
+              <!--
+
+    ************************ BubbleNoise ************************
+
+-->
+              <Node Name="BubbleNoise" Bounds="422,497" Id="HgQEM1TQS1XPXldm4DksoR">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ContainerDefinition" Name="Process" />
+                </p:NodeReference>
+                <Patch Id="Qgl4ZPu8bWtM6W6BtUB1Op">
+                  <Canvas Id="SNqht2P1RsZNzgK5iWwL7W" CanvasType="Group">
+                    <Node Bounds="483,508,125,19" AutoConnect="true" Id="DiyUKi86yFhMs8xezNiYlM">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noises" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Noises" />
+                        <Choice Kind="ProcessAppFlag" Name="BubbleNoise" />
+                        <PinReference Kind="InputPin" Name="Background Color" />
+                        <PinReference Kind="InputPin" Name="Bubble Color" />
+                        <PinReference Kind="InputPin" Name="Time" />
+                        <PinReference Kind="InputPin" Name="Frequency" />
+                        <PinReference Kind="InputPin" Name="Contrast" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Enabled" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="IGyG8x5sHItOzsD6PtPAPr" Name="Background Color" Kind="InputPin" />
+                      <Pin Id="FJUiILzNW74MPKGlb24QMe" Name="Bubble Color" Kind="InputPin" />
+                      <Pin Id="N2nQx3Ar1SJMenKwtWWWSo" Name="Time" Kind="InputPin" />
+                      <Pin Id="KxtKxPyefJHLGDQaJ0o3gh" Name="Frequency" Kind="InputPin" />
+                      <Pin Id="HtgMfD5jSt7M75nxQ6pjql" Name="Contrast" Kind="InputPin" />
+                      <Pin Id="QdeM8kl0m3mPgtDs3ONFSf" Name="Output Size" Kind="InputPin" />
+                      <Pin Id="KFH0gKOAgqANPnQkIvNUc2" Name="Enabled" Kind="InputPin" />
+                      <Pin Id="Da1nCv66eYPNMBvDaNLoEn" Name="Output" Kind="OutputPin" />
+                    </Node>
+                  </Canvas>
+                  <ProcessDefinition Id="NSRZ3pqvyqOOKwoYztID71">
+                    <Fragment Id="UnUx8t6Is7PP12fx4TxX5d" Patch="MZEnTOrHQQ1PmTLRwqdOWl" Enabled="true" />
+                    <Fragment Id="Jhnfl4wm01QL84cM8SAWIk" Patch="Fxod8CR1pYxQE3VkAwt3fJ" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="MZEnTOrHQQ1PmTLRwqdOWl" Name="Create" />
+                  <Patch Id="Fxod8CR1pYxQE3VkAwt3fJ" Name="Update">
+                    <Pin Id="KHYUq5mim53L4Bp8QBkLeU" Name="Output" Kind="OutputPin" />
+                    <Pin Id="HJVhtTMRNe8QS88Y2cJkOQ" Name="Background Color" Kind="InputPin" />
+                    <Pin Id="T5im7fQT2hjLLjlYyFf0Ar" Name="Bubble Color" Kind="InputPin" />
+                    <Pin Id="J1bfHXRC5lQOoin9Fir3tD" Name="Time" Kind="InputPin" />
+                    <Pin Id="NwnrJFCbW35N1HOMHkatgj" Name="Frequency" Kind="InputPin" />
+                    <Pin Id="O0zMNxg9jSkOJtZ3d0qprb" Name="Contrast" Kind="InputPin" />
+                    <Pin Id="OOfC7Isoie2OJ5LbMDqj87" Name="Output Size" Kind="InputPin" />
+                    <Pin Id="H1g9OylLVmPOpTaX4tK9ut" Name="Enabled" Kind="InputPin" />
+                  </Patch>
+                </Patch>
+              </Node>
+            </Canvas>
+            <!--
+
+    ************************ CheckerBoard ************************
+
+-->
+            <Node Name="CheckerBoard" Bounds="380,427" Id="B99io0dKlfrOw3e4o1YFFX">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ContainerDefinition" Name="Process" />
+              </p:NodeReference>
+              <Patch Id="BEBJtYkmbhUQaWYcpBHB92">
+                <Canvas Id="VEbyHiixOQYP56DiVdHV2w" CanvasType="Group">
+                  <Node Bounds="363,451,105,19" AutoConnect="true" Id="MFyKJmL4oE5PGCfUOWc93r">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessNode" Name="Checkerboard" />
+                      <PinReference Kind="InputPin" Name="Transform" />
+                    </p:NodeReference>
+                    <Pin Id="Pn5q8UcvtoaQDxUhMzlf6K" Name="Black" Kind="InputPin" />
+                    <Pin Id="A5cpY3skav7QQBdS1uXd4K" Name="White" Kind="InputPin" />
+                    <Pin Id="ItdtxHbpzRaPsYseIJVJFg" Name="Transform" Kind="InputPin" />
+                    <Pin Id="AJXdY2oUAfkNDeQqW1bEaK" Name="Cell Count" Kind="InputPin" />
+                    <Pin Id="OPossFKUlBbMvaoS6MkLsj" Name="Output Size" Kind="InputPin" />
+                    <Pin Id="KSHBXutXxxUPkDj8gafLwI" Name="Enabled" Kind="InputPin" />
+                    <Pin Id="Akk4ivRhQN3LAgxys4bKN0" Name="Output" Kind="OutputPin" />
+                  </Node>
+                </Canvas>
+                <!--
+
+    ************************  ************************
+
+-->
+                <ProcessDefinition Id="VYrJjp3Knm5PA2sMci52JH">
+                  <Fragment Id="F8WUJEQksIBL3MKSI9H2IN" Patch="K2yPGd2XS1jMTSz3jpLHsR" Enabled="true" />
+                  <Fragment Id="BkNTwz3FnuZLmPE8WoZPuH" Patch="LMVefrRCLoKPrc2rZxGfib" Enabled="true" />
+                </ProcessDefinition>
+                <Patch Id="K2yPGd2XS1jMTSz3jpLHsR" Name="Create" />
+                <Patch Id="LMVefrRCLoKPrc2rZxGfib" Name="Update">
+                  <Pin Id="NqOu6WFFKdyNqWyXzTTKCe" Name="Output" Kind="OutputPin" />
+                  <Pin Id="Ika7SH7bw4COGAlm7vVTR4" Name="Black" Kind="InputPin" />
+                  <Pin Id="BABOjI5ORM0P8DwnAuF8HC" Name="White" Kind="InputPin" />
+                  <Pin Id="IoT2aqU3yPVQRoqG4nn3IG" Name="Transform" Kind="InputPin" />
+                  <Pin Id="Knmt3hZgd6aMQGpE9cfBtj" Name="Cell Count" Kind="InputPin" />
+                  <Pin Id="De4uWdYjQ9AOeTIGoFYOU4" Name="Output Size" Kind="InputPin" />
+                  <Pin Id="QK1brOLRhZNLXE8PHv8oaT" Name="Enabled" Kind="InputPin" />
+                </Patch>
+              </Patch>
+            </Node>
+          </Canvas>
+        </Canvas>
         <!--
 
     ************************ ValueMap (Advanced) ************************
