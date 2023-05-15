@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 
 
-namespace VL.Stride.Effects.Common
+namespace VL.Stride.Effects.TextureFX
 {
     [Flags]
-    public enum AdjustementWeight
+    public enum AdjustmentWeight
     {
         [Description("Full")]
         Full = 0,
