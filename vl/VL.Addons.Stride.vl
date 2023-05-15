@@ -12019,7 +12019,7 @@
     ************************ ASCII ************************
 
 -->
-              <Node Name="ASCII" Bounds="186,174" Id="Jy2JsPE0FMEORBBQACocCk">
+              <Node Name="ASCII" Bounds="115,129" Id="Jy2JsPE0FMEORBBQACocCk">
                 <p:NodeReference>
                   <Choice Kind="ClassDefinition" Name="Class" />
                   <CategoryReference Kind="Category" Name="Primitive" />
@@ -12106,6 +12106,100 @@
                     <Fragment Id="OsNuKIGBVImQNvDb0gObez" Patch="KNoBcEhpcMoPHpB2Qzww8m" Enabled="true" />
                     <Fragment Id="LUq1rqyZtuaMjNevEdCkjs" Patch="MQLbTf3K4L8QMV1ENJGWGV" Enabled="true" />
                     <Fragment Id="AavUhD0ZLDEONypVlH2hgG" Patch="NFKRFYZWXFRN2lc5DheqW0" Enabled="true" />
+                  </ProcessDefinition>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ CrossStitch ************************
+
+-->
+              <Node Name="CrossStitch" Bounds="116,228" Id="E4agarHL6hnMkufVfjs6o6">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="JWspB1l5cI4MXtGH0Ejn5P">
+                  <Canvas Id="VJUhoJI6o8XPFYsbVoNbKS" CanvasType="Group">
+                    <Node Bounds="101,158,380,19" Id="PvtSAeIEo58MXxBn3yd8RJ">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Pattern" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Pattern" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessNode" Name="CrossStitch" />
+                      </p:NodeReference>
+                      <Pin Id="E1Gbu0N2FOwLXwSigHdj9u" Name="Input" Kind="InputPin" />
+                      <Pin Id="U0yw3UuOfIwNxBzLyFNSMJ" Name="Color" Kind="InputPin" />
+                      <Pin Id="H6QOQXcb5eQQRjVbnGOtFB" Name="Invert" Kind="InputPin" />
+                      <Pin Id="UjL0amluGKoMCL3IWwxgaA" Name="Stitch Size" Kind="InputPin" />
+                      <Pin Id="BiYCOU2429HOHNf169aoTn" Name="Control" Kind="InputPin" />
+                      <Pin Id="MFbS6ZvbBDZN2745sXH75K" Name="Apply" Kind="InputPin" />
+                      <Pin Id="Vq0T52d1lnbOg5aEDfJHSx" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="MePD1BzroE0Mc8hzWh3dx5" Bounds="103,225" />
+                    <ControlPoint Id="Awd0qY7T780OXNqrn3AEGZ" Bounds="478,101" />
+                    <ControlPoint Id="MIypvoW6vkBOdoiqOHJhpR" Bounds="103,101" />
+                    <ControlPoint Id="HBvYheFBaIvL0n8ZJo6WNT" Bounds="178,101" />
+                    <ControlPoint Id="GzomYqFZDpHQcXFCHI0PMa" Bounds="253,101" />
+                    <ControlPoint Id="OoxWYH4pVv2MFbHrWaq0Xc" Bounds="328,101" />
+                    <ControlPoint Id="NYZdDnrvL7zMXeV5b9CsLF" Bounds="403,101" />
+                  </Canvas>
+                  <Patch Id="L6Wy4E1D9jaOyymm3fCPJR" Name="Create" />
+                  <Patch Id="KcvnzMFQo2LNpvl93zLXaE" Name="GetTexture">
+                    <Pin Id="RPqTIeQ0WYHO5WcqK6yopE" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="HRcbS64qxO3PS00jJ1xMEE" Name="Update">
+                    <Pin Id="GIF2sRazqDDOXPTiDsQ1GR" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="UMj6vXuVknuOpFUMV3uMGJ" Name="SetTexture">
+                    <Pin Id="ETam3qaMwsgPn6upprr6VR" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="QyHMrrnb1WmLPC72OtuMFW" Ids="MePD1BzroE0Mc8hzWh3dx5,RPqTIeQ0WYHO5WcqK6yopE" IsHidden="true" />
+                  <Link Id="JZYU2pM165aPFE68hIap6F" Ids="GIF2sRazqDDOXPTiDsQ1GR,Awd0qY7T780OXNqrn3AEGZ" IsHidden="true" />
+                  <Link Id="FOYyCxbYkikQK1tQAn3uIQ" Ids="ETam3qaMwsgPn6upprr6VR,MIypvoW6vkBOdoiqOHJhpR" IsHidden="true" />
+                  <Link Id="GlI4vOxzeN3QG7Sf8PQ6T2" Ids="MIypvoW6vkBOdoiqOHJhpR,E1Gbu0N2FOwLXwSigHdj9u" />
+                  <Link Id="IO5zLMEhfsyQSk5SYTecok" Ids="Vq0T52d1lnbOg5aEDfJHSx,MePD1BzroE0Mc8hzWh3dx5" />
+                  <Link Id="BFXex8XgGMQLN18kEm4qT9" Ids="Awd0qY7T780OXNqrn3AEGZ,MFbS6ZvbBDZN2745sXH75K" />
+                  <Link Id="P1EfjqWf9gwOBrIAz2zEeo" Ids="HBvYheFBaIvL0n8ZJo6WNT,U0yw3UuOfIwNxBzLyFNSMJ" />
+                  <Link Id="DWeQ5K3Jr7vQckA1gIqbw1" Ids="LnlCT9pdMuwPRn4DxQ7mSK,HBvYheFBaIvL0n8ZJo6WNT" IsHidden="true" />
+                  <Link Id="FU5JFc2UTtTPJ8iOaZE420" Ids="GzomYqFZDpHQcXFCHI0PMa,H6QOQXcb5eQQRjVbnGOtFB" />
+                  <Link Id="CVyrR1r7KZaNT3HYBfjOId" Ids="G4r1GAHuuS6PbZAWs8JOzo,GzomYqFZDpHQcXFCHI0PMa" IsHidden="true" />
+                  <Link Id="DaEYp8duHU4Mc9vBDBjVVE" Ids="OoxWYH4pVv2MFbHrWaq0Xc,UjL0amluGKoMCL3IWwxgaA" />
+                  <Link Id="FqhWNKUXpt6NNiyUt3GjUA" Ids="GdlylkDUXbYNq0RKk18Ps6,OoxWYH4pVv2MFbHrWaq0Xc" IsHidden="true" />
+                  <Link Id="EUIn8Ui6vFBMs9RiOWoCAI" Ids="NYZdDnrvL7zMXeV5b9CsLF,BiYCOU2429HOHNf169aoTn" />
+                  <Link Id="UKqjRvFlOtjN0av2dlMm6l" Ids="PmV9CQqcJBiLcc1t9SIb3B,NYZdDnrvL7zMXeV5b9CsLF" IsHidden="true" />
+                  <Patch Id="DnhLW2Gd4CvMIOkBZgrWEp" Name="SetParameters">
+                    <Pin Id="LnlCT9pdMuwPRn4DxQ7mSK" Name="Color" Kind="InputPin" />
+                    <Pin Id="G4r1GAHuuS6PbZAWs8JOzo" Name="Invert" Kind="InputPin" />
+                    <Pin Id="GdlylkDUXbYNq0RKk18Ps6" Name="Stitch Size" Kind="InputPin" />
+                    <Pin Id="PmV9CQqcJBiLcc1t9SIb3B" Name="Control" Kind="InputPin" />
+                  </Patch>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="J0aTasbNAjILcbr0jmmNJ6">
+                    <Fragment Id="U61dpR2YtR9M1xUkeSeI4I" Patch="L6Wy4E1D9jaOyymm3fCPJR" Enabled="true" />
+                    <Fragment Id="GiEP7gHNejKN7YSKzFAkXc" Patch="UMj6vXuVknuOpFUMV3uMGJ" Enabled="true" />
+                    <Fragment Id="S13BU29KJQGOSCEKxUD5y5" Patch="DnhLW2Gd4CvMIOkBZgrWEp" Enabled="true" />
+                    <Fragment Id="HUmgxVlu0IPQE8Q37yZvEn" Patch="HRcbS64qxO3PS00jJ1xMEE" Enabled="true" />
+                    <Fragment Id="L0JWLFYLzyfMCCHKYaDrC6" Patch="KcvnzMFQo2LNpvl93zLXaE" Enabled="true" />
                   </ProcessDefinition>
                 </Patch>
               </Node>
@@ -12667,10 +12761,6 @@
                 <ControlPoint Id="SbWOteG8DE8OtKCDuTjduo" Bounds="103,303" />
                 <ControlPoint Id="MTkJOkREXOaQCptASnwHcP" Bounds="304,104" />
               </Canvas>
-              <ProcessDefinition Id="CNh0yZapettOQpEWONATJj" IsHidden="true">
-                <Fragment Id="TU1Y6SQZX7vNT6AMnbENOA" Patch="PINkGSYqwx1QLAhFzWvSiR" />
-                <Fragment Id="HfX8CmVvhp4MEd0gU6mPZ5" Patch="EYK96fsozssMju1jKWltfH" Enabled="true" />
-              </ProcessDefinition>
               <Patch Id="PINkGSYqwx1QLAhFzWvSiR" Name="GetTexture">
                 <Pin Id="KZv50W6sRQqO9dyrANJLSQ" MergeId="24346" Name="Output" Kind="OutputPin">
                   <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
@@ -12687,6 +12777,10 @@
               </Patch>
               <Link Id="KAyI4l5CGNsMUKVZQd9pHZ" Ids="SbWOteG8DE8OtKCDuTjduo,KZv50W6sRQqO9dyrANJLSQ" IsHidden="true" />
               <Link Id="RfUgtWq9xywPGLybw54Gy9" Ids="T4ayWaPIPlnMOi4sW7O3L3,MTkJOkREXOaQCptASnwHcP" IsHidden="true" />
+              <ProcessDefinition Id="CNh0yZapettOQpEWONATJj" IsHidden="true">
+                <Fragment Id="HfX8CmVvhp4MEd0gU6mPZ5" Patch="EYK96fsozssMju1jKWltfH" Enabled="true" />
+                <Fragment Id="TU1Y6SQZX7vNT6AMnbENOA" Patch="PINkGSYqwx1QLAhFzWvSiR" />
+              </ProcessDefinition>
             </Patch>
           </Node>
           <!--
@@ -12709,11 +12803,6 @@
                 <ControlPoint Id="G8JzBY5OaEFLLnowD1TZnn" Bounds="400,104" />
                 <ControlPoint Id="OhWo58iPztpNdfMBOgUg9v" Bounds="102,102" />
               </Canvas>
-              <ProcessDefinition Id="JPrZl1AVLGtNfHT2QNlMjV" IsHidden="true">
-                <Fragment Id="B7lEdh1yHyyNieb3FbIW55" Patch="S8Ro4uWDTSUNjbD0SB1zKr" />
-                <Fragment Id="FW81B7HoFCnPvpKkXMl8pB" Patch="DpuUp1DeTAYO2Y1TJ0OSZE" Enabled="true" />
-                <Fragment Id="Jd9flB7z9XDOo5nKkhxQez" Patch="Fcyi0MYWKw3Mq2ND6Q5p72" />
-              </ProcessDefinition>
               <Link Id="F9TBCyOQ9doMgX6gHLhLi9" Ids="RtuMxax2RPFO1dyOBe4WB6,BTLcc6QbtC0MyolTGJbOkP" IsHidden="true" />
               <Link Id="DypvBVCQooyOyynXKpZTm9" Ids="BtrQePnj4anOMdW2Am5aCR,G8JzBY5OaEFLLnowD1TZnn" IsHidden="true" />
               <Link Id="KgcuJGuwssOQAWMpH4uZgS" Ids="C9PWmgDstA9OFT50nvBbNI,OhWo58iPztpNdfMBOgUg9v" IsHidden="true" />
@@ -12738,6 +12827,11 @@
                   </p:TypeAnnotation>
                 </Pin>
               </Patch>
+              <ProcessDefinition Id="JPrZl1AVLGtNfHT2QNlMjV" IsHidden="true">
+                <Fragment Id="Jd9flB7z9XDOo5nKkhxQez" Patch="Fcyi0MYWKw3Mq2ND6Q5p72" />
+                <Fragment Id="FW81B7HoFCnPvpKkXMl8pB" Patch="DpuUp1DeTAYO2Y1TJ0OSZE" Enabled="true" />
+                <Fragment Id="B7lEdh1yHyyNieb3FbIW55" Patch="S8Ro4uWDTSUNjbD0SB1zKr" />
+              </ProcessDefinition>
             </Patch>
           </Node>
           <!--
@@ -12761,11 +12855,6 @@
                 <ControlPoint Id="G8kK7y4fzm4Pp9ykEf8dhj" Bounds="104,101" />
                 <ControlPoint Id="RXwc3k5M9o5LYxSApWlJIk" Bounds="204,101" />
               </Canvas>
-              <ProcessDefinition Id="ImYYdjrrSLkQMYtND09wXv" IsHidden="true">
-                <Fragment Id="QK46QfR7JPjOVrXXokel2S" Patch="Liae6pcSQObO7CmKtY39yJ" />
-                <Fragment Id="C4xA3YJ21X6QF4w1JfVEJH" Patch="UEo04W2r9ZCLJRROPyXMra" Enabled="true" />
-                <Fragment Id="GXpSrkR0bApNOeHkS3zeTo" Patch="JLsoNkVHAekOL2imsUTYt0" />
-              </ProcessDefinition>
               <Link Id="I6rNw27D3VBMZTft3E8CPP" Ids="T658GcYRxvpMy2OI1L96tc,Kk05XLvG3kTOlzbWpQO7nV" IsHidden="true" />
               <Link Id="HTxnsIvWoHvPiHaetaPHkv" Ids="Ii66eQTlvYsO9EG384vtL2,TCOjpLEj6DgQUcJCxS1pfu" IsHidden="true" />
               <Link Id="Ls13hXc2mwmQX7LbuIRnA8" Ids="SOXvyLi8KqSP81U5lmBAWK,G8kK7y4fzm4Pp9ykEf8dhj" IsHidden="true" />
@@ -12796,6 +12885,11 @@
                   </p:TypeAnnotation>
                 </Pin>
               </Patch>
+              <ProcessDefinition Id="ImYYdjrrSLkQMYtND09wXv" IsHidden="true">
+                <Fragment Id="GXpSrkR0bApNOeHkS3zeTo" Patch="JLsoNkVHAekOL2imsUTYt0" />
+                <Fragment Id="C4xA3YJ21X6QF4w1JfVEJH" Patch="UEo04W2r9ZCLJRROPyXMra" Enabled="true" />
+                <Fragment Id="QK46QfR7JPjOVrXXokel2S" Patch="Liae6pcSQObO7CmKtY39yJ" />
+              </ProcessDefinition>
             </Patch>
           </Node>
         </Canvas>
