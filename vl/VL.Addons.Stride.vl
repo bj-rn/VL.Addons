@@ -12426,7 +12426,7 @@
     ************************ QuasiCrystal ************************
 
 -->
-            <Node Name="QuasiCrystal" Bounds="118,324" Id="Tcpm10Me7cHLdPM8Y8hIEo">
+            <Node Name="QuasiCrystal" Bounds="119,431" Id="Tcpm10Me7cHLdPM8Y8hIEo">
               <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                 <Choice Kind="ContainerDefinition" Name="Process" />
               </p:NodeReference>
@@ -12648,6 +12648,111 @@
                   <Fragment Id="BkNTwz3FnuZLmPE8WoZPuH" Patch="LMVefrRCLoKPrc2rZxGfib" Enabled="true" />
                   <Fragment Id="SYGf9k6lIafOMaRapQQR0T" Patch="PmmNikOfEwpQGGvjNnwEtJ" Enabled="true" />
                 </ProcessDefinition>
+              </Patch>
+            </Node>
+            <!--
+
+    ************************ Gradient ************************
+
+-->
+            <Node Name="Gradient" Bounds="116,328" Id="Ru1jduvCERyODwhoSDsq1k">
+              <p:NodeReference>
+                <Choice Kind="ClassDefinition" Name="Class" />
+                <CategoryReference Kind="Category" Name="Primitive" />
+              </p:NodeReference>
+              <p:Interfaces>
+                <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                  <Choice Kind="InterfaceTypeFlag" Name="ISource" />
+                </TypeReference>
+              </p:Interfaces>
+              <Patch Id="PSZzZWrwO9YMrytefqOz5v">
+                <Canvas Id="PWSXTZnM9AqQYp7kqmdpx8" CanvasType="Group">
+                  <Node Bounds="101,154,596,19" Id="OJjpIcLAV2wLYLkeoFEGQ0">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessAppFlag" Name="Gradient" />
+                      <PinReference Kind="InputPin" Name="From" />
+                      <PinReference Kind="InputPin" Name="From" />
+                      <PinReference Kind="InputPin" Name="To" />
+                      <PinReference Kind="InputPin" Name="To" />
+                      <PinReference Kind="InputPin" Name="Is Horizontal" />
+                      <PinReference Kind="InputPin" Name="Is Horizontal" />
+                      <PinReference Kind="InputPin" Name="Transform" />
+                      <PinReference Kind="InputPin" Name="Transform" />
+                      <PinReference Kind="InputPin" Name="Gamma" />
+                      <PinReference Kind="InputPin" Name="Gamma" />
+                      <PinReference Kind="InputPin" Name="Output Format" />
+                      <PinReference Kind="InputPin" Name="Output Format" />
+                      <PinReference Kind="InputPin" Name="Render Format" />
+                      <PinReference Kind="InputPin" Name="Render Format" />
+                      <PinReference Kind="InputPin" Name="Output Texture" />
+                      <PinReference Kind="InputPin" Name="Output Texture" />
+                      <PinReference Kind="InputPin" Name="Enabled" />
+                      <PinReference Kind="InputPin" Name="Enabled" />
+                    </p:NodeReference>
+                    <Pin Id="UqyKAOVqbfUOP8dstFudbW" Name="From" Kind="InputPin" />
+                    <Pin Id="D15Yh6e0gvhLb84q0VjJzj" Name="To" Kind="InputPin" />
+                    <Pin Id="MuFagkFvfewLa9wbQCQhUt" Name="Is Horizontal" Kind="InputPin" />
+                    <Pin Id="KBCQOSNcWDDPE4gYeTXRcV" Name="Transform" Kind="InputPin" />
+                    <Pin Id="ImnJzPxihFmNcgRuPyBMli" Name="Gamma" Kind="InputPin" />
+                    <Pin Id="HmEkh3N1LfLOcEeJMrdmr2" Name="Output Size" Kind="InputPin" />
+                    <Pin Id="Vax8WNgoKzsLSNeaQ6RH1Z" Name="Enabled" Kind="InputPin" />
+                    <Pin Id="QgDRSJeAgEXLBl3nLgEKzE" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="QoaSS7JhAGtMJS1I60GsPj" Bounds="103,230" />
+                  <ControlPoint Id="VWN6Jh38rQTQChu7nVmujy" Bounds="694,96" />
+                  <ControlPoint Id="LFztmB8Wz34PfnhG5xjPLs" Bounds="399,96" />
+                  <ControlPoint Id="IbWiyHz3Og1NWq7JKR26Kz" Bounds="596,96" />
+                  <ControlPoint Id="UZejvEgK85SM2aCsUsH1Xc" Bounds="103,96" />
+                  <ControlPoint Id="OMqNiBup2MRNYhzfq2zDnM" Bounds="202,96" />
+                  <ControlPoint Id="G4RxMOujiFCPrcZ6xLlsPi" Bounds="300,96" />
+                  <ControlPoint Id="CxXsVls5APIOU8qpznUUZV" Bounds="497,96" />
+                </Canvas>
+                <Link Id="EV6QBxqCDnfNkXZW9Qp6Mk" Ids="QoaSS7JhAGtMJS1I60GsPj,HgQ3t9oT9ujLQAJJ9LGxUs" IsHidden="true" />
+                <Link Id="VRaPAEO1ChINJQRiCufkxa" Ids="Km8qgJljgfwPiXnSTnkzPQ,VWN6Jh38rQTQChu7nVmujy" IsHidden="true" />
+                <Link Id="UHpbM7n33rsPtNvRTCezFO" Ids="VWN6Jh38rQTQChu7nVmujy,Vax8WNgoKzsLSNeaQ6RH1Z" />
+                <Link Id="AgCTrppd3r3MjIeIBRSoi2" Ids="QgDRSJeAgEXLBl3nLgEKzE,QoaSS7JhAGtMJS1I60GsPj" />
+                <Link Id="J4N68akIAnSNNEaoPmW9Pf" Ids="LFztmB8Wz34PfnhG5xjPLs,KBCQOSNcWDDPE4gYeTXRcV" />
+                <Link Id="GmvYzCbO5CvNE8wDrYJUei" Ids="PML8r1Pu40vLg1xfWOrHs7,LFztmB8Wz34PfnhG5xjPLs" IsHidden="true" />
+                <Link Id="OMtKTJqAleqODxW6lUfplw" Ids="IbWiyHz3Og1NWq7JKR26Kz,HmEkh3N1LfLOcEeJMrdmr2" />
+                <Link Id="JsAuhKTIrjsNyoVRRrLBgb" Ids="KyJ1fjmy0HOP8ZRAaN5Gc0,IbWiyHz3Og1NWq7JKR26Kz" IsHidden="true" />
+                <ProcessDefinition Id="Tpmw6yneTubNgRuRTQ19hZ">
+                  <Fragment Id="Vs0pRujmdHdOCjv4FkzbVJ" Patch="G4TnNG8LYzsOEsDHCBwR51" Enabled="true" />
+                  <Fragment Id="IYauLXXnqrZLUhSiY9oBy4" Patch="P5MxTjqvRpHLXr2PYRvpka" Enabled="true" />
+                  <Fragment Id="G7c8DtBx84dLZvJP5AjKmH" Patch="ARuS9Jkv7zUMCnoEsLgKP5" Enabled="true" />
+                  <Fragment Id="NW3mvv7pFgnLq4MnSQrvmS" Patch="RBQkiSikcCbQBJB6uYhaCX" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="PTnqbTNvMSGLXB9n89sITs" Ids="UZejvEgK85SM2aCsUsH1Xc,UqyKAOVqbfUOP8dstFudbW" />
+                <Link Id="IDwZdwrUIu3NvSgbucQDQQ" Ids="DqyNSc4W811NlhaTLyrD6o,UZejvEgK85SM2aCsUsH1Xc" IsHidden="true" />
+                <Link Id="MsDNrJddljsPCex3yvMNP3" Ids="OMqNiBup2MRNYhzfq2zDnM,D15Yh6e0gvhLb84q0VjJzj" />
+                <Link Id="KqiMw4HgFXwORB28qwIRXw" Ids="OwUm9XItmA0L3KAKpLjMpp,OMqNiBup2MRNYhzfq2zDnM" IsHidden="true" />
+                <Link Id="PDfrTYLrlllP9o3woufQcA" Ids="G4RxMOujiFCPrcZ6xLlsPi,MuFagkFvfewLa9wbQCQhUt" />
+                <Link Id="SL8TxzqNtc2Mq1HEUxboZQ" Ids="FpG1sFN3kLYMjARcorH1wF,G4RxMOujiFCPrcZ6xLlsPi" IsHidden="true" />
+                <Link Id="NXLCQ4TPdpsQbACiVY3rdH" Ids="CxXsVls5APIOU8qpznUUZV,ImnJzPxihFmNcgRuPyBMli" />
+                <Link Id="EzX2Wbg7aCVPoeCD20URYE" Ids="MLLytANyV3pMgJQvYlo7lv,CxXsVls5APIOU8qpznUUZV" IsHidden="true" />
+                <Patch Id="G4TnNG8LYzsOEsDHCBwR51" Name="Create" />
+                <Patch Id="ARuS9Jkv7zUMCnoEsLgKP5" Name="Update">
+                  <Pin Id="Km8qgJljgfwPiXnSTnkzPQ" Name="Apply" Kind="InputPin" DefaultValue="True">
+                    <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="Boolean" />
+                    </p:TypeAnnotation>
+                  </Pin>
+                </Patch>
+                <Patch Id="RBQkiSikcCbQBJB6uYhaCX" Name="GetTexture">
+                  <Pin Id="HgQ3t9oT9ujLQAJJ9LGxUs" MergeId="24472" Name="Output" Kind="OutputPin">
+                    <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                      <Choice Kind="TypeFlag" Name="Texture" />
+                    </p:TypeAnnotation>
+                  </Pin>
+                </Patch>
+                <Patch Id="P5MxTjqvRpHLXr2PYRvpka" Name="SetParameters">
+                  <Pin Id="DqyNSc4W811NlhaTLyrD6o" Name="From" Kind="InputPin" />
+                  <Pin Id="OwUm9XItmA0L3KAKpLjMpp" Name="To" Kind="InputPin" />
+                  <Pin Id="FpG1sFN3kLYMjARcorH1wF" Name="Is Horizontal" Kind="InputPin" />
+                  <Pin Id="PML8r1Pu40vLg1xfWOrHs7" Name="Transform" Kind="InputPin" />
+                  <Pin Id="MLLytANyV3pMgJQvYlo7lv" Name="Gamma" Kind="InputPin" />
+                  <Pin Id="KyJ1fjmy0HOP8ZRAaN5Gc0" Name="Output Size" Kind="InputPin" />
+                </Patch>
               </Patch>
             </Node>
           </Canvas>
