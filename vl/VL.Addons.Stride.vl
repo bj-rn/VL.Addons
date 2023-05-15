@@ -11934,7 +11934,7 @@
     ************************ TransformColorChannel ************************
 
 -->
-              <Node Name="TransformColorChannel" Bounds="117,129" Id="Lvo05S5fqZBPMKlvY0vNCU">
+              <Node Name="TransformColorChannel" Bounds="118,426" Id="Lvo05S5fqZBPMKlvY0vNCU">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -12010,6 +12010,118 @@
                     <Pin Id="FhHtejWfXL1P9FEUd6uiId" Name="Apply" Kind="InputPin" />
                     <Pin Id="SA9TELf7eCcM4T0uMxmNMI" Name="Output" Kind="OutputPin" />
                   </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Rotate ************************
+
+-->
+              <Node Name="Rotate" Bounds="117,127" Id="DqP2D7Z3LovOVqQeI4HcW2">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="F1hDiHF4JONMxNEe58jmPY">
+                  <Canvas Id="CDXA8iqNAibPt1lfMPZc0N" CanvasType="Group">
+                    <Node Bounds="100,170,645,19" Id="CDAwkyxgO2tNmWcR5SNBLT">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Transformation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Transformation" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Rotate" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Custom Sampler" />
+                        <PinReference Kind="InputPin" Name="Transform" />
+                        <PinReference Kind="InputPin" Name="Interpolation Mode" />
+                        <PinReference Kind="InputPin" Name="Rotate" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="OIXfTlRdUVULZh0NkAHNSq" Name="Input" Kind="InputPin" />
+                      <Pin Id="RgBmHPOYY5bQVfhqBRhzQL" Name="Custom Sampler" Kind="InputPin" />
+                      <Pin Id="Nd1n91DQGWHPfTD28iRLOp" Name="Transform" Kind="InputPin" />
+                      <Pin Id="UfCtBKDgCnXPjF261q886x" Name="Interpolation Mode" Kind="InputPin" />
+                      <Pin Id="VN4LvK1XoMnMX2YQSRrKca" Name="Rotate" Kind="InputPin" />
+                      <Pin Id="GiKkrxSVg8oMefD1bxT8zu" Name="Control" Kind="InputPin" />
+                      <Pin Id="N1JXEZYCh1gOYW6lP4kgHc" Name="Apply" Kind="InputPin" />
+                      <Pin Id="N9tIG3SGv94LYWYOfayVA5" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="PVyK8ofw099LSBghBD0fBe" Bounds="102,247" />
+                    <ControlPoint Id="DUlWRRUAyVONXX8a0pQTSs" Bounds="741,100" />
+                    <ControlPoint Id="HOIx8Ld6aoPNWCQ4gMI4Yx" Bounds="102,100" />
+                    <ControlPoint Id="GOPguEjoKh5Mhq7la9OVt2" Bounds="209,100" />
+                    <ControlPoint Id="VZDMVcCNJCxN5PD8jTCN9P" Bounds="315,100" />
+                    <ControlPoint Id="DpiczgCP6QYOmTEnlXin23" Bounds="422,100" />
+                    <ControlPoint Id="ToeidH5mc6JOTuhdOfvZPL" Bounds="528,100" />
+                    <ControlPoint Id="QYOuEqwRoBqQNIb1W5jSiU" Bounds="635,100" />
+                  </Canvas>
+                  <Patch Id="HVsNZLwsYMENdzFVIgwJCw" Name="Create" />
+                  <Patch Id="M3GVNSq91h4NiOX1x3geUd" Name="GetTexture">
+                    <Pin Id="GdIuQcPyKueOxJhnLYRLHY" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="PqnJ9TEMlSeNoFoNguJElJ" Name="Update">
+                    <Pin Id="NbemJbAukZ4QH5vKUUdXoT" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="M0snmtRMePgL4bQf28XbGC" Name="SetTexture">
+                    <Pin Id="LS94ArCt4xxMZcUkBgPY0B" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="ToBrvtMK4SDPDDDNTjNRiJ" Ids="PVyK8ofw099LSBghBD0fBe,GdIuQcPyKueOxJhnLYRLHY" IsHidden="true" />
+                  <Link Id="KrXMk7e4x0lL4SXyGGiHuN" Ids="NbemJbAukZ4QH5vKUUdXoT,DUlWRRUAyVONXX8a0pQTSs" IsHidden="true" />
+                  <Link Id="NG7tOJ2tc99P7M8CZIvgAo" Ids="LS94ArCt4xxMZcUkBgPY0B,HOIx8Ld6aoPNWCQ4gMI4Yx" IsHidden="true" />
+                  <Link Id="VAA0b4YfGHvNSCK7rZ1eKE" Ids="HOIx8Ld6aoPNWCQ4gMI4Yx,OIXfTlRdUVULZh0NkAHNSq" />
+                  <Link Id="HVjpimwIANfLkvFsi3XF2F" Ids="DUlWRRUAyVONXX8a0pQTSs,N1JXEZYCh1gOYW6lP4kgHc" />
+                  <Link Id="CxMEIXST7sOMy6fDR7nk98" Ids="N9tIG3SGv94LYWYOfayVA5,PVyK8ofw099LSBghBD0fBe" />
+                  <Link Id="Ektimz4eGrRLPvd6fYn99M" Ids="GOPguEjoKh5Mhq7la9OVt2,RgBmHPOYY5bQVfhqBRhzQL" />
+                  <Link Id="CRgzv6xvMGSNiEACdY5tyN" Ids="EF7PWNGBcEuL5rWyCZodkd,GOPguEjoKh5Mhq7la9OVt2" IsHidden="true" />
+                  <Link Id="QSxrNLEoF1BOWbsIqnYE9M" Ids="VZDMVcCNJCxN5PD8jTCN9P,Nd1n91DQGWHPfTD28iRLOp" />
+                  <Link Id="SOVFP8lc8uGLStFQIVZ1zf" Ids="KdqAyt6eLOnLEq2nXRHrlz,VZDMVcCNJCxN5PD8jTCN9P" IsHidden="true" />
+                  <Link Id="FreZmPy0mZIOACIMuefCq5" Ids="DpiczgCP6QYOmTEnlXin23,UfCtBKDgCnXPjF261q886x" />
+                  <Link Id="Aiv0D6ilLwFMIHnomQhE2o" Ids="RPNVmXDQWRGNbaozIfbbL9,DpiczgCP6QYOmTEnlXin23" IsHidden="true" />
+                  <Link Id="KjXgWuGp3KlNEcyi2zAsC1" Ids="ToeidH5mc6JOTuhdOfvZPL,VN4LvK1XoMnMX2YQSRrKca" />
+                  <Link Id="CCDcpsSQnVzLdc8OVdK6RW" Ids="Tu8WoeTFk7oPRdl04BTWS4,ToeidH5mc6JOTuhdOfvZPL" IsHidden="true" />
+                  <Link Id="QTDwKGfwXXvMpN6OZ1D3ry" Ids="QYOuEqwRoBqQNIb1W5jSiU,GiKkrxSVg8oMefD1bxT8zu" />
+                  <Link Id="TIyDhaUtILmLSEh2rAS5q5" Ids="NpcdZqtOc95QHVsnMeJ8Cw,QYOuEqwRoBqQNIb1W5jSiU" IsHidden="true" />
+                  <Patch Id="D8KuLINZMukOwEDKxfvqct" Name="SetParameters">
+                    <Pin Id="EF7PWNGBcEuL5rWyCZodkd" Name="Custom Sampler" Kind="InputPin" />
+                    <Pin Id="KdqAyt6eLOnLEq2nXRHrlz" Name="Transform" Kind="InputPin" />
+                    <Pin Id="RPNVmXDQWRGNbaozIfbbL9" Name="Interpolation Mode" Kind="InputPin" />
+                    <Pin Id="Tu8WoeTFk7oPRdl04BTWS4" Name="Rotate" Kind="InputPin" />
+                    <Pin Id="NpcdZqtOc95QHVsnMeJ8Cw" Name="Control" Kind="InputPin" />
+                  </Patch>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="LqCEC2HFsnlO9Pxc6yj18I">
+                    <Fragment Id="I8KpFkf6rqPOR9yMhk1bYv" Patch="HVsNZLwsYMENdzFVIgwJCw" Enabled="true" />
+                    <Fragment Id="HINldqclP9uMmpvdWdIY5h" Patch="M0snmtRMePgL4bQf28XbGC" Enabled="true" />
+                    <Fragment Id="OvRQdfFBEKiOJdEewKgCRk" Patch="D8KuLINZMukOwEDKxfvqct" Enabled="true" />
+                    <Fragment Id="VTDx6We6wNVOAA62hadoSI" Patch="PqnJ9TEMlSeNoFoNguJElJ" Enabled="true" />
+                    <Fragment Id="VTmlxSAqa4fM0gY6JtPQne" Patch="M3GVNSq91h4NiOX1x3geUd" Enabled="true" />
+                  </ProcessDefinition>
                 </Patch>
               </Node>
             </Canvas>
@@ -12186,7 +12298,7 @@
                   <Patch Id="DnhLW2Gd4CvMIOkBZgrWEp" Name="SetParameters">
                     <Pin Id="LnlCT9pdMuwPRn4DxQ7mSK" Name="Color" Kind="InputPin" />
                     <Pin Id="G4r1GAHuuS6PbZAWs8JOzo" Name="Invert" Kind="InputPin" />
-                    <Pin Id="GdlylkDUXbYNq0RKk18Ps6" Name="Stitch Size" Kind="InputPin" />
+                    <Pin Id="GdlylkDUXbYNq0RKk18Ps6" Name="Stitch Size" Kind="InputPin" DefaultValue="20" />
                     <Pin Id="PmV9CQqcJBiLcc1t9SIb3B" Name="Control" Kind="InputPin" />
                   </Patch>
                   <!--
