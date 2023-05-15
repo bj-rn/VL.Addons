@@ -14,13 +14,13 @@ shader ColorGrading_Advanced_Internal_TextureFX : FilterBase, ColorGradingOperat
     int GradingFunction;
 
     [EnumType("VL.Stride.Effects.Common.AdjustementWeight")]
-    int AdjustementWeight;
+    int AdjustmentWeight;
 
     float4 Filter(float4 tex0col)
     {
         float rs;
 
-        switch(AdjustementWeight)
+        switch(AdjustmentWeight)
         {
             case 0 : rs = float4(1.0, 1.0, 1.0, 1.0); break; //Full
             case 1 : rs = GetLuminanceWeight(tex0col, 0).x; break; //Shadows
