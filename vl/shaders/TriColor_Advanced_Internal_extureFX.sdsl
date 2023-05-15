@@ -1,0 +1,11 @@
+[Category("Filter")]
+[Summary("Colorize one color using three others")]
+[Tags("Color Grading")]
+
+shader TriColor_Advanced_Internal_TextureFX : FilterBase, ComputeFloat4, TriColorOperations
+{
+    float4 Filter(float4 tex0col)
+    {
+        return TriColor(tex0col);
+    }
+};

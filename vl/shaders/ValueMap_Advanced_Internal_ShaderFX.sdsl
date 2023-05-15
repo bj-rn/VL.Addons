@@ -1,0 +1,95 @@
+[Category("")]
+[Tags("")]
+[Summary("")]
+
+
+shader ValueMap_Advanced_Internal_ShaderFX : ComputeFloat, AddonShaderUtils
+{
+    [Default(1.0, 1.0, 1.0, 1.0)]
+    compose ComputeFloat4 ColorIn;
+    stage int type = 0;
+
+    override float Compute()
+    {
+        float4 color = ColorIn.Compute();
+        float c = 0;
+        
+        switch(type)
+        {
+            case 0 : c = Red(color); break;
+            case 1 : c = Green(color); break;
+            case 2 : c = Blue(color); break;
+            case 3 : c = Alpha(color); break;
+            case 4 : c = Value(color); break;
+            case 5 : c = Lightness(color);break;
+            case 6 : c = Saturation(color); break;
+            case 7 : c = Hue(color); break;
+            case 8 : c = Cyan(color); break;
+            case 9 : c = Magenta(color); break;
+            case 10 : c = Yellow(color); break;
+            case 11 : c = Black(color); break;
+        }
+
+        return c;
+    }
+
+    float Red(float4 c)
+    {
+        return c.r;
+    }
+
+    float Green(float4 c)
+    {
+        return c.g;
+    }
+
+    float Blue(float4 c)
+    {
+        return c.b;
+    }
+
+    float Value(float4 c)
+    {
+        return RGBtoHSV(c.rgb).z;
+    }
+    
+    float Lightness(float4 c)
+    {
+        return RGBtoHCV(c.rgb).z;
+    }
+
+    float Saturation(float4 c)
+    {
+        return RGBtoHCV(c.rgb).y;
+    }
+
+    float Hue(float4 c)
+    {
+        return RGBtoHSV(c.rgb).x;
+    }
+
+    float Alpha(float4 c)
+    {
+        return c.a;
+    }
+
+    float Cyan(float4 c)
+    {
+        return base.RGBToCMYK(c.rgb).x;
+    }
+
+    float Magenta(float4 c)
+    {
+        return base.RGBToCMYK(c.rgb).y;
+    }
+
+    float Yellow(float4 c)
+    {
+        return base.RGBToCMYK(c.rgb).z;
+    }
+        
+    float Black(float4 c)
+    {
+        return base.RGBToCMYK(c.rgb).w;
+    }
+};

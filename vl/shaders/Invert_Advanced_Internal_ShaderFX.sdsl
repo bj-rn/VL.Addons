@@ -1,0 +1,19 @@
+﻿[Category("Filter")]
+[Summary("Inverts the shader colors")]
+
+shader Invert_Advanced_Internal_ShaderFX : ComputeFloat4, InvertOperations
+{
+    [Default(0.0, 0.0, 0.0, 1.0)]
+    compose ComputeFloat4 ColorIn;
+
+    [Default(1.0)]
+    compose ComputeFloat Factor;
+
+    bool InvertAlpha = false;
+    int InvertType;
+
+    override float4 Compute()
+    {
+        return Invert(ColorIn.Compute(), Factor.Compute(), InvertAlpha, InvertType);
+    }
+};
