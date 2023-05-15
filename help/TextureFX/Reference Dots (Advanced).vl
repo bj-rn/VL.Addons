@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="H3kfKogxZWYLYk051rSUWg" LanguageVersion="2023.5.0" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="LmlL13WtXdKNloVMacSTml" LanguageVersion="2023.5.0" Version="0.128">
   <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
@@ -20,10 +20,10 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1297.7142, 206.28572, 585.1429, 585.1429" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1185.1428, 88, 585.1429, 585.1429" />
             <Pin Id="SCuMs0FzLoxMA1Xnq1oZTE" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
-            <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Dots" />
+            <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Dots (Advanced)" />
             <Pin Id="PP1L6yaKAE8MUEwZCtRtQQ" Name="Clear Color" Kind="InputPin" />
             <Pin Id="RSPPruQEpmWL4HLlKXHC5f" Name="Clear" Kind="InputPin" />
             <Pin Id="AEf6rLH97vKPH1uh7kWUwF" Name="Is Premultiplied Alpha" Kind="InputPin" />
@@ -37,12 +37,12 @@
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
           </Node>
           <Node Bounds="397,385,185,19" Id="ENUiLI4sv8pMzkgEleXOVe">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noise" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Noise" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Source" NeedsToBeDirectParent="true" />
+              </CategoryReference>
               <Choice Kind="ProcessNode" Name="BubbleNoise" />
-              <PinReference Kind="InputPin" Name=" Time" />
-              <PinReference Kind="InputPin" Name=" Frequency" />
-              <PinReference Kind="InputPin" Name=" Contrast" />
             </p:NodeReference>
             <Pin Id="LflgyPXVUrgQLzVQYr1FLX" Name="Background Color" Kind="InputPin" />
             <Pin Id="CJSyyyqtmVoPsE5kkWRe7y" Name="Bubble Color" Kind="InputPin" />
@@ -50,7 +50,7 @@
             <Pin Id="Qo7CflTdkysNkKSj0hOihX" Name="Frequency" Kind="InputPin" />
             <Pin Id="IotbSIBC9FjP029SnXt4b5" Name="Contrast" Kind="InputPin" />
             <Pin Id="OPYnnZhuvsjPvdZZCbQWGH" Name="Output Size" Kind="InputPin" />
-            <Pin Id="AD7maLTloKRLWrDQN9uDmC" Name="Apply" Kind="InputPin" />
+            <Pin Id="SFh3GGnv6p0PrQHNoKkVep" Name="Apply" Kind="InputPin" />
             <Pin Id="Ef3NjpqujrALfT6u1bjq3i" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="397,422,61,19" Id="B4doJLXl6A4LKk5luYPNPB">
@@ -115,7 +115,7 @@
             <Pin Id="TsoCvgY8GgJQU0cw9mx0JL" Name="Is Loading" Kind="OutputPin" />
             <Pin Id="QnF2Gb0JAJAPL9zfDHRJxp" Name="Already Loaded" Kind="OutputPin" />
           </Node>
-          <Pad Id="TfvKcj9bnpqLUdEA6deN5t" Comment="Path" Bounds="104,369,49,15" ShowValueBox="true" isIOBox="true" Value="..\resources\textures\TextureArray\002.dds">
+          <Pad Id="TfvKcj9bnpqLUdEA6deN5t" Comment="Path" Bounds="104,369,66,17" ShowValueBox="true" isIOBox="true" Value="..\..\resources\textures\TextureArray\002.dds">
             <p:TypeAnnotation LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
@@ -149,12 +149,12 @@
             <Pin Id="Bf8TdIjnb6ZL7TahxDXt2i" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="948,385,185,19" Id="Qv922jMf2W5MZcxDgHOg5e">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noise" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Noise" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Source" NeedsToBeDirectParent="true" />
+              </CategoryReference>
               <Choice Kind="ProcessNode" Name="BubbleNoise" />
-              <PinReference Kind="InputPin" Name=" Time" />
-              <PinReference Kind="InputPin" Name=" Frequency" />
-              <PinReference Kind="InputPin" Name=" Contrast" />
             </p:NodeReference>
             <Pin Id="CinDRDqxH0gNZvJTEGwfMf" Name="Background Color" Kind="InputPin" />
             <Pin Id="IJB14wLxJi9Mzpi1IA6fJC" Name="Bubble Color" Kind="InputPin" />
@@ -162,7 +162,7 @@
             <Pin Id="Roobr3WMPLGQODTZq4hG61" Name="Frequency" Kind="InputPin" />
             <Pin Id="Lh8MGvdh3lJNj8JzZPl9RG" Name="Contrast" Kind="InputPin" />
             <Pin Id="R3Sg6L6UoSrMKT7ItdT7Of" Name="Output Size" Kind="InputPin" />
-            <Pin Id="RIqCftSoS5uMQOWNADqbXt" Name="Apply" Kind="InputPin" />
+            <Pin Id="OyPlBc8zVXANO9i5RXA3xN" Name="Apply" Kind="InputPin" />
             <Pin Id="FTWW7J7ad3EQNfx01WSz5E" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="948,422,61,19" Id="VRtxWLI51IkNhd9n2M8CAO">
@@ -234,12 +234,12 @@
             </p:TypeAnnotation>
           </Pad>
           <Node Bounds="666,385,185,19" Id="V7KqPI7CHb7Lsv9q1BhJ5h">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noise" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Noise" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Source" NeedsToBeDirectParent="true" />
+              </CategoryReference>
               <Choice Kind="ProcessNode" Name="BubbleNoise" />
-              <PinReference Kind="InputPin" Name=" Time" />
-              <PinReference Kind="InputPin" Name=" Frequency" />
-              <PinReference Kind="InputPin" Name=" Contrast" />
             </p:NodeReference>
             <Pin Id="HPsgMWTkF5SNRNEwo9YpWN" Name="Background Color" Kind="InputPin" />
             <Pin Id="URILAeyXANBMbngw1UyqSG" Name="Bubble Color" Kind="InputPin" />
@@ -247,7 +247,7 @@
             <Pin Id="ENdl0wbVnyBMIZwmrZUfOe" Name="Frequency" Kind="InputPin" />
             <Pin Id="EKxspfsvEbJOSypUv8POZ1" Name="Contrast" Kind="InputPin" />
             <Pin Id="P6mOWdUlXH8PRhOqtbeiIk" Name="Output Size" Kind="InputPin" />
-            <Pin Id="UnJyfRiAZloOJrAvVgLjOB" Name="Apply" Kind="InputPin" />
+            <Pin Id="HsM2HMwhWC5PV1soNSTz6L" Name="Apply" Kind="InputPin" />
             <Pin Id="TV2XBGrjOarQbRK9ioBEJ2" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="666,422,61,19" Id="TGLMgSEGvwcORGTdmYXtfs">
@@ -350,6 +350,6 @@
       </Patch>
     </Node>
   </Patch>
-  <DocumentDependency Id="FZlWMQeoYNaNw8eKS2eCxd" Location="../vl/VL.Addons.Stride.vl" />
   <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <DocumentDependency Id="O001xa8Wc67NFrnmVJJ9Ag" Location="../../vl/VL.Addons.Stride.vl" />
 </Document>
