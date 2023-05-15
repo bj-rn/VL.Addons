@@ -11991,12 +11991,18 @@
 
 -->
               <Node Name="BubbleNoise" Bounds="117,128" Id="HgQEM1TQS1XPXldm4DksoR">
-                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                  <Choice Kind="ContainerDefinition" Name="Process" />
+                <p:NodeReference>
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                  <CategoryReference Kind="Category" Name="Primitive" />
                 </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="ISource" />
+                  </TypeReference>
+                </p:Interfaces>
                 <Patch Id="Qgl4ZPu8bWtM6W6BtUB1Op">
                   <Canvas Id="SNqht2P1RsZNzgK5iWwL7W" CanvasType="Group">
-                    <Node Bounds="483,508,125,19" AutoConnect="true" Id="DiyUKi86yFhMs8xezNiYlM">
+                    <Node Bounds="100,168,644,19" Id="DiyUKi86yFhMs8xezNiYlM">
                       <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noises" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                         <CategoryReference Kind="Category" Name="Noises" />
@@ -12022,22 +12028,56 @@
                       <Pin Id="KFH0gKOAgqANPnQkIvNUc2" Name="Enabled" Kind="InputPin" />
                       <Pin Id="Da1nCv66eYPNMBvDaNLoEn" Name="Output" Kind="OutputPin" />
                     </Node>
+                    <ControlPoint Id="H6TgpWKVRGfLkjCfE238UP" Bounds="102,265" />
+                    <ControlPoint Id="SlCQp2LsZxyOtQkvJENyOU" Bounds="741,101" />
+                    <ControlPoint Id="G53IXVGDjiUMgZ1txgtflb" Bounds="102,101" />
+                    <ControlPoint Id="RpE2ydOOg3rPIKz5CF0n8b" Bounds="209,101" />
+                    <ControlPoint Id="UJuTKt19lQIL8HK2v1dxLF" Bounds="315,101" />
+                    <ControlPoint Id="VKdFBlUMSthQXK3xBMtock" Bounds="421,101" />
+                    <ControlPoint Id="JaZKu09507sLP0ZR0pnBsq" Bounds="528,101" />
+                    <ControlPoint Id="Fo3qtbs16FrMx5tkocpiR0" Bounds="635,101" />
                   </Canvas>
-                  <ProcessDefinition Id="NSRZ3pqvyqOOKwoYztID71">
-                    <Fragment Id="UnUx8t6Is7PP12fx4TxX5d" Patch="MZEnTOrHQQ1PmTLRwqdOWl" Enabled="true" />
-                    <Fragment Id="Jhnfl4wm01QL84cM8SAWIk" Patch="Fxod8CR1pYxQE3VkAwt3fJ" Enabled="true" />
-                  </ProcessDefinition>
+                  <Link Id="FnhYoJCeQpHLF10Bw3uUsp" Ids="H6TgpWKVRGfLkjCfE238UP,SYJjYajedNyPuuJIWv8AHh" IsHidden="true" />
+                  <Link Id="FjtiLAon9eGPatMU6yrgWs" Ids="OJzUgID3LwAPO793RkGMnz,SlCQp2LsZxyOtQkvJENyOU" IsHidden="true" />
+                  <Link Id="Utxye7eEN6jN1QnDGE7g5x" Ids="SlCQp2LsZxyOtQkvJENyOU,KFH0gKOAgqANPnQkIvNUc2" />
+                  <Link Id="GIe1isTdG3UQCYoyLjaiqX" Ids="Da1nCv66eYPNMBvDaNLoEn,H6TgpWKVRGfLkjCfE238UP" />
                   <Patch Id="MZEnTOrHQQ1PmTLRwqdOWl" Name="Create" />
                   <Patch Id="Fxod8CR1pYxQE3VkAwt3fJ" Name="Update">
-                    <Pin Id="KHYUq5mim53L4Bp8QBkLeU" Name="Output" Kind="OutputPin" />
-                    <Pin Id="HJVhtTMRNe8QS88Y2cJkOQ" Name="Background Color" Kind="InputPin" />
-                    <Pin Id="T5im7fQT2hjLLjlYyFf0Ar" Name="Bubble Color" Kind="InputPin" />
-                    <Pin Id="J1bfHXRC5lQOoin9Fir3tD" Name="Time" Kind="InputPin" />
-                    <Pin Id="NwnrJFCbW35N1HOMHkatgj" Name="Frequency" Kind="InputPin" />
-                    <Pin Id="O0zMNxg9jSkOJtZ3d0qprb" Name="Contrast" Kind="InputPin" />
-                    <Pin Id="OOfC7Isoie2OJ5LbMDqj87" Name="Output Size" Kind="InputPin" />
-                    <Pin Id="H1g9OylLVmPOpTaX4tK9ut" Name="Enabled" Kind="InputPin" />
+                    <Pin Id="OJzUgID3LwAPO793RkGMnz" Name="Apply" Kind="InputPin" />
                   </Patch>
+                  <Patch Id="Exz37Kt0mScLVoBrrs6zVo" Name="GetTexture">
+                    <Pin Id="SYJjYajedNyPuuJIWv8AHh" MergeId="24472" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="FaHvZAUYuRsNkaye7cFV77" Ids="G53IXVGDjiUMgZ1txgtflb,IGyG8x5sHItOzsD6PtPAPr" />
+                  <Link Id="FUQQyWhdFRzM6u86foBnBk" Ids="BftW4cHYenuNa5JYpDlOWo,G53IXVGDjiUMgZ1txgtflb" IsHidden="true" />
+                  <Link Id="IMhiCU5mL0fOtJPIMFnppY" Ids="RpE2ydOOg3rPIKz5CF0n8b,FJUiILzNW74MPKGlb24QMe" />
+                  <Link Id="OPtBCJSiwfWLU8BhNnRo33" Ids="VdW6gERT1KOPG4tdwbVG8r,RpE2ydOOg3rPIKz5CF0n8b" IsHidden="true" />
+                  <Link Id="QsgG0W1D15sMOXAFfAR5o5" Ids="UJuTKt19lQIL8HK2v1dxLF,N2nQx3Ar1SJMenKwtWWWSo" />
+                  <Link Id="VZeFFJIdp7eQUVp4tppw9D" Ids="PGJmj7a59x4O74zmBIQjR2,UJuTKt19lQIL8HK2v1dxLF" IsHidden="true" />
+                  <Link Id="DfeepBwuT7FOM8eqbw8fNw" Ids="VKdFBlUMSthQXK3xBMtock,KxtKxPyefJHLGDQaJ0o3gh" />
+                  <Link Id="AbX6zTrfDltPceSN7GPENz" Ids="PjiBDMpSnIAMnOLB7keqjm,VKdFBlUMSthQXK3xBMtock" IsHidden="true" />
+                  <Link Id="Ve13Dah3sBAPNekfYmHFQS" Ids="JaZKu09507sLP0ZR0pnBsq,HtgMfD5jSt7M75nxQ6pjql" />
+                  <Link Id="BL5olX8kegMML7ge9yieJv" Ids="BwfhtjUj2DpPI9qKgkmxhI,JaZKu09507sLP0ZR0pnBsq" IsHidden="true" />
+                  <Link Id="HHH8oL4eNkyNLUTK0cICbp" Ids="Fo3qtbs16FrMx5tkocpiR0,QdeM8kl0m3mPgtDs3ONFSf" />
+                  <Link Id="GJJnWgefUMkNBvo8o43eGT" Ids="Tp90rWsUjKyNDlGCfsnDKt,Fo3qtbs16FrMx5tkocpiR0" IsHidden="true" />
+                  <Patch Id="MOoaVt3Ma6jLlaLMxdRfn1" Name="SetParameters">
+                    <Pin Id="BftW4cHYenuNa5JYpDlOWo" Name="Background Color" Kind="InputPin" />
+                    <Pin Id="VdW6gERT1KOPG4tdwbVG8r" Name="Bubble Color" Kind="InputPin" />
+                    <Pin Id="PGJmj7a59x4O74zmBIQjR2" Name="Time" Kind="InputPin" />
+                    <Pin Id="PjiBDMpSnIAMnOLB7keqjm" Name="Frequency" Kind="InputPin" />
+                    <Pin Id="BwfhtjUj2DpPI9qKgkmxhI" Name="Contrast" Kind="InputPin" />
+                    <Pin Id="Tp90rWsUjKyNDlGCfsnDKt" Name="Output Size" Kind="InputPin" />
+                  </Patch>
+                  <ProcessDefinition Id="NSRZ3pqvyqOOKwoYztID71">
+                    <Fragment Id="UnUx8t6Is7PP12fx4TxX5d" Patch="MZEnTOrHQQ1PmTLRwqdOWl" Enabled="true" />
+                    <Fragment Id="QkOHXmEtwhrNV9eUFCIJUn" Patch="MOoaVt3Ma6jLlaLMxdRfn1" Enabled="true" />
+                    <Fragment Id="Jhnfl4wm01QL84cM8SAWIk" Patch="Fxod8CR1pYxQE3VkAwt3fJ" Enabled="true" />
+                    <Fragment Id="AeHZC0PrxzZLJbdG9vPtC1" Patch="Exz37Kt0mScLVoBrrs6zVo" Enabled="true" />
+                  </ProcessDefinition>
                 </Patch>
               </Node>
             </Canvas>
