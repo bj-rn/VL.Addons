@@ -9148,7 +9148,7 @@
         </Canvas>
         <Canvas Id="V3s4YUnWeXEPsiJLtuS2Ms" Name="Filter" Position="100,230">
           <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="99,130">
-            <Canvas Id="PpVqC0hLgAXMimhwYWPJu3" Name="Spread" Position="101,531">
+            <Canvas Id="PpVqC0hLgAXMimhwYWPJu3" Name="Spread" Position="99,526">
               <!--
 
     ************************ SpreadSampling (Circle) ************************
@@ -11289,7 +11289,7 @@
                 </Patch>
               </Node>
             </Canvas>
-            <Canvas Id="R2TJQcY8GGVL63OPWKHNJD" Name="Distortion" Position="100,227">
+            <Canvas Id="R2TJQcY8GGVL63OPWKHNJD" Name="Distortion" Position="99,226">
               <!--
 
     ************************ AngularFlow ************************
@@ -11576,7 +11576,7 @@
     ************************ Undistort ************************
 
 -->
-              <Node Name="Undistort" Bounds="117,1029" Id="SuOrHM0qNqwQIIMq7I8Qn2">
+              <Node Name="Undistort" Bounds="118,1230" Id="SuOrHM0qNqwQIIMq7I8Qn2">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -11643,7 +11643,7 @@
     ************************ Twirl ************************
 
 -->
-              <Node Name="Twirl" Bounds="118,928" Id="JY1iWeYDyuzNADwqvL33i8">
+              <Node Name="Twirl" Bounds="119,1129" Id="JY1iWeYDyuzNADwqvL33i8">
                 <p:NodeReference>
                   <Choice Kind="ClassDefinition" Name="Class" />
                   <CategoryReference Kind="Category" Name="Primitive" />
@@ -11724,7 +11724,7 @@
     ************************ Tunnels ************************
 
 -->
-              <Node Name="Tunnels" Bounds="118,830" Id="MGQvgMANTSEMAs9Tz4ftKL">
+              <Node Name="Tunnels" Bounds="119,1031" Id="MGQvgMANTSEMAs9Tz4ftKL">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -12248,8 +12248,108 @@
                   <Link Id="Bn7oCyZPAD8NcQF8jQHfyl" Ids="BVM2N9OL7E2QRGGbOm77Fx,QwLCKo2H3seNL2URpOjjxx" IsHidden="true" />
                 </Patch>
               </Node>
+              <!--
+
+    ************************ OldGlass ************************
+
+-->
+              <Node Name="OldGlass" Bounds="116,828" Id="GmvaLccycq8MvY1jZRaBfw">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="RTk6RfqlUdUO7rXVoBrR0n">
+                  <Canvas Id="CxR6FMq9V3jOXTbjXyMvlV" CanvasType="Group">
+                    <ControlPoint Id="K7b2vy8gRkSLObLvnrwXmm" Bounds="102,229" />
+                    <ControlPoint Id="R7A1wOsuOMcNvLmXS59h4i" Bounds="597,98" />
+                    <ControlPoint Id="IPioz319SfwNeSuA6h2ZKg" Bounds="102,98" />
+                    <ControlPoint Id="BSqBc4vzmkkM7CW00kHLbC" Bounds="498,100" />
+                    <Node Bounds="100,151,500,19" Id="JyzhAMKV13rLqCkLxZxoCs">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessNode" Name="OldGlass" />
+                      </p:NodeReference>
+                      <Pin Id="Px2rsHFKQixL9A34ivZk6k" Name="Input" Kind="InputPin" />
+                      <Pin Id="GbEAPjk1HI9P2uANCfxe2M" Name="Steps" Kind="InputPin" />
+                      <Pin Id="J948MXwbzA3QZRSCAVtNqw" Name="Bubble Pow" Kind="InputPin" />
+                      <Pin Id="RAgQHM9gwSWOe9ccb47DC1" Name="Fade" Kind="InputPin" />
+                      <Pin Id="FJo5gAAHXfnNdkJYenVMvO" Name="Control" Kind="InputPin" />
+                      <Pin Id="MuLCqLRgvy6PADccjOAISi" Name="Apply" Kind="InputPin" />
+                      <Pin Id="CHkCOdtHqlzND7qQX1m8aK" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="VUCEwd3c53gNIk4KIoTPba" Bounds="201,99" />
+                    <ControlPoint Id="VYYXkOxjyTqNHpMrKnldfz" Bounds="301,100" />
+                    <ControlPoint Id="IFWOJ8msAStMHM7Yxyd5t6" Bounds="399,100" />
+                  </Canvas>
+                  <Patch Id="LjJuLgNKmenOl9m0gYZfQh" Name="Create" />
+                  <Patch Id="ECxAToJxjgsO9KWQk5ERsf" Name="GetTexture">
+                    <Pin Id="MspeevWbjz7OnxWJxvmbjV" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="N95s7JSdcpSOryM1eAPnqr" Name="Update">
+                    <Pin Id="VAGMUbmhJZlNjlEBpPpGBY" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="M7S2SGVmbILOBJXundipUR" Name="SetTexture">
+                    <Pin Id="FMEzppcWoEGOfdJSGo5BPS" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="A5U166DbDyEMygE5I7WThc" Ids="K7b2vy8gRkSLObLvnrwXmm,MspeevWbjz7OnxWJxvmbjV" IsHidden="true" />
+                  <Link Id="T7nrdAEfLx3LDUK4QeELdR" Ids="VAGMUbmhJZlNjlEBpPpGBY,R7A1wOsuOMcNvLmXS59h4i" IsHidden="true" />
+                  <Link Id="Fzg70A0YEA1LXbZNVythja" Ids="FMEzppcWoEGOfdJSGo5BPS,IPioz319SfwNeSuA6h2ZKg" IsHidden="true" />
+                  <Patch Id="L4TKD8Lim5HQTJyZCGNVdB" Name="SetParameters">
+                    <Pin Id="EiPMUueQ4gFNim96mISxU6" Name="Steps" Kind="InputPin" DefaultValue="1, 1" />
+                    <Pin Id="C8mRuNLktPAMNcNoaWhqk2" Name="Bubble Pow" Kind="InputPin" />
+                    <Pin Id="IwiHxfHSRmSLSfeGgGRqK4" Name="Fade" Kind="InputPin" />
+                  </Patch>
+                  <Patch Id="M3cv1Yej69MQJE5H8Zyl7a" Name="SetControl">
+                    <Pin Id="N8dvSBL56KxM2vMySfJ1MO" MergeId="13045" Name="Control" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="GPU" />
+                        <p:TypeArguments>
+                          <TypeReference>
+                            <Choice Kind="TypeFlag" Name="Vector4" />
+                          </TypeReference>
+                        </p:TypeArguments>
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="FEQkf3NvV87QVIIXi0V9Jq" Ids="N8dvSBL56KxM2vMySfJ1MO,BSqBc4vzmkkM7CW00kHLbC" IsHidden="true" />
+                  <ProcessDefinition Id="FR6665HxmOGNP9NPpibk3W">
+                    <Fragment Id="MJrmVz3sFBLLiKNRilrXxd" Patch="LjJuLgNKmenOl9m0gYZfQh" Enabled="true" />
+                    <Fragment Id="NfdBpjSbjATOStqnlKGUz5" Patch="M7S2SGVmbILOBJXundipUR" Enabled="true" />
+                    <Fragment Id="IyBVgBMvNafNsiqbreweqT" Patch="L4TKD8Lim5HQTJyZCGNVdB" Enabled="true" />
+                    <Fragment Id="RqiecBhQBspMRRhDaZWvtT" Patch="M3cv1Yej69MQJE5H8Zyl7a" Enabled="true" />
+                    <Fragment Id="P0sqoPGF5UuMZAh1vgCJD9" Patch="N95s7JSdcpSOryM1eAPnqr" Enabled="true" />
+                    <Fragment Id="Fe6qAYPiUdYNQQszWh1ysJ" Patch="ECxAToJxjgsO9KWQk5ERsf" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="EKkZWqDbff4Lp9zNBjUHB0" Ids="IPioz319SfwNeSuA6h2ZKg,Px2rsHFKQixL9A34ivZk6k" />
+                  <Link Id="AqAoaTyghawNHiHcz1rGc2" Ids="CHkCOdtHqlzND7qQX1m8aK,K7b2vy8gRkSLObLvnrwXmm" />
+                  <Link Id="KWmxpssJBa4PSiGLEKraeR" Ids="BSqBc4vzmkkM7CW00kHLbC,FJo5gAAHXfnNdkJYenVMvO" />
+                  <Link Id="D36DjSmwe9tMAB7FKkrGrY" Ids="R7A1wOsuOMcNvLmXS59h4i,MuLCqLRgvy6PADccjOAISi" />
+                  <Link Id="SsauDgDBhw0M4DLUkuBlLi" Ids="VUCEwd3c53gNIk4KIoTPba,GbEAPjk1HI9P2uANCfxe2M" />
+                  <Link Id="UGZ2JkZbgJkLrU9qygvvqi" Ids="EiPMUueQ4gFNim96mISxU6,VUCEwd3c53gNIk4KIoTPba" IsHidden="true" />
+                  <Link Id="QpEazF78c9dLPFcoyKjLfp" Ids="VYYXkOxjyTqNHpMrKnldfz,J948MXwbzA3QZRSCAVtNqw" />
+                  <Link Id="DFj4uWiuLPFP6431NVeOqm" Ids="C8mRuNLktPAMNcNoaWhqk2,VYYXkOxjyTqNHpMrKnldfz" IsHidden="true" />
+                  <Link Id="K426yFxmV6qPlaaUmRxxYG" Ids="IFWOJ8msAStMHM7Yxyd5t6,RAgQHM9gwSWOe9ccb47DC1" />
+                  <Link Id="TnFUebBn7vHNzb9TuBhXFX" Ids="IwiHxfHSRmSLSfeGgGRqK4,IFWOJ8msAStMHM7Yxyd5t6" IsHidden="true" />
+                </Patch>
+              </Node>
             </Canvas>
-            <Canvas Id="TdsFNT1JXvfQaY5EdrLCq3" Name="Rendering" Position="101,431">
+            <Canvas Id="TdsFNT1JXvfQaY5EdrLCq3" Name="Rendering" Position="99,426">
               <!--
 
     ************************ DropShadow ************************
@@ -13070,7 +13170,7 @@
                 <Link Id="QffooitqPwsNeb8eUZDPWX" Ids="LtXwBq6I6UrMKKE7WwKnX7,SYZvGTG4sFaMCZCpmT2Vi9" />
               </Patch>
             </Node>
-            <Canvas Id="H96waqafowmNm9ojxr609L" Name="Stylize" Position="100,627">
+            <Canvas Id="H96waqafowmNm9ojxr609L" Name="Stylize" Position="99,626">
               <!--
 
     ************************ Edge ************************
@@ -13965,7 +14065,7 @@
                 </Patch>
               </Node>
             </Canvas>
-            <Canvas Id="Dphl7zFcMHUMz1wYgiukba" Name="Transformation" Position="101,730">
+            <Canvas Id="Dphl7zFcMHUMz1wYgiukba" Name="Transformation" Position="99,726">
               <!--
 
     ************************ TransformColorChannel ************************
@@ -14160,7 +14260,7 @@
                 </Patch>
               </Node>
             </Canvas>
-            <Canvas Id="P3xjOkq3cGCOkIlpLy5Wpa" Name="Pattern" Position="100,329">
+            <Canvas Id="P3xjOkq3cGCOkIlpLy5Wpa" Name="Pattern" Position="99,326">
               <!--
 
     ************************ ASCII ************************
