@@ -11576,7 +11576,7 @@
     ************************ Undistort ************************
 
 -->
-              <Node Name="Undistort" Bounds="119,928" Id="SuOrHM0qNqwQIIMq7I8Qn2">
+              <Node Name="Undistort" Bounds="117,1029" Id="SuOrHM0qNqwQIIMq7I8Qn2">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -11643,7 +11643,7 @@
     ************************ Twirl ************************
 
 -->
-              <Node Name="Twirl" Bounds="120,827" Id="JY1iWeYDyuzNADwqvL33i8">
+              <Node Name="Twirl" Bounds="118,928" Id="JY1iWeYDyuzNADwqvL33i8">
                 <p:NodeReference>
                   <Choice Kind="ClassDefinition" Name="Class" />
                   <CategoryReference Kind="Category" Name="Primitive" />
@@ -11724,7 +11724,7 @@
     ************************ Tunnels ************************
 
 -->
-              <Node Name="Tunnels" Bounds="120,729" Id="MGQvgMANTSEMAs9Tz4ftKL">
+              <Node Name="Tunnels" Bounds="118,830" Id="MGQvgMANTSEMAs9Tz4ftKL">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -12137,6 +12137,115 @@
                       </p:TypeAnnotation>
                     </Pin>
                   </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Muffy ************************
+
+-->
+              <Node Name="Muffy" Bounds="118,727" Id="JjPObySa9zuPxCZSvRM5lT">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="RDt0QlKkTIxNiYB6CIq44J">
+                  <Canvas Id="A64kmOtKTsZOVCPfnQW8YK" CanvasType="Group">
+                    <ControlPoint Id="VzCTg9nTayLNiFhJnxCwmp" Bounds="102,218" />
+                    <ControlPoint Id="EzxHshafHIvQElQ4DXkb0B" Bounds="506,100" />
+                    <ControlPoint Id="OHPGwiWVimVOBoZx991oO8" Bounds="102,100" />
+                    <ControlPoint Id="AkaEqHzwwRhQOMuI9gBuyo" Bounds="426,102" />
+                    <Node Bounds="100,152,409,19" Id="Rmnm75buGytOQuGSLFzSjQ">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="Distortion" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Muffy" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="S 0" />
+                        <PinReference Kind="InputPin" Name="Ring Amount" />
+                        <PinReference Kind="InputPin" Name="Ring Size" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                      </p:NodeReference>
+                      <Pin Id="JKPwLHYQ4fIOLlD6aVXdnB" Name="Input" Kind="InputPin" />
+                      <Pin Id="Ke8hnww8W35NIP9qb63hQU" Name="S 0" Kind="InputPin" />
+                      <Pin Id="JJPrUFHahVrP4vARcj7zGJ" Name="Ring Amount" Kind="InputPin" />
+                      <Pin Id="QUnEdocg37jMgXAABwcQAA" Name="Ring Size" Kind="InputPin" />
+                      <Pin Id="KGmn0MEpTACOBDgw24ngxm" Name="Control" Kind="InputPin" />
+                      <Pin Id="MHnc2MTj0SDMtCXJoHqssT" Name="Apply" Kind="InputPin" />
+                      <Pin Id="F24hJw3gAdXNIg3fQ3NgX6" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="KtzLxkcIOeGMDWRabXj0LL" Bounds="183,99" />
+                    <ControlPoint Id="BLJKjw21ylWQLphTIbOhCT" Bounds="264,100" />
+                    <ControlPoint Id="QwLCKo2H3seNL2URpOjjxx" Bounds="344,100" />
+                  </Canvas>
+                  <Patch Id="AuOxJFlkRsINe7NPyfSV0w" Name="Create" />
+                  <Patch Id="TljPhXTVJb4LOibbVCv1VR" Name="GetTexture">
+                    <Pin Id="M936RFfEYamNMAJTmPLTNu" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="TfUBjmwddNOLZwybNYNQE1" Name="Update">
+                    <Pin Id="MCs23M9gOEGOUEUKCeiSbD" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="E6SwjnPOEP1OMI1nMwOLFn" Name="SetTexture">
+                    <Pin Id="GXpGkui7F0ROFmkRXJDmA1" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="O0ZTsMCZCDmOMMIdyOSApD" Ids="VzCTg9nTayLNiFhJnxCwmp,M936RFfEYamNMAJTmPLTNu" IsHidden="true" />
+                  <Link Id="Fbbrs10ZsVkMleiheiVvFo" Ids="MCs23M9gOEGOUEUKCeiSbD,EzxHshafHIvQElQ4DXkb0B" IsHidden="true" />
+                  <Link Id="BK152zoJgQSM4Rz2Sea3o1" Ids="GXpGkui7F0ROFmkRXJDmA1,OHPGwiWVimVOBoZx991oO8" IsHidden="true" />
+                  <Patch Id="Q0yxWim8V4oNvanuwu6DYu" Name="SetParameters">
+                    <Pin Id="KnNTRy01XDdLHZ5evqVvKX" Name="Sampler" Kind="InputPin" />
+                    <Pin Id="QFioFOdJlXaOJDoWkmtTQp" Name="Ring Amount" Kind="InputPin" DefaultValue="2.5" />
+                    <Pin Id="BVM2N9OL7E2QRGGbOm77Fx" Name="Ring Size" Kind="InputPin" DefaultValue="2, 2" />
+                  </Patch>
+                  <Patch Id="NkuDRFGyJZrQSGUaGpbqTp" Name="SetControl">
+                    <Pin Id="A7nfQtUY7IHLKiscZvLaDJ" MergeId="13045" Name="Control" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="GPU" />
+                        <p:TypeArguments>
+                          <TypeReference>
+                            <Choice Kind="TypeFlag" Name="Vector4" />
+                          </TypeReference>
+                        </p:TypeArguments>
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="S0eqM2k8XFdLCXidBJcdD4" Ids="A7nfQtUY7IHLKiscZvLaDJ,AkaEqHzwwRhQOMuI9gBuyo" IsHidden="true" />
+                  <ProcessDefinition Id="LoSNko8IXxLPS25H071B7p">
+                    <Fragment Id="Rlv5PPcWzdDPZrSdXIaxtj" Patch="AuOxJFlkRsINe7NPyfSV0w" Enabled="true" />
+                    <Fragment Id="JVA7TfiKM9dPtO7ZNhVhex" Patch="E6SwjnPOEP1OMI1nMwOLFn" Enabled="true" />
+                    <Fragment Id="BIpoaAQ2IBhMpzFpwh3SZI" Patch="Q0yxWim8V4oNvanuwu6DYu" Enabled="true" />
+                    <Fragment Id="AANfCSrCJDJM4FH8T3pXSm" Patch="NkuDRFGyJZrQSGUaGpbqTp" Enabled="true" />
+                    <Fragment Id="RB459Z2aUkXLCVpQrAkj88" Patch="TfUBjmwddNOLZwybNYNQE1" Enabled="true" />
+                    <Fragment Id="FTCNCWZ6Ip1PrBdJoFrsgc" Patch="TljPhXTVJb4LOibbVCv1VR" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="PUw4dYTrCEtL1f97JyatmO" Ids="OHPGwiWVimVOBoZx991oO8,JKPwLHYQ4fIOLlD6aVXdnB" />
+                  <Link Id="CHrWbXO1bPkPWEgCoDXyE5" Ids="F24hJw3gAdXNIg3fQ3NgX6,VzCTg9nTayLNiFhJnxCwmp" />
+                  <Link Id="R7S8P9cVKDzONscujdSbh7" Ids="EzxHshafHIvQElQ4DXkb0B,MHnc2MTj0SDMtCXJoHqssT" />
+                  <Link Id="SEmDSawT7JJMmctpgk5L5U" Ids="AkaEqHzwwRhQOMuI9gBuyo,KGmn0MEpTACOBDgw24ngxm" />
+                  <Link Id="Je2uSg57bwDMqc3DtKosQr" Ids="KtzLxkcIOeGMDWRabXj0LL,Ke8hnww8W35NIP9qb63hQU" />
+                  <Link Id="GIaLa1CX9OmL9QMRyMKZ8s" Ids="KnNTRy01XDdLHZ5evqVvKX,KtzLxkcIOeGMDWRabXj0LL" IsHidden="true" />
+                  <Link Id="UW3CQ9vs5WaNtS1VB0Wj5b" Ids="BLJKjw21ylWQLphTIbOhCT,JJPrUFHahVrP4vARcj7zGJ" />
+                  <Link Id="DCbq7PnwCaePYTRFaJOIZ2" Ids="QFioFOdJlXaOJDoWkmtTQp,BLJKjw21ylWQLphTIbOhCT" IsHidden="true" />
+                  <Link Id="VGsyQHiWJ8MOFotd7fcRoC" Ids="QwLCKo2H3seNL2URpOjjxx,QUnEdocg37jMgXAABwcQAA" />
+                  <Link Id="Bn7oCyZPAD8NcQF8jQHfyl" Ids="BVM2N9OL7E2QRGGbOm77Fx,QwLCKo2H3seNL2URpOjjxx" IsHidden="true" />
                 </Patch>
               </Node>
             </Canvas>
