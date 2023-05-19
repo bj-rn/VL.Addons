@@ -10103,68 +10103,6 @@
               </Node>
               <!--
 
-    ************************ Quantize ************************
-
--->
-              <Node Name="Quantize" Bounds="114,1719" Id="ELKQTHwQQflOyQQ4GAP9Tg">
-                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                  <Choice Kind="ContainerDefinition" Name="Process" />
-                </p:NodeReference>
-                <Patch Id="SfJq3OQ84mTLKjvvj6BzQf">
-                  <Canvas Id="GP9WqLMXKQdMRIQwtShRt1" CanvasType="Group">
-                    <Node Bounds="338,518,105,19" AutoConnect="true" Id="LRbSSkTf3JAOPVOu9UEHFO">
-                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
-                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                        <CategoryReference Kind="Category" Name="ColorManipulation" />
-                        <Choice Kind="ProcessAppFlag" Name="Quantize" />
-                        <PinReference Kind="InputPin" Name="Input" />
-                        <PinReference Kind="InputPin" Name="Sampler" />
-                        <PinReference Kind="InputPin" Name="Mode" />
-                        <PinReference Kind="InputPin" Name="Quantize Alpha" />
-                        <PinReference Kind="InputPin" Name="Step Size" />
-                        <PinReference Kind="InputPin" Name="Control" />
-                        <PinReference Kind="InputPin" Name="Output Texture" />
-                        <PinReference Kind="InputPin" Name="Output Size" />
-                        <PinReference Kind="InputPin" Name="Output Format" />
-                        <PinReference Kind="InputPin" Name="Render Format" />
-                        <PinReference Kind="InputPin" Name="Apply" />
-                        <PinReference Kind="OutputPin" Name="Output" />
-                      </p:NodeReference>
-                      <Pin Id="D6JTWhTMJ3hMd6FiPiyKH0" Name="Input" Kind="InputPin" />
-                      <Pin Id="Ar6k5SjBwR8Pz0vTrgypIp" Name="Mode" Kind="InputPin" />
-                      <Pin Id="K3rChOs049BLJv2tnk52M3" Name="Quantize Alpha" Kind="InputPin" />
-                      <Pin Id="BgSoM3dHPJjLRpmwiOuT4J" Name="Step Size" Kind="InputPin" />
-                      <Pin Id="TpGpgvAHITqPLWmVImS2XD" Name="Control" Kind="InputPin" />
-                      <Pin Id="VdVxqMacie3Le4YpqBd33y" Name="Apply" Kind="InputPin" />
-                      <Pin Id="UwzH9G0IDqWLD7LhyIABKn" Name="Output" Kind="OutputPin" />
-                    </Node>
-                    <ControlPoint Id="LxmlTDjHTAeM0EpQmc8I9O" Bounds="360,465" />
-                  </Canvas>
-                  <ProcessDefinition Id="MoU3anh7DxCMfqJg4H6J3N">
-                    <Fragment Id="GwOfsm330INLtK2hA9cHix" Patch="SGRAF9xGxtiLonPZPFbMKD" Enabled="true" />
-                    <Fragment Id="Gt1WVfuNgtJMGyvrDi9CK9" Patch="No3Bj3WdvC3MPXi7JrbSVB" Enabled="true" />
-                  </ProcessDefinition>
-                  <Link Id="P8tKgm0pxywMSmStPfakzp" Ids="LxmlTDjHTAeM0EpQmc8I9O,Ar6k5SjBwR8Pz0vTrgypIp" />
-                  <Link Id="KXryIGuUsMqPhLPBZwWn7m" Ids="TTHA2bKR02oNemzU8plp4O,LxmlTDjHTAeM0EpQmc8I9O" IsHidden="true" />
-                  <Patch Id="SGRAF9xGxtiLonPZPFbMKD" Name="Create" />
-                  <Patch Id="No3Bj3WdvC3MPXi7JrbSVB" Name="Update">
-                    <Pin Id="VnJluDjUdCtMyjxQ8h12zj" Name="Input" Kind="InputPin" />
-                    <Pin Id="F9xiSWHrKufMerNMPPoxoH" Name="Quantize Alpha" Kind="InputPin" />
-                    <Pin Id="VrH5TW7UNa3MmqYUocN74P" Name="Step Size" Kind="InputPin" />
-                    <Pin Id="V3BCyDXKoFyMt6OZyYMD2J" Name="Control" Kind="InputPin" />
-                    <Pin Id="D2v3ZeEWot3LiIqfpgtn3g" Name="Apply" Kind="InputPin" />
-                    <Pin Id="TTHA2bKR02oNemzU8plp4O" Name="Mode" Kind="InputPin" Bounds="358,444">
-                      <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.Common" LastDependency="TextureFX.dll">
-                        <Choice Kind="TypeFlag" Name="RoundingType" />
-                        <FullNameCategoryReference ID="VL.Stride.Effects.Common" />
-                      </p:TypeAnnotation>
-                    </Pin>
-                    <Pin Id="GSvTqeLdYP2PFzi1S60Nsc" Name="Output" Kind="OutputPin" />
-                  </Patch>
-                </Patch>
-              </Node>
-              <!--
-
     ************************ Anaglyph ************************
 
 -->
@@ -11342,6 +11280,123 @@
                   </Patch>
                   <Patch Id="B0yu2ZY8FNLM9Lt8AJLCpN" Name="SetControl">
                     <Pin Id="H23f8gcqnHFPIZSVmnn8VL" Name="Control" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="GPU" />
+                        <p:TypeArguments>
+                          <TypeReference>
+                            <Choice Kind="TypeFlag" Name="Vector4" />
+                          </TypeReference>
+                        </p:TypeArguments>
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Quantize ************************
+
+-->
+              <Node Name="Quantize" Bounds="117,1730" Id="MqRRsnj6aHpM47y1MkJ6Ib">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="C7QiZmRvdf5PSHFiQXJjLS">
+                  <Canvas Id="H7ddjtaCRsmLzFIw5LRH6Q" CanvasType="Group">
+                    <ControlPoint Id="AxqZmlmzqBzMSUBjImfnEk" Bounds="103,219" />
+                    <ControlPoint Id="C3cppkmGLPFPETc5mDCZ8F" Bounds="706,101" />
+                    <ControlPoint Id="H5E9ukIpJi1LxdPhmT6M0e" Bounds="103,101" />
+                    <ControlPoint Id="Cn7LLifPXF5N15Sbcevipp" Bounds="585,101" />
+                    <Node Bounds="101,151,608,19" Id="Ra2LKXJUWgfQcXDTpE948g">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="ColorManipulation" />
+                        <Choice Kind="ProcessAppFlag" Name="Quantize" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Mode" />
+                        <PinReference Kind="InputPin" Name="Quantize Alpha" />
+                        <PinReference Kind="InputPin" Name="Step Size" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="RXs6MNrX1RBMwTbJl2Bvh9" Name="Input" Kind="InputPin" />
+                      <Pin Id="J9PIltuLpOdOxUjAdWT71y" Name="Mode" Kind="InputPin" />
+                      <Pin Id="AzhFvGv2bdZLrWvgIVyRAV" Name="Quantize Alpha" Kind="InputPin" />
+                      <Pin Id="DFYQ6czLHFYLnkr9QZQX0y" Name="Step Size" Kind="InputPin" />
+                      <Pin Id="MQLiFvGWUQMQPuv0PN9688" Name="Control" Kind="InputPin" />
+                      <Pin Id="OQAKA4WponjL973PGgvtTP" Name="Apply" Kind="InputPin" />
+                      <Pin Id="UiEcFsmmxriNA24VvKy3HU" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="KVFsXiP2o1YQAOzZefsGde" Bounds="223,101" />
+                    <ControlPoint Id="NrlGW3lIBCUNXj4VGFyIAr" Bounds="344,101" />
+                    <ControlPoint Id="KpxzqlH7CucOZD4eq6cN0M" Bounds="465,101" />
+                  </Canvas>
+                  <Link Id="GHJcp5X4LNhNi0p6hHl4yO" Ids="AxqZmlmzqBzMSUBjImfnEk,SLVlqYYFxp7N5emcwBze6a" IsHidden="true" />
+                  <Link Id="QqdF22WzOY4QR55db2dE5S" Ids="NevefOsmUzJMaVljp7iwyE,C3cppkmGLPFPETc5mDCZ8F" IsHidden="true" />
+                  <Link Id="TcJA6w2Mnp8LtwaPTu4pfF" Ids="AlvR8Mkp8zEOK4dsPZ9S9C,H5E9ukIpJi1LxdPhmT6M0e" IsHidden="true" />
+                  <Link Id="ONnwJUoJN6IODjnHV14Qhh" Ids="PbVyRWtWPvHOZNvbGFmEGR,Cn7LLifPXF5N15Sbcevipp" IsHidden="true" />
+                  <ProcessDefinition Id="JalHau8F2O3LsGlI2veCMw">
+                    <Fragment Id="Nny4RhnYYx0NYHZlzyd03k" Patch="E3GgtflsIohN95CPla1A31" Enabled="true" />
+                    <Fragment Id="NnttZs4uKgQLu53cCt4DAE" Patch="MLdZWGgClvdPTFw60JJhPN" Enabled="true" />
+                    <Fragment Id="CME1GSAIxtdMHxXFUX3Fnf" Patch="PWFXUq2U1OKPTwHpeawxin" Enabled="true" />
+                    <Fragment Id="LATzMEReAM5L3jTtc8nWAw" Patch="JQdwQl9jHt1OqCm9127bpS" Enabled="true" />
+                    <Fragment Id="K30dmGq19VGNdiKlrUo4r2" Patch="U1zQqIqU21YNLJ3Kud4sTU" Enabled="true" />
+                    <Fragment Id="T5TffRELj0VMk3Pbf6PtVW" Patch="LjgkntnymwPNxJQOoCwhFj" Enabled="true" />
+                  </ProcessDefinition>
+                  <Link Id="Jl6bZi1qTSlOsAYqx9izXc" Ids="KVFsXiP2o1YQAOzZefsGde,J9PIltuLpOdOxUjAdWT71y" />
+                  <Link Id="CGDVJiCxN1gOrDwkqSHzvr" Ids="JxD05ExyuiXMacyaYRkqWG,KVFsXiP2o1YQAOzZefsGde" IsHidden="true" />
+                  <Link Id="PKM2Ln5Tz4SLXeorYPnu6W" Ids="UiEcFsmmxriNA24VvKy3HU,AxqZmlmzqBzMSUBjImfnEk" />
+                  <Link Id="B1q4vCjuli9OY5mvR2GabT" Ids="H5E9ukIpJi1LxdPhmT6M0e,RXs6MNrX1RBMwTbJl2Bvh9" />
+                  <Link Id="ACLxaMxphi9PekUDnxFs1C" Ids="Cn7LLifPXF5N15Sbcevipp,MQLiFvGWUQMQPuv0PN9688" />
+                  <Link Id="SVjvEjlgTvxQH3noNh8n3p" Ids="C3cppkmGLPFPETc5mDCZ8F,OQAKA4WponjL973PGgvtTP" />
+                  <Link Id="LglwrnEMnMHNAAtmlAQNjz" Ids="NrlGW3lIBCUNXj4VGFyIAr,AzhFvGv2bdZLrWvgIVyRAV" />
+                  <Link Id="Q5iDTzuj5HLPduaMkbX3z7" Ids="QbtmIgKLdKfNp9fTlyhFUg,NrlGW3lIBCUNXj4VGFyIAr" IsHidden="true" />
+                  <Link Id="U5YOjTp762xQHPb0SwlBZN" Ids="KpxzqlH7CucOZD4eq6cN0M,DFYQ6czLHFYLnkr9QZQX0y" />
+                  <Link Id="ConeSRGPSTYPBkTmXuSQ23" Ids="DkpvUfEIIvsMoeAalIGYhy,KpxzqlH7CucOZD4eq6cN0M" IsHidden="true" />
+                  <Patch Id="E3GgtflsIohN95CPla1A31" Name="Create" />
+                  <Patch Id="LjgkntnymwPNxJQOoCwhFj" Name="GetTexture">
+                    <Pin Id="SLVlqYYFxp7N5emcwBze6a" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="U1zQqIqU21YNLJ3Kud4sTU" Name="Update">
+                    <Pin Id="NevefOsmUzJMaVljp7iwyE" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="MLdZWGgClvdPTFw60JJhPN" Name="SetTexture">
+                    <Pin Id="AlvR8Mkp8zEOK4dsPZ9S9C" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="PWFXUq2U1OKPTwHpeawxin" Name="SetParameters">
+                    <Pin Id="JxD05ExyuiXMacyaYRkqWG" Name="Mode" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Textures.Utils" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="RoundingType" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                    <Pin Id="QbtmIgKLdKfNp9fTlyhFUg" Name="Quantize Alpha" Kind="InputPin" />
+                    <Pin Id="DkpvUfEIIvsMoeAalIGYhy" Name="Step Size" Kind="InputPin" DefaultValue="0.1, 0.1, 0.099999994, 0.099999994" />
+                  </Patch>
+                  <Patch Id="JQdwQl9jHt1OqCm9127bpS" Name="SetControl">
+                    <Pin Id="PbVyRWtWPvHOZNvbGFmEGR" Name="Control" Kind="InputPin">
                       <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
                         <Choice Kind="TypeFlag" Name="GPU" />
                         <p:TypeArguments>
