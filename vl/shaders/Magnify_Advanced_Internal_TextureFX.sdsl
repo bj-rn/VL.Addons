@@ -29,7 +29,7 @@ shader Magnify_Advanced_Internal_TextureFX : FilterBase
         float magnification = Magnification.Compute();
         float innerRadius = InnerRadius.Compute();
         float outerRadius = OuterRadius.Compute();
-        float center = Center.Compute();
+        float2 center = Center.Compute();
 
         float2 center2pixel = uv - center;
         float distance = length(center2pixel);
