@@ -9897,7 +9897,7 @@
     ************************ ThresholdDiscard ************************
 
 -->
-              <Node Name="ThresholdDiscard" Bounds="116,1818" Id="OAb9ISLtqZCLy8NK4s9Vdd">
+              <Node Name="ThresholdDiscard" Bounds="116,1901" Id="OAb9ISLtqZCLy8NK4s9Vdd">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ContainerDefinition" Name="Process" />
                 </p:NodeReference>
@@ -16057,11 +16057,6 @@
                   <Link Id="VNiv58hwtDHO77lcpi9BZd" Ids="SR8ZvN5hm3uM6GU04Qj54z,UlOZyj65OfSLafRLjBzt96" />
                   <Link Id="SeE96wXN7BONPhPMzRN0F7" Ids="QzBzIuDxZe5PRzwchL0Tiw,Cuk9ztLDvFbMEjWWdYdDOJ" IsHidden="true" />
                   <Link Id="HC0C5XqW4hdObT2knyxk7Z" Ids="EfBRso6rfdBMBm568Lk4Wr,QzBzIuDxZe5PRzwchL0Tiw" />
-                  <!--
-
-    ************************  ************************
-
--->
                   <ProcessDefinition Id="KvOHfVdb2LuNmoooJ5a5Xo">
                     <Fragment Id="HHgNEYoY3yTNEoRm4Q5p1T" Patch="V4CT0K4Qgz0N4HZjV67Bum" Enabled="true" />
                     <Fragment Id="EI8TT3D9YFCNAKRfom3SI0" Patch="J8UUxbxdyvbObD6i1Zb0xN" Enabled="true" />
@@ -16087,6 +16082,75 @@
                     <Pin Id="SYYdvun0BDzPk0N8mIM7e0" Name="Luma Key" Kind="InputPin" />
                     <Pin Id="Nah0RtSrUz0Ps2WEq6JjYI" Name=" Mask Range" Kind="InputPin" />
                   </Patch>
+                </Patch>
+              </Node>
+            </Canvas>
+            <Canvas Id="ES7BnSnZeyPNM3OJdQ5vGF" Name="Enhancement" Position="101,1012">
+              <!--
+
+    ************************ DeInterlace ************************
+
+-->
+              <Node Name="DeInterlace" Bounds="403,457" Id="UkWxsuqqhbvNZKWP7HyFk3">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="G4Ipa58NhGYQCc7GwXZVbR">
+                  <Canvas Id="G1uCCkPvJ8gNz6IyTX1Hba" CanvasType="Group">
+                    <Node Bounds="388,487,68,19" Id="GCsWO1lqzfcPBx5EmZzwMS">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Addons.Stride.vl">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <CategoryReference Kind="Category" Name="ColorManipulation" NeedsToBeDirectParent="true" />
+                        <Choice Kind="ProcessAppFlag" Name="DeInterlace" />
+                      </p:NodeReference>
+                      <Pin Id="RlhNrS6mkeCMZBXMBN7qTh" Name="Input" Kind="InputPin" />
+                      <Pin Id="P2OmNTzShd9OQ8gixAa6vR" Name="Control" Kind="InputPin" />
+                      <Pin Id="HLI6M4uEA3vPGh4o5nGg0u" Name="Apply" Kind="InputPin" />
+                      <Pin Id="BM5KKcIjVbIMnH3U7rDGfx" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="BTsZcbb2K1mNA3TjuSZNUB" Bounds="390,408" />
+                    <ControlPoint Id="KLeb6YpAIO4NDEUUJ9ufwl" Bounds="422,438" />
+                    <ControlPoint Id="TzRkoeFoHQCMrfQLkcAB8k" Bounds="453,467" />
+                    <ControlPoint Id="Fe9oHL0YKeCLJcrRUq8OVX" Bounds="390,534" />
+                  </Canvas>
+                  <Patch Id="KVsaomJhWApORx6QiovHWl" Name="Create" />
+                  <Link Id="KPD5EHaABEPNUwaZ7X46MH" Ids="BTsZcbb2K1mNA3TjuSZNUB,RlhNrS6mkeCMZBXMBN7qTh" />
+                  <Link Id="T8noutt1hPgLwUp5GJwZOT" Ids="PpLtp8xdOK1LEFIPu2iuZc,BTsZcbb2K1mNA3TjuSZNUB" IsHidden="true" />
+                  <Link Id="JMBozDMq14NMKQteyUaS4S" Ids="KLeb6YpAIO4NDEUUJ9ufwl,P2OmNTzShd9OQ8gixAa6vR" />
+                  <Link Id="VJFD9egZ2FAMmznCstcyIy" Ids="J1IkHV4KB9sL2iuMuVYrYf,KLeb6YpAIO4NDEUUJ9ufwl" IsHidden="true" />
+                  <Link Id="GOReh0RuVOxLj4BBs3WsYk" Ids="TzRkoeFoHQCMrfQLkcAB8k,HLI6M4uEA3vPGh4o5nGg0u" />
+                  <Link Id="GGvPqQRZSHMLdGBzQfVCjV" Ids="SA2HEKDIknQNVe56egqHRH,TzRkoeFoHQCMrfQLkcAB8k" IsHidden="true" />
+                  <Link Id="HjZcMrsKjPROn40b1cBpK7" Ids="BM5KKcIjVbIMnH3U7rDGfx,Fe9oHL0YKeCLJcrRUq8OVX" />
+                  <Link Id="B32gdqQTNfpQaKclGLDnwJ" Ids="Fe9oHL0YKeCLJcrRUq8OVX,BtexWNZpJe1Ne8Q2CPtolm" IsHidden="true" />
+                  <Patch Id="FX1LhloiY7OLgVS1IR0xKr" Name="Update">
+                    <Pin Id="SA2HEKDIknQNVe56egqHRH" Name="Apply" Kind="InputPin" />
+                  </Patch>
+                  <Patch Id="SyVaKPaUk19My7vc2W5gBQ" Name="SetTexture">
+                    <Pin Id="PpLtp8xdOK1LEFIPu2iuZc" Name="Input" Kind="InputPin" />
+                  </Patch>
+                  <Patch Id="D1WmSkXuNZLNRzi99RN3An" Name="GetTexture">
+                    <Pin Id="BtexWNZpJe1Ne8Q2CPtolm" Name="Output" Kind="OutputPin" />
+                  </Patch>
+                  <Patch Id="MuDDRwCem40MQXqVruCg1d" Name="SetControl">
+                    <Pin Id="J1IkHV4KB9sL2iuMuVYrYf" Name="Control" Kind="InputPin" />
+                  </Patch>
+                  <!--
+
+    ************************  ************************
+
+-->
+                  <ProcessDefinition Id="NHNcwI7HuQ3MzYoUrlBGbU">
+                    <Fragment Id="P3ODX5alcd9NUyrP8A30ny" Patch="KVsaomJhWApORx6QiovHWl" Enabled="true" />
+                    <Fragment Id="SoGwQ5zpt49LTeYUB0I7IX" Patch="SyVaKPaUk19My7vc2W5gBQ" Enabled="true" />
+                    <Fragment Id="P01DOi9hV3eOgwnjZokVw7" Patch="MuDDRwCem40MQXqVruCg1d" Enabled="true" />
+                    <Fragment Id="I1KOQzx40WuLnar6aE8D1M" Patch="FX1LhloiY7OLgVS1IR0xKr" Enabled="true" />
+                    <Fragment Id="InsZkyaIFGlLdzae8KFuli" Patch="D1WmSkXuNZLNRzi99RN3An" Enabled="true" />
+                  </ProcessDefinition>
                 </Patch>
               </Node>
             </Canvas>
