@@ -1,0 +1,16 @@
+﻿shader BlurPassBase : FilterBase, BlurUtils
+{
+    [Default(0.25)]
+    compose ComputeFloat Strength;
+
+    float4 Filter(float4 tex0col)
+    {
+        float lod;
+        float2 off;
+        float strength = Strength.Compute();
+
+        ClacLodAndOffset(ViewSize, strength, lod, off);
+
+        return BlurPass(Texture0, LinearSampler, streams.TexCoord, off, lod);
+    }
+};
