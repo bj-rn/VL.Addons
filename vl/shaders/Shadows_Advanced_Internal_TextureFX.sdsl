@@ -1,0 +1,11 @@
+﻿[Category("Filter.ColorManipulation")]
+[Summary("Output the shadows of a texture")]
+[Tags("Color Grading")]
+
+shader Shadows_Advanced_Internal_TextureFX : FilterBase, ColorGradingOperations
+{
+    float4 Filter(float4 tex0col)
+    {
+        return GetShadows(tex0col);
+    }
+};
