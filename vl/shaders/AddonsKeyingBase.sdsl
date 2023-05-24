@@ -1,4 +1,4 @@
-﻿shader KeyingBase : TextureFX
+﻿shader AddonsKeyingBase : FilterBase
 {
     // the variables to tweak the keying
     [Default(0.005f, 0.1f)]
@@ -9,8 +9,8 @@
     // method to calculate the mask with soft edge
     float CalcMask(float dist)
     {
-        float maskRange = MaskRange.Compute();
-        if (dist < MaskRange.x)
+        float2 maskRange = MaskRange.Compute();
+        if (dist < maskRange.x)
             return 0.0;
         else if (dist < maskRange.y)
             return (dist - maskRange.x)/(maskRange.y - maskRange.x);
