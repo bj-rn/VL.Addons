@@ -17799,83 +17799,6 @@
               </Node>
               <!--
 
-    ************************ LumaKeying ************************
-
--->
-              <Node Name="LumaKeying" Bounds="116,427" Id="N12NiKWFSQlOqFW6hYVV8r">
-                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                  <Choice Kind="ClassDefinition" Name="Class" />
-                </p:NodeReference>
-                <p:Interfaces>
-                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
-                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
-                  </TypeReference>
-                </p:Interfaces>
-                <Patch Id="UJzPqBhbFIyPqMj5A2xonm">
-                  <Canvas Id="P179ChUybeNM8IRvgl9SAR" CanvasType="Group">
-                    <Node Bounds="338,521,175,19" Id="FkdOmOKdhRmPrxf3qYv8SB">
-                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Keying" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)">
-                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                        <CategoryReference Kind="Category" Name="Keying" NeedsToBeDirectParent="true" />
-                        <Choice Kind="ProcessNode" Name="LumaKey" />
-                      </p:NodeReference>
-                      <Pin Id="GRmZDUVShd8L6ANzFB9uUi" Name="Input" Kind="InputPin" />
-                      <Pin Id="SCRWOHeMRMDLdwQV9LRxxy" Name="Mask Range" Kind="InputPin" />
-                      <Pin Id="JuHYqRX9yrmLJBmtieIF9u" Name="Invert" Kind="InputPin" />
-                      <Pin Id="EaG0VknIo8vLOfGMRHEgM9" Name="Luma Key" Kind="InputPin" />
-                      <Pin Id="UlOZyj65OfSLafRLjBzt96" Name="Apply" Kind="InputPin" />
-                      <Pin Id="EfBRso6rfdBMBm568Lk4Wr" Name="Output" Kind="OutputPin" />
-                      <Pin Id="PkDaF7ReVtJQYFWrZsNKYi" Name=" Mask Range" Kind="InputPin" />
-                    </Node>
-                    <ControlPoint Id="UHpwCzMixfuNbIHAbtwvkb" Bounds="340,351" />
-                    <ControlPoint Id="SiaYlzQhDN7LtcrFXRG2Kc" Bounds="408,402" />
-                    <ControlPoint Id="ESkShwRt3zuNCAXISwr85F" Bounds="442,423" />
-                    <ControlPoint Id="Cx5lpZvD4UULGACdHHtB6U" Bounds="476,449" />
-                    <ControlPoint Id="SR8ZvN5hm3uM6GU04Qj54z" Bounds="510,480" />
-                    <ControlPoint Id="QzBzIuDxZe5PRzwchL0Tiw" Bounds="340,574" />
-                    <ControlPoint Id="JC9N9WE8w6UL50fQhgog09" Bounds="374,373" />
-                  </Canvas>
-                  <Link Id="JS5oGDwwzLrPZ27c0OJxo4" Ids="U0BMZeMQeAROkwxXHKTb0e,UHpwCzMixfuNbIHAbtwvkb" IsHidden="true" />
-                  <Link Id="USKH8VzGnwuM5RICgyNPUR" Ids="UHpwCzMixfuNbIHAbtwvkb,GRmZDUVShd8L6ANzFB9uUi" />
-                  <Link Id="SaHzsznRyvYOHcmd8YKgjS" Ids="HnGYST1z4CTPMmSJSjYz4b,SiaYlzQhDN7LtcrFXRG2Kc" IsHidden="true" />
-                  <Link Id="CCbrvKKknhrQQ6kSrp3r9H" Ids="SiaYlzQhDN7LtcrFXRG2Kc,JuHYqRX9yrmLJBmtieIF9u" />
-                  <Link Id="JDiNxCAxIZiMxhxFZfTeIF" Ids="SYYdvun0BDzPk0N8mIM7e0,ESkShwRt3zuNCAXISwr85F" IsHidden="true" />
-                  <Link Id="OXjAA2PpnwjQRtApwuXBL6" Ids="ESkShwRt3zuNCAXISwr85F,EaG0VknIo8vLOfGMRHEgM9" />
-                  <Link Id="JsBefef2zh6PBkTXLWG50m" Ids="Nah0RtSrUz0Ps2WEq6JjYI,Cx5lpZvD4UULGACdHHtB6U" IsHidden="true" />
-                  <Link Id="VxCJZ9C3o2LQJzgbsOSyNg" Ids="Cx5lpZvD4UULGACdHHtB6U,PkDaF7ReVtJQYFWrZsNKYi" />
-                  <Link Id="MN3yx4agT2FO65riQHFxDj" Ids="RPz160x3e1cPU95WjGouVz,SR8ZvN5hm3uM6GU04Qj54z" IsHidden="true" />
-                  <Link Id="VNiv58hwtDHO77lcpi9BZd" Ids="SR8ZvN5hm3uM6GU04Qj54z,UlOZyj65OfSLafRLjBzt96" />
-                  <Link Id="SeE96wXN7BONPhPMzRN0F7" Ids="QzBzIuDxZe5PRzwchL0Tiw,Cuk9ztLDvFbMEjWWdYdDOJ" IsHidden="true" />
-                  <Link Id="HC0C5XqW4hdObT2knyxk7Z" Ids="EfBRso6rfdBMBm568Lk4Wr,QzBzIuDxZe5PRzwchL0Tiw" />
-                  <ProcessDefinition Id="KvOHfVdb2LuNmoooJ5a5Xo">
-                    <Fragment Id="HHgNEYoY3yTNEoRm4Q5p1T" Patch="V4CT0K4Qgz0N4HZjV67Bum" Enabled="true" />
-                    <Fragment Id="EI8TT3D9YFCNAKRfom3SI0" Patch="J8UUxbxdyvbObD6i1Zb0xN" Enabled="true" />
-                    <Fragment Id="LJdOl8SyeGNMLHIszMKZiq" Patch="GY6hvBhr2KqOCVye6OLfJF" Enabled="true" />
-                    <Fragment Id="JXIvRgRCdU5MSewvamRCaB" Patch="CbCqwPj2hl1O4Bx5r4vQKo" Enabled="true" />
-                    <Fragment Id="ANKsaORT0Z3O4QZk4O95T9" Patch="ATcgGXVZpjHQQxi0jOLrLD" Enabled="true" />
-                  </ProcessDefinition>
-                  <Link Id="NHbB3qqPvSDPGb892iEOMf" Ids="JC9N9WE8w6UL50fQhgog09,SCRWOHeMRMDLdwQV9LRxxy" />
-                  <Link Id="QC8qocFQ0dkN5K8g2rodyU" Ids="KsmQkpiiAquOXPeyj9jLys,JC9N9WE8w6UL50fQhgog09" IsHidden="true" />
-                  <Patch Id="V4CT0K4Qgz0N4HZjV67Bum" Name="Create" />
-                  <Patch Id="J8UUxbxdyvbObD6i1Zb0xN" Name="SetTexture">
-                    <Pin Id="U0BMZeMQeAROkwxXHKTb0e" Name="Input" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="ATcgGXVZpjHQQxi0jOLrLD" Name="GetTexture">
-                    <Pin Id="Cuk9ztLDvFbMEjWWdYdDOJ" Name="Output" Kind="OutputPin" />
-                  </Patch>
-                  <Patch Id="CbCqwPj2hl1O4Bx5r4vQKo" Name="Update">
-                    <Pin Id="RPz160x3e1cPU95WjGouVz" Name="Apply" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="GY6hvBhr2KqOCVye6OLfJF" Name="SetParameters">
-                    <Pin Id="KsmQkpiiAquOXPeyj9jLys" Name="Mask Range" Kind="InputPin" Bounds="374,397" />
-                    <Pin Id="HnGYST1z4CTPMmSJSjYz4b" Name="Invert" Kind="InputPin" />
-                    <Pin Id="SYYdvun0BDzPk0N8mIM7e0" Name="Luma Key" Kind="InputPin" />
-                    <Pin Id="Nah0RtSrUz0Ps2WEq6JjYI" Name=" Mask Range" Kind="InputPin" />
-                  </Patch>
-                </Patch>
-              </Node>
-              <!--
-
     ************************ ChannelKeying ************************
 
 -->
@@ -18008,10 +17931,10 @@
               </Node>
               <!--
 
-    ************************ FilterTemplate ************************
+    ************************ LumaKeying ************************
 
 -->
-              <Node Name="FilterTemplate" Bounds="302,325" Id="B5OhjE8yEeCQGXlHQ5REhV">
+              <Node Name="LumaKeying" Bounds="115,428" Id="B5OhjE8yEeCQGXlHQ5REhV">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ClassDefinition" Name="Class" />
                 </p:NodeReference>
@@ -18022,30 +17945,28 @@
                 </p:Interfaces>
                 <Patch Id="I2eVyPprHHbNAhZWXOkPKO">
                   <Canvas Id="MsKHKGIgx0yNyOZMAqA7La" CanvasType="Group">
-                    <ControlPoint Id="NuJlU6gSft0NANeLRYiRr2" Bounds="403,101" />
-                    <Node Bounds="103,234,105,19" Id="SwIHrabd88EMRrtnzDJna9">
+                    <Node Bounds="98,275,175,19" Id="C8nOSJzTHVlNhNIvcaGvCV">
                       <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Keying" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                         <CategoryReference Kind="Category" Name="Keying" NeedsToBeDirectParent="true" />
-                        <Choice Kind="ProcessNode" Name="ChromaKey" />
+                        <Choice Kind="ProcessNode" Name="LumaKey" />
                       </p:NodeReference>
-                      <Pin Id="UZd2YtyJxiKOO3KBaPACvA" Name="Input" Kind="InputPin" />
-                      <Pin Id="PTvjYSLC3ztOnVrNdWXWXJ" Name="Invert" Kind="InputPin" />
-                      <Pin Id="Fhp4bfM5uwfPfNgVAMUJvT" Name="Chroma Key" Kind="InputPin" />
-                      <Pin Id="DLCCmXWDAWNOyZSE16c0NZ" Name="Mask Range" Kind="InputPin" />
-                      <Pin Id="DbCygNFGJ8bPJTZCeOioEU" Name="Control" Kind="InputPin" />
-                      <Pin Id="NaUQncme1HWOqZ5hdLGp1m" Name="Apply" Kind="InputPin" />
-                      <Pin Id="Nm4i3XjdEphLCouNpPzhp7" Name="Output" Kind="OutputPin" />
-                      <Pin Id="CCFznGLejCGPgOxVcHcTCi" Name=" Mask Range" Kind="InputPin" />
+                      <Pin Id="Hl64IRLv7iJQATVUDZmBuk" Name="Input" Kind="InputPin" />
+                      <Pin Id="VWMjt0G6O67OcpJJl4ubZ4" Name="Invert" Kind="InputPin" />
+                      <Pin Id="Be6h6R3JRtUP1s6rEXYg4v" Name="Luma Key" Kind="InputPin" />
+                      <Pin Id="Aq0PVxtiqVwNbWbQDO21Mj" Name="Mask Range" Kind="InputPin" />
+                      <Pin Id="I3ApwjKJ1lNOK4MCb17Ieh" Name="Control" Kind="InputPin" />
+                      <Pin Id="QB0RtfscY2TOwvj2Yc0BA2" Name="Apply" Kind="InputPin" />
+                      <Pin Id="Mldnef7PsZzMbQTKaLJvGn" Name="Output" Kind="OutputPin" />
                     </Node>
-                    <ControlPoint Id="UULtjZUte9KL9mAjDkHYf8" Bounds="105,107" />
-                    <ControlPoint Id="TgTyw9nRdnaL5ysNkjl6hc" Bounds="186,181" />
-                    <ControlPoint Id="RrlXqmh8JwMMzQolc5cJwE" Bounds="146,133" />
-                    <ControlPoint Id="DSVx31CgjlKLmHFWf0eHJm" Bounds="165,156" />
-                    <ControlPoint Id="RnNh8K1p12fO7RhNSn4WiI" Bounds="205,204" />
-                    <ControlPoint Id="INLjWBGpfT4Nxdw0kf08qR" Bounds="105,280" />
+                    <ControlPoint Id="IwhVas77ei3O9xLxtp9Sxh" Bounds="100,105" />
+                    <ControlPoint Id="BJQLtamU5VRPdWWF8AUqvV" Bounds="133,129" />
+                    <ControlPoint Id="TDH4UYm4zHnQGalPCbG0Tt" Bounds="167,154" />
+                    <ControlPoint Id="D8Ycfu7MG9fQLbRPKANbuy" Bounds="270,234" />
+                    <ControlPoint Id="HV3bJUaYJMXOseFiv5KXmD" Bounds="100,328" />
+                    <ControlPoint Id="CZEp6au8ps4MZWAvsjYHbs" Bounds="200,176" />
+                    <ControlPoint Id="KsURcM57M3HOna3Ro2CYUW" Bounds="235,202" />
                   </Canvas>
-                  <Link Id="NPbJGQ0iYwUOsn8aKIp0bd" Ids="NQm9joo0OIEMPpqko2vRGC,NuJlU6gSft0NANeLRYiRr2" IsHidden="true" />
                   <ProcessDefinition Id="KqKRNhZFhwYNzsMrYxQLyU">
                     <Fragment Id="Ccw5x31uBvjLOe2qyftX7z" Patch="UJq4sZ8omy5NCFBdLtwVnL" Enabled="true" />
                     <Fragment Id="Vn0RXMPHXWjMtdm0F7Guqt" Patch="CG2chAwNDSGMUNmOZInRoi" Enabled="true" />
@@ -18054,57 +17975,38 @@
                     <Fragment Id="Lw0PkHbwa58OflhfoaouoQ" Patch="CFmXzFHKp5bMLKRco8kJPb" Enabled="true" />
                     <Fragment Id="UkqxbAE4wb6MQFuGYHRsxa" Patch="L6DWEk9yFKBLAR5ddG7VrD" Enabled="true" />
                   </ProcessDefinition>
-                  <Link Id="DC4rdcBkVLVNlMxH1qqKby" Ids="MNE1KMWrhRXMzWQk53unKe,UULtjZUte9KL9mAjDkHYf8" IsHidden="true" />
-                  <Link Id="KFOWMEZhNIXOf5ybcZat9d" Ids="UULtjZUte9KL9mAjDkHYf8,UZd2YtyJxiKOO3KBaPACvA" />
-                  <Link Id="SUSqOhkUUxcQHGBQr0E5sa" Ids="PEATUfV8q39PKlapKN9pgm,TgTyw9nRdnaL5ysNkjl6hc" IsHidden="true" />
-                  <Link Id="A34rEGx5eHPQa5d6o8zzGC" Ids="UxLu9DBypqcONMzlSYb6mZ,RrlXqmh8JwMMzQolc5cJwE" IsHidden="true" />
-                  <Link Id="RTqR3kOiELCQRmhJMAmrvi" Ids="RrlXqmh8JwMMzQolc5cJwE,PTvjYSLC3ztOnVrNdWXWXJ" />
-                  <Link Id="Gl235qySFErPOfFhYFghX4" Ids="FQq7x6dJzvVN4K4bXWD9GV,DSVx31CgjlKLmHFWf0eHJm" IsHidden="true" />
-                  <Link Id="NNNsBzFglrZNePdYLokeYN" Ids="DSVx31CgjlKLmHFWf0eHJm,Fhp4bfM5uwfPfNgVAMUJvT" />
-                  <Link Id="JaETnhQSzH4NIYlP2iSGVL" Ids="FL3gXj5gdUSL2LqjHd84EI,RnNh8K1p12fO7RhNSn4WiI" IsHidden="true" />
-                  <Link Id="EAvqPvXpve8OunmI1wbNMw" Ids="RnNh8K1p12fO7RhNSn4WiI,NaUQncme1HWOqZ5hdLGp1m" />
-                  <Link Id="NiD6N5qjglpOC3z7Sm8l9I" Ids="INLjWBGpfT4Nxdw0kf08qR,BMCelIgmrOqOcrkZ3Whesr" IsHidden="true" />
-                  <Link Id="Hyo6tY3gFOfPknPlp7tpKt" Ids="Nm4i3XjdEphLCouNpPzhp7,INLjWBGpfT4Nxdw0kf08qR" />
-                  <Link Id="DhXg8uGWbYZMnyb21kYXGG" Ids="TgTyw9nRdnaL5ysNkjl6hc,CCFznGLejCGPgOxVcHcTCi" />
                   <Patch Id="UJq4sZ8omy5NCFBdLtwVnL" Name="Create" />
                   <Patch Id="L6DWEk9yFKBLAR5ddG7VrD" Name="GetTexture">
-                    <Pin Id="BMCelIgmrOqOcrkZ3Whesr" MergeId="6913" Name="Output" Kind="OutputPin">
-                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
-                        <Choice Kind="TypeFlag" Name="Texture" />
-                      </p:TypeAnnotation>
-                    </Pin>
+                    <Pin Id="EjRvq37i6GuNHIqEvnp8OV" Name="Output" Kind="OutputPin" />
                   </Patch>
                   <Patch Id="CFmXzFHKp5bMLKRco8kJPb" Name="Update">
-                    <Pin Id="FL3gXj5gdUSL2LqjHd84EI" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
-                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-                        <Choice Kind="TypeFlag" Name="Boolean" />
-                      </p:TypeAnnotation>
-                    </Pin>
+                    <Pin Id="VAB4ldWJb6dOVmtBnoC5nB" Name="Apply" Kind="InputPin" />
                   </Patch>
                   <Patch Id="CG2chAwNDSGMUNmOZInRoi" Name="SetTexture">
-                    <Pin Id="MNE1KMWrhRXMzWQk53unKe" MergeId="6917" Name="Input" Kind="InputPin">
-                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
-                        <Choice Kind="TypeFlag" Name="Texture" />
-                      </p:TypeAnnotation>
-                    </Pin>
+                    <Pin Id="E9KzqfIwHMpLe9xoKKbUGY" Name="Input" Kind="InputPin" />
                   </Patch>
                   <Patch Id="UT1C13BcfA2PGbqquN2nVv" Name="SetParameters" ManuallySortedPins="true">
-                    <Pin Id="PEATUfV8q39PKlapKN9pgm" Name="Mask Range" Kind="InputPin" />
-                    <Pin Id="UxLu9DBypqcONMzlSYb6mZ" Name="Invert" Kind="InputPin" />
-                    <Pin Id="FQq7x6dJzvVN4K4bXWD9GV" Name="Chroma Key" Kind="InputPin" />
+                    <Pin Id="SPkbEnlMrY4LA3Qm0OT58K" Name="Mask Range" Kind="InputPin" Bounds="374,397" />
+                    <Pin Id="V0fAS8VOORYMt5oNQFXDTL" Name="Invert" Kind="InputPin" />
+                    <Pin Id="KAg3jX0AEbVNXP4otwNZCQ" Name="Luma Key" Kind="InputPin" />
                   </Patch>
                   <Patch Id="HkL9bxIa7GdOAXe9I0sObD" Name="SetControl">
-                    <Pin Id="NQm9joo0OIEMPpqko2vRGC" Name="Control" Kind="InputPin">
-                      <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
-                        <Choice Kind="TypeFlag" Name="GPU" />
-                        <p:TypeArguments>
-                          <TypeReference>
-                            <Choice Kind="TypeFlag" Name="Vector4" />
-                          </TypeReference>
-                        </p:TypeArguments>
-                      </p:TypeAnnotation>
-                    </Pin>
+                    <Pin Id="ROnF0RfoySOOTGSJp8YESX" Name="Control" Kind="InputPin" />
                   </Patch>
+                  <Link Id="PYfKGKdx65CLuxjn500VYu" Ids="E9KzqfIwHMpLe9xoKKbUGY,IwhVas77ei3O9xLxtp9Sxh" IsHidden="true" />
+                  <Link Id="PIHzoD65SMdMBOlpMIpbof" Ids="IwhVas77ei3O9xLxtp9Sxh,Hl64IRLv7iJQATVUDZmBuk" />
+                  <Link Id="CFdHCA7J95XNi2PMT1DPcb" Ids="V0fAS8VOORYMt5oNQFXDTL,BJQLtamU5VRPdWWF8AUqvV" IsHidden="true" />
+                  <Link Id="PUtfIad1ZOcPtBvrLxTNnn" Ids="BJQLtamU5VRPdWWF8AUqvV,VWMjt0G6O67OcpJJl4ubZ4" />
+                  <Link Id="BPGvwkaD1UXNfx22MwPnnp" Ids="KAg3jX0AEbVNXP4otwNZCQ,TDH4UYm4zHnQGalPCbG0Tt" IsHidden="true" />
+                  <Link Id="PBOUaLYAX7CN1iurZWt2xh" Ids="TDH4UYm4zHnQGalPCbG0Tt,Be6h6R3JRtUP1s6rEXYg4v" />
+                  <Link Id="EH5moyQTUDQNUNGSQlTRkb" Ids="VAB4ldWJb6dOVmtBnoC5nB,D8Ycfu7MG9fQLbRPKANbuy" IsHidden="true" />
+                  <Link Id="GdMVeQeujy1Mf8u9MOSnx3" Ids="D8Ycfu7MG9fQLbRPKANbuy,QB0RtfscY2TOwvj2Yc0BA2" />
+                  <Link Id="NX020QgUEkeQPNTiT9T6MR" Ids="HV3bJUaYJMXOseFiv5KXmD,EjRvq37i6GuNHIqEvnp8OV" IsHidden="true" />
+                  <Link Id="T517zcsc3cKLdr8sKmnSte" Ids="Mldnef7PsZzMbQTKaLJvGn,HV3bJUaYJMXOseFiv5KXmD" />
+                  <Link Id="BOLFYdNap40Lx4B7QPShlg" Ids="CZEp6au8ps4MZWAvsjYHbs,Aq0PVxtiqVwNbWbQDO21Mj" />
+                  <Link Id="GUoFG8AtFEqMBmskBbK64U" Ids="SPkbEnlMrY4LA3Qm0OT58K,CZEp6au8ps4MZWAvsjYHbs" IsHidden="true" />
+                  <Link Id="EedDJSAauUPPsIIeWD5dan" Ids="KsURcM57M3HOna3Ro2CYUW,I3ApwjKJ1lNOK4MCb17Ieh" />
+                  <Link Id="LIG0fIMhaBsPE9hGIZEq8x" Ids="ROnF0RfoySOOTGSJp8YESX,KsURcM57M3HOna3Ro2CYUW" IsHidden="true" />
                 </Patch>
               </Node>
             </Canvas>
