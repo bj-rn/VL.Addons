@@ -15699,11 +15699,16 @@
                 </p:Interfaces>
                 <Patch Id="J1cTlrsbZjeN28ue8Aq1Cs">
                   <Canvas Id="PEQPkotxYEvO5Xh1XKgA0q" CanvasType="Group">
-                    <Node Bounds="265,563,105,19" Id="GDZHOe38Y18N8TLomsyYBV">
-                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Transformation" LastDependency="VL.Addons.Stride.vl">
+                    <Node Bounds="102,253,105,19" Id="GDZHOe38Y18N8TLomsyYBV">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Transformation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                         <CategoryReference Kind="Category" Name="Transformation" />
                         <Choice Kind="ProcessNode" Name="Translate" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
                       </p:NodeReference>
                       <Pin Id="JpmwaCrwb7oNXTLvWJaqVc" Name="Input" Kind="InputPin" />
                       <Pin Id="KM2m6DK0KAELcxp5MY23Gm" Name="Custom Sampler" Kind="InputPin" />
@@ -15713,13 +15718,13 @@
                       <Pin Id="AGvPQeTRpqLQNsOtfARz9O" Name="Apply" Kind="InputPin" />
                       <Pin Id="Ke2acr9drleO7U7k18Jvrx" Name="Output" Kind="OutputPin" />
                     </Node>
-                    <ControlPoint Id="JQKayRXOe3YP6Vo6EmgDmS" Bounds="267,414" />
-                    <ControlPoint Id="UfYvGtjiHTLMybhkVp54vi" Bounds="287,441" />
-                    <ControlPoint Id="Qs4NZgSNO4HOyEjjsiMd1i" Bounds="307,466" />
-                    <ControlPoint Id="UDz8hhPJTJIMEHXynbptNg" Bounds="327,491" />
-                    <ControlPoint Id="MkDoUj2gHlzPEQKiJttO78" Bounds="347,519" />
-                    <ControlPoint Id="Jbu4KBqGgD6Ma8aw2kZCr6" Bounds="367,544" />
-                    <ControlPoint Id="PgfGfAtpymEM0mDqJ0gjqE" Bounds="267,607" />
+                    <ControlPoint Id="JQKayRXOe3YP6Vo6EmgDmS" Bounds="104,104" />
+                    <ControlPoint Id="UfYvGtjiHTLMybhkVp54vi" Bounds="124,131" />
+                    <ControlPoint Id="Qs4NZgSNO4HOyEjjsiMd1i" Bounds="144,156" />
+                    <ControlPoint Id="UDz8hhPJTJIMEHXynbptNg" Bounds="164,181" />
+                    <ControlPoint Id="Jbu4KBqGgD6Ma8aw2kZCr6" Bounds="204,234" />
+                    <ControlPoint Id="PgfGfAtpymEM0mDqJ0gjqE" Bounds="104,297" />
+                    <ControlPoint Id="TNsGpAqVGpCN4c47X5oGjq" Bounds="184,205" />
                   </Canvas>
                   <Patch Id="B6AzaTWzAw8MVTWqetheQe" Name="Create" />
                   <Link Id="L7CzWYxFD3ENGgd8NHPwHx" Ids="KY9ksTvnYOvQBzKLB3lRy3,JQKayRXOe3YP6Vo6EmgDmS" IsHidden="true" />
@@ -15730,8 +15735,6 @@
                   <Link Id="HlDZE2BqSCBP7Z5f2SMBxS" Ids="Qs4NZgSNO4HOyEjjsiMd1i,CmwlynIoajLL505tImUX2p" />
                   <Link Id="DHSMudFaEojN3oaysgU3dU" Ids="EQBuRHCilFVLyYW5dAYOBc,UDz8hhPJTJIMEHXynbptNg" IsHidden="true" />
                   <Link Id="SInWCzf7FczLFpXHsP7sQS" Ids="UDz8hhPJTJIMEHXynbptNg,DN4dkpXkjdMMlVvSFv9Jae" />
-                  <Link Id="L5BaIwDYQXKP5f8WUtXzXi" Ids="OtJYQlhtUH4P07daLJ39LF,MkDoUj2gHlzPEQKiJttO78" IsHidden="true" />
-                  <Link Id="S63mvoAicl5OXUyr8GaajL" Ids="MkDoUj2gHlzPEQKiJttO78,VGanEbNcQxcOFNMr9etuHH" />
                   <Link Id="HrjIESxdsCsNebqfmq9pSZ" Ids="O3RsuHpMNmMQcxilYvB0aR,Jbu4KBqGgD6Ma8aw2kZCr6" IsHidden="true" />
                   <Link Id="LVcI8ps087QMyJ2hwVC0lc" Ids="Jbu4KBqGgD6Ma8aw2kZCr6,AGvPQeTRpqLQNsOtfARz9O" />
                   <Link Id="GaqPbQg9vuUNTCWPgAxgfT" Ids="PgfGfAtpymEM0mDqJ0gjqE,JjY9yf0rUtNNV0qxGK5QCL" IsHidden="true" />
@@ -15745,19 +15748,21 @@
                   <Patch Id="MaeHoRmgNeTMkt49Co7AKj" Name="Update">
                     <Pin Id="O3RsuHpMNmMQcxilYvB0aR" Name="Apply" Kind="InputPin" />
                   </Patch>
-                  <Patch Id="CRO6FXVqmmhMBWnfyaAgd7" Name="SetControl">
-                    <Pin Id="OtJYQlhtUH4P07daLJ39LF" Name="Control" Kind="InputPin" />
-                  </Patch>
                   <Patch Id="NmTYqnWmOygPo7qHbd6uP4" Name="SetParameters">
-                    <Pin Id="VEgLAToTNpiLR1xzaWw6xJ" Name="Custom Sampler" Kind="InputPin" />
+                    <Pin Id="VEgLAToTNpiLR1xzaWw6xJ" Name="Sampler" Kind="InputPin" />
                     <Pin Id="LWTYdFsjbOxNWMd0tKr6zq" Name="Interpolation Mode" Kind="InputPin" />
                     <Pin Id="EQBuRHCilFVLyYW5dAYOBc" Name="Translate" Kind="InputPin" />
+                  </Patch>
+                  <Link Id="DY9IvhE3abxLtgsecdqfqd" Ids="TNsGpAqVGpCN4c47X5oGjq,VGanEbNcQxcOFNMr9etuHH" />
+                  <Link Id="B5rEGHWc4d6NhxYwmKE5QG" Ids="P4V1oS3kug4MaONodKE4VP,TNsGpAqVGpCN4c47X5oGjq" IsHidden="true" />
+                  <Patch Id="SZG81N2326YN210pJriSnq" Name="SetControl">
+                    <Pin Id="P4V1oS3kug4MaONodKE4VP" Name="Control" Kind="InputPin" />
                   </Patch>
                   <ProcessDefinition Id="EAR72KDSXjMPjjFXFCm9A8">
                     <Fragment Id="JMn44aq5xQNNHJoKwyxhpL" Patch="B6AzaTWzAw8MVTWqetheQe" Enabled="true" />
                     <Fragment Id="VMGJ5gD1TwMMyNaEdiTJGQ" Patch="BQv5JlLsObVNlCcdgpYIJE" Enabled="true" />
                     <Fragment Id="TX17mFGuee3LLBTNvawINb" Patch="NmTYqnWmOygPo7qHbd6uP4" Enabled="true" />
-                    <Fragment Id="CPlFKXnwHInOlddnDnSRZc" Patch="CRO6FXVqmmhMBWnfyaAgd7" Enabled="true" />
+                    <Fragment Id="IlM9y8vBem0PDZs8kmGIOs" Patch="SZG81N2326YN210pJriSnq" Enabled="true" />
                     <Fragment Id="HRSj9QFNPioNmnZqXt3Wxz" Patch="MaeHoRmgNeTMkt49Co7AKj" Enabled="true" />
                     <Fragment Id="RNezG0ngdozNV73J4woxkf" Patch="CK2RQCpqWm0QUNaRtRxHWi" Enabled="true" />
                   </ProcessDefinition>
