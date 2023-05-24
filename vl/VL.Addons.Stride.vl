@@ -9966,7 +9966,7 @@
                   </Patch>
                   <Link Id="ETPEgSBMrhzOcPDJb4KBNm" Ids="MaZTzd2mwXhOIpVfgQtmTt,K9mt0OSVSwsLovnxo7VwIU" IsHidden="true" />
                   <Patch Id="CJVSXfmKo4oPj9muH93rts" Name="SetParameters">
-                    <Pin Id="G3e7HCrmWm1NU6lC1tqObt" Name="Texture" Kind="InputPin" />
+                    <Pin Id="G3e7HCrmWm1NU6lC1tqObt" Name="Input 2" Kind="InputPin" />
                     <Pin Id="EID1V4Ea8ZdNYoRNaGcjb5" Name="Discard" Kind="InputPin" />
                     <Pin Id="NWgWFAVuqavPjWQMos3pEG" Name="Threshold" Kind="InputPin" />
                   </Patch>
@@ -17141,7 +17141,7 @@
     ************************ BackgroundSubtraction ************************
 
 -->
-              <Node Name="BackgroundSubtraction" Bounds="277,364" Id="Qy5aTE8cEx2MJQEMdmIY8Z">
+              <Node Name="BackgroundSubtraction" Bounds="120,130" Id="Qy5aTE8cEx2MJQEMdmIY8Z">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ClassDefinition" Name="Class" />
                 </p:NodeReference>
@@ -17152,30 +17152,36 @@
                 </p:Interfaces>
                 <Patch Id="JaMVenKaAaGMmQtRRFAumm">
                   <Canvas Id="DixfuKcgk6mN3957OepAYZ" CanvasType="Group">
-                    <Node Bounds="373,420,125,19" Id="CqwrfHaj9OJMoVh5Xc0rLJ">
-                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Keying" LastDependency="VL.Addons.Stride.vl">
+                    <Node Bounds="100,265,145,19" Id="CqwrfHaj9OJMoVh5Xc0rLJ">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Keying" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                         <CategoryReference Kind="Category" Name="Keying" />
                         <Choice Kind="ProcessNode" Name="BackgroundSubtraction" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Input 2" />
+                        <PinReference Kind="InputPin" Name="Sampler 2" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
                       </p:NodeReference>
                       <Pin Id="AM7C1u86xleLij10EWIgu2" Name="Input" Kind="InputPin" />
-                      <Pin Id="IaSbEHEGwHnPUTj1ipmTaB" Name="Texture" Kind="InputPin" />
+                      <Pin Id="T2sAf8mnaSiOoXtEhSRH5t" Name="Input 2" Kind="InputPin" />
                       <Pin Id="OOTid1b9AccLQxp8Xra4tz" Name="Invert" Kind="InputPin" />
                       <Pin Id="AA7ynHtw5VlOi9jrPtRIp9" Name="Threshold" Kind="InputPin" />
                       <Pin Id="H6LKAT2Z9x2NOwfbWU83Zq" Name="Softness" Kind="InputPin" />
                       <Pin Id="SZebmJQG8wPQEcHlMjWcuv" Name="Control" Kind="InputPin" />
                       <Pin Id="QhX6XdBrVQ7L8FctBia861" Name="Apply" Kind="InputPin" />
                       <Pin Id="NUaHqJfRJYELEg6O9kXf6M" Name="Output" Kind="OutputPin" />
-                      <Pin Id="T2sAf8mnaSiOoXtEhSRH5t" Name="Input 2" Kind="InputPin" />
                     </Node>
-                    <ControlPoint Id="IRvnwCmumnULB3eXui38kz" Bounds="375,257" />
-                    <ControlPoint Id="EpxnxxfVLJCOfy1VBvC9Cx" Bounds="375,465" />
-                    <ControlPoint Id="HpNAjOUm2aXMIm3gD2vphL" Bounds="395,285" />
-                    <ControlPoint Id="EjQn56K6QbtPP79ARYESEf" Bounds="415,311" />
-                    <ControlPoint Id="B95Ra4XFVn3MSU8pe4kIVC" Bounds="435,333" />
-                    <ControlPoint Id="VVf28PF2ap0QRKGvoUhiZs" Bounds="455,358" />
-                    <ControlPoint Id="E1MAFudJhwUPl1UP6HRacO" Bounds="475,381" />
-                    <ControlPoint Id="K2SMTZViPuAQMpZ6IhBUet" Bounds="495,404" />
+                    <ControlPoint Id="IRvnwCmumnULB3eXui38kz" Bounds="102,102" />
+                    <ControlPoint Id="EpxnxxfVLJCOfy1VBvC9Cx" Bounds="102,310" />
+                    <ControlPoint Id="HpNAjOUm2aXMIm3gD2vphL" Bounds="126,133" />
+                    <ControlPoint Id="EjQn56K6QbtPP79ARYESEf" Bounds="150,156" />
+                    <ControlPoint Id="B95Ra4XFVn3MSU8pe4kIVC" Bounds="172,177" />
+                    <ControlPoint Id="VVf28PF2ap0QRKGvoUhiZs" Bounds="195,203" />
+                    <ControlPoint Id="K2SMTZViPuAQMpZ6IhBUet" Bounds="242,245" />
+                    <ControlPoint Id="QGMyvfWbwpwNYeTRWYOlrz" Bounds="218,225" />
                   </Canvas>
                   <Patch Id="Etolr3djmCeOWFt95t36qZ" Name="Create" />
                   <Link Id="E2gFXZpJGsgQYrb3v0tnt1" Ids="IRvnwCmumnULB3eXui38kz,AM7C1u86xleLij10EWIgu2" />
@@ -17196,13 +17202,8 @@
                   <Link Id="VlK7iKFPMe4PpGUNTCkxg5" Ids="B95Ra4XFVn3MSU8pe4kIVC,AA7ynHtw5VlOi9jrPtRIp9" />
                   <Link Id="Rzfgz0fRZ2hPrXwwmcbzuJ" Ids="K0gEwBLlgWOLWAxoKs7lBU,VVf28PF2ap0QRKGvoUhiZs" IsHidden="true" />
                   <Link Id="AZptx8wQ5KwNY2lvDcTIVn" Ids="VVf28PF2ap0QRKGvoUhiZs,H6LKAT2Z9x2NOwfbWU83Zq" />
-                  <Link Id="NaWit4PBPL4QSk0two4ucC" Ids="CmyfkjYENrmMoKODiDgDMB,E1MAFudJhwUPl1UP6HRacO" IsHidden="true" />
-                  <Link Id="MYdHpyANnGnNF4jO077Yyu" Ids="E1MAFudJhwUPl1UP6HRacO,SZebmJQG8wPQEcHlMjWcuv" />
                   <Link Id="QDMXjYTekmDN3uCeJzh4fB" Ids="PgNKqpojZdVLiZ3YfKkVuP,K2SMTZViPuAQMpZ6IhBUet" IsHidden="true" />
                   <Link Id="HhJEaG9xHM5MU3XUQZKwRW" Ids="K2SMTZViPuAQMpZ6IhBUet,QhX6XdBrVQ7L8FctBia861" />
-                  <Patch Id="MG9DVne8fgwNNYibedhkVo" Name="SetControl">
-                    <Pin Id="CmyfkjYENrmMoKODiDgDMB" Name="Control" Kind="InputPin" />
-                  </Patch>
                   <Patch Id="UMiE2D2eug7N4U6EBMceZX" Name="Update">
                     <Pin Id="PgNKqpojZdVLiZ3YfKkVuP" Name="Apply" Kind="InputPin" />
                   </Patch>
@@ -17212,11 +17213,16 @@
                     <Pin Id="E3wXjwtzhVuMbYcoNdO1Yw" Name="Threshold" Kind="InputPin" />
                     <Pin Id="K0gEwBLlgWOLWAxoKs7lBU" Name="Softness" Kind="InputPin" />
                   </Patch>
+                  <Link Id="KVrmR57Gel8NwBbLQowg36" Ids="QGMyvfWbwpwNYeTRWYOlrz,SZebmJQG8wPQEcHlMjWcuv" />
+                  <Link Id="RPkUWumLLeNMv0sliOx16S" Ids="HdyzdmCc6ZNLFV1Y59KmyZ,QGMyvfWbwpwNYeTRWYOlrz" IsHidden="true" />
+                  <Patch Id="Bnse8m0lCo8OdvS596UMVR" Name="SetControl">
+                    <Pin Id="HdyzdmCc6ZNLFV1Y59KmyZ" Name="Control" Kind="InputPin" />
+                  </Patch>
                   <ProcessDefinition Id="F0eXS3qlMSqNz3Kda1rAGZ">
                     <Fragment Id="LZ7t7kFokxMNs49dUMkuvO" Patch="Etolr3djmCeOWFt95t36qZ" Enabled="true" />
                     <Fragment Id="P3exNgNyg0zO6pq5NFWF1C" Patch="NYMDxRNYqD8OwQDGJfLF9h" Enabled="true" />
                     <Fragment Id="RGIYiRaAfoUPf2QMR86FZx" Patch="Svqg7nYpEVRPpStNqbt5kx" Enabled="true" />
-                    <Fragment Id="BDn1mTian0iLGO9skM7yqI" Patch="MG9DVne8fgwNNYibedhkVo" Enabled="true" />
+                    <Fragment Id="Jfl1TJtVa4IMzEIsAAVIzz" Patch="Bnse8m0lCo8OdvS596UMVR" Enabled="true" />
                     <Fragment Id="E0cm7YQoYN9PRGYkXQ6r8o" Patch="UMiE2D2eug7N4U6EBMceZX" Enabled="true" />
                     <Fragment Id="Jc6T7ovm7JwNO8eyKkdom3" Patch="Air3p7xrhTMNCt3C0UMbU5" Enabled="true" />
                   </ProcessDefinition>
@@ -17227,7 +17233,7 @@
     ************************ ChannelKeying ************************
 
 -->
-              <Node Name="ChannelKeying" Bounds="277,408" Id="VQB67jsNxPsOm9VFJ4trwj">
+              <Node Name="ChannelKeying" Bounds="118,228" Id="VQB67jsNxPsOm9VFJ4trwj">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ClassDefinition" Name="Class" />
                 </p:NodeReference>
@@ -17332,7 +17338,7 @@
     ************************ ChromaKeying ************************
 
 -->
-              <Node Name="ChromaKeying" Bounds="278,452" Id="UgLgbiWukZ9MZ6M7s5pqTL">
+              <Node Name="ChromaKeying" Bounds="116,327" Id="UgLgbiWukZ9MZ6M7s5pqTL">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ClassDefinition" Name="Class" />
                 </p:NodeReference>
@@ -17405,7 +17411,7 @@
     ************************ LumaKeying ************************
 
 -->
-              <Node Name="LumaKeying" Bounds="278,495" Id="N12NiKWFSQlOqFW6hYVV8r">
+              <Node Name="LumaKeying" Bounds="116,427" Id="N12NiKWFSQlOqFW6hYVV8r">
                 <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                   <Choice Kind="ClassDefinition" Name="Class" />
                 </p:NodeReference>
