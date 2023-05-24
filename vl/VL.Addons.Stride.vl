@@ -11588,85 +11588,6 @@
               </Node>
               <!--
 
-    ************************ Vibrance ************************
-
--->
-              <Node Name="Vibrance" Bounds="417,728" Id="FEsEGRfRHaeL5RuyctE8YD">
-                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                  <Choice Kind="ClassDefinition" Name="Class" />
-                </p:NodeReference>
-                <p:Interfaces>
-                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
-                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
-                  </TypeReference>
-                </p:Interfaces>
-                <Patch Id="SyYFb93LP25MHQ0am5O7nY">
-                  <Canvas Id="S7rY55rZFuEPjchRs3PSSu" CanvasType="Group">
-                    <Node Bounds="480,487,65,19" Id="EbqKGrI3RQ5MgQIqu4Qve9">
-                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
-                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                        <Choice Kind="ProcessAppFlag" Name="Vibrance" />
-                        <PinReference Kind="InputPin" Name="Input" />
-                        <PinReference Kind="InputPin" Name="Sampler" />
-                        <PinReference Kind="InputPin" Name="Vibrance RGB" />
-                        <PinReference Kind="InputPin" Name="Control" />
-                        <PinReference Kind="InputPin" Name="Output Texture" />
-                        <PinReference Kind="InputPin" Name="Output Size" />
-                        <PinReference Kind="InputPin" Name="Output Format" />
-                        <PinReference Kind="InputPin" Name="Render Format" />
-                        <PinReference Kind="InputPin" Name="Apply" />
-                        <PinReference Kind="OutputPin" Name="Output" />
-                      </p:NodeReference>
-                      <Pin Id="Q02hgyPyfNCLuS0hpxZ1Gi" Name="Input" Kind="InputPin" />
-                      <Pin Id="SbbeiOrk91zLwfcG5fj5uh" Name="Vibrance RGB" Kind="InputPin" />
-                      <Pin Id="DysoUtro3KrNd8xjefJ7VC" Name="Control" Kind="InputPin" />
-                      <Pin Id="QVo78HzB3GsLbwQWnGMT8f" Name="Apply" Kind="InputPin" />
-                      <Pin Id="HbL9w470TzNN9B10xFvEFt" Name="Output" Kind="OutputPin" />
-                    </Node>
-                    <ControlPoint Id="OBijVSOx5SrMX6lBO6Y6at" Bounds="482,401" />
-                    <ControlPoint Id="KJy2imucvDTOMF30tgyGBg" Bounds="502,427" />
-                    <ControlPoint Id="JoRAYCHqm9GMaNfaNxFxn2" Bounds="522,448" />
-                    <ControlPoint Id="L1NYb0YpIXiQAIFlJaz58a" Bounds="542,474" />
-                    <ControlPoint Id="Q8qbQq3Vr8OMumoaJCqrBc" Bounds="482,537" />
-                  </Canvas>
-                  <Patch Id="M3TKu2zpPJwLFvQuIb99Mf" Name="Create" />
-                  <Link Id="V7yo1G8YlRWOCWe6k3EVDP" Ids="UR13C2GWgLxNJrtY6IccdN,OBijVSOx5SrMX6lBO6Y6at" IsHidden="true" />
-                  <Link Id="All0wzY8aK2QY42PruU0kO" Ids="OBijVSOx5SrMX6lBO6Y6at,Q02hgyPyfNCLuS0hpxZ1Gi" />
-                  <Link Id="AJfL8yPEn4SOzQdBNmJKuU" Ids="Er2UH22WSNuNt1jWBTv9xu,KJy2imucvDTOMF30tgyGBg" IsHidden="true" />
-                  <Link Id="CcpdEQUidRAQcyDQaRiyjz" Ids="KJy2imucvDTOMF30tgyGBg,SbbeiOrk91zLwfcG5fj5uh" />
-                  <Link Id="NVUf4PWsQSJLLZizpvXpL7" Ids="VLx4SMHifBoPyEsp8CbPFp,JoRAYCHqm9GMaNfaNxFxn2" IsHidden="true" />
-                  <Link Id="OMF5bCPOlmAPLNTi8YUyQR" Ids="JoRAYCHqm9GMaNfaNxFxn2,DysoUtro3KrNd8xjefJ7VC" />
-                  <Link Id="NR0Ep50EdOrNOS8tY3GznV" Ids="R8XZ5psZH8MN82vex3Rwzj,L1NYb0YpIXiQAIFlJaz58a" IsHidden="true" />
-                  <Link Id="CHCXKd6ADVtOMou0jSZvuJ" Ids="L1NYb0YpIXiQAIFlJaz58a,QVo78HzB3GsLbwQWnGMT8f" />
-                  <Link Id="KsNMxUzUbjWNY0LhI2Cjzh" Ids="Q8qbQq3Vr8OMumoaJCqrBc,KMBT2SraPSJNGWSwORqjvq" IsHidden="true" />
-                  <Link Id="VHxX9Kw5uP4MwDcyzTIWIR" Ids="HbL9w470TzNN9B10xFvEFt,Q8qbQq3Vr8OMumoaJCqrBc" />
-                  <Patch Id="AbSXSf1pHMiOjfFeDhFZzT" Name="SetTexture">
-                    <Pin Id="UR13C2GWgLxNJrtY6IccdN" Name="Input" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="EDixu0JlNAwOyBdoUP70jo" Name="SetControl">
-                    <Pin Id="VLx4SMHifBoPyEsp8CbPFp" Name="Control" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="J0Z4mjnSNpsNI1fMzysZbn" Name="SetParameters">
-                    <Pin Id="Er2UH22WSNuNt1jWBTv9xu" Name="Vibrance RGB" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="CSwwNqkfNocOgQZCkNExgL" Name="Update">
-                    <Pin Id="R8XZ5psZH8MN82vex3Rwzj" Name="Apply" Kind="InputPin" />
-                  </Patch>
-                  <Patch Id="CnimaOpDPLmNRBMwvkFYd2" Name="GetTexture">
-                    <Pin Id="KMBT2SraPSJNGWSwORqjvq" Name="Output" Kind="OutputPin" />
-                  </Patch>
-                  <ProcessDefinition Id="OIMCEy6qdoSL7jgUVmMYwb">
-                    <Fragment Id="CJPlQsp5GipQbsl5NdTu1g" Patch="M3TKu2zpPJwLFvQuIb99Mf" Enabled="true" />
-                    <Fragment Id="NTNMSdBgNp6NAsc4ZeCmNe" Patch="AbSXSf1pHMiOjfFeDhFZzT" Enabled="true" />
-                    <Fragment Id="BfgclcVNfAlPhrrzHpHs95" Patch="J0Z4mjnSNpsNI1fMzysZbn" Enabled="true" />
-                    <Fragment Id="OXjy2sJPfbvLydDgJMpRFf" Patch="EDixu0JlNAwOyBdoUP70jo" Enabled="true" />
-                    <Fragment Id="ItCx1wTcR5hN8hNSo2ULlr" Patch="CSwwNqkfNocOgQZCkNExgL" Enabled="true" />
-                    <Fragment Id="Px8sstof7vYLyJi3z895NI" Patch="CnimaOpDPLmNRBMwvkFYd2" Enabled="true" />
-                  </ProcessDefinition>
-                </Patch>
-              </Node>
-              <!--
-
     ************************ Threshold ************************
 
 -->
@@ -11884,6 +11805,106 @@
                   <Link Id="EdGdHtCT9qGNrvM33XLBoX" Ids="Fq4KMqtWAWUMT36reVdHEb,G851RfKDZ7tQHSPOFsZmH1" IsHidden="true" />
                   <Link Id="UBcq3prOCSEQDC9eEcGhuv" Ids="UG82qmmcUwUL2wGORvaInm,Fq4KMqtWAWUMT36reVdHEb" />
                   <Link Id="Q93rlqogiPcQB4b9eOVU8S" Ids="RkuJXfh7jlwOJ8A3ZcVrYi,AjTCO9iFS6WLoiUwnSzgeR" IsHidden="true" />
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Vibrance ************************
+
+-->
+              <Node Name="Vibrance" Bounds="418,729" Id="I5Xr49WVmx3OAR23rcIji9">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="ClassDefinition" Name="Class" />
+                </p:NodeReference>
+                <p:Interfaces>
+                  <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                    <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                  </TypeReference>
+                </p:Interfaces>
+                <Patch Id="Sn8dveebUnAMVuJy6Apb8Z">
+                  <Canvas Id="J7blY2m1sZPOqyW6kPpy3g" CanvasType="Group">
+                    <Node Bounds="105,189,65,19" Id="HCjAWAjwBAQLKWboUYHonX">
+                      <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                        <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                        <Choice Kind="ProcessAppFlag" Name="Vibrance" />
+                        <PinReference Kind="InputPin" Name="Input" />
+                        <PinReference Kind="InputPin" Name="Sampler" />
+                        <PinReference Kind="InputPin" Name="Vibrance RGB" />
+                        <PinReference Kind="InputPin" Name="Control" />
+                        <PinReference Kind="InputPin" Name="Output Texture" />
+                        <PinReference Kind="InputPin" Name="Output Size" />
+                        <PinReference Kind="InputPin" Name="Output Format" />
+                        <PinReference Kind="InputPin" Name="Render Format" />
+                        <PinReference Kind="InputPin" Name="Apply" />
+                        <PinReference Kind="OutputPin" Name="Output" />
+                      </p:NodeReference>
+                      <Pin Id="IRgq1XVvmShLvDmI4T37L0" Name="Input" Kind="InputPin" />
+                      <Pin Id="T6uBq9z7EGKM4HHlyfA4nu" Name="Vibrance RGB" Kind="InputPin" />
+                      <Pin Id="TrrrFPL9gZNPrVtZTfDA8h" Name="Control" Kind="InputPin" />
+                      <Pin Id="Jxsu35lDz0HNZCPAlbUnQh" Name="Apply" Kind="InputPin" />
+                      <Pin Id="FKlU5HWxVLONvGGlDPVKEz" Name="Output" Kind="OutputPin" />
+                    </Node>
+                    <ControlPoint Id="HtufgEgOuUnLUbn8R1w2el" Bounds="107,103" />
+                    <ControlPoint Id="MRVHXMt2toKM2lhkBl7oow" Bounds="127,129" />
+                    <ControlPoint Id="Qd9X2MBmwp4NHUtlUghCPS" Bounds="147,150" />
+                    <ControlPoint Id="DjwKbCsfzhxMDARJ2okinf" Bounds="167,176" />
+                    <ControlPoint Id="NBJAbLmANFbPINwEmekEun" Bounds="107,239" />
+                  </Canvas>
+                  <ProcessDefinition Id="CydLNjcccfXNgoZTdmoaAj">
+                    <Fragment Id="N6r3PNMCzdgNgdM0ZXMO4e" Patch="J31Y9RtrBj0NC870aPPoQK" Enabled="true" />
+                    <Fragment Id="BmIxjy4aCOxNjKoCztHUNC" Patch="J0nDD7X3FnqLNcCDXXrThf" Enabled="true" />
+                    <Fragment Id="AkWPiHYIzlmN46pZJl2JBc" Patch="QE96avZ9o7XMH5yLAtdmYA" Enabled="true" />
+                    <Fragment Id="KcQ4OmLtQACQYjVlUT2KOP" Patch="IcI3A5epT1vNejLINgZunv" Enabled="true" />
+                    <Fragment Id="AOjHg3wwrSjM8dPBvyZo8B" Patch="S2diFzotP6APzn2l17ZVVd" Enabled="true" />
+                    <Fragment Id="VwwpcaE8EfVLE6X1Rg4EdH" Patch="VtLQ8mcEE3MOoqTMkrakWh" Enabled="true" />
+                  </ProcessDefinition>
+                  <Patch Id="J31Y9RtrBj0NC870aPPoQK" Name="Create" />
+                  <Patch Id="VtLQ8mcEE3MOoqTMkrakWh" Name="GetTexture">
+                    <Pin Id="K7CtLeDMpJsPR5jftue42C" MergeId="6913" Name="Output" Kind="OutputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="S2diFzotP6APzn2l17ZVVd" Name="Update">
+                    <Pin Id="Vs9BcdLZE3iOx9xDBQXSP3" MergeId="6915" Name="Apply" Kind="InputPin" DefaultValue="True">
+                      <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                        <Choice Kind="TypeFlag" Name="Boolean" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="J0nDD7X3FnqLNcCDXXrThf" Name="SetTexture">
+                    <Pin Id="TxS8gQ89vTeOBVQ67z98yU" MergeId="6917" Name="Input" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="Texture" />
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Patch Id="QE96avZ9o7XMH5yLAtdmYA" Name="SetParameters">
+                    <Pin Id="NVOK3uA4FtGLyt0dRQarsf" Name="Vibrance RGB" Kind="InputPin" />
+                  </Patch>
+                  <Patch Id="IcI3A5epT1vNejLINgZunv" Name="SetControl">
+                    <Pin Id="HU6dd5Hy1UVON2Iurq3fRj" Name="Control" Kind="InputPin">
+                      <p:TypeAnnotation LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+                        <Choice Kind="TypeFlag" Name="GPU" />
+                        <p:TypeArguments>
+                          <TypeReference>
+                            <Choice Kind="TypeFlag" Name="Vector4" />
+                          </TypeReference>
+                        </p:TypeArguments>
+                      </p:TypeAnnotation>
+                    </Pin>
+                  </Patch>
+                  <Link Id="LHm2YFScfVQNArkWDRHmwD" Ids="TxS8gQ89vTeOBVQ67z98yU,HtufgEgOuUnLUbn8R1w2el" IsHidden="true" />
+                  <Link Id="DV2mDBUeVpbMl2NoeJy83j" Ids="HtufgEgOuUnLUbn8R1w2el,IRgq1XVvmShLvDmI4T37L0" />
+                  <Link Id="JgNDpHKXSygLPV3qCetDXO" Ids="NVOK3uA4FtGLyt0dRQarsf,MRVHXMt2toKM2lhkBl7oow" IsHidden="true" />
+                  <Link Id="N1chWJAmxofOaikt7IaLDA" Ids="MRVHXMt2toKM2lhkBl7oow,T6uBq9z7EGKM4HHlyfA4nu" />
+                  <Link Id="QQo5PiewhWOPmd3zYVJ4hS" Ids="HU6dd5Hy1UVON2Iurq3fRj,Qd9X2MBmwp4NHUtlUghCPS" IsHidden="true" />
+                  <Link Id="MYKbIlsbx8wPN0eafpUXwf" Ids="Qd9X2MBmwp4NHUtlUghCPS,TrrrFPL9gZNPrVtZTfDA8h" />
+                  <Link Id="DXCVYNmyKevOatdKct9dmb" Ids="Vs9BcdLZE3iOx9xDBQXSP3,DjwKbCsfzhxMDARJ2okinf" IsHidden="true" />
+                  <Link Id="Boj4aItN87gLLw0ndUtDla" Ids="DjwKbCsfzhxMDARJ2okinf,Jxsu35lDz0HNZCPAlbUnQh" />
+                  <Link Id="MMUP1U82SG9PkhPDtoJ0yo" Ids="NBJAbLmANFbPINwEmekEun,K7CtLeDMpJsPR5jftue42C" IsHidden="true" />
+                  <Link Id="CQLa6EsU7ylN3Ocs8DP56q" Ids="FKlU5HWxVLONvGGlDPVKEz,NBJAbLmANFbPINwEmekEun" />
                 </Patch>
               </Node>
             </Canvas>
