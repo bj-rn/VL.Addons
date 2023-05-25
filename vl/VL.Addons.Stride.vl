@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="Cp8BLHoIN3nMQUGZkhFpJw" LanguageVersion="2023.5.0" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="Bb0DJyKKhcnOntVhvXIypO" LanguageVersion="2023.5.0" Version="0.128">
   <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2023.5.0" />
   <Patch Id="VeJSap7sIKJNwnBokjEoI8">
     <Canvas Id="KAeiw0WXEdQNQT9FSe5ubO" DefaultCategory="Stride" CanvasType="FullCategory">
@@ -692,7 +692,7 @@
             <ControlPoint Id="SUjiQn1EzyLOu4YBrRtmau" Bounds="1009,871" />
           </Patch>
         </Node>
-        <Canvas Id="RwE0RyrJMf0QZK9wzmRIVc" Name="Texture" Position="84,134">
+        <Canvas Id="RwE0RyrJMf0QZK9wzmRIVc" Name="Texture" Position="399,127">
           <Canvas Id="SmqDdoiPFojPLZchL0lLX4" Name="TextureArray" Position="97,129">
             <!--
 
@@ -3703,6 +3703,208 @@
               </Patch>
             </Node>
           </Canvas>
+        </Canvas>
+        <Canvas Id="RQ45orcxTbTPjk6ZCPhTxF" Name="BlendStateDescription" Position="99,129">
+          <!--
+
+    ************************ AlphaAdd ************************
+
+-->
+          <Node Name="AlphaAdd" Bounds="115,130" Id="QsVosKT6bf0LeBPDzGk6iq">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="ContainerDefinition" Name="Process" />
+            </p:NodeReference>
+            <Patch Id="RCdPqQw0HscOjo7YJUTg9U">
+              <Canvas Id="BlZagj6fxNSLdQ5TKMSZGK" CanvasType="Group">
+                <Node Bounds="272,330,177,19" Id="Dti3IyQXZmoLkgXWgKEZYa">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateRenderTargetDescription" />
+                  </p:NodeReference>
+                  <Pin Id="G5LsrIPw068MpPwIdpJL0X" Name="Blend Enable" Kind="InputPin" DefaultValue="True" />
+                  <Pin Id="AmoIsnVCSK0NB6fEeiZpcu" Name="Color Source Blend" Kind="InputPin" />
+                  <Pin Id="EMvOgDNqPMGOoqkNhPSjJh" Name="Color Destination Blend" Kind="InputPin" />
+                  <Pin Id="TxIpeJXJtOhPdER2HrsPad" Name="Color Blend Function" Kind="InputPin" />
+                  <Pin Id="TW1JsOfT0BpL7AsUCOK2iB" Name="Alpha Source Blend" Kind="InputPin" />
+                  <Pin Id="BGgnWu4ZfDhOA9Kk2r8MiT" Name="Alpha Destination Blend" Kind="InputPin" />
+                  <Pin Id="SVexy5ERu5vQSQjN8k0Vsm" Name="Alpha Blend Function" Kind="InputPin" />
+                  <Pin Id="Nsgx4LKHaV8NhEur9aZwvZ" Name="Color Write Channels" Kind="InputPin" />
+                  <Pin Id="GMX1IbGYokrMpWUfxVuDbh" Name="Output" Kind="OutputPin" />
+                </Node>
+                <Node Bounds="232,380,185,19" Id="PhSjJCTpA5SQKFX1T9ZTla">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateDescription" />
+                  </p:NodeReference>
+                  <Pin Id="Il1zEbPXZSzQB9NQSxHS48" Name="Alpha To Coverage Enable" Kind="InputPin" />
+                  <Pin Id="Hnbo7v6O8eBPx5cqEW2l2v" Name="Independent Blend Enable" Kind="InputPin" />
+                  <Pin Id="VNuH3khnJvvLg4t6dt70gc" Name="Render Target 0" Kind="InputPin" />
+                  <Pin Id="CT3UWAAHAIWMvwO7OR55Pn" Name="Render Target 1" Kind="InputPin" />
+                  <Pin Id="JurDwA0JazIOO6M2EmnV5f" Name="Render Target 2" Kind="InputPin" />
+                  <Pin Id="PuvtV9CVFXPN9QIs5OFOtG" Name="Render Target 3" Kind="InputPin" />
+                  <Pin Id="BvioROq9NL1PTGBqb2S7XS" Name="Render Target 4" Kind="InputPin" />
+                  <Pin Id="TQQJYewGBXaObJaMPM2smY" Name="Render Target 5" Kind="InputPin" />
+                  <Pin Id="FljXFG1su4KLCZmuodrMQr" Name="Render Target 6" Kind="InputPin" />
+                  <Pin Id="IJ9oPduUsJCPE22QWe1Esf" Name="Render Target 7" Kind="InputPin" />
+                  <Pin Id="Mt2WlreJaWPMQjOKlNRiE2" Name="Output" Kind="OutputPin" />
+                </Node>
+                <ControlPoint Id="NFAfN9m18e2M1YrpvOGPrS" Bounds="234,449" />
+                <Pad Id="Elvr9ShQk0SO3dTitLY054" Comment="Color Source Blend" Bounds="298,178,163,15" ShowValueBox="true" isIOBox="true" Value="SourceAlpha">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="CaXvWm8MIjQMw3Zd6JVa0K" Comment="Color Destination Blend" Bounds="323,202,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="SyBq5c7jUfaNZMP2C7FtD0" Comment="Color Blend Function" Bounds="348,227,101,15" ShowValueBox="true" isIOBox="true" Value="Add">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="EYraMmCmtFrMNeNmeYvykH" Comment="Alpha Source Blend" Bounds="372,253,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="RGDYf1N3WbyPOcetjkXDYA" Comment="Alpha Destination Blend" Bounds="397,275,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="QPWrEIjuCMTOq0Gtmv8i08" Comment="Alpha Blend Function" Bounds="421,295,101,15" ShowValueBox="true" isIOBox="true" Value="Max">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="T1XNeDCMfBmNvvcf44u0J8" Comment="Color Write Channels" Bounds="446,316,55,15" ShowValueBox="true" isIOBox="true" Value="All">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="ColorWriteChannels" />
+                  </p:TypeAnnotation>
+                </Pad>
+              </Canvas>
+              <Patch Id="KBib6ye0WxRQRbmAG0KqIk" Name="Create" />
+              <Patch Id="SLE2qK8r6f1MkRaNB0s4zR" Name="Update">
+                <Pin Id="TZJNtaGrYFxMfX8CURECt0" Name="Output" Kind="OutputPin" Bounds="228,489" />
+              </Patch>
+              <ProcessDefinition Id="TSHy8uuJBnBPSPxUdQDEcR">
+                <Fragment Id="Ddn6jECQ0vyNBBY86fIxbL" Patch="KBib6ye0WxRQRbmAG0KqIk" Enabled="true" />
+                <Fragment Id="E9Q1G3SecSpM7DbkHMC1JJ" Patch="SLE2qK8r6f1MkRaNB0s4zR" Enabled="true" />
+              </ProcessDefinition>
+              <Link Id="IaHQ9Fobb8IPD5u1b63twV" Ids="GMX1IbGYokrMpWUfxVuDbh,VNuH3khnJvvLg4t6dt70gc" />
+              <Link Id="QLHEuLoGHkBPJRPinKfTe5" Ids="Mt2WlreJaWPMQjOKlNRiE2,NFAfN9m18e2M1YrpvOGPrS" />
+              <Link Id="GXWdg2pog8uLvm2lIuC7Lt" Ids="NFAfN9m18e2M1YrpvOGPrS,TZJNtaGrYFxMfX8CURECt0" IsHidden="true" />
+              <Link Id="HSFd1xkhVx9OCkWRwZtPLO" Ids="Elvr9ShQk0SO3dTitLY054,AmoIsnVCSK0NB6fEeiZpcu" />
+              <Link Id="VkGbill5OdbPBANdWcC4Pc" Ids="CaXvWm8MIjQMw3Zd6JVa0K,EMvOgDNqPMGOoqkNhPSjJh" />
+              <Link Id="IPYjp1SQuPvMDYmnPwbXMD" Ids="SyBq5c7jUfaNZMP2C7FtD0,TxIpeJXJtOhPdER2HrsPad" />
+              <Link Id="VgMnCkUNydkOQFSos5IY2A" Ids="EYraMmCmtFrMNeNmeYvykH,TW1JsOfT0BpL7AsUCOK2iB" />
+              <Link Id="I38052IPAb9N1baxZESlAB" Ids="RGDYf1N3WbyPOcetjkXDYA,BGgnWu4ZfDhOA9Kk2r8MiT" />
+              <Link Id="AEh5XyXRmkXLEK9e0M2DHJ" Ids="QPWrEIjuCMTOq0Gtmv8i08,SVexy5ERu5vQSQjN8k0Vsm" />
+              <Link Id="M1NBHPgAth0ObolimqN4Rc" Ids="T1XNeDCMfBmNvvcf44u0J8,Nsgx4LKHaV8NhEur9aZwvZ" />
+            </Patch>
+          </Node>
+          <!--
+
+    ************************ Multiply ************************
+
+-->
+          <Node Name="Multiply" Bounds="318,130" Id="V0h03djWXyxPctFcLz0tk4">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="ContainerDefinition" Name="Process" />
+            </p:NodeReference>
+            <Patch Id="PCKivcqm70TLsO9rgfagYt">
+              <Canvas Id="RC2PepzXwmDMXArCBu6ltk" CanvasType="Group">
+                <Node Bounds="272,330,177,19" Id="UpDNf6lQ977MKsi2Ufdb50">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateRenderTargetDescription" />
+                  </p:NodeReference>
+                  <Pin Id="MWjXdLOB1NUNzk8LfBm5xi" Name="Blend Enable" Kind="InputPin" DefaultValue="True" />
+                  <Pin Id="B4TzIwjnSKYMYlMOoGaEgB" Name="Color Source Blend" Kind="InputPin" />
+                  <Pin Id="BcUMCllBNtMOANPWXhpoHm" Name="Color Destination Blend" Kind="InputPin" />
+                  <Pin Id="SXoPkrOdAI5MRLNkcLMW1o" Name="Color Blend Function" Kind="InputPin" />
+                  <Pin Id="DPk5S1LW8cpMB6mAXO1BaU" Name="Alpha Source Blend" Kind="InputPin" />
+                  <Pin Id="VN60uO6198aMOycFleiYaF" Name="Alpha Destination Blend" Kind="InputPin" />
+                  <Pin Id="KkMDjTMgYyoLYP1r61jUhw" Name="Alpha Blend Function" Kind="InputPin" />
+                  <Pin Id="CqW2p1MOPEpMmDpfyRaX0e" Name="Color Write Channels" Kind="InputPin" />
+                  <Pin Id="FUqQ6poGs1RObPURmGDSiq" Name="Output" Kind="OutputPin" />
+                </Node>
+                <Node Bounds="232,380,185,19" Id="KLwzVqDt56SPEwsCudSAyx">
+                  <p:NodeReference LastCategoryFullName="Stride.Graphics" LastDependency="VL.Stride.vl">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <Choice Kind="ProcessNode" Name="BlendStateDescription" />
+                  </p:NodeReference>
+                  <Pin Id="DCkXt3rY0CkPXUyfr9CJda" Name="Alpha To Coverage Enable" Kind="InputPin" />
+                  <Pin Id="MkA0izrLVKQLvO1aRjYlqx" Name="Independent Blend Enable" Kind="InputPin" />
+                  <Pin Id="MwFqJy25RizNIhS9lV8Adn" Name="Render Target 0" Kind="InputPin" />
+                  <Pin Id="V6yZPH0GaSSMyItkcMBITk" Name="Render Target 1" Kind="InputPin" />
+                  <Pin Id="FZIEasQSVWvM8jRfPcQbDq" Name="Render Target 2" Kind="InputPin" />
+                  <Pin Id="B06OH4I4myWMcRWMgxAU03" Name="Render Target 3" Kind="InputPin" />
+                  <Pin Id="MtYLj1GQVzbLyF43bA4BXd" Name="Render Target 4" Kind="InputPin" />
+                  <Pin Id="FVU752N0bXWLoDNbA9N7C0" Name="Render Target 5" Kind="InputPin" />
+                  <Pin Id="LaNmaK9TOCgPhl0PWGqen5" Name="Render Target 6" Kind="InputPin" />
+                  <Pin Id="D3vrbvL3DkvLoe8uFTCiJ6" Name="Render Target 7" Kind="InputPin" />
+                  <Pin Id="Hy9t6IXnnnIOzmh5R9HxP5" Name="Output" Kind="OutputPin" />
+                </Node>
+                <ControlPoint Id="DC8pgHNpBpoOjHz472ffnI" Bounds="234,449" />
+                <Pad Id="F66SYZ73QuQMA2fBeTjiS5" Comment="Color Source Blend" Bounds="298,178,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="SGywiUAjVpiPB63e4vGoAA" Comment="Color Destination Blend" Bounds="323,202,163,15" ShowValueBox="true" isIOBox="true" Value="Zero">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="SiDQmxLMZRWOWj1h5Ib1iB" Comment="Color Blend Function" Bounds="348,227,101,15" ShowValueBox="true" isIOBox="true" Value="Min">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="PQV59zxzxCrLzSEVEyOFpL" Comment="Alpha Source Blend" Bounds="372,253,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="IWe9XDEI5GTL8qVEbS5YGl" Comment="Alpha Destination Blend" Bounds="397,275,163,15" ShowValueBox="true" isIOBox="true" Value="One">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="Blend" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="M4DX3epPupGQJaontCnccp" Comment="Alpha Blend Function" Bounds="421,295,101,15" ShowValueBox="true" isIOBox="true" Value="Add">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="BlendFunction" />
+                  </p:TypeAnnotation>
+                </Pad>
+                <Pad Id="L2c9K89Vj2GL6ZAKlIFpii" Comment="Color Write Channels" Bounds="446,316,55,15" ShowValueBox="true" isIOBox="true" Value="All">
+                  <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.Graphics.dll">
+                    <Choice Kind="TypeFlag" Name="ColorWriteChannels" />
+                  </p:TypeAnnotation>
+                </Pad>
+              </Canvas>
+              <Patch Id="Jmq18Zmx7yCOWb6o7LNiGV" Name="Create" />
+              <Patch Id="ST2LLFzZUDuMdJl2T6qENi" Name="Update">
+                <Pin Id="F8DV2KINz0SL1NRhKygn8s" Name="Output" Kind="OutputPin" Bounds="228,489" />
+              </Patch>
+              <ProcessDefinition Id="B2iJRJqbAxBPqwlYBNIKaC">
+                <Fragment Id="JGVBmxMAKScQFDDwyU8PXz" Patch="Jmq18Zmx7yCOWb6o7LNiGV" Enabled="true" />
+                <Fragment Id="A5TjzS56ZyALTf2zioiAF2" Patch="ST2LLFzZUDuMdJl2T6qENi" Enabled="true" />
+              </ProcessDefinition>
+              <Link Id="CQGxYkPL1YSPeQOH5RlDR9" Ids="FUqQ6poGs1RObPURmGDSiq,MwFqJy25RizNIhS9lV8Adn" />
+              <Link Id="MF2zJumGYTdM6x75gscnum" Ids="Hy9t6IXnnnIOzmh5R9HxP5,DC8pgHNpBpoOjHz472ffnI" />
+              <Link Id="BraU1lbvixOQGH6daocVFz" Ids="DC8pgHNpBpoOjHz472ffnI,F8DV2KINz0SL1NRhKygn8s" IsHidden="true" />
+              <Link Id="VxSVtSkp8UDLTvlP2MyfHv" Ids="F66SYZ73QuQMA2fBeTjiS5,B4TzIwjnSKYMYlMOoGaEgB" />
+              <Link Id="MaLIFfSeaurOsfmkYbC9QU" Ids="SGywiUAjVpiPB63e4vGoAA,BcUMCllBNtMOANPWXhpoHm" />
+              <Link Id="Dmt88H83EMkPm1GR5cr1rz" Ids="SiDQmxLMZRWOWj1h5Ib1iB,SXoPkrOdAI5MRLNkcLMW1o" />
+              <Link Id="BxJRs0iHdQTOGTphp5bChR" Ids="PQV59zxzxCrLzSEVEyOFpL,DPk5S1LW8cpMB6mAXO1BaU" />
+              <Link Id="BhuQFWWP9o6LbnntC1NEIL" Ids="IWe9XDEI5GTL8qVEbS5YGl,VN60uO6198aMOycFleiYaF" />
+              <Link Id="KnSVF3h7UDiQZQRrNgd4pn" Ids="M4DX3epPupGQJaontCnccp,KkMDjTMgYyoLYP1r61jUhw" />
+              <Link Id="GD42Ba1OzGsNTJXfhuJtHH" Ids="L2c9K89Vj2GL6ZAKlIFpii,CqW2p1MOPEpMmDpfyRaX0e" />
+            </Patch>
+          </Node>
         </Canvas>
       </Canvas>
       <Canvas Id="R44ulCOeyvsOUeYmv9RLQY" Name="Materials" Position="498,128">
