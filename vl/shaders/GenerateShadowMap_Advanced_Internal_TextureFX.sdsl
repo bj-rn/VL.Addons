@@ -7,8 +7,11 @@
 
 shader GenerateShadowMap_Advanced_Internal_TextureFX : TextureFX
 {
-    float2 lightPos;
-    float2 lightSize;
+    [Default(0.0f, 0.0f)]
+    compose ComputeFloat2 lightPos;
+
+	[Default(1.0f, 1.0f)]
+    compose ComputeFloat2 lightSize;
 
     float2 resolution = float2(512,512);
 
@@ -30,9 +33,9 @@ shader GenerateShadowMap_Advanced_Internal_TextureFX : TextureFX
             float r = (1.0 + norm.y) * 0.5;
         
             //coord which we will sample from occlude map
-            float2 coord = (float2(-r * sin(theta), -r * cos(theta))*lightSize)/2.0 + 0.5;
+            float2 coord = (float2(-r * sin(theta), -r * cos(theta))*lightSize.Compute())/2.0 + 0.5;
                 
-            coord +=  lightPos * float2(1,-1);
+            coord +=  lightPos.Compute() * float2(1,-1);
         
             //sample the occlusion map
             float4 data = Texture0.Sample(LinearSampler,coord);
