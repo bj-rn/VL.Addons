@@ -14,14 +14,14 @@ shader Anaglyph_Advanced_Internal_TextureFX : FilterBase
     compose ComputeFloat Distance = 0.1f;
 
     [Default(0.1f)]
-    float MapBlur = 0.1f;
+    compose ComputeFloat MapBlur = 0.1f;
 
     float4 Filter(float4 tex0col)
     {
         float2 uv = streams.TexCoord;
         float2 R = ViewSize;
         
-        float lod = 1 + saturate(MapBlur) * log2(max(R.x, R.y));
+        float lod = 1 + saturate(MapBlur.Compute()) * log2(max(R.x, R.y));
         float2 off = float2(Boost.Compute(), 0)/256.;
         float4 map = Texture0.SampleLevel(Sampler1, uv, lod);
         float depth = map.x-Distance.Compute();
