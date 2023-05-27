@@ -1,0 +1,74 @@
+// source:
+// https://github.com/mrvux/dx11-vvvv-girlpower/blob/master/nodes/texture11/Source/Electricity.tfx
+// this node has a wrapper patch for loading the noise volume and feeding the animation time
+[TextureSource]
+[Category("Source.Noise")]
+[Summary("Returns an electricity texture")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader Electricity_Advanced_Internal_TextureFX : TextureFX
+{
+    // set by wrapper patch
+    [Default(0.0f)]
+    compose ComputeFloat Time;
+
+    Texture3D NoiseTexture;
+
+    [Color]
+    float4 BackgroundColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    [Color]
+    float4 ElectricityColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    
+    [Default(0.25f)]
+    compose ComputeFloat Height;
+
+    [Default(0.5f)]
+    compose ComputeFloat VertexNoise;
+
+    [Default(0.5f)]
+    compose ComputeFloat GlowStrength;
+
+    [Default(0.5f)]
+    compose ComputeFloat GlowFallOff;
+
+    [Default(0.25f)]
+    compose ComputeFloat AmbientGlow;
+
+    [Default(0.5f)]
+    compose ComputeFloat AmbientGlowHeightScale;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord - 0.5;
+
+        float time = Time.Compute();
+        float2 t = float2(time - VertexNoise.Compute() * abs(uv.y), time);
+
+        // Sample at three positions for some horizontal blur
+        // The shader should blur fine by itself in vertical direction
+        float xs0 = uv.x;
+        float xs1 = uv.x + uv.y;
+
+        // Noise for the two samples
+        float noise0 = NoiseTexture.SampleLevel(LinearRepeatSampler, float3(xs0, t), 0).x;
+        float noise1 = NoiseTexture.SampleLevel(LinearRepeatSampler, float3(xs1, t), 0).x;
+        
+        // The position of the flash
+        float height = Height.Compute();
+        float mid0 = height * (noise0 * 2 - 1) * (1 - xs0 * xs0);
+        float mid1 = height * (noise1 * 2 - 1) * (1 - xs1 * xs1);
+
+        // Distance to flash
+        float dist0 = abs(uv.y - mid0);
+        float dist1 = abs(uv.y - mid1);
+
+        // Glow according to distance to flash
+        float glow = 1.0 - pow(0.5 * (3*dist0 + dist1), GlowFallOff.Compute()/10.0);
+
+        // Add some ambient glow to get some power in the air feeling
+        float ambientGlowHeightScale = AmbientGlowHeightScale.Compute();
+        float ambGlow = AmbientGlow.Compute() * (1 - uv.x * uv.x) * (1 - ambientGlowHeightScale * ambientGlowHeightScale * uv.y * uv.y);
+        float s = GlowStrength.Compute() * glow * glow * 20 + ambGlow * ambGlow;
+        return lerp(BackgroundColor, ElectricityColor, s*s);
+    }
+};
