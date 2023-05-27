@@ -21,16 +21,8 @@ shader Hatch_Square_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
     [Default(0.5f)]
     compose ComputeFloat Rotation;
 
-    //float2 r2d(float2 x,float a)
-    //{
-	   // a*=acos(-1)*2;
-	   // return float2(cos(a)*x.x+sin(a)*x.y,cos(a)*x.y-sin(a)*x.x);
-    //}
-
-
     float4 Filter(float4 tex0col)
     {
-	    //float2 x=(vp+0.5)/R;
 	    float4 col = tex0col;
 	    col.rgb = sqrt(col.rgb);
         float2 rotated = r2d(streams.TexCoord * ViewSize - 0.5, Rotation.Compute());
