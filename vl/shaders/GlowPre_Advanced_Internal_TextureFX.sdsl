@@ -1,0 +1,52 @@
+﻿[Category("Filter")]
+[Summary("")]
+[OutputFormat("R16G16B16A16_Float")]
+[WantsMips("Texture0")]
+
+shader GlowPre_Advanced_Internal_TextureFX : FilterBase
+{
+    [Default(0.0f)]
+    compose ComputeFloat HighlightBoost;
+
+    [Default(1.0f)]
+    compose ComputeFloat Saturation;
+
+    [Default(8.0f)]
+    compose ComputeFloat PreBlurWidth;
+
+    float3 safenormalize(float3 x)
+    {
+        x = lerp(x, x + .00001, x == 0);
+        return normalize(x);
+    }
+
+    float PreGamma() 
+    {
+        return pow(2, HighlightBoost.Compute());
+    }
+
+    static const float PW = 4.0f;
+    static const float PW0 = 7.0;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 R = ViewSize;
+        float2 uv = streams.TexCoord;
+        float lod = 1 + log2(max(R.x, R.y));
+        float4 c = Texture0.SampleLevel(Sampler0, uv, 0);
+
+        for(float i=0; i<7; i++){
+            c += Texture0.SampleLevel(Sampler0, uv + sin((i/7. + float2(.25, 0)) * acos(-1) * 2) * PreBlurWidth.Compute()/R, 1);
+        }
+        c /= 7;
+
+        float mc = min(c.r, min(c.g, c.b));
+        float gs = Saturation.Compute();
+
+        c.rgb = (c.rgb-mc) * gs + lerp(mc, dot(c.rgb, 1./3), saturate(1 - gs));
+        c.rgb = safenormalize(c.rgb) * pow(length(c.rgb) / sqrt(2), PreGamma()) * sqrt(2);
+        c.a = pow(length(Texture0.Sample(Sampler0, uv).rgb), PW0);
+
+        return c;
+    }
+};

@@ -1,0 +1,59 @@
+﻿[Category("Filter")]
+[Summary("")]
+[WantsMips("Texture0, Texture1")]
+shader GlowMain_Advanced_Internal_TextureFX : FilterBase
+{
+    [Default(1.0f)]
+    compose ComputeFloat Amount;
+
+    [Default(1.0f)]
+    compose ComputeFloat MaxRadius;
+
+    [Default(0.0f)]
+    compose ComputeFloat Shape;
+
+    [Default(0.0f)]
+    compose ComputeFloat HighlightBoost;
+
+    float2 r2dlocal(float2 x, float a)
+    {
+        a *= acos(-1) * 2;
+        return float2(cos(a) * x.x + sin(a) * x.y, cos(a) * x.y - sin(a) * x.x);
+    }
+
+    float3 safenormalize(float3 x)
+    {
+        x = lerp(x, x + .00001, x == 0);
+        return normalize(x);
+    }
+
+    float PreGamma() 
+    {
+        return pow(2, HighlightBoost.Compute());
+    }
+
+    static const float PW = 4.0f;
+    static const float PW0 = 7.0;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 R = ViewSize;
+        float2 uv = streams.TexCoord;
+        float lod = log2(max(R.x,R.y));
+        float4 s = Texture1.Sample(Sampler1, uv);
+        float4 g = 0;
+        for(float i=0; i<min(lod - (1 - MaxRadius.Compute() * lod), 14); i++){
+            g += pow(max(0, float4(Texture0.SampleLevel(Sampler0, uv + r2dlocal((uv * R) % 4 - 1.5, i *.25 +.125) / R *.5 * pow(2, i), i + 1).rgb, 1) * pow(2, i*Shape.Compute() - lod + 1)), .8) * saturate(MaxRadius.Compute() * lod - i + 1);
+        }
+        g.rgb /= g.a;
+        //g.rgb /= tex2Dlod(s0, float4(uv, 0, 33)).a;
+        float srcAvg = length(Texture1.SampleLevel(Sampler1, uv, 33).rgb);
+        float srcMax = pow(max(0, Texture0.SampleLevel(Sampler0, uv, 33).a), 1. / PW0);
+        //g.rgb *= srcAvg / srcMax;
+        g.rgb *= Amount.Compute();
+        float4 c = 0;
+        c.rgb = g.rgb;
+        c.a = pow(length(g.rgb + safenormalize(s.rgb) * sqrt(2) * pow(length(s.rgb) / sqrt(2), PreGamma())), PW);
+        return c;
+    }
+};
