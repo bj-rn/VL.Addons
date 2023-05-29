@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="Aca0MUtGibZOPxVWViHa3S" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="Aca0MUtGibZOPxVWViHa3S" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -15,7 +15,7 @@
       </p:NodeReference>
       <Patch Id="Q8sCQ8DMW8YME67P0dnYWX">
         <Canvas Id="H5BgwWBaGwNPnrRZzEF23u" CanvasType="Group">
-          <Node Bounds="138,790,225,19" Id="BhkjTauTYTBLCyWdF5xR1r">
+          <Node Bounds="139,797,225,19" Id="BhkjTauTYTBLCyWdF5xR1r">
             <p:NodeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
@@ -121,7 +121,7 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="178,732,185,19" Id="C8Q58u4WFLALksHX1Ln6zZ">
+          <Node Bounds="179,753,185,19" Id="C8Q58u4WFLALksHX1Ln6zZ">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Stylize" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Stylize" NeedsToBeDirectParent="true" />
@@ -135,17 +135,17 @@
             <Pin Id="Q8TbAMFPj9WPVPS98piEMf" Name="Desaturate" Kind="InputPin" />
             <Pin Id="Q1UAkAvR114QEmqcbyK3pf" Name="Brightness" Kind="InputPin" />
             <Pin Id="RRXYRwV6eInNu5yFbgvTZE" Name="Contrast" Kind="InputPin" />
-            <Pin Id="IiYEDMYdXtvL98SpOgjtK9" Name="Radius" Kind="InputPin" />
+            <Pin Id="IiYEDMYdXtvL98SpOgjtK9" Name="Radius" Kind="InputPin" DefaultValue="-0.04" />
             <Pin Id="HAGzHE3xrxPP0HGTJTWyzy" Name="Control" Kind="InputPin" />
             <Pin Id="IwMdLf4eTIhNIiI6KTUSQ2" Name="Apply" Kind="InputPin" />
             <Pin Id="BnIGhGZkwvzNkYUfTbvn0G" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="CqJwaCfRjlYNrT8xQ4rxgL" Comment="Brightness" Bounds="280,695,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+          <Pad Id="CqJwaCfRjlYNrT8xQ4rxgL" Comment="Brightness" Bounds="281,695,35,15" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="GJgMkx9BHzoL191rNkJlQ3" Comment="Contrast" Bounds="300,719,35,15" ShowValueBox="true" isIOBox="true" Value="-0.22">
+          <Pad Id="GJgMkx9BHzoL191rNkJlQ3" Comment="Contrast" Bounds="301,719,35,15" ShowValueBox="true" isIOBox="true" Value="-0.22">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -224,6 +224,11 @@
               <Choice Kind="TypeFlag" Name="Edge" />
             </p:TypeAnnotation>
           </Pad>
+          <Pad Id="UIF2y3A8VZjPSi4xABoY1f" Comment="Radius" Bounds="321,739,35,15" ShowValueBox="true" isIOBox="true" Value="-0.04">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -255,9 +260,10 @@
         <Link Id="NhKwdYSqEVQN8HS5EaW3Iv" Ids="U7qblGj2lmALU2Yqds5spn,QsMrO2vxO7ZN0VhUDt9Uja" />
         <Link Id="MIEjrzcb8OqNSUFJ1qa1le" Ids="DuW7CvqVq31OgvZ1l0GYjQ,K3fsIkWERyoPF6KXCaddM3" />
         <Link Id="Kt9dY3P38jFMcuocJX43Ds" Ids="BlLc6PHuykqNkPOmRDqRAT,LRaQKe4iM1YNYDiIzV4Aj9" />
+        <Link Id="JefU7YMXB3jLszMhnXFiC3" Ids="UIF2y3A8VZjPSi4xABoY1f,IiYEDMYdXtvL98SpOgjtK9" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="HVSUsc6HNhtNpkb6trUqoc" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
