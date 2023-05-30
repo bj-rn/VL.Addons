@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="Lr09DSd1dTZPPmsZPW8ggR" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
+  <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
+    <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="FTnHEHJoABVMZpE9wKWWCv">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="Q8sCQ8DMW8YME67P0dnYWX">
+        <Canvas Id="H5BgwWBaGwNPnrRZzEF23u" CanvasType="Group">
+          <Node Bounds="74,567,225,19" Id="ClYvzHaUimmPUXsLlpkmfn">
+            <p:NodeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
+            </p:NodeReference>
+            <Pin Id="Vgyip6m50HzO4R0DBbFaiB" Name="Bounds" Kind="InputPin" DefaultValue="1388, 100, 512, 512">
+              <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Rectangle" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="MABK3lOedTwLIc4NzYFHul" Name="Bound to Document" Kind="InputPin" DefaultValue="True">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Boolean" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="LpvbAlVbgSMLpCdE9HFXIF" Name="Input" Kind="InputPin" />
+            <Pin Id="OiCvTjT1eeeN2VM7tDpW46" Name="Title" Kind="InputPin" DefaultValue="ConvertColorSpace (Advanced)">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="String" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="LCSnWosaSpoMSWMsSyl12J" Name="Clear Color" Kind="InputPin" />
+            <Pin Id="Fjuam2T4xV3QSU2F3DTeBE" Name="Clear" Kind="InputPin" />
+            <Pin Id="T89euAXQniFNx2O1BmKjBL" Name="Is Premultiplied Alpha" Kind="InputPin" />
+            <Pin Id="VF67juOUm9kMHEgHXJjhB5" Name="Scaling Mode" Kind="InputPin" />
+            <Pin Id="LXxmrToNbWPMbkh1zDXJvV" Name="Enable Keyboard Shortcuts" Kind="InputPin" />
+            <Pin Id="EO7nfLM39acNjtZzGupjeU" Name="Enabled" Kind="InputPin" />
+            <Pin Id="GRBaVHGJAT6MhM5OcbekZ3" Name="Show Info String" Kind="InputPin" />
+            <Pin Id="SeJkxriVAH6LDvexpC2ouI" Name="Present Interval" Kind="InputPin" />
+            <Pin Id="VC2lQD3bv05MAcl7rfBa9o" Name="Output" Kind="OutputPin" />
+            <Pin Id="KF0iHqDhZuSPJUnLozssJE" Name="Client Bounds" Kind="OutputPin" />
+            <Pin Id="SJfSW2RgZdKLBIu8h4BHHn" Name="Input Source" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="114,121,67,19" Id="VZOveFNSWukPaudSRss5Jh">
+            <p:NodeReference LastCategoryFullName="Stride.Assets" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="GameAsset" />
+            </p:NodeReference>
+            <Pin Id="QKoLx66n9ipO6bpC7khajs" Name="Url" Kind="InputPin" />
+            <Pin Id="DDvMfb1ggAbOdU8uCY25Xd" Name="Reload" Kind="InputPin" />
+            <Pin Id="OqZojhWZ7yLOUtHM9fQ3Ea" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="NoH5u6puhHrPZQE1cUm2uH" Comment="" Bounds="116,104,83,15" ShowValueBox="true" isIOBox="true" Value="Textures/wimp">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="114,504,102,19" Id="AfISbPstmKHPvnKbzWhDn0">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Utils" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ConvertColorSpace" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="A366Pf6DCP2MAivJaoZ3cE" Name="Input" Kind="InputPin" />
+            <Pin Id="Ov2eKQbtLqtPqINMyJCm9q" Name="Gamma" Kind="InputPin" />
+            <Pin Id="NfPEoyk7lrlOUds5PS7sZZ" Name="ColorSpace Conversion" Kind="InputPin" />
+            <Pin Id="EkrYTABmyoqPzoYXiYy6ea" Name="Apply" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="VIG14n8ApBBMOqwbMkkUYX" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Sed1FoA1DuCOTYNObuSMJO" Comment="" Bounds="181,315,102,89" ShowValueBox="true" isIOBox="true" Value="LinearToGamma">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">VerticalList</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="QYy1PlJ8JcNMBADNeUpAMv" Comment="" Bounds="403,102,122,15" ShowValueBox="true" isIOBox="true" Value="GammaToLinear">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="SoKcdODOAUtOXBCNdhTEpn" Comment="Gamma" Bounds="148,168,35,15" ShowValueBox="true" isIOBox="true" Value="2.2">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="QIjymmvBbqOOQh2khI5DsZ" Bounds="399,126,182,93" ShowValueBox="true" isIOBox="true" Value="Converts a texture from gamma to linear color space.&#xD;&#xA;Recommended output format should have 16 or 32 bit per color channel.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="MDxc9XFK5hKMvNWgrdMv2o" Comment="" Bounds="609,102,122,15" ShowValueBox="true" isIOBox="true" Value="SRGBToLinear">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="UBX7qaUIfMjLThEVX4TPH4" Bounds="605,126,178,157" ShowValueBox="true" isIOBox="true" Value="Converts a texture from sRGB to linear color space.&#xD;&#xA;Only necessary if the texture pixel data is encoded in sRGB but the format doesn't reflect that. Input format shouldn't have _SRgb suffix.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="MfckSNUHhokNLsS9qYzzvW" Comment="" Bounds="808,101,122,20" ShowValueBox="true" isIOBox="true" Value="SRGBToLinearPrecise">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="IvhZDrX8aKFPRuQ5jDHBHt" Bounds="804,130,165,81" ShowValueBox="true" isIOBox="true" Value="Slightly slower but does an exact color space conversion.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="LblCqguLyi7MaveTFaRNsF" Comment="" Bounds="406,305,122,15" ShowValueBox="true" isIOBox="true" Value="LinearToGamma">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="SI5mXjjMe0JNgoLEGisqyt" Bounds="402,329,182,93" ShowValueBox="true" isIOBox="true" Value="Converts a texture from linear to gamma color space.&#xD;&#xA;This is usually the last color transformation before a texture in linear color space gets displayed on screen.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="KmRGSOaSk5aP02I8Wq5AIr" Comment="" Bounds="608,305,122,15" ShowValueBox="true" isIOBox="true" Value="LinearToSRGB">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="CA7fxGNiKmvPgzDxrbByxN" Bounds="604,329,182,138" ShowValueBox="true" isIOBox="true" Value="Converts a texture from linear to sRGB color space.&#xD;&#xA;This is only necessary if the texture pixel data is in linear space but the format has the _SRgb suffix. Input format should have _SRgb suffix.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="UosrrJaqpqKLCypGg0q3f7" Comment="" Bounds="809,306,122,20" ShowValueBox="true" isIOBox="true" Value="LinearToSRGBPrecise">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="ColorspaceConversion" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">DropDown</p:selectionmode>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="CkoGzRDTOT2N6JeniYSCbE" Bounds="805,335,165,81" ShowValueBox="true" isIOBox="true" Value="Slightly slower but does an exact color space conversion.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="139,199,45,19" Id="DSXWhNa1z9YM26CLOBGnzi">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LFO" />
+            </p:NodeReference>
+            <Pin Id="BSdECdlV3ouQAYuu0y1wpa" Name="Period" Kind="InputPin" />
+            <Pin Id="SeQUJ5GadZYQTrXUFkSLBf" Name="Pause" Kind="InputPin" />
+            <Pin Id="IUgTeAPF3r4OcppAos9Qfp" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="OSuOLNBCKMePz6u24kkLN1" Name="Phase" Kind="OutputPin" />
+            <Pin Id="IlbbyDtstzvOnbC6hZof7t" Name="On New Cycle" Kind="OutputPin" />
+            <Pin Id="G3C53dj5rW9QAwDy7w9YXI" Name="Cycles" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="179,232,39,19" Id="IDyJFlj6dN0OVTu3xmn5Dl">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="MOD" />
+            </p:NodeReference>
+            <Pin Id="K1fql8ZDBlQQBIzJTWIxxu" Name="Input" Kind="InputPin" />
+            <Pin Id="BaHYD4azkctMqULVT8pgzA" Name="Input 2" Kind="InputPin" DefaultValue="7" />
+            <Pin Id="Mc0kcMVj7nrLcJul9ASaBW" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="211,430,27,19" Id="EHCJ5bt0Pe4MeiR0iIRWah">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="!=" />
+            </p:NodeReference>
+            <Pin Id="N8xK6ZnF5wcNFCIyJi7sah" Name="Input" Kind="InputPin" />
+            <Pin Id="SHKfpal8m0sNsnT9RUz6MM" Name="Input 2" Kind="InputPin" DefaultValue="6" />
+            <Pin Id="Syx5E1Rq7wULILjUJQuLte" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="179,278,65,19" Id="IFhBRRZsOA6NhoZQtIawZi">
+            <p:NodeReference LastCategoryFullName="Primitive.Enum" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Ord2Enum" />
+            </p:NodeReference>
+            <Pin Id="Riel41oeOrvP5bfesP4tPc" Name="Input" Kind="StateInputPin" />
+            <Pin Id="Tzj77BXuxmzNyFl31rCmx8" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="UYnshvw7cqgOyU9NU3Ka9O" Comment="Apply" Bounds="213,468,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
+        <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" ParticipatingElements="FbpsMgV6S3zPV9BQopUBTL" />
+        <ProcessDefinition Id="MXjph1Jl3YTLTpnVfu9i5N">
+          <Fragment Id="ItPcigYZrenP4rS45rZYvB" Patch="PUlzAtkreEKOlH9onlCQls" Enabled="true" />
+          <Fragment Id="Lwu9TKkNC7hNyqQtkuD3t2" Patch="E3o2of9KQaVPZakiXXm9Xe" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="UcASrFmo6MzNcSpQnw592m" Ids="NoH5u6puhHrPZQE1cUm2uH,QKoLx66n9ipO6bpC7khajs" />
+        <Link Id="FbpsMgV6S3zPV9BQopUBTL" Ids="OqZojhWZ7yLOUtHM9fQ3Ea,A366Pf6DCP2MAivJaoZ3cE" />
+        <Link Id="IRgdPhwXf7ULjhWZAlcgiM" Ids="VIG14n8ApBBMOqwbMkkUYX,LpvbAlVbgSMLpCdE9HFXIF" />
+        <Link Id="VwFwLVD3QKINFO9aJlUyI2" Ids="Sed1FoA1DuCOTYNObuSMJO,NfPEoyk7lrlOUds5PS7sZZ" />
+        <Link Id="QFX4lsm245wL9OJAQM3RnL" Ids="SoKcdODOAUtOXBCNdhTEpn,Ov2eKQbtLqtPqINMyJCm9q" />
+        <Link Id="KWCu8YtUivrOz26R71d91L" Ids="G3C53dj5rW9QAwDy7w9YXI,K1fql8ZDBlQQBIzJTWIxxu" />
+        <Link Id="N5fI55U0qLwOG4TgtT3anA" Ids="Mc0kcMVj7nrLcJul9ASaBW,Riel41oeOrvP5bfesP4tPc" />
+        <Link Id="O20jJeqrRXvPSDXp7sjPZZ" Ids="UYnshvw7cqgOyU9NU3Ka9O,EkrYTABmyoqPzoYXiYy6ea" />
+        <Link Id="Eoh2TQU5k74PjKRXpDNwV5" Ids="Syx5E1Rq7wULILjUJQuLte,UYnshvw7cqgOyU9NU3Ka9O" />
+        <Link Id="NBP9jr0MCnSO0tTwuUxxAu" Ids="Tzj77BXuxmzNyFl31rCmx8,Sed1FoA1DuCOTYNObuSMJO" />
+        <Link Id="IG6PQQ3w5D9OArwTNPxYxk" Ids="Mc0kcMVj7nrLcJul9ASaBW,N8xK6ZnF5wcNFCIyJi7sah" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
+  <DocumentDependency Id="FiRwQCGPBjgNlIeOOxKhpv" Location="../../../vl/VL.Addons.Stride.vl" />
+</Document>
