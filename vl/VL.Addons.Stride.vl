@@ -9448,6 +9448,92 @@
               </Patch>
             </Patch>
           </Node>
+          <!--
+
+    ************************ Clamp (Advanced) ************************
+
+-->
+          <Node Name="Clamp (Advanced)" Bounds="125,621" Id="TRjf1HgcpbUOCZxlNXKwAZ">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="ClassDefinition" Name="Class" />
+            </p:NodeReference>
+            <p:Interfaces>
+              <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+              </TypeReference>
+            </p:Interfaces>
+            <Patch Id="PXcsHhF9D6qPWwFLyuO9jS">
+              <Canvas Id="OtAgCeKbgFPOzo6BTda8rI" CanvasType="Group">
+                <Node Bounds="303,392,85,19" Id="HN2dentpmY5NWl3b7IwOjY">
+                  <p:NodeReference LastCategoryFullName="Stride.Textures.Textures.Utils" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                    <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                    <CategoryReference Kind="Category" Name="Textures" />
+                    <CategoryReference Kind="Category" Name="Utils" />
+                    <CategoryReference Kind="Category" Name="Utils" NeedsToBeDirectParent="true">
+                      <p:OuterCategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true">
+                        <p:OuterCategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true" />
+                      </p:OuterCategoryReference>
+                    </CategoryReference>
+                    <Choice Kind="ProcessNode" Name="Clamp" />
+                  </p:NodeReference>
+                  <Pin Id="SuGV5w6DiSVNfhnpo35wBS" Name="Input" Kind="InputPin" />
+                  <Pin Id="DquF8o3a1BdPfobRD5jDIG" Name="Min" Kind="InputPin" />
+                  <Pin Id="DFUTiQXFuymNZ6uQvjlnGI" Name="Max" Kind="InputPin" />
+                  <Pin Id="JiGj6BA6WYXLLSEvcUpQDG" Name="Control" Kind="InputPin" />
+                  <Pin Id="Gz7vvR5T1JzMIFLhDZIczs" Name="Apply" Kind="InputPin" />
+                  <Pin Id="M8J3kAZSOCTM3H3phaT47C" Name="Output" Kind="OutputPin" />
+                </Node>
+                <ControlPoint Id="ILDP05h1YAgM9ECMLPFasr" Bounds="305,278" />
+                <ControlPoint Id="CIHBG5cCeVqNPEB6PpG7Xn" Bounds="305,432" />
+                <ControlPoint Id="LyYV3Eu9JSJLOJSGmGf8c2" Bounds="325,301" />
+                <ControlPoint Id="HRdffAkwlTfP8A97G53fB1" Bounds="345,324" />
+                <ControlPoint Id="ACoWKuhLoqLMh057pEnANO" Bounds="365,347" />
+                <ControlPoint Id="DvOBs3wBvUfNUJ4Vrj8ugB" Bounds="385,369" />
+              </Canvas>
+              <Patch Id="LWwvqpfJUSVNOZxo9yHGW2" Name="Create" />
+              <Link Id="FAHouLLvU8aLWQOlLnV5qT" Ids="ILDP05h1YAgM9ECMLPFasr,SuGV5w6DiSVNfhnpo35wBS" />
+              <Link Id="J2LjHWufFDNNhM4lzKKq1M" Ids="QKOkGEm6Hv9LTcmqDCi75z,ILDP05h1YAgM9ECMLPFasr" IsHidden="true" />
+              <Link Id="VDjPY0zYNnuPkSu5s5qXeT" Ids="M8J3kAZSOCTM3H3phaT47C,CIHBG5cCeVqNPEB6PpG7Xn" />
+              <Link Id="Ux5DoAEVBdfNk3VUhPA3UV" Ids="CIHBG5cCeVqNPEB6PpG7Xn,EplhhVzBIDsL4MxuGfhVcc" IsHidden="true" />
+              <Link Id="HuI69kNlHXqMZHz0YFu5MP" Ids="ByPMONFYxx8NJLROG3JZdP,LyYV3Eu9JSJLOJSGmGf8c2" IsHidden="true" />
+              <Link Id="OEgxuEW1PcRNzJVVbCKcKy" Ids="LyYV3Eu9JSJLOJSGmGf8c2,DquF8o3a1BdPfobRD5jDIG" />
+              <Link Id="VjeShVNDFP4NdtdgCUSYKv" Ids="LvzQdn0B0HqQAK5odLKx06,HRdffAkwlTfP8A97G53fB1" IsHidden="true" />
+              <Link Id="UgA4g6rEWjkOHueXPeItFb" Ids="HRdffAkwlTfP8A97G53fB1,DFUTiQXFuymNZ6uQvjlnGI" />
+              <Link Id="HWCbxhN9BThOsCC3HeExjg" Ids="F7BhYRIrodULT7Rl1Jfdgb,ACoWKuhLoqLMh057pEnANO" IsHidden="true" />
+              <Link Id="PPhcZpxNjD9PXNUH1EZiIc" Ids="ACoWKuhLoqLMh057pEnANO,JiGj6BA6WYXLLSEvcUpQDG" />
+              <Link Id="EHbx5tvg1iuMhkzU5ziR5g" Ids="RzGng9oWiAQMHfPKFmlaMq,DvOBs3wBvUfNUJ4Vrj8ugB" IsHidden="true" />
+              <Link Id="Qb2nHwj6X7FQEBRXil3HcL" Ids="DvOBs3wBvUfNUJ4Vrj8ugB,Gz7vvR5T1JzMIFLhDZIczs" />
+              <Patch Id="CTlK6mK8mZjLL52JmA0via" Name="Update">
+                <Pin Id="RzGng9oWiAQMHfPKFmlaMq" Name="Apply" Kind="InputPin" />
+              </Patch>
+              <Patch Id="PXbXePqrAHqPTI1pwN0Q9K" Name="SetControl">
+                <Pin Id="F7BhYRIrodULT7Rl1Jfdgb" Name="Control" Kind="InputPin" />
+              </Patch>
+              <Patch Id="FF7GrxVL9DCLatFAsb1HKg" Name="SetTexture">
+                <Pin Id="QKOkGEm6Hv9LTcmqDCi75z" Name="Input" Kind="InputPin" />
+              </Patch>
+              <Patch Id="F6RIHKRJdOvNDHbkHbviIz" Name="GetTexture">
+                <Pin Id="EplhhVzBIDsL4MxuGfhVcc" Name="Output" Kind="OutputPin" />
+              </Patch>
+              <Patch Id="Jn0mgEwO2JtQYdIfgO0oH8" Name="SetParameters">
+                <Pin Id="ByPMONFYxx8NJLROG3JZdP" Name="Min" Kind="InputPin" />
+                <Pin Id="LvzQdn0B0HqQAK5odLKx06" Name="Max" Kind="InputPin" />
+              </Patch>
+              <!--
+
+    ************************  ************************
+
+-->
+              <ProcessDefinition Id="G2fZFwfsaKmMj6pwQ6hYfI">
+                <Fragment Id="RQAsT7d5geaNy9O0R9ZlGR" Patch="LWwvqpfJUSVNOZxo9yHGW2" Enabled="true" />
+                <Fragment Id="BG7I8csGqCNPKoDPQOsULH" Patch="FF7GrxVL9DCLatFAsb1HKg" Enabled="true" />
+                <Fragment Id="BicW994hebmO8WDrd1bj6U" Patch="Jn0mgEwO2JtQYdIfgO0oH8" Enabled="true" />
+                <Fragment Id="BlcVT704bOTQTQ20zz9Vpp" Patch="PXbXePqrAHqPTI1pwN0Q9K" Enabled="true" />
+                <Fragment Id="UnxG5mScskiPrfZTd2OieR" Patch="CTlK6mK8mZjLL52JmA0via" Enabled="true" />
+                <Fragment Id="TbkHOS3EujGQZCN4NBVm6a" Patch="F6RIHKRJdOvNDHbkHbviIz" Enabled="true" />
+              </ProcessDefinition>
+            </Patch>
+          </Node>
         </Canvas>
         <Canvas Id="V3s4YUnWeXEPsiJLtuS2Ms" Name="Filter" Position="100,230">
           <Canvas Id="DQan8kIBAwyNC4f8WioUr7" Name="Advanced" Position="99,130">
