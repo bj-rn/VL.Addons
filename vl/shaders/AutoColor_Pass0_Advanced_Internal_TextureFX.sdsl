@@ -1,0 +1,34 @@
+// source:
+// https://github.com/vvvv/vvvv-sdk/tree/develop/vvvv45/addonpack/lib/nodes/modules/TextureFX/Filter/AutoColor
+
+[Category("Filter.ColorManipulation")]
+[Summary("Automatic color adjustment")]
+
+shader AutoColor_Pass0_Advanced_Internal_TextureFX : FilterBase
+{
+	[Default(1.0)]
+    compose ComputeFloat Power;
+
+    [Default(0.0)]
+    compose ComputeFloat Fade;
+
+    bool Reset;
+
+    float4 Filter(float4 tex0col)
+    {
+       float4 u = tex0col;
+       float4 c = tex0col;
+
+       float power = Power.Compute();
+       float fade = Fade.Compute();
+
+       c.x = pow(max(u.r, max(u.g, u.b)), power);
+       c.y = dot(u.rgb, 1.0) / 3.0;
+       c.z = 0;
+       float4 pre = Texture1.SampleLevel(LinearSampler, streams.TexCoord, 0);
+       c.x = pow(lerp(pow(c.x, 1.0 / power), pow(pre.x, 1.0 / power), fade), power);
+       c.y = lerp(c.y, pre.y, fade * !Reset);
+       return c;
+    }
+};
+
