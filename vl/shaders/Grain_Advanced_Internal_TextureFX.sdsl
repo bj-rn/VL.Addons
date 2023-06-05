@@ -1,0 +1,33 @@
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader Grain_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.5)]
+    compose ComputeFloat Amount;
+
+    [Default(0.0f)]
+    compose ComputeFloat Seed;
+
+    bool GreyScale;
+
+    float4 Filter(float4 tex0col)
+    {
+        float seed = Seed.Compute();
+        float2 uv = streams.TexCoord;
+        float2 dx = uv + GetLuminance(Texture0.SampleLevel(LinearSampler, uv * 1.5 + 0.2 + seed, 0).rgb) * 0.6;
+	    dx += sin(dx.yx * 28 + seed) * 4;
+
+
+
+        float4 c = float4(sin(dx.yx * 28)+ dx * dx.yx * 2, length(uv * 2),sin(dx.x * 12 + dx.y * 28));// + l0 + l1 + l2 + l3;
+	    c.xyz += sin(c.yzx * 17) * 3;
+        c = frac(seed + c * sqrt(float4(4.5, 5.54, 7.5, 9.0) * 2243));
+
+
+        float4 map = Texture0.SampleLevel(LinearSampler, uv, 0);
+        c = lerp(map, step(c, pow(map,1)), Amount.Compute() + (saturate(map * 2-1) * saturate(1 - map * 2)  * (1 - 2 * abs(frac(map) - 0.5))));
+	    c.a = map.a;
+        return c;
+    }
+};
