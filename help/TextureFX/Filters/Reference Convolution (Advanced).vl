@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="H3kfKogxZWYLYk051rSUWg" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="AnDywcfIdXKQI9DmT2yJlv" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -24,7 +24,7 @@
             <Pin Id="Ufs9CMlX8JZLNXFJq3cd5F" Name="Input" Kind="InputPin" />
             <Pin Id="AE1dejvY7zxNJufsUK017o" Name="Multiplier" Kind="InputPin" />
             <Pin Id="CSeZ8qNz2D9Mjconxi8EK7" Name="Control" Kind="InputPin" />
-            <Pin Id="KRO0TEl5PZwLotzH7Nfy5O" Name="Apply" Kind="InputPin" />
+            <Pin Id="KRO0TEl5PZwLotzH7Nfy5O" Name="Apply" Kind="InputPin" DefaultValue="True" />
             <Pin Id="ARqKHTU8lYlLMBetxGH0oS" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="61,311,225,19" Id="QGWRM2vChdjObR68KaKYsl">
@@ -32,7 +32,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="Isbq5EG6dCCOLvarwFxPHg" Name="Bounds" Kind="InputPin" DefaultValue="1149.3334, 206, 1293.3334, 951.3333" />
+            <Pin Id="Isbq5EG6dCCOLvarwFxPHg" Name="Bounds" Kind="InputPin" DefaultValue="1335, 129, 512, 384" />
             <Pin Id="D6UrzluIA1wOKPjWU7aW2y" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="UBdch0mE4rCOUkOuLvfHAq" Name="Input" Kind="InputPin" />
             <Pin Id="JSSvmCFbTb5N3a1OTWdpMd" Name="Title" Kind="InputPin" DefaultValue="Convolution (Advanced)" />
@@ -67,6 +67,15 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
+          <Pad Id="Lg4FggxZgg8NKwahmkC1Mg" Comment="Apply" Bounds="243,212,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -78,9 +87,10 @@
         <Link Id="Hauv8LQdOs3NUM8cnNbTXd" Ids="NVMY2zYbjg0NWdClthYldp,LWz9xVfxVF4LdufOz8d18T" />
         <Link Id="E0Y3enIi3oqMpNVc3H42Qo" Ids="OCmoT9lqakGOh2nam3Bbul,Ufs9CMlX8JZLNXFJq3cd5F" />
         <Link Id="Jds8caQqwAVPP0TdDXETRP" Ids="H4dg6yaWDxrNMToXnI3HKC,AE1dejvY7zxNJufsUK017o" />
+        <Link Id="IUlhL70WP0EPlh3gdrqbnI" Ids="Lg4FggxZgg8NKwahmkC1Mg,KRO0TEl5PZwLotzH7Nfy5O" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="KJzkdKgUDHnOUxS70INNaW" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
