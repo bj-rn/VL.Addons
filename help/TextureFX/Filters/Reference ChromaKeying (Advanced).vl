@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="TiXaodRKljVOdDC41ClDWp" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="TIzVpAf11WeOqJvndgMEfE" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -56,7 +56,7 @@
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="131,335,85,19" Id="UKtKUDlHgIbPcrcwnt8qtC">
+          <Node Bounds="131,335,105,19" Id="UKtKUDlHgIbPcrcwnt8qtC">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Keying" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="ChromaKeying" />
@@ -93,13 +93,17 @@
           </Pad>
           <Pad Id="IxKnxiZWezPLcpek91ek5Z" Comment="" Bounds="133,401,188,165" ShowValueBox="true" isIOBox="true" />
           <Node Bounds="71,655,85,19" Id="AWSAX1Q6sBIONfjfm8mPRG">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Utils" LastDependency="VL.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Utils" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Utils" NeedsToBeDirectParent="true">
                 <p:OuterCategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="SetAlpha" />
+              <PinReference Kind="InputPin" Name="Node Context" />
+              <PinReference Kind="InputPin" Name="SetTexture" />
+              <PinReference Kind="InputPin" Name="SetParameters" />
             </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
             <Pin Id="K6QbbLvnU3VL1fr5GXcxmv" Name="Input" Kind="InputPin" />
             <Pin Id="AVTdhD9Gwa0P0P1AmO88Ik" Name="Alpha Channel" Kind="InputPin" DefaultValue="R" />
             <Pin Id="UjQpSIbrDL9QPAd2jOQ0NU" Name="Opacity" Kind="InputPin" DefaultValue="1" />
@@ -153,6 +157,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="E84J0Es0hr6LnKLvnzsTtf" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
