@@ -14,11 +14,12 @@ shader Electricity_Advanced_Internal_TextureFX : TextureFX
 
     Texture3D NoiseTexture;
 
-    [Color]
-    float4 BackgroundColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
-    [Color]
-    float4 ElectricityColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
     
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ElectricityColor;
+        
     [Default(0.25f)]
     compose ComputeFloat Height;
 
@@ -69,6 +70,6 @@ shader Electricity_Advanced_Internal_TextureFX : TextureFX
         float ambientGlowHeightScale = AmbientGlowHeightScale.Compute();
         float ambGlow = AmbientGlow.Compute() * (1 - uv.x * uv.x) * (1 - ambientGlowHeightScale * ambientGlowHeightScale * uv.y * uv.y);
         float s = GlowStrength.Compute() * glow * glow * 20 + ambGlow * ambGlow;
-        return lerp(BackgroundColor, ElectricityColor, s*s);
+        return lerp(BackgroundColor.Compute(), ElectricityColor.Compute(), s*s);
     }
 };
