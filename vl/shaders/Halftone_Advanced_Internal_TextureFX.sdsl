@@ -21,6 +21,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
 
     static const float ht = 1.732051; // white = (1 + 1 + 1)^.5 
 
+    
     float4 Pixels(float2 uv, float2 pCenter)
     {
         float4 tileColor = Texture0.Sample(LinearRepeatSampler, pCenter);
@@ -46,6 +47,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
         return float4 (col, tileColor.a);
     };
 
+    
     float4 SoftHalftone(float2 uv, float2 pCenter)
     {
         float4 tileColor = Texture0.Sample(LinearRepeatSampler, pCenter);
@@ -61,6 +63,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
         return float4(col, tileColor.a);
     };
 
+    
     float4 BWHalftone(float2 uv, float2 pCenter, float stride)
     {
         float dotSize = DotSize.Compute();
@@ -114,7 +117,6 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
 
     float4 Filter(float4 tex0col)
     {
-       
         float stride = 1.0f / NumberOfTiles;
         float halfstride = stride / 2.0f;
         float2 uv = streams.TexCoord;
@@ -133,8 +135,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
             case 4 : col = LineHalftone(uv, pBase); break;
             case 5 : col = TexturedHalftone(uv, pBase); break;
          }
-
-
+         
         return col;
     }
 };
