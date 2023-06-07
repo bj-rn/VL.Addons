@@ -6,13 +6,15 @@
 shader Checkerboard_Advanced_Internal_TextureFX : TextureFX, AddonShaderUtils
 {
 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 Black; 
+    
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 White;    
+    
     [Default(8.0f, 8.0f)]
     compose ComputeFloat2 CellCount;
-
-    [Color]
-    float4 Black = float4(0, 0, 0, 1);
-    [Color]
-    float4 White = float4(1, 1, 1, 1);
 
     float4x4 Transform;
 
@@ -35,6 +37,6 @@ shader Checkerboard_Advanced_Internal_TextureFX : TextureFX, AddonShaderUtils
         bool chess = (cHV.x + cHV.y) % 2;
 
         //missuse a lerp to decide between color 1 and color 2
-        return lerp(Black, White, chess);
+        return lerp(Black.Compute(), White.Compute(), chess);
     }
 };
