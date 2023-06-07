@@ -7,6 +7,14 @@
 
 shader Edge_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
 {
+    
+    
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 EdgeColor;
+
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
+
     [Default(1.0f)]
     compose ComputeFloat Brightness;
 
@@ -14,15 +22,9 @@ shader Edge_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
     compose ComputeFloat Contrast;
 
     [Default(1.0f)]
-    compose ComputeFloat Radius;
+    compose ComputeFloat Radius; 
 
-    [Color]
-    float4 EdgeColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
-
-    [Color]
-    float4 BackgroundColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
-
-    //[EnumType("VL.Stride.Effects.Common.Edge")]
+    [EnumType("VL.Stride.Effects.Common.Edge")]
     int Type;
 
     bool Desaturate;
@@ -110,7 +112,7 @@ shader Edge_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
 
         if(Desaturate) col.rgb = float3(luma, luma, luma);
 
-        return lerp(BackgroundColor, EdgeColor, col);
+        return lerp(BackgroundColor.Compute(), EdgeColor.Compute(), col);
     }
 
 
