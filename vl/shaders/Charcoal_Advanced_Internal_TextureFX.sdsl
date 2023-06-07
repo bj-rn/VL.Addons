@@ -6,14 +6,15 @@
 
 shader Charcoal_Advanced_Internal_TextureFX : FilterBase
 {
-	[Default(1.0)]
+	
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor;  
+    
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 EdgeColor;  
+    
+    [Default(1.0)]
     compose ComputeFloat Strength;
-
-	[Color]
-    float4 BackgroundColor = float4(0.0, 0.0, 0.0, 1.0);
-
-    [Color]
-    float4 EdgeColor = float4(1.0, 1.0, 1.0, 1.0);
 
     float4 Filter(float4 tex0col)
     {
@@ -38,7 +39,7 @@ shader Charcoal_Advanced_Internal_TextureFX : FilterBase
 	    f -= 0.2;  
 	    f = saturate(f);  
 
-	    c1.rgb = BackgroundColor.rgb * (1 - f) + EdgeColor.rgb * f;
+	    c1.rgb = BackgroundColor.Compute().rgb * (1 - f) + EdgeColor.Compute().rgb * f;
 
 	    return c1;
     }
