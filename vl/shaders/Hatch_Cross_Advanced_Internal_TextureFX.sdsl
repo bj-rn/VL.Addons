@@ -6,11 +6,12 @@
 
 shader Hatch_Cross_Advanced_Internal_TextureFX : FilterBase
 {
-    [Color]
-    float4 BackgroundColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
     
-    [Color]
-    float4 HatchColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 HatchColor;
 
     [Default(0.5f)]
     compose ComputeFloat Threshold;
@@ -23,7 +24,11 @@ shader Hatch_Cross_Advanced_Internal_TextureFX : FilterBase
 
         float lum = dot(tex0col.rgb, 0.33);
         
-        float4 tc = BackgroundColor;
+        float4 backgroundColor = BackgroundColor.Compute();
+        float4 hatchColor = HatchColor.Compute();
+        
+        
+        float4 tc = backgroundColor;
         
         float threshold = Threshold.Compute();
 
@@ -31,7 +36,7 @@ shader Hatch_Cross_Advanced_Internal_TextureFX : FilterBase
         {
             if ((x.x + x.y) % Density == 0.0)
             {
-                tc = HatchColor;
+                tc = hatchColor;
             }
         }	
 
@@ -39,7 +44,7 @@ shader Hatch_Cross_Advanced_Internal_TextureFX : FilterBase
         {
             if ((x.x - x.y) % Density == 0.0)
             {
-                tc = HatchColor;
+                tc = hatchColor;
             }
         }
 
@@ -47,15 +52,15 @@ shader Hatch_Cross_Advanced_Internal_TextureFX : FilterBase
         {
             if ((x.x + x.y + (Density/2.0)) % Density == 0.0)
             {
-                tc = HatchColor;
+                tc = hatchColor;
             }
 
             if ((x.x - x.y - (Density/2.0)) % Density == 0.0)
             {
-                tc = HatchColor;	
+                tc = hatchColor;	
             }
         }	
         
-        return lerp (HatchColor, BackgroundColor, tc);
+        return lerp (hatchColor, backgroundColor, tc);
     }
 };

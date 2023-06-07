@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="CmVsDS3LEwFOPyJnsk8v5C" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="CmVsDS3LEwFOPyJnsk8v5C" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1183.4286, 90.28571, 585.1429, 585.1429" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1183, 90, 585, 585" />
             <Pin Id="RmXkKzvj3BzOMHsyfDPT01" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Hatch (Cross Advanced)" />
@@ -108,12 +108,12 @@
             <Pin Id="NjT63RphrzSN1XvrwzKzzv" Name="Apply" Kind="InputPin" />
             <Pin Id="LXVwszaEzNuM8ZLAX4ypsc" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="C7wSNKDHwnbPei2uBBTTSm" Comment="Background Color" Bounds="120,665,136,15" ShowValueBox="true" isIOBox="true" Value="1, 1, 1, 1">
+          <Pad Id="C7wSNKDHwnbPei2uBBTTSm" Comment="Background Color" Bounds="120,592,136,15" ShowValueBox="true" isIOBox="true" Value="1, 1, 1, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="CQSvq1uU4snNUAtpodxtRT" Comment="Hatch Color" Bounds="141,697,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
+          <Pad Id="CQSvq1uU4snNUAtpodxtRT" Comment="Hatch Color" Bounds="140,655,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -212,6 +212,28 @@
               <Choice Kind="TypeFlag" Name="ColorChannel" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="118,617,49,19" Id="RR8fLfsxA4bO83wsbpxz1s">
+            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+            </p:NodeReference>
+            <Pin Id="LhQrjzrpCxhOIgMGiaAV8v" Name="Value" Kind="InputPin" />
+            <Pin Id="AleMLj3lR7OPUR7VzpOEFP" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="IXxdcDaTWshNQWJJsJY44F" Name="Is Normal" Kind="InputPin" />
+            <Pin Id="HaEspfaaebdLCqeNSTEdDT" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="138,675,49,19" Id="DjvzamQk5mQNDcwxl5epyb">
+            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+            </p:NodeReference>
+            <Pin Id="Q8MwLMcFDekQXmXXgMZWb5" Name="Value" Kind="InputPin" />
+            <Pin Id="NPUQMAow5FtO7vRVIcKrdK" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="SDrbLKeRhOAO5P8a6U7zwF" Name="Is Normal" Kind="InputPin" />
+            <Pin Id="P9hJVVdKMOTNLbNOrHdTit" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -226,8 +248,8 @@
         <Link Id="N0gEGyOdpJ3QClzJrg5Rew" Ids="FuzAZshEw1ILYOpKaFieRn,JKDZZKcBziCLe2fVm8SLGw" />
         <Link Id="Cd0NuyMlAcvLTMgX9BSvUu" Ids="RW5J49Nwb0WNZozZrUM0s3,M8wg4go5t1LPvgYDH5TCoR" />
         <Link Id="BUf7ofQaIqyLNouedlcsE3" Ids="LXVwszaEzNuM8ZLAX4ypsc,RqIONKDIENdND6i48864uK" />
-        <Link Id="KAdX1H0xCwOLjZIxQmhwGp" Ids="C7wSNKDHwnbPei2uBBTTSm,QlL663p1plrP3IxNzPFl8C" />
-        <Link Id="T8dTD2rWtpoLJBUCeakjYb" Ids="CQSvq1uU4snNUAtpodxtRT,TCeQ638rifxPCW0wevNqCV" />
+        <Link Id="KAdX1H0xCwOLjZIxQmhwGp" Ids="C7wSNKDHwnbPei2uBBTTSm,LhQrjzrpCxhOIgMGiaAV8v" />
+        <Link Id="T8dTD2rWtpoLJBUCeakjYb" Ids="CQSvq1uU4snNUAtpodxtRT,Q8MwLMcFDekQXmXXgMZWb5" />
         <Link Id="O1x9qbbTpgkLyJJ4EZq6zZ" Ids="JWQQ2AqWvtuLIuQYvYtJIU,U5BnTcxPxp4LDQLPrbrRye" />
         <Link Id="CUZ8t83yDjcMIdk0zBxiva" Ids="TIxwlyBBQpYMODrttQuan5,BWvsHD1p5taMaQU1xspPsS" />
         <Link Id="AIBtdMaEfIaMSQD4p8iCY7" Ids="VXaO9MY52IOLki2pl1qSGh,NjTa7xnRqx6Ojpz55d2g91" />
@@ -239,9 +261,11 @@
         <Link Id="MSxoXNmj7D6NTODjFzG5P4" Ids="NhfTM80dS8mO4ZaKrIBQxr,CZ2r905rwdHOvY1QXrNwj8" />
         <Link Id="DraqYMBzmweMXdVFzNUsdX" Ids="FPTG1dWCyjOLsxTJkIbuA0,EfO2L9v7QHdOr5dpM45GsX" />
         <Link Id="RO0j3d49PPyOgvykG85mGR" Ids="Dv7rIqzPiLYMEjTuowkzaD,KabJTMpP0PFLHTRHlJlnlI" />
+        <Link Id="RAGyNDCK1oON7Gx86O7Ru5" Ids="HaEspfaaebdLCqeNSTEdDT,QlL663p1plrP3IxNzPFl8C" />
+        <Link Id="Ik3D0KrJtUbK9r1gisLpH6" Ids="P9hJVVdKMOTNLbNOrHdTit,TCeQ638rifxPCW0wevNqCV" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="LAUlYMN3hXXMy5vMPfobxO" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
