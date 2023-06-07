@@ -5,8 +5,9 @@
 [Summary("")]
 shader CrossStitch_Advanced_Internal_TextureFX : FilterBase
 {
-    [Color]
-    float4 Color = float4(0.0f, 0.0f, 0.0f, 1.0f);
+  
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 Color;  
 
     [Default(10.0f)]
     compose ComputeFloat StitchSize;
@@ -16,6 +17,9 @@ shader CrossStitch_Advanced_Internal_TextureFX : FilterBase
     float4 Filter(float4 tex0col)
     {
         float stitchSize = StitchSize.Compute();
+
+        float4 color = Color.Compute();     
+
 
         float2 uv = streams.TexCoord;
         //float2 R = ViewSize;
@@ -43,7 +47,7 @@ shader CrossStitch_Advanced_Internal_TextureFX : FilterBase
         if ((remX == remY) || (((int(cPos.x) - int(blPos.x)) == (int(blPos.y) - int(cPos.y)))))
         {
             if (Invert)
-                col = Color;
+                col = color;
             else
                 col = Texture0.SampleLevel(LinearRepeatSampler, tlPos * Texture0TexelSize, 0);
         }
@@ -52,7 +56,7 @@ shader CrossStitch_Advanced_Internal_TextureFX : FilterBase
             if (Invert)
                 col = Texture0.SampleLevel(LinearRepeatSampler, tlPos * Texture0TexelSize, 0);
             else
-                col = Color;
+                col = color;
         }
         return col;
     }
