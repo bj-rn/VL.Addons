@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RvxsB2youApNm8TsV07qny" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.0" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="AF6DelNAdjqPLbozCR3Owj" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -35,7 +35,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1088, 74.28571, 732, 411.42856" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1088, 74, 732, 411" />
             <Pin Id="Lyk4cL8PTZEQbifRk166Bc" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Undistort (Advanced Experimental)" />
@@ -52,19 +52,23 @@
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
           </Node>
           <Node Bounds="151,203,105,19" Id="IgKjLMaWkU2LwuYRGpKbr0">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="CheckerBoard" />
+              <Choice Kind="ProcessAppFlag" Name="Checkerboard" />
+              <PinReference Kind="InputPin" Name="Node Context" />
+              <PinReference Kind="InputPin" Name="Transform" />
+              <PinReference Kind="InputPin" Name="SetParameters" />
+              <PinReference Kind="InputPin" Name="Apply" />
             </p:NodeReference>
+            <Pin Id="LeqGEcJFhgWPoY3rB3sv4J" Name="Transform" Kind="InputPin" />
             <Pin Id="Dh6dJYdRxrQOddwMhD5YN7" Name="Black" Kind="InputPin" />
             <Pin Id="SUuStl3ijf4QTEbawMBbwH" Name="White" Kind="InputPin" />
-            <Pin Id="LeqGEcJFhgWPoY3rB3sv4J" Name="Transform" Kind="InputPin" />
             <Pin Id="VB5mG7ec3qcN6toQEe4t0V" Name="Cell Count" Kind="InputPin" />
             <Pin Id="GphSlS9F6sOP3LEPcZgtXb" Name="Output Size" Kind="InputPin" />
             <Pin Id="M4GuEE5nZEXOgEu37sH8Cb" Name="Apply" Kind="InputPin" />
             <Pin Id="DXUdHSMhetxLoamAoyypU4" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="SoBkcyoQvPpP9jHvYMgz2y" Comment="Cell Count" Bounds="215,104,35,28" ShowValueBox="true" isIOBox="true" Value="16, 9">
+          <Pad Id="SoBkcyoQvPpP9jHvYMgz2y" Comment="Cell Count" Bounds="213,104,35,28" ShowValueBox="true" isIOBox="true" Value="16, 9">
             <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Vector2" />
             </p:TypeAnnotation>
@@ -84,7 +88,7 @@
               <Choice Kind="TypeFlag" Name="Vector2" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="FZG6xrE5KcGQTr83sUDRRt" Comment="Distortion" Bounds="235,358,74,57" ShowValueBox="true" isIOBox="true" Value="0.01, 0.01, -0.04, -0.04">
+          <Pad Id="FZG6xrE5KcGQTr83sUDRRt" Comment="Distortion" Bounds="232,358,74,57" ShowValueBox="true" isIOBox="true" Value="0.01, 0.01, -0.04, -0.04">
             <p:TypeAnnotation LastCategoryFullName="3D" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Vector4" />
             </p:TypeAnnotation>
@@ -93,7 +97,7 @@
               <p:stepsize p:Type="Single">0.01</p:stepsize>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="LGnL4R8U7YILyoqhkjQTac" Comment="Output Size" Bounds="234,151,35,28" ShowValueBox="true" isIOBox="true" Value="1280, 720">
+          <Pad Id="LGnL4R8U7YILyoqhkjQTac" Comment="Output Size" Bounds="233,151,35,28" ShowValueBox="true" isIOBox="true" Value="1280, 720">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Int2" />
             </p:TypeAnnotation>
@@ -125,6 +129,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="RUkLZeyCG2NNcuJrSQgcey" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
