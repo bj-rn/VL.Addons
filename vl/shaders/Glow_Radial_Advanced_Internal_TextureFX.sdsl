@@ -20,8 +20,10 @@ shader Glow_Radial_Advanced_Internal_TextureFX : FilterBase
 	[Default(0.85f)]
 	compose ComputeFloat Decay;
 
-	[Color] 
-    float4 Color  = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 Color;  
+
+
 
 	float4 Filter(float4 tex0col)
 	{
@@ -39,7 +41,7 @@ shader Glow_Radial_Advanced_Internal_TextureFX : FilterBase
 			uv -= deltaTexCoord;
 			float4 col = Texture0.SampleLevel(Sampler0, uv, 0);
 			col *= illuminationDecay * weight; 
-			tex0col += col * Color; 
+			tex0col += col * Color.Compute(); 
 			illuminationDecay *= decay; 
 		}
 
