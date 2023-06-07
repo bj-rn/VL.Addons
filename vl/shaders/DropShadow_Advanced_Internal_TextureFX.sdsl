@@ -15,8 +15,9 @@ shader DropShadow_Advanced_Internal_TextureFX : FilterBase
     [Default(0.9f)]
     compose ComputeFloat Angle;
 
-    [Color]
-    float4 Color = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 Color;  
+
 
     [Default(1.0f)]
     compose ComputeFloat Alpha;
@@ -53,7 +54,7 @@ shader DropShadow_Advanced_Internal_TextureFX : FilterBase
         
         col /= 9;
         
-        col = Color * float4(1, 1, 1, saturate(pow(2, Extension.Compute())*col.a) * Alpha.Compute());
+        col = Color.Compute() * float4(1, 1, 1, saturate(pow(2, Extension.Compute())*col.a) * Alpha.Compute());
 
         col.rgb = lerp(col.rgb, c0.rgb, c0.a);
         col.a = max(col.a, c0.a);
