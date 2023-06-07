@@ -8,19 +8,19 @@
 
 shader QuasiCrystal_Advanced_Internal_TextureFX : TextureFX
 {
-    compose ComputeFloat Time;
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorA; 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
 
+    compose ComputeFloat Time;
+    
     [Default(3.5f, 3.5f)]
     compose ComputeFloat2 Scale;
 
     [Default(5.0f)]
     compose ComputeFloat N;
-
-	[Color]
-    float4 ColorA = float4(1.0, 1.0, 1.0, 1.0);
-
-	[Color]
-    float4 ColorB = float4(1.0, 0.0, 1.0, 1.0);
 
     float post_process(float color) 
     {
@@ -55,6 +55,6 @@ shader QuasiCrystal_Advanced_Internal_TextureFX : TextureFX
 		rgba.b = post_process(rgba.b);
 		rgba.a = post_process(rgba.a);
 
-		return lerp(ColorA, ColorB, rgba);
+		return lerp(ColorA.Compute(), ColorB.Compute(), rgba);
     }
 };
