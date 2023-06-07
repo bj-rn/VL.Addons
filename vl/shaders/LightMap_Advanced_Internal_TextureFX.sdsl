@@ -17,8 +17,8 @@ shader LightMap_Advanced_Internal_TextureFX : TextureFX
 	[Default(1.0f)]
     compose ComputeFloat shadowSoftness;
 
-    [Color]
-    float4 Color  = float4(1, 1, 1, 1);
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 Color;  
 
     float Gamma  = 0.5f;
 
@@ -77,7 +77,7 @@ shader LightMap_Advanced_Internal_TextureFX : TextureFX
 	    //	float4 c = texture2d.Sample(Sampler,input.uv);
 	
 	    float g = Gamma/(1.00001-Gamma);
-	    float4 c =  float4(Color.xyz, sum * pow(smoothstep(1.0, 0.0, r),g));
+	    float4 c =  float4(Color.Compute().xyz, sum * pow(smoothstep(1.0, 0.0, r),g));
 	    //	c +=  float4(Color.xyz, sum * smoothstep(1.0, 0.0, r));
 	    return c;
 

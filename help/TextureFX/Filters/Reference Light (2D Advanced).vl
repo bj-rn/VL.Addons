@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="MafBMXFUQwWNCxHE9KjaIL" LanguageVersion="2023.5.0" Version="0.128">
-  <NugetDependency Id="BMCiqNBBDJgQFQuWkhLNWS" Location="VL.CoreLib" Version="2023.5.0" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="MafBMXFUQwWNCxHE9KjaIL" LanguageVersion="2023.5.1" Version="0.128">
+  <NugetDependency Id="BMCiqNBBDJgQFQuWkhLNWS" Location="VL.CoreLib" Version="2023.5.1" />
   <Patch Id="AQCT5qc6RvtOOPsnlwhRzJ">
     <Canvas Id="FTrtgquyYaQQZEmoJSP29E" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -122,7 +122,6 @@
                     <Choice Kind="TypeFlag" Name="Float32" />
                   </p:TypeAnnotation>
                 </Pin>
-                <Pin Id="TWtQelzmJmIN7gOkRKNRBW" Name="Control" Kind="InputPin" />
                 <Pin Id="KZJJ7CpghyROIcGq25yUK7" Name="Apply" Kind="InputPin" />
                 <Pin Id="IaWltEKhTlsQNJAvD0D1wh" Name="Output" Kind="OutputPin" />
               </Node>
@@ -212,6 +211,17 @@
                 <Pin Id="C21sWLUIxikMVpNhLfytQO" Name="Translation" Kind="InputPin" />
                 <Pin Id="SThyvfZgleEObTShfeGnKJ" Name="Output" Kind="OutputPin" />
               </Node>
+              <Node Bounds="472,498,49,19" Id="GbwsXJmfx3tMjl98dyvs6N">
+                <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+                  <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+                </p:NodeReference>
+                <Pin Id="FJ6ux6ExoYgORpK8cckrZb" Name="Value" Kind="InputPin" />
+                <Pin Id="CYJlYVCkGV0MDxP4HDKNai" Name="Premultiply Alpha" Kind="InputPin" />
+                <Pin Id="BCfRLYsyNTPOJIgqu9eRPr" Name="Is Normal" Kind="InputPin" />
+                <Pin Id="VMm8vsxXFS4PiJcjCxyQZn" Name="Output" Kind="OutputPin" />
+              </Node>
             </Patch>
           </Node>
           <Node Bounds="392,777,44,19" Id="PgbGVZ7todzOqdKSts3LVM">
@@ -277,7 +287,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="RenderWindow" />
             </p:NodeReference>
-            <Pin Id="MegqAUwbFvrLiNx2RwlO4l" Name="Bounds" Kind="InputPin" DefaultValue="1185.7142, 92, 585.1429, 585.1429">
+            <Pin Id="MegqAUwbFvrLiNx2RwlO4l" Name="Bounds" Kind="InputPin" DefaultValue="1185, 92, 585, 585">
               <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="TypeFlag" Name="Rectangle" />
               </p:TypeAnnotation>
@@ -693,7 +703,7 @@
                   <Pin Id="VogPmzvxR5pP9rcCDIkGuX" Name="Output" Kind="StateOutputPin" />
                 </Node>
                 <Node Bounds="147,519,223,19" Id="IX9Dqj8WLaiMnJNVOB5jKi">
-                  <p:NodeReference LastCategoryFullName="Main" LastDependency="Reference Light (2D).vl">
+                  <p:NodeReference LastCategoryFullName="Main" LastDependency="Reference Light (2D Advanced).vl">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="ProcessAppFlag" Name="RenderTexture (2D AntiAlias)" />
                   </p:NodeReference>
@@ -782,7 +792,7 @@
         <Link Id="EDFkITQRXcGNEcXb2q4UuB" Ids="MYt2WTKwcO7LjB4WdCYkad,LpFb1Cu6SaeOW2oKZ8qKLo" />
         <Link Id="QQuJz7Dbs3OLS9Ge5ssXUH" Ids="MYt2WTKwcO7LjB4WdCYkad,Cizeyj0gyM1N7C0KTYURdA" />
         <Link Id="O75x8B6AP56LAQgxmw9lTp" Ids="IaWltEKhTlsQNJAvD0D1wh,EpOvNEJFGfNLpol5QuvjZV" />
-        <Link Id="PrclwYZZ06iOtaylFgWXqu" Ids="HMMdsluYakkM5DK4jA4aMs,OvwzAqpVhGqLIRQ9YyPbAB" />
+        <Link Id="PrclwYZZ06iOtaylFgWXqu" Ids="HMMdsluYakkM5DK4jA4aMs,FJ6ux6ExoYgORpK8cckrZb" />
         <Link Id="GbigmF8C6gLNhBA0HPsm8c" Ids="NbvsJU7GZjqLeHqt38PpTp,TFYxsjRXa3VPqVfVEuLpXW" />
         <Link Id="Drce9jFwzX2LmsswM5U73T" Ids="ECnkORivoCmNEoVC6ZPrlv,FUFi7vIYJCINmACu0xULoy" />
         <Link Id="MkUCfBmLSqvOlkNu5EX5OE" Ids="DLD5gVJ1uPqMCYgDtS1QuS,Gj82EF5TbWqO8WzP6nUE3j" />
@@ -811,10 +821,11 @@
         <Link Id="FQU8CLCrmXzPHymC9bD2is" Ids="MrZqW60gcSANldcGFk991O,ISzU6Npg65jO8MgEpg0Rvq" />
         <Link Id="Lg5ehFQ1SQtP6cG53TtciE" Ids="Nkq8CVjh4u2P0WqwrBbhBt,Kg7ztvrjxAFMnWzTRUDjbD,ECWyQ5wrSSiP9emEBMAh4H" />
         <Link Id="QBHN853m682Pv2d4yTeYNc" Ids="Purx9a9NOuKMeHJGYFZ5ar,SMF1AAh8jdAM0cRW1SDroZ" />
+        <Link Id="I93rQdhVXK0N35rGgsogNQ" Ids="VMm8vsxXFS4PiJcjCxyQZn,OvwzAqpVhGqLIRQ9YyPbAB" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="U7XVYKFuSw4LTCCYH12y3g" Location="VL.CoreLib" Version="2023.5.0" />
-  <NugetDependency Id="Qjd7HOvohz9L2qonEiBXjq" Location="VL.Stride" Version="2023.5.0" />
+  <NugetDependency Id="U7XVYKFuSw4LTCCYH12y3g" Location="VL.CoreLib" Version="2023.5.1" />
+  <NugetDependency Id="Qjd7HOvohz9L2qonEiBXjq" Location="VL.Stride" Version="2023.5.1" />
   <DocumentDependency Id="BrwVG0iV0B8Ndgd0XVp02R" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
