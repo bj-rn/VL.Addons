@@ -6,11 +6,11 @@
 
 shader Hatch_Square_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
 {
-    [Color]
-    float4 BackgroundColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
     
-    [Color]
-    float4 HatchColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 HatchColor;
 
     [Default(0.5f)]
     compose ComputeFloat Threshold;
@@ -26,6 +26,6 @@ shader Hatch_Square_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
 	    float4 col = tex0col;
 	    col.rgb = sqrt(col.rgb);
         float2 rotated = r2d(streams.TexCoord * ViewSize - 0.5, Rotation.Compute());
-	    return lerp(BackgroundColor, HatchColor, any(((rotated + ViewSize)) % Thickness.Compute() < col.rgb * Threshold.Compute())) * float4(1.0, 1.0, 1.0, col.a);
+	    return lerp(BackgroundColor.Compute(), HatchColor.Compute(), any(((rotated + ViewSize)) % Thickness.Compute() < col.rgb * Threshold.Compute())) * float4(1.0, 1.0, 1.0, col.a);
     }
 };
