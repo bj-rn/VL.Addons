@@ -1,0 +1,10 @@
+﻿shader JoinFloat4Float2_Internal_ShaderFX : ComputeFloat4
+{
+    compose ComputeFloat2 xy;
+    compose ComputeFloat2 zw;
+
+    override float4 Compute()
+    {
+        return float4(xy.Compute(), zw.Compute());
+    }
+};
