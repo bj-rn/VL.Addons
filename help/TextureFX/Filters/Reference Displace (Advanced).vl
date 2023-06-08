@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="EoCh6ZEXQClLQdP5oVW1Vv" Name="Bounds" Kind="InputPin" DefaultValue="1337, 127, 585, 585" />
+            <Pin Id="EoCh6ZEXQClLQdP5oVW1Vv" Name="Bounds" Kind="InputPin" DefaultValue="1336.5714, 126.85714, 584.5714, 584.5714" />
             <Pin Id="TgTcePygrP3LA4awW90807" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="EooVe4Auw94PzcSMFcrXxW" Name="Input" Kind="InputPin" />
             <Pin Id="GMOmelJuUEFPdmDcp6PVqH" Name="Title" Kind="InputPin" DefaultValue="Displace (Advanced)" />
@@ -154,21 +154,23 @@
             <Pin Id="PfQVb1cFgW8NyZq4TVzFRs" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="150,326,61,19" Id="AYWyWwnEblYQYw1cEmO7C9">
-            <p:NodeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
             <Pin Id="GHB4Uz5gToiQXZ90W34OUo" Name="Value" Kind="InputPin" />
             <Pin Id="P6Y8WmIq4WfLhQ5mzNZ5wV" Name="Type" Kind="InputPin" />
             <Pin Id="JzsVm9ydlt5MfXutMglKx1" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="V3lRcRtc1yFPI7kBQQXklO" Comment="Bubble Color" Bounds="128,130,136,15" ShowValueBox="true" isIOBox="true" Value="0.87999964, 0.87999964, 0.87999964, 1">
+          <Pad Id="V3lRcRtc1yFPI7kBQQXklO" Comment="Bubble Color" Bounds="129,117,136,15" ShowValueBox="true" isIOBox="true" Value="0.87999964, 0.87999964, 0.87999964, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BWV88Hzg8YyNjb6SGBH8Ix" Comment="Background Color" Bounds="103,100,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
+          <Pad Id="BWV88Hzg8YyNjb6SGBH8Ix" Comment="Background Color" Bounds="104,59,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -186,6 +188,26 @@
             </p:TypeAnnotation>
           </Pad>
           <ControlPoint Id="AG8ZqcvwThHNX1n2jQ4TyA" Bounds="524,444" />
+          <Node Bounds="102,83,49,19" Id="RiLj9IqXVBNPscoLlslY7x">
+            <p:NodeReference LastCategoryFullName="Stride.Materials.Inputs" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+            </p:NodeReference>
+            <Pin Id="LNsYCuluwD1L41CnoyU3sh" Name="Value" Kind="InputPin" />
+            <Pin Id="Hcoizgzwn2uNpvUKfjXB9E" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="KRU6rIZIGhmM9NaTYgT62D" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="127,138,49,19" Id="NFy4BoME6jJOWsfGbPlyln">
+            <p:NodeReference LastCategoryFullName="Stride.Materials.Inputs" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+            </p:NodeReference>
+            <Pin Id="N3VxJpxQrzKPP4BJpDHODx" Name="Value" Kind="InputPin" />
+            <Pin Id="JjQs0opUQxzN2MNNrL7It0" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="SFXSS6sGHihLqXynzBBOy4" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -202,8 +224,8 @@
         <Link Id="EDDAKhL0H0hPeKAJv51Fpd" Ids="GnQ1m7uv1F4NWoN9XJkOxx,GHB4Uz5gToiQXZ90W34OUo" />
         <Link Id="V7lkTlnE5QOOBeRqxyGKAP" Ids="JzsVm9ydlt5MfXutMglKx1,I55nHsTEnUHOpAWS4YLDFj" />
         <Link Id="NuvCaSHSjffLsQRooCmAcE" Ids="PfQVb1cFgW8NyZq4TVzFRs,UlpULyzpt2ZOQgKdInTYec" />
-        <Link Id="DwqvA4hKqWGQJl4bKe1GLQ" Ids="V3lRcRtc1yFPI7kBQQXklO,FRfQ1Id5uVuP9rvcFt7X0y" />
-        <Link Id="ByouJEYn4NyPUPX4ZLx2Nw" Ids="BWV88Hzg8YyNjb6SGBH8Ix,BW2zBdsHotdOq9f8hsKiuq" />
+        <Link Id="DwqvA4hKqWGQJl4bKe1GLQ" Ids="V3lRcRtc1yFPI7kBQQXklO,N3VxJpxQrzKPP4BJpDHODx" />
+        <Link Id="ByouJEYn4NyPUPX4ZLx2Nw" Ids="BWV88Hzg8YyNjb6SGBH8Ix,LNsYCuluwD1L41CnoyU3sh" />
         <Link Id="U0LjnTmnmCxOnlf0UQuWxD" Ids="GnQ1m7uv1F4NWoN9XJkOxx,PGlrWgKpBtFNTTVrBE4NYr" />
         <Link Id="GvAaLmzigsGQAiUAqtjAnP" Ids="QbeUONdRKIMM3xhRnNO2sn,NUKBXgTkBH9PjgR4XyUsKu" />
         <Link Id="NshbVr0zi4pOHoU9AjT3jd" Ids="ViqrCEVINzmOCwjkT04EOP,InEkr2NG60mOCh1qiNRP2A" />
@@ -212,6 +234,8 @@
         <Link Id="IWpDPGuQqLYQGCx29WEmlg" Ids="IyN7gcYug4jMUeb5jIesFz,CAoq9sM1KeGNP0EBO281ZZ" />
         <Link Id="KOMl9KXCg9kPULgv3kPB9Z" Ids="JzsVm9ydlt5MfXutMglKx1,GcugmirM21PMfqBraAMu6t" />
         <Link Id="BMdBFCpB6eaP6IISPxaEAz" Ids="Nxc9zPakJmLO5QXnlNAgtA,AXEbxFvligfNYZ9C3Wz9ru" />
+        <Link Id="LTAinbZ0yqGP7HSdYVg6rW" Ids="KRU6rIZIGhmM9NaTYgT62D,BW2zBdsHotdOq9f8hsKiuq" />
+        <Link Id="IVqHdgbRCu0PbCCl6Cy04J" Ids="SFXSS6sGHihLqXynzBBOy4,FRfQ1Id5uVuP9rvcFt7X0y" />
       </Patch>
     </Node>
   </Patch>
