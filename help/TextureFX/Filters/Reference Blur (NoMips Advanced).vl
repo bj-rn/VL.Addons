@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1182, 89, 585, 585" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1181.7142, 88.57143, 584.5714, 584.5714" />
             <Pin Id="LsEHGlOZPjhOIE8HA9LRmH" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Blur (NoMips Advanced)" />
@@ -57,9 +57,9 @@
               <PinReference Kind="InputPin" Name="SetParameters" />
               <PinReference Kind="InputPin" Name="Apply" />
             </p:NodeReference>
+            <Pin Id="KBUMZY58dgfMz9BHfiSGGt" Name="Transform" Kind="InputPin" />
             <Pin Id="KlLppdpJ9xNLukrUZlCCVc" Name="Black" Kind="InputPin" />
             <Pin Id="CEeePdbFrMTLDDPoenIuFb" Name="White" Kind="InputPin" />
-            <Pin Id="KBUMZY58dgfMz9BHfiSGGt" Name="Transform" Kind="InputPin" />
             <Pin Id="SyRcUhx6qnVNG1Hg3EpzcW" Name="Cell Count" Kind="InputPin" />
             <Pin Id="UNjnWDhDr1qOiDTsbxuZPu" Name="Output Size" Kind="InputPin" />
             <Pin Id="OggQgR1LGBSLb4Ms32LGUF" Name="Apply" Kind="InputPin" />
@@ -170,7 +170,7 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="QMfeYt2zy3INSsF7T3EMkP" Comment="Black" Bounds="102,100,45,15" ShowValueBox="true" isIOBox="true" Value="0.29, 0.29, 0.29, 1">
+          <Pad Id="QMfeYt2zy3INSsF7T3EMkP" Comment="Black" Bounds="121,70,45,15" ShowValueBox="true" isIOBox="true" Value="0.29, 0.29, 0.29, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -189,6 +189,16 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="119,95,49,19" Id="J8omvPVqB3WOebaMbHhThQ">
+            <p:NodeReference LastCategoryFullName="Stride.Materials.Inputs" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="ColorIn" />
+            </p:NodeReference>
+            <Pin Id="PB2GxlepbLBPlCB21SJbIm" Name="Value" Kind="InputPin" />
+            <Pin Id="Q3CgRzxwf7KMEs7KhmGUdN" Name="Premultiply Alpha" Kind="InputPin" />
+            <Pin Id="SgcOQMEHmApMRhe0RnTVOo" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -211,9 +221,10 @@
         <Link Id="GfJAiiltY9AOFHbOX3ITM0" Ids="C1i9eVuHurWOGbWbfaqLHC,AGKLV0K5E2KMKSVdxzwcat" />
         <Link Id="Me7967apjPjMkaU9qZEFqs" Ids="EwhfFLNy6sQLDMz2nRMwGu,SFbOu1ppiXAPyINeHL6Il6" />
         <Link Id="NP7ktKZDeWIQGlnRo3BRYS" Ids="VnkXvpMD6bJOSFiVlSbTWi,JndYWi1aTmOMcOeH09M6hZ" />
-        <Link Id="KYMl6AqIIsmOtGzt07WwsG" Ids="QMfeYt2zy3INSsF7T3EMkP,KlLppdpJ9xNLukrUZlCCVc" />
+        <Link Id="KYMl6AqIIsmOtGzt07WwsG" Ids="QMfeYt2zy3INSsF7T3EMkP,PB2GxlepbLBPlCB21SJbIm" />
         <Link Id="ILGhPzRTC5SP0iKNdOtAWL" Ids="PBylfKCQnEbMmkV5IYk4tN,QmmO0JpeOa8NmoNJj27OWb" />
         <Link Id="ThoHILRJogAOEiFnI2Bo3k" Ids="AUcRUk8pJTTOERVkGAmRgt,JDsFS1LMP7TLMaC798IL3U" />
+        <Link Id="IKrWMqelpNBOZuB92KbxZP" Ids="SgcOQMEHmApMRhe0RnTVOo,KlLppdpJ9xNLukrUZlCCVc" />
       </Patch>
     </Node>
   </Patch>
