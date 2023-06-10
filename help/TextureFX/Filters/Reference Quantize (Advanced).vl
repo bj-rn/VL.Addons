@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1184, 89, 585, 585" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1184, 88.57143, 584.5714, 584.5714" />
             <Pin Id="ChPaC3kYT9QNBhRrpm7YIP" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Quantize (Advanced)" />
@@ -77,7 +77,7 @@
               <p:stepsize p:Type="Single">0.01</p:stepsize>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="94,1021,185,19" Id="C8Q58u4WFLALksHX1Ln6zZ">
+          <Node Bounds="94,1036,185,19" Id="C8Q58u4WFLALksHX1Ln6zZ">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Stylize" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Stylize" NeedsToBeDirectParent="true" />
@@ -90,8 +90,8 @@
             <Pin Id="Q8TbAMFPj9WPVPS98piEMf" Name="Desaturate" Kind="InputPin" />
             <Pin Id="Q1UAkAvR114QEmqcbyK3pf" Name="Brightness" Kind="InputPin" />
             <Pin Id="RRXYRwV6eInNu5yFbgvTZE" Name="Contrast" Kind="InputPin" />
-            <Pin Id="IiYEDMYdXtvL98SpOgjtK9" Name="Radius" Kind="InputPin" />
-            <Pin Id="HAGzHE3xrxPP0HGTJTWyzy" Name="Control" Kind="InputPin" />
+            <Pin Id="IiYEDMYdXtvL98SpOgjtK9" Name="Radius" Kind="InputPin" DefaultValue="0" />
+            <Pin Id="HAGzHE3xrxPP0HGTJTWyzy" Name="Control" Kind="InputPin" DefaultValue="1, 1, 1, 1" />
             <Pin Id="IwMdLf4eTIhNIiI6KTUSQ2" Name="Apply" Kind="InputPin" DefaultValue="True" />
             <Pin Id="BnIGhGZkwvzNkYUfTbvn0G" Name="Output" Kind="OutputPin" />
           </Node>
@@ -180,6 +180,11 @@
             <Pin Id="Cxfj6GwrGqfMvZIwQsX3IW" Name="Premultiply Alpha" Kind="InputPin" />
             <Pin Id="PuKzUUdSU0lPArIs39y5lW" Name="Output" Kind="OutputPin" />
           </Node>
+          <Pad Id="I2kSeewwMosNc15FT1GYtU" Comment="Radius" Bounds="236,1024,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -206,6 +211,7 @@
         <Link Id="F8yvwoaqmovLe7GB6ew3kH" Ids="Vdd12m6Apb3PqygPql5P4V,ROmkjvZW7npNaDc0XVRawf" />
         <Link Id="HRLGwdziFXmOGn3Fsrzdee" Ids="FYqy6eofW0SNt8oXATYVnC,PW9SU7sRYxqP1JD0Vx1mKd" />
         <Link Id="DPaGWkaEuEXPNIuX3bUKyx" Ids="PuKzUUdSU0lPArIs39y5lW,IV0qgXavjByNj1tXkTRroi" />
+        <Link Id="Q76zT6h0SrpQZWTbPDW15M" Ids="I2kSeewwMosNc15FT1GYtU,IiYEDMYdXtvL98SpOgjtK9" />
       </Patch>
     </Node>
   </Patch>
