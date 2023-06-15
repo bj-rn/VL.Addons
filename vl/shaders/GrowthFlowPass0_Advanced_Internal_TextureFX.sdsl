@@ -2,7 +2,8 @@
 [Summary("")]
 [Tags("uv, offset, distort")]
 [DontConvertToLinearOnRead("Texture1")]
-
+[WantsMips("Texture0")]
+[WantsMips("Texture1")]
 shader GrowthFlowPass0_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils
 {
 	[Default(1.0f)]
@@ -11,37 +12,16 @@ shader GrowthFlowPass0_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtil
 	[Default(0.1f)]
 	compose ComputeFloat Fade;
 
-	bool Reset = false;
-	bool HideBrush = false;
-	//float Speed = 1.0f;
+	[Default(0.1f)]
+	compose ComputeFloat Blur;
 
-	//float EdgeWidth = 2.0f;
-	//float MapShape = 2.0f;
-	//float MapEdge = 2.0f;
-
-
-	//float surf(float2 x)
-	//{
-	//	float4 c = 0;
-	//	float2 e = EdgeWidth;// / ViewSize;
-
-	//	c += 4 *  Texture0.SampleLevel(LinearSampler, x + float2( 0, 0) * e, 0);
-	//	c += -1 * Texture0.SampleLevel(LinearSampler, x + float2( 1, 0) * e, 0);
-	//	c += -1 * Texture0.SampleLevel(LinearSampler, x + float2(-1, 0) * e, 0);
-	//	c += -1 * Texture0.SampleLevel(LinearSampler, x + float2( 0, 1) * e, 0);
-	//	c += -1 * Texture0.SampleLevel(LinearSampler, x + float2( 0,-1) * e, 0);
-
-	//	return smoothstep(0.03, 1.0, mx(lerp(Texture0.SampleLevel(LinearSampler, x, 0), saturate(abs(c) * 8.0 / EdgeWidth - 0.2), MapShape)));
-	//}
+	[Default(1.0f, 1.0f, 1.0f, 1.0f)]
+	compose ComputeFloat4 Img;
 
 	float mx(float3 x)
 	{
 		return max(x.x,max(x.y,x.z));
 	}
-
-	float Distort;
-
-	float Blur;
 
     float4 Filter(float4 tex0col)
     {
@@ -49,38 +29,27 @@ shader GrowthFlowPass0_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtil
 
 		float4 bru = Texture0.SampleLevel(LinearSampler, uv, 0);
 		float4 pre = Texture1.SampleLevel(LinearSampler, uv, 0);
-		float4 img = Texture2.SampleLevel(LinearSampler, uv, 0);
+		float4 img = Img.Compute();
 	
 		float4 c=0;
 
 		c.rgb = pre.rgb;
 
-		float2 dx = uv;
-		float fd = Texture1.SampleLevel(LinearSampler, float2(0.5, 0.5), 0).a / 2;
-
-		dx += sin(uv.yx * 7 + fd * sqrt(float2(37,7))) * 0.0005;
-		dx += sin(uv.yx * 13 + fd * sqrt(float2(7,85))) * 0.0022;
-		dx += sin(uv.yx * 38 - fd * sqrt(float2(97,16)) * float2(-1,1)) * 0.002 * float2(1,-1);
-		dx = normalize(dx-uv) * pow(length(dx-uv) * 78,4) * Distort + uv;
-		dx= uv + sin(img*8) * 0.11 * Distort * img.a;;
-
-		float speed = Speed.Compute();
+		float speed = Speed.Compute() * 0.01;
+		float blur = Blur.Compute();
 
 		for(float i=0; i<1; i += 1./12)
 		{
-			float2 off = sin((i + float2(0.25, 0))*acos(-1)*2);
-			off *= mx(img) * img.a * speed;
-			////off*=pow(2,2*sin(i*6));
-			float4 nc = Texture1.SampleLevel(LinearSampler, dx+off/ViewSize, 1+Blur*log2(max(ViewSize.x,ViewSize.y)), 0);
-			////c=lerp(c,nc,nc.a);
-			////c=(c*c.a+nc*nc.a)/(nc.a+c.a);
-			////c.rgb=(c.rgb*c.a+nc.rgb*nc.a)/(nc.a+c.a);
-			c.rgb=lerp(c.rgb,nc.rgb,nc.a>c.a);
-			c.a=max(c.a,nc.a);
+			float2 off = sin((i + float2(0.25, 0)) * acos(-1) * 2);
+			off *= speed;
+			float4 nc = Texture1.SampleLevel(LinearSampler, uv+off.rg, 1+blur*log2(max(ViewSize.x,ViewSize.y)));
+			c.rgb = lerp(c.rgb, nc.rgb, nc.a > c.a);
+			c.a = max(c.a, nc.a);
 		}
 
 		c = lerp(c, bru, bru.a);
-		c.a *= Fade.Compute();
-		return c;
+		c.a *= 0.9;
+		
+		return lerp(c, bru, Fade.Compute());
     }
 };
