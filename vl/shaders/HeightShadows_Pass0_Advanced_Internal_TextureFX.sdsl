@@ -1,0 +1,90 @@
+// source: Microdee
+// https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/HeightShadows.tfx
+
+[Category("Filter.Enhancement")]
+[Summary("")]
+//[OutputFormat("R32_Float")]
+[OutputFormat("R16G16B16A16_Float")]
+shader HeightShadows_Pass0_Advanced_Internal_TextureFX : FilterBase, AddonShaderUtils, NoiseFunctions
+{
+    [Default(0.5f)]
+    compose ComputeFloat Height;
+
+	[Default(0.5f, 0.5f, 0.5f)]
+    compose ComputeFloat3 LightDirection;
+
+	[Default(0.5f)]
+    compose ComputeFloat DotTolerance;
+
+	[Default(0.1f)]
+    compose ComputeFloat RayJitter;
+
+	[Default(1.0f)]
+    compose ComputeFloat RayLength;
+
+	[Default(1.0f)]
+    compose ComputeFloat ShadowFade;
+
+	[Default(1.0f)]
+    compose ComputeFloat ShadowFalloffPow;
+
+
+	static const int SampleCount = 24;
+	static const float invSampleCount = 0.04166667;
+
+	float MapClamp(float value, float inMin, float inMax, float outMin, float outMax)
+	{
+		return Map(clamp(value, min(inMin, inMax), max(inMin, inMax)), inMin, inMax, outMin, outMax);
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		float height = Height.Compute();
+		float rayJitter = RayJitter.Compute();
+		float rayLength = RayLength.Compute();
+		float shadowFade = ShadowFade.Compute();
+		float shadowFalloffPow = ShadowFalloffPow.Compute();
+		float2 uv = streams.TexCoord;
+
+		float3 cpos = float3(uv, tex0col.x * height);
+
+		float3 occluderpos = 0;
+		bool gotoccluder = false;
+		float3 orig = cpos;
+		float heightdiff = 1;
+		float3 raydir = -normalize(LightDirection.Compute());
+	
+		float3 norm = Texture1.SampleLevel(LinearSampler, uv, 0).xyz;
+		float dotnorm = dot(raydir, norm);
+		float normtol = MapClamp(abs(dotnorm), 0, DotTolerance.Compute(), 0, 1);
+	
+		//[unroll]
+		for(float i=0; i<SampleCount; i++)
+		{
+			float jitter = hash13(cpos*455) * rayJitter * (i>0);
+			float distfac = 0.2 + distance(cpos, orig);
+		    cpos += raydir * (invSampleCount * rayLength + jitter * distfac);
+			float cheight = Texture0.SampleLevel(LinearSampler, cpos.xy, 0).x * height;
+			//float3 chp = float3(cpos.xy, cheight) + bias * raydir;
+			float cdiff = cpos.z - cheight;
+			heightdiff = lerp(heightdiff, cdiff, cdiff < heightdiff);
+
+			if(!gotoccluder && cdiff < 0)
+			{
+				gotoccluder = true;
+				occluderpos = cpos;
+			}
+		}
+	
+		float dist = lerp(0, distance(occluderpos, orig), gotoccluder);
+	
+		float outdiff = saturate(heightdiff + 1) * (1-(heightdiff >= 0));
+		float outbluram = MapClamp(dist, 0.0, 0.8, 0, 1);
+	
+		float outcol = MapClamp(outbluram, 0, shadowFade, 0, 1);
+		outcol = lerp(1, pow(outcol, shadowFalloffPow), pow(normtol, 0.3333));
+	
+		float4 res = float4(lerp(outcol, 1, heightdiff >= 0), outbluram * (1-(heightdiff >= 0)), orig.z, outdiff);
+		return res;
+    }
+};

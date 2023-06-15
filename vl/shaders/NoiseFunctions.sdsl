@@ -1,0 +1,208 @@
+﻿shader NoiseFunctions
+{
+	float mpfxh_dnoise1(float3 u) 
+	{
+		u = dot(u + .2,float3(1,57,21));
+		return (u.x * (.1 + sin(u.x)));
+	}
+
+	float dnoise(float2 x,float RandomSeed) 
+	{
+		RandomSeed += .00001;
+		float c = mpfxh_dnoise1(float3((x + RandomSeed * 13 + 41) + 11,length(sin((x - 59) / 151 + RandomSeed * float2(11,7)))) + .5);
+		return frac(c + x.x * 2 + RandomSeed);
+	}
+
+	float2 dnoise2(float2 x,float RandomSeed) 
+	{
+		RandomSeed += .00001;
+		float2 c = {
+		mpfxh_dnoise1(float3((x + RandomSeed * 13 + 41) + 11,length(sin((x - 59) / 151 + RandomSeed * float2(11,7)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 7 + 293) + 5,length(sin((x + 127) / 163 + RandomSeed * float2(13,5)))) + .5)
+		};
+		return frac(c + x.x * 2 + RandomSeed + dot(c,1));
+	}
+
+	float3 dnoise3(float2 x,float RandomSeed) 
+	{
+		RandomSeed += .00001;
+		float3 c = {
+		mpfxh_dnoise1(float3((x + RandomSeed * 13 + 41) + 11,length(sin((x - 59) / 151 + RandomSeed * float2(11,7)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 7 + 293) + 5,length(sin((x + 127) / 163 + RandomSeed * float2(13,5)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 5 + 113) + 7,length(sin((x + 191) / 173 + RandomSeed * float2(7,17)))) + .5)
+		};
+		return frac(c + x.x * 2 + RandomSeed + dot(c,1));
+	}
+
+	float4 dnoise4(float2 x,float RandomSeed) 
+	{
+		RandomSeed += .00001;
+		float4 c = {
+		mpfxh_dnoise1(float3((x + RandomSeed * 13 + 41) + 11,length(sin((x - 59) / 151 + RandomSeed * float2(11,7)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 7 + 293) + 5,length(sin((x + 127) / 163 + RandomSeed * float2(13,5)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 5 + 113) + 7,length(sin((x + 191) / 173 + RandomSeed * float2(7,17)))) + .5),
+		mpfxh_dnoise1(float3((x + RandomSeed * 11 + 97) + 13,length(sin((x - 37) / 181 + RandomSeed * float2(5,23)))) + .5)
+		};
+		return frac(c + x.x * 2 + RandomSeed + dot(c,1));
+	}
+
+	float3 voronoiseHash3(float2 p, float3 phase)
+	{
+		float3 q = float3(dot(p,float2(127.1,311.7)),
+				dot(p,float2(269.5,183.3)),
+				dot(p,float2(419.2,371.9)));
+		return cos(sin(q) * 43758.5453 + phase) / 2.0 + 0.5;
+	}
+
+	float voronoise(float2 uv, float voronoi, float smoothness, float3 phase)
+	{
+		float2 p = floor(uv);
+		float2 f = frac(uv);
+
+		float k = 1.0 + 63.0 * pow(1.0 - smoothness,4.0);
+
+		float va = 0.0;
+		float wt = 0.0;
+		for (int j = -2; j <= 2; j++)
+			for (int i = -2; i <= 2; i++)
+			{
+				float2 g = float2(float(i),float(j));
+				float3 o = voronoiseHash3(p + g, phase) * float3(voronoi,voronoi,1.0);
+				float2 r = g - f + o.xy;
+				float d = dot(r,r);
+				float ww = pow(1.0 - smoothstep(0.0,1.414,sqrt(d)), k);
+				va += o.z * ww;
+				wt += ww;
+			}
+		return va / wt;
+	}
+
+	float3 voronoise3(float3 pos, float voronoi, float smoothness)
+	{
+		return float3(
+			voronoise(pos.xy, voronoi, smoothness, float3(0, 0, pos.z)),
+			voronoise(pos.xy, voronoi, smoothness, float3(1000, 500, pos.z)),
+			voronoise(pos.xy, voronoi, smoothness, float3(2000, -500, pos.z))
+		);
+	}
+
+	//----------------------------------------------------------------------------------------
+	//  1 out, 1 in...
+	float hash11(float p)
+	{
+		p = frac(p * .1031);
+		p *= p + 19.19;
+		p *= p + p;
+		return frac(p);
+	}
+
+	//----------------------------------------------------------------------------------------
+	//  1 out, 2 in...
+	float hash12(float2 p)
+	{
+		float3 p3 = frac(p.xyx * .1031);
+		p3 += dot(p3, p3.yzx + 19.19);
+		return frac((p3.x + p3.y) * p3.z);
+	}
+
+	//----------------------------------------------------------------------------------------
+	//  1 out, 3 in...
+	float hash13(float3 p3)
+	{
+		p3 = frac(p3 * .1031);
+		p3 += dot(p3, p3.yzx + 19.19);
+		return frac((p3.x + p3.y) * p3.z);
+	}
+
+	//----------------------------------------------------------------------------------------
+	//  2 out, 1 in...
+	float2 hash21(float p)
+	{
+		float3 p3 = frac(p * float3(.1031, .1030, .0973));
+		p3 += dot(p3, p3.yzx + 19.19);
+		return frac((p3.xx + p3.yz) * p3.zy);
+	}
+
+	//----------------------------------------------------------------------------------------
+	///  2 out, 2 in...
+	float2 hash22(float2 p)
+	{
+		float3 p3 = frac(p.xyx * float3(.1031, .1030, .0973));
+		p3 += dot(p3, p3.yzx + 19.19);
+		return frac((p3.xx + p3.yz) * p3.zy);
+
+	}
+
+	//----------------------------------------------------------------------------------------
+	///  2 out, 3 in...
+	float2 hash23(float3 p3)
+	{
+		p3 = frac(p3 * float3(.1031, .1030, .0973));
+		p3 += dot(p3, p3.yzx + 19.19);
+		return frac((p3.xx + p3.yz) * p3.zy);
+	}
+
+	//----------------------------------------------------------------------------------------
+	//  3 out, 1 in...
+	float3 hash31(float p)
+	{
+	   float3 p3 = frac(p * float3(.1031, .1030, .0973));
+	   p3 += dot(p3, p3.yzx + 19.19);
+	   return frac((p3.xxy + p3.yzz) * p3.zyx);
+	}
+
+
+	//----------------------------------------------------------------------------------------
+	///  3 out, 2 in...
+	float3 hash32(float2 p)
+	{
+		float3 p3 = frac(p.xyx * float3(.1031, .1030, .0973));
+		p3 += dot(p3, p3.yxz + 19.19);
+		return frac((p3.xxy + p3.yzz) * p3.zyx);
+	}
+
+	//----------------------------------------------------------------------------------------
+	///  3 out, 3 in...
+	float3 hash33(float3 p3)
+	{
+		p3 = frac(p3 * float3(.1031, .1030, .0973));
+		p3 += dot(p3, p3.yxz + 19.19);
+		return frac((p3.xxy + p3.yxx) * p3.zyx);
+	}
+
+	//----------------------------------------------------------------------------------------
+	// 4 out, 1 in...
+	float4 hash41(float p)
+	{
+		float4 p4 = frac(p * float4(.1031, .1030, .0973, .1099));
+		p4 += dot(p4, p4.wzxy + 19.19);
+		return frac((p4.xxyz + p4.yzzw) * p4.zywx);
+	}
+
+	//----------------------------------------------------------------------------------------
+	// 4 out, 2 in...
+	float4 hash42(float2 p)
+	{
+		float4 p4 = frac(p.xyxy * float4(.1031, .1030, .0973, .1099));
+		p4 += dot(p4, p4.wzxy + 19.19);
+		return frac((p4.xxyz + p4.yzzw) * p4.zywx);
+	}
+
+	//----------------------------------------------------------------------------------------
+	// 4 out, 3 in...
+	float4 hash43(float3 p)
+	{
+		float4 p4 = frac(p.xyzx * float4(.1031, .1030, .0973, .1099));
+		p4 += dot(p4, p4.wzxy + 19.19);
+		return frac((p4.xxyz + p4.yzzw) * p4.zywx);
+	}
+
+	//----------------------------------------------------------------------------------------
+	// 4 out, 4 in...
+	float4 hash44(float4 p4)
+	{
+		p4 = frac(p4 * float4(.1031, .1030, .0973, .1099));
+		p4 += dot(p4, p4.wzxy + 19.19);
+		return frac((p4.xxyz + p4.yzzw) * p4.zywx);
+	}
+};
