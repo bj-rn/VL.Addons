@@ -19,13 +19,13 @@ shader UndistortAddon_Advanced_Internal_TextureFX : FilterBase
 
     float4 Filter(float4 tex0col)
     {
-        float2 uv = Undistort(streams.TexCoord, FocalLength.Compute(), PrincipalPoint.Compute(), Distortion.Compute(), Resolution.Compute());
+        float2 uv = Undistort(streams.TexCoord-0.5, FocalLength.Compute(), PrincipalPoint.Compute(), Distortion.Compute(), Resolution.Compute());
         return Texture0.SampleLevel(Sampler0, uv, 0);
     }
 
     float2 tranf(float2 TexCd, float2 Trans, float2 Scale, float2 Resolution)
     {
-        return (TexCd * Scale + Trans) / Resolution;
+        return (TexCd * Scale + Trans) / Resolution + 0.5;
     };
 
     float2 tranf_inv(float2 TexCd, float2 Trans, float2 Scale, float2 Resolution)
