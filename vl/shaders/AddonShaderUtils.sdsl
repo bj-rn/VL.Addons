@@ -358,4 +358,22 @@ shader AddonShaderUtils
     {
       return outMin + (outMax - outMin) * (value - inMin) / (inMax - inMin);
     }
+
+
+    float pows(float a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float2 pows(float2 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float3 pows(float3 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float4 pows(float4 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
 };
