@@ -1,0 +1,100 @@
+﻿shader ToneMappingOperations : TextureFX
+{
+    float Exposure;
+    int AutoExposure;
+    float AutoExpReact = 1;
+    float KeyValue;
+    //float LumMapMipLevel;
+
+    float pows(float a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float2 pows(float2 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float3 pows(float3 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+    float4 pows(float4 a, float b)
+    {
+	    return pow(abs(a),b)*sign(a);
+    }
+
+    float3 CalcExposedColor0(float3 color, float avgLuminance, float threshold, out float exposure)
+    {    
+        exposure = Exposure;
+        exposure -= threshold;
+        return exp2(exposure) * color;
+    }
+
+    float3 CalcExposedColor1(float3 color, float avgLuminance, float threshold, out float exposure)
+    {    
+        exposure = 0;
+
+        // Use geometric mean
+    	avgLuminance *= 1/AutoExpReact;
+        avgLuminance = max(pow(avgLuminance,AutoExpReact), 0.001f);
+        float keyValue = 0;
+        keyValue = KeyValue;
+        float linearExposure = (keyValue / avgLuminance);
+        exposure = log2(max(linearExposure, 0.0001f));
+
+        exposure -= threshold;
+        return exp2(exposure) * color;
+    }
+
+    float3 CalcExposedColor2(float3 color, float avgLuminance, float threshold, out float exposure)
+    {    
+        exposure = 0;
+        // Use geometric mean
+    	avgLuminance *= 1/AutoExpReact;
+        avgLuminance = max(pow(avgLuminance,AutoExpReact), 0.001f);
+
+        float keyValue = 0;
+        keyValue = 1.03f - (2.0f / (2 + log10(avgLuminance + 1)));
+
+        float linearExposure = (keyValue / avgLuminance);
+        exposure = log2(max(linearExposure, 0.0001f));
+        exposure -= threshold;
+        return exp2(exposure) * color;
+    }
+
+    //////////////////////////
+
+    float3 CalcExposedColor(float3 color, float avgLuminance, float threshold, out float exposure)
+    {    
+        float3 c;
+        exposure = 0;
+
+        switch(AutoExposure)
+        {
+            case 0 : c = CalcExposedColor0(color, avgLuminance, threshold, exposure); break;
+            case 1 : c = CalcExposedColor1(color, avgLuminance, threshold, exposure); break;
+            case 2 : c = CalcExposedColor2(color, avgLuminance, threshold, exposure); break;
+        }
+
+        return c;
+    }
+
+    // Approximates luminance from an RGB value
+    float CalcLuminance(float3 color)
+    {
+        return max(dot(color, float3(0.299f, 0.587f, 0.114f)), 0.0001f);
+    }
+
+    // Retrieves the log-average lumanaince from the texture
+    float GetAvgLuminance(Texture2D lumTex, float2 texCoord)
+    {
+	    return exp(length(lumTex.SampleLevel(LinearSampler, texCoord, 0/*LumMapMipLevel*/).rgb));
+    }
+
+    float3 AutoExpo(float3 color, float avgLuminance, float threshold, out float exposure)
+    {
+        float pixelLuminance = CalcLuminance(color);
+        color = CalcExposedColor(color, avgLuminance, threshold, exposure);
+        return color;
+    }
+};
