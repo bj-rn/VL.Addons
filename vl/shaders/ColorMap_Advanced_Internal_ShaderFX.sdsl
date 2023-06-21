@@ -11,35 +11,35 @@ shader ColorMap_Advanced_Internal_ShaderFX : ComputeFloat4, AddonShaderUtils
     override float4 Compute()
     {
         float4 color = ColorIn.Compute();
-        float4 c = 0;
+        float4 c = float4(1.0f, 0.0f, 0.0f, 0.0f);
         
         switch(type)
         {
             case 0 : c = RGBA(color); break;
             case 1 : c = HSVA(color); break;
-            case 2 : c = HSLA(color); break;
-            case 3 : c = CMYK(color); break;
+            //case 2 : c = HSLA(color); break;
+            //case 3 : c = CMYK(color); break;
         }
 
         return c;
     }
 
-    float RGBA(float4 c)
+    float4 RGBA(float4 c)
     {
         return c;
     }
 
-    float HSVA(float4 c)
+    float4 HSVA(float4 c)
     {
         return RGBtoHSV(c);
     }
 
-    float HSLA(float4 c)
+    float4 HSLA(float4 c)
     {
         return RGBtoHCV(c);
     }
 
-    float CMYK(float4 c)
+    float4 CMYK(float4 c)
     {
         return RGBToCMYK(c);
     }
