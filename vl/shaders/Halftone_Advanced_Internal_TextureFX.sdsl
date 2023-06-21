@@ -8,7 +8,8 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
 {
     int Type = 0;
 
-    float NumberOfTiles = 50.0f;
+    [Defaul(0.1f)]
+    compose ComputeFloat NumberOfTiles;
 
     [Defaul(0.1f)]
     compose ComputeFloat DotSize;
@@ -106,7 +107,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
 
     float4 TexturedHalftone(float2 uv, float2 pBase)
     {
-        float4 tile =  Texture1.Sample(LinearRepeatSampler, uv * NumberOfTiles);
+        float4 tile =  Texture1.Sample(LinearRepeatSampler, uv * NumberOfTiles.Compute());
         float4 tileColor = Texture0.Sample(LinearRepeatSampler, pBase);
 
         float3 col = tile.rgb * tileColor.rgb * 2 * Brightness.Compute();
@@ -117,7 +118,7 @@ shader Halftone_Advanced_Internal_TextureFX : FilterBase
 
     float4 Filter(float4 tex0col)
     {
-        float stride = 1.0f / NumberOfTiles;
+        float stride = 1.0f / NumberOfTiles.Compute();
         float halfstride = stride / 2.0f;
         float2 uv = streams.TexCoord;
 

@@ -8,9 +8,8 @@ shader Tiles_Advanced_Internal_TextureFX : FilterBase
 
     float4 Filter(float4 tex0col)
     {
-        float2 sz = min(max(0.5 / ViewSize, (FactorXY.Compute() * 0.5 ) * ViewSize), ViewSize);
-        float2 vp = streams.TexCoord * ViewSize;
-
-        return Texture0.SampleLevel(Sampler0, floor(vp / sz) * sz / ViewSize + 0.5 / ViewSize, 0);	
+        float2 uv = streams.TexCoord;
+        float2 sz = ViewSize / min(max(0.5/ ViewSize, FactorXY.Compute() ), ViewSize);
+        return Texture0.SampleLevel(Sampler0, lerp(uv, (round((uv - 0.5) * sz - 0.5) + 0.5)/sz + 0.5, 1), 0);	
     }
 };
