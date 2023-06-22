@@ -1,0 +1,46 @@
+// by Antokhio
+// https://beta.vvvv.org/contributions/effects/dx11-modules-and-shaders-addition/index.html
+
+[TextureSource]
+[Category("Source")]
+[Summary("Returns a bubbly noise texture")]
+[DontConvertToSRgbOnWrite]
+
+shader Hex_Advanced_Internal_TextureFX : TextureFX
+{
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 CellColor;
+    
+    [Default(3.5f, 3.5f)]
+    compose ComputeFloat2 CellCount;
+
+    [Default(5.0f)]
+    compose ComputeFloat CellSize;
+
+	bool Aspect;
+
+	float color (float2 p)
+	{
+		float2 asp=lerp(1,ViewSize/ViewSize.x,Aspect);
+		float k;
+		float2 s = float2(sqrt(3)/2, 1.5);
+
+		p = abs((p%(2*s))-s); 
+		k = p.x*.5 - (p.y-.5)*sqrt(3.)/2.;
+		if(k < 0.)
+		p = p+2.*(s/2.-p);
+		return min(abs(k), p.x);	
+	}
+
+    stage override float4 Shading()
+    {
+		float2 uv = streams.TexCoord;
+		float c = 0.0;
+		uv *= CellCount.Compute(); // scale
+		c = step(CellSize.Compute() , color(uv));
+		return lerp(BackgroundColor.Compute(), CellColor.Compute(), float4(c, c, c, c));
+    }
+};
