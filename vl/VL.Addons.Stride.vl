@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="EYual6BsUeBMzgQyRuXppa" LanguageVersion="2023.5.3-0013-g452f82536f" Version="0.128">
-  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2023.5.3-0013-g452f82536f" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="EYual6BsUeBMzgQyRuXppa" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
+  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
   <Patch Id="VeJSap7sIKJNwnBokjEoI8">
     <Canvas Id="KAeiw0WXEdQNQT9FSe5ubO" DefaultCategory="Stride" CanvasType="FullCategory">
       <Canvas Id="La2rwazVWI1LNRD2Wi4LG0" Name="Graphics" Position="298,128">
@@ -10388,6 +10388,80 @@
                   <Fragment Id="HujO5lNciAyMIGnWZQ8md7" Patch="BWW1K1Va6azM936oa15kQb" Enabled="true" />
                   <Fragment Id="DD10a9mnUg2NpGJXL4wFoF" Patch="ML8G1PyV8OjLvT7rUAsJgq" Enabled="true" />
                 </ProcessDefinition>
+              </Patch>
+            </Node>
+            <!--
+
+    ************************ UnPremultiply ************************
+
+-->
+            <Node Name="UnPremultiply" Bounds="119,1033" Id="Ts0kmIekj7zOXFIAgDSR4R">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ClassDefinition" Name="Class" />
+              </p:NodeReference>
+              <p:Interfaces>
+                <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                  <Choice Kind="InterfaceTypeFlag" Name="IFilter" />
+                </TypeReference>
+              </p:Interfaces>
+              <Patch Id="Er1CAQX1wsZMTiEkWiok9K">
+                <Canvas Id="I6B9fvgDwd1PI1nLsyiO9v" CanvasType="Group">
+                  <Node Bounds="175,373,80,19" Id="GWl5q5HsQ2DPHbvG36oPcG">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Utils" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessNode" Name="UnPremultiply" />
+                    </p:NodeReference>
+                    <Pin Id="G4juhyF4jZXMn22qdaOKtp" Name="Input" Kind="InputPin" />
+                    <Pin Id="Rtajw6KX72nL9iMMJMdk5K" Name="Power" Kind="InputPin" />
+                    <Pin Id="SVeWIeDacE9NY8aI7Jc6Ii" Name="Control" Kind="InputPin" />
+                    <Pin Id="OrsBiGZybfWNVk9SQymng5" Name="Apply" Kind="InputPin" />
+                    <Pin Id="JrXAXB7Si52NpU5DCqqiG2" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="DSdrPT1K2vrPUwhIQmyN5M" Bounds="177,289" />
+                  <ControlPoint Id="CuKRQzTDDQoMhI7byd4nL0" Bounds="201,316" />
+                  <ControlPoint Id="LFV9unQfb8zLyWKyhYdrtW" Bounds="227,339" />
+                  <ControlPoint Id="SwaYs2K7EE0Mb4FYy5GPUy" Bounds="252,360" />
+                  <ControlPoint Id="RjHUKN9JvuFQUnqn8sLvhI" Bounds="177,428" />
+                </Canvas>
+                <Patch Id="SuFI8ar2DrYLOXPbU9Srl2" Name="Create" />
+                <!--
+
+    ************************  ************************
+
+-->
+                <ProcessDefinition Id="QvPBQYRWZUyOJ27mWUqSOk">
+                  <Fragment Id="Cy8sQ8KVuMqNWRiolJwftF" Patch="SuFI8ar2DrYLOXPbU9Srl2" Enabled="true" />
+                  <Fragment Id="CFqQ99f9CbLOyhThJmNqmd" Patch="SmWZCmHJfzOOiBdY4cCMWk" Enabled="true" />
+                  <Fragment Id="B6z5MeyOfFtNJJ7ficZ4jk" Patch="HEIQp5cssRBMdUSQovIhJS" Enabled="true" />
+                  <Fragment Id="FvjCxV5IvS5QWHNfBaHU0E" Patch="LDSbwgODUoDPXaY9QA8EB3" Enabled="true" />
+                  <Fragment Id="K1hLg6KJlImMiNLyOAPy8R" Patch="Lg7VoiquZB4QX1K1pYJsPt" Enabled="true" />
+                  <Fragment Id="Lv6Dv2UJBwsMMBWmtZao7a" Patch="MvSLImkW3t6NKykosA3rZd" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="KHRnwmHT3kWNIr1a7MWsgT" Ids="KneAMc1NA1HMTBa87KQToE,DSdrPT1K2vrPUwhIQmyN5M" IsHidden="true" />
+                <Link Id="QdgSDnC72d7MO6UyTRn0UG" Ids="DSdrPT1K2vrPUwhIQmyN5M,G4juhyF4jZXMn22qdaOKtp" />
+                <Link Id="JFVs39F2rL1N8Kpw7BNpe2" Ids="VQsFkcql5USLf49GH7g1Zx,CuKRQzTDDQoMhI7byd4nL0" IsHidden="true" />
+                <Link Id="NzbKWkOD3GyPI3JqjMZ397" Ids="CuKRQzTDDQoMhI7byd4nL0,Rtajw6KX72nL9iMMJMdk5K" />
+                <Link Id="AX5t2GTyFBPOqvYgOcjk5E" Ids="G1zjZeJ3ufwPrQhARHvi0v,LFV9unQfb8zLyWKyhYdrtW" IsHidden="true" />
+                <Link Id="OJWbGzQIIPeOQKkspIRouu" Ids="LFV9unQfb8zLyWKyhYdrtW,SVeWIeDacE9NY8aI7Jc6Ii" />
+                <Link Id="IW1noh451SEPtCpWGYJ7Ao" Ids="T7vfOrUjig9PJuNZdQ54WM,SwaYs2K7EE0Mb4FYy5GPUy" IsHidden="true" />
+                <Link Id="HjspjjbseKxL8BaiAzvpj9" Ids="SwaYs2K7EE0Mb4FYy5GPUy,OrsBiGZybfWNVk9SQymng5" />
+                <Link Id="H5NQ65cZbOiMEavoEJOfCM" Ids="RjHUKN9JvuFQUnqn8sLvhI,E4OwfWKidNZOYjTWjTXyow" IsHidden="true" />
+                <Link Id="PY7vTxujxTHLTjqRb9NEiG" Ids="JrXAXB7Si52NpU5DCqqiG2,RjHUKN9JvuFQUnqn8sLvhI" />
+                <Patch Id="SmWZCmHJfzOOiBdY4cCMWk" Name="SetTexture">
+                  <Pin Id="KneAMc1NA1HMTBa87KQToE" Name="Input" Kind="InputPin" />
+                </Patch>
+                <Patch Id="HEIQp5cssRBMdUSQovIhJS" Name="SetControl">
+                  <Pin Id="G1zjZeJ3ufwPrQhARHvi0v" Name="Control" Kind="InputPin" />
+                </Patch>
+                <Patch Id="LDSbwgODUoDPXaY9QA8EB3" Name="SetParameters">
+                  <Pin Id="VQsFkcql5USLf49GH7g1Zx" Name="Power" Kind="InputPin" />
+                </Patch>
+                <Patch Id="Lg7VoiquZB4QX1K1pYJsPt" Name="Update">
+                  <Pin Id="T7vfOrUjig9PJuNZdQ54WM" Name="Apply" Kind="InputPin" />
+                </Patch>
+                <Patch Id="MvSLImkW3t6NKykosA3rZd" Name="GetTexture">
+                  <Pin Id="E4OwfWKidNZOYjTWjTXyow" Name="Output" Kind="OutputPin" />
+                </Patch>
               </Patch>
             </Node>
           </Canvas>
@@ -30688,7 +30762,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2023.5.3-0013-g452f82536f" />
+  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2023.5.3-0019-g04bfa216f7" />
   <PlatformDependency Id="MLVA0izfRMkORdIZzd9kvt" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.dll" />
   <PlatformDependency Id="CvdCU2DNQlRMaSdivNSZJy" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Graphics.dll" />
   <PlatformDependency Id="CfSqI9CZTJZLV5hRh33DGP" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Core.dll" />
