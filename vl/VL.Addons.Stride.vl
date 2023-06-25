@@ -26960,7 +26960,7 @@
     ************************ Blood ************************
 
 -->
-            <Node Name="Blood" Bounds="116,337" Id="QE909iRQfuWOad66wDpEMi">
+            <Node Name="Blood" Bounds="116,425" Id="QE909iRQfuWOad66wDpEMi">
               <p:NodeReference>
                 <Choice Kind="ClassDefinition" Name="Class" />
                 <CategoryReference Kind="Category" Name="Primitive" />
@@ -27049,7 +27049,7 @@
     ************************ Dissolve ************************
 
 -->
-            <Node Name="Dissolve" Bounds="115,436" Id="Ea9Pl6QcC4QOPJmYx1b14l">
+            <Node Name="Dissolve" Bounds="115,517" Id="Ea9Pl6QcC4QOPJmYx1b14l">
               <p:NodeReference>
                 <Choice Kind="ClassDefinition" Name="Class" />
                 <CategoryReference Kind="Category" Name="Primitive" />
@@ -27139,7 +27139,7 @@
     ************************ Ripple ************************
 
 -->
-            <Node Name="Ripple" Bounds="117,537" Id="MSSVXzztF35NpYIeqmmlvY">
+            <Node Name="Ripple" Bounds="117,610" Id="MSSVXzztF35NpYIeqmmlvY">
               <p:NodeReference>
                 <Choice Kind="ClassDefinition" Name="Class" />
                 <CategoryReference Kind="Category" Name="Primitive" />
@@ -27328,7 +27328,7 @@
     ************************ Blind ************************
 
 -->
-            <Node Name="Blind" Bounds="281,444" Id="AjD7fMmgxelL1PtxW42KX2">
+            <Node Name="Blind" Bounds="117,331" Id="AjD7fMmgxelL1PtxW42KX2">
               <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                 <Choice Kind="ClassDefinition" Name="Class" />
               </p:NodeReference>
@@ -27412,7 +27412,7 @@
     ************************ Circle (Reveal) ************************
 
 -->
-            <Node Name="Circle (Reveal)" Bounds="154,629" Id="Rclof0GhiRHPRV50pEQRkY">
+            <Node Name="Circle (Reveal)" Bounds="119,705" Id="Rclof0GhiRHPRV50pEQRkY">
               <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                 <Choice Kind="ClassDefinition" Name="Class" />
               </p:NodeReference>
@@ -27483,6 +27483,85 @@
                 </Patch>
                 <Patch Id="MfuOZUIqmX0M2OCVsFA8K7" Name="GetTexture">
                   <Pin Id="RMz1g41WLELMXnbyyNlLAK" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Patch>
+            </Node>
+            <!--
+
+    ************************ Circle (Stretch) ************************
+
+-->
+            <Node Name="Circle (Stretch)" Bounds="121,796" Id="RUNiO3sLofaPuzbas49v6y">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ClassDefinition" Name="Class" />
+              </p:NodeReference>
+              <p:Interfaces>
+                <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                  <Choice Kind="InterfaceTypeFlag" Name="IMixer" />
+                </TypeReference>
+              </p:Interfaces>
+              <Patch Id="BupNN0tQfZmP1xxy1XQLlm">
+                <Canvas Id="SFvD48zrSVQOfmbDsVXzot" CanvasType="Group">
+                  <Node Bounds="337,436,85,19" Id="QEjkvaANKEULGjSjJ2asVy">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Mixer.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessNode" Name="Circle (Stretch)" />
+                    </p:NodeReference>
+                    <Pin Id="H0ztLoS9FbyPvxUoTG2Slv" Name="Input" Kind="InputPin" />
+                    <Pin Id="R5JjKVYHEGiOnm4sKYKnMt" Name="Input 2" Kind="InputPin" />
+                    <Pin Id="KFgbdY2V99dN65OOl5N1aM" Name="Radius" Kind="InputPin" />
+                    <Pin Id="IQqBcKVfOzXPCMQ0YOGlHV" Name="Fader" Kind="InputPin" />
+                    <Pin Id="CylDTIrmrYLQHqNJp2vkDX" Name="Apply" Kind="InputPin" />
+                    <Pin Id="ApGDHPfQ8SuPrVvBrmAdyD" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="SlN6VXDxrKvLNgVMwT3FMX" Bounds="339,325" />
+                  <ControlPoint Id="GyVc5TF3VzfM5QZyAZD84H" Bounds="359,348" />
+                  <ControlPoint Id="AslyqkMy8RCLVy8T2GKcIi" Bounds="379,370" />
+                  <ControlPoint Id="VF4c6s18YrVNYdSfb3aYQF" Bounds="399,392" />
+                  <ControlPoint Id="DZdmIVkQQgvQPYl7JG7XDM" Bounds="419,415" />
+                  <ControlPoint Id="IbEov1gCWDoNFaybM5n4op" Bounds="339,483" />
+                </Canvas>
+                <Patch Id="Ho7KSkAvTvTNqr75H2KDxG" Name="Create" />
+                <!--
+
+    ************************  ************************
+
+-->
+                <ProcessDefinition Id="LMmloXyGtY5Ll8kOyI9emZ">
+                  <Fragment Id="QaS3X5VXRR1OxRQuo2gPge" Patch="Ho7KSkAvTvTNqr75H2KDxG" Enabled="true" />
+                  <Fragment Id="VnxF8Qni3bIOhEllphXkrD" Patch="R8Nv5LJt1UVNOrt9pLA0Sx" Enabled="true" />
+                  <Fragment Id="NnyDnczA8adPORCnG6KhvB" Patch="LO4TDFo1K4WMJIeJlh0sUO" Enabled="true" />
+                  <Fragment Id="Vh8UgY8Td4bOkXq62U3Yxo" Patch="RaCFQkY4wDULj3RRWrDr7O" Enabled="true" />
+                  <Fragment Id="E8gXoUVsOIpOrtvS628deK" Patch="NpZg3fDLWmGNuoA04FgQFR" Enabled="true" />
+                  <Fragment Id="CJ05xTlIIHKL93BDmoQ5zl" Patch="NN21v4gjFAEPHJThYtXcVg" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="VjVNhALObozPmTsMBSzQAM" Ids="P6nntco6FNdLJlu1jOMuRO,SlN6VXDxrKvLNgVMwT3FMX" IsHidden="true" />
+                <Link Id="PBk0PFEgzx3MzGsVNjL8LN" Ids="SlN6VXDxrKvLNgVMwT3FMX,H0ztLoS9FbyPvxUoTG2Slv" />
+                <Link Id="D1Idvl8fAYRPpZ3OGJG8MK" Ids="M7oYSXPIx6nPAo7Vf9dhFL,GyVc5TF3VzfM5QZyAZD84H" IsHidden="true" />
+                <Link Id="NvC6ER5SyO3McaMrultXiG" Ids="GyVc5TF3VzfM5QZyAZD84H,R5JjKVYHEGiOnm4sKYKnMt" />
+                <Link Id="MCd3oRWl4wuQTxx04IcMR5" Ids="Dr1QMlANaUTONBmuyY1ePU,AslyqkMy8RCLVy8T2GKcIi" IsHidden="true" />
+                <Link Id="UJY4SL3d5fzMYL99DjLfbP" Ids="AslyqkMy8RCLVy8T2GKcIi,KFgbdY2V99dN65OOl5N1aM" />
+                <Link Id="OVzNVLo4p8CLwSQAL8eG0M" Ids="HTkYm1kKzfrQbb38sEyb2z,VF4c6s18YrVNYdSfb3aYQF" IsHidden="true" />
+                <Link Id="G0zYC87s9g9PjWJDKA3M3I" Ids="VF4c6s18YrVNYdSfb3aYQF,IQqBcKVfOzXPCMQ0YOGlHV" />
+                <Link Id="RA9pP7XIBJHPbMQjKRbcBR" Ids="LWczC377CFKNUSox3NzFDq,DZdmIVkQQgvQPYl7JG7XDM" IsHidden="true" />
+                <Link Id="KdD0alHwKR2NEoUtmYT9m7" Ids="DZdmIVkQQgvQPYl7JG7XDM,CylDTIrmrYLQHqNJp2vkDX" />
+                <Link Id="S37djm2YNEAPS3AJwkC1BM" Ids="IbEov1gCWDoNFaybM5n4op,SZb18R6sQJ5MrR4pRp0mzl" IsHidden="true" />
+                <Link Id="IugKQw9aWQNMSFVricLM8l" Ids="ApGDHPfQ8SuPrVvBrmAdyD,IbEov1gCWDoNFaybM5n4op" />
+                <Patch Id="R8Nv5LJt1UVNOrt9pLA0Sx" Name="SetTexture">
+                  <Pin Id="P6nntco6FNdLJlu1jOMuRO" Name="Input" Kind="InputPin" />
+                  <Pin Id="M7oYSXPIx6nPAo7Vf9dhFL" Name="Input 2" Kind="InputPin" />
+                </Patch>
+                <Patch Id="LO4TDFo1K4WMJIeJlh0sUO" Name="SetParameters">
+                  <Pin Id="Dr1QMlANaUTONBmuyY1ePU" Name="Radius" Kind="InputPin" />
+                </Patch>
+                <Patch Id="RaCFQkY4wDULj3RRWrDr7O" Name="SetFader">
+                  <Pin Id="HTkYm1kKzfrQbb38sEyb2z" Name="Fader" Kind="InputPin" />
+                </Patch>
+                <Patch Id="NpZg3fDLWmGNuoA04FgQFR" Name="Update">
+                  <Pin Id="LWczC377CFKNUSox3NzFDq" Name="Apply" Kind="InputPin" />
+                </Patch>
+                <Patch Id="NN21v4gjFAEPHJThYtXcVg" Name="GetTexture">
+                  <Pin Id="SZb18R6sQJ5MrR4pRp0mzl" Name="Output" Kind="OutputPin" />
                 </Patch>
               </Patch>
             </Node>
