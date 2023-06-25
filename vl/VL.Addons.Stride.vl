@@ -27827,6 +27827,98 @@
                 </Patch>
               </Patch>
             </Node>
+            <!--
+
+    ************************ Wave ************************
+
+-->
+            <Node Name="Wave" Bounds="129,1178" Id="NfQhHquLjAwLdBkzjX4Q2m">
+              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                <Choice Kind="ClassDefinition" Name="Class" />
+              </p:NodeReference>
+              <p:Interfaces>
+                <TypeReference LastCategoryFullName="Stride.Textures" LastDependency="VL.Addons.Stride.vl">
+                  <Choice Kind="InterfaceTypeFlag" Name="IMixer" />
+                </TypeReference>
+              </p:Interfaces>
+              <Patch Id="U6OB3dnHvj6QKVTgcAYikA">
+                <Canvas Id="PQ9f9XOf7njNusA8BUOZWC" CanvasType="Group">
+                  <Node Bounds="301,426,125,19" Id="Gd5f8gW8FycONCqZ0K6vqh">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Mixer.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\GitHub\VL.Addons\vl)">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <CategoryReference Kind="Category" Name="Distortion" NeedsToBeDirectParent="true">
+                        <p:OuterCategoryReference Kind="Category" Name="Mixer" NeedsToBeDirectParent="true" />
+                      </CategoryReference>
+                      <Choice Kind="ProcessAppFlag" Name="Wave" />
+                    </p:NodeReference>
+                    <Pin Id="MEdfVgEVnqrNVOUZQJ0I2O" Name="Input" Kind="InputPin" />
+                    <Pin Id="KBBzvn2KN4aLWVkQF4YRMe" Name="Input 2" Kind="InputPin" />
+                    <Pin Id="PuyLymGtOLsLju1zo4QIDz" Name="Horizontal" Kind="InputPin" />
+                    <Pin Id="LXNgCzRApvKMzNK1KOc0RZ" Name="Deform" Kind="InputPin" />
+                    <Pin Id="C6CX5OCZTjkNTPHHYGg6vU" Name="Frequency" Kind="InputPin" />
+                    <Pin Id="SXx79Yh1tBtMdoQClFL3ZP" Name="Fader" Kind="InputPin" />
+                    <Pin Id="T47HNpbvs0qN7sgDRXYOoC" Name="Apply" Kind="InputPin" />
+                    <Pin Id="BZHlnkMThouQWi8jksl4el" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="DJUvf0vscWzPEX21lDL2Qm" Bounds="302,263" />
+                  <ControlPoint Id="RzEwSAeMfPlPaMfJzYFUS0" Bounds="322,290" />
+                  <ControlPoint Id="Nnut6y3grKDP8Uo9Xf2pR4" Bounds="343,315" />
+                  <ControlPoint Id="RJpgGRNa9pANzMPMCQsSii" Bounds="363,338" />
+                  <ControlPoint Id="JDycj50gMRfPJlUB5cFyn8" Bounds="383,363" />
+                  <ControlPoint Id="IjGkdOKopPkLZgUOafLL5e" Bounds="403,389" />
+                  <ControlPoint Id="FFB1rou5E1FPt1ma6qUtx1" Bounds="423,410" />
+                  <ControlPoint Id="NpHFT2pV6tZMfL0rQgzQP1" Bounds="303,481" />
+                </Canvas>
+                <Patch Id="LDgGFgd5vJUOHHixQkbufD" Name="Create" />
+                <!--
+
+    ************************  ************************
+
+-->
+                <ProcessDefinition Id="OXrZ62VTufUOO0K5ZWcclg">
+                  <Fragment Id="NpTMUMfym0yM0vVrnA8B3g" Patch="LDgGFgd5vJUOHHixQkbufD" Enabled="true" />
+                  <Fragment Id="DBl6fHM8NFfNjxwfZEi88E" Patch="Di3qQRe3kLEQUmyYgy6n2T" Enabled="true" />
+                  <Fragment Id="NogHyCSUZTGOWsvJg2ixQk" Patch="PR40JF0xGcPNAZwlbKWSf6" Enabled="true" />
+                  <Fragment Id="NqEDmXt6dTbNjUryZPpngb" Patch="F0QixukGBwUNkbiF30VYep" Enabled="true" />
+                  <Fragment Id="GhuOOlrvdPbPL807NO9B2O" Patch="PcsPjkANlJ0MD6bssor283" Enabled="true" />
+                  <Fragment Id="DxQuxaS4qykLw6KkabuYIM" Patch="PgP0wwiPu5WLdQJ7YZnBcz" Enabled="true" />
+                </ProcessDefinition>
+                <Link Id="Ixuf8HdlF9eQFYJzcjRwrr" Ids="N7a7mcl94GMNraagqET1R0,DJUvf0vscWzPEX21lDL2Qm" IsHidden="true" />
+                <Link Id="Pt8qqtbp52HNyzPTs2vybP" Ids="DJUvf0vscWzPEX21lDL2Qm,MEdfVgEVnqrNVOUZQJ0I2O" />
+                <Link Id="RDxu6uK7FG4N4uKcnCFQH3" Ids="GsZV2sf31TgOnyV7F5sy7u,RzEwSAeMfPlPaMfJzYFUS0" IsHidden="true" />
+                <Link Id="Ghs48sqcMPvOsnfm0gN7VF" Ids="RzEwSAeMfPlPaMfJzYFUS0,KBBzvn2KN4aLWVkQF4YRMe" />
+                <Link Id="HB8c779neLwLW7paANywmQ" Ids="RkdQqKMkxjoMBmixlQkHk1,Nnut6y3grKDP8Uo9Xf2pR4" IsHidden="true" />
+                <Link Id="GNwjIepAjF3PWX8YQ0Msyq" Ids="Nnut6y3grKDP8Uo9Xf2pR4,PuyLymGtOLsLju1zo4QIDz" />
+                <Link Id="BykOgstLbL0M3KV3yuoA8h" Ids="SrGPyy1pEitPmsBmt59wDd,RJpgGRNa9pANzMPMCQsSii" IsHidden="true" />
+                <Link Id="KL1BbcHZ1APLSgCXTtBEN3" Ids="RJpgGRNa9pANzMPMCQsSii,LXNgCzRApvKMzNK1KOc0RZ" />
+                <Link Id="AOjvDRGbNFwMqF5njOQ60W" Ids="JnOG26avTS4NlljGJr6Mni,JDycj50gMRfPJlUB5cFyn8" IsHidden="true" />
+                <Link Id="PUpL9EUBvlaLEXHU1wRNG9" Ids="JDycj50gMRfPJlUB5cFyn8,C6CX5OCZTjkNTPHHYGg6vU" />
+                <Link Id="OhdygIQFU2QLAWo7UcH473" Ids="TCGFsYKjVchLWvAnb0bi0m,IjGkdOKopPkLZgUOafLL5e" IsHidden="true" />
+                <Link Id="O3usEK5Y3w2OpB8jQaTFhz" Ids="IjGkdOKopPkLZgUOafLL5e,SXx79Yh1tBtMdoQClFL3ZP" />
+                <Link Id="JEVBnNrrP6BLJWjddgy3DN" Ids="LdBqMwpZrLqPqEhaj4ilPl,FFB1rou5E1FPt1ma6qUtx1" IsHidden="true" />
+                <Link Id="I3mzlXimu0uLf7kuxU0Sko" Ids="FFB1rou5E1FPt1ma6qUtx1,T47HNpbvs0qN7sgDRXYOoC" />
+                <Link Id="TSLJ6PShveQQSxjgwldMNy" Ids="NpHFT2pV6tZMfL0rQgzQP1,IkyHNLFkthDNt5CCmJDJPv" IsHidden="true" />
+                <Link Id="RTpnvwfIH63LjnCd1e9VTR" Ids="BZHlnkMThouQWi8jksl4el,NpHFT2pV6tZMfL0rQgzQP1" />
+                <Patch Id="Di3qQRe3kLEQUmyYgy6n2T" Name="SetTexture">
+                  <Pin Id="N7a7mcl94GMNraagqET1R0" Name="Input" Kind="InputPin" />
+                  <Pin Id="GsZV2sf31TgOnyV7F5sy7u" Name="Input 2" Kind="InputPin" />
+                </Patch>
+                <Patch Id="PR40JF0xGcPNAZwlbKWSf6" Name="SetParameters">
+                  <Pin Id="RkdQqKMkxjoMBmixlQkHk1" Name="Horizontal" Kind="InputPin" />
+                  <Pin Id="SrGPyy1pEitPmsBmt59wDd" Name="Deform" Kind="InputPin" />
+                  <Pin Id="JnOG26avTS4NlljGJr6Mni" Name="Frequency" Kind="InputPin" />
+                </Patch>
+                <Patch Id="F0QixukGBwUNkbiF30VYep" Name="SetFader">
+                  <Pin Id="TCGFsYKjVchLWvAnb0bi0m" Name="Fader" Kind="InputPin" />
+                </Patch>
+                <Patch Id="PcsPjkANlJ0MD6bssor283" Name="Update">
+                  <Pin Id="LdBqMwpZrLqPqEhaj4ilPl" Name="Apply" Kind="InputPin" />
+                </Patch>
+                <Patch Id="PgP0wwiPu5WLdQJ7YZnBcz" Name="GetTexture">
+                  <Pin Id="IkyHNLFkthDNt5CCmJDJPv" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Patch>
+            </Node>
           </Canvas>
         </Canvas>
         <Canvas Id="C1VZNFjd7UfOcq6i3ztsC3" Name="Source" Position="100,429">
