@@ -3,6 +3,11 @@
 [Summary("Returns a texture with different choosable noise types")]
 shader Noise_Advanced_Internal_TextureFX : TextureFX, HappyNoise
 {
+    [Default(0.0f, 0.0f, 0.0f, 0.0f)]
+    compose ComputeFloat4 ColorA;
+
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
     
     [Default(4.0f, 4.0f)]
     compose ComputeFloat2 Scale;
@@ -24,18 +29,18 @@ shader Noise_Advanced_Internal_TextureFX : TextureFX, HappyNoise
         float2 offset = Offset.Compute();
         float z = Z.Compute();
         
-        
+        float4 c = 0;
         switch(Type)
         {
-            case 0 : return perlin((uv + offset) * scale);
-            case 1 : return float4(perlinGrad(float3((uv + offset) * scale, z)).yzw, 1.0);
-            case 2 : return valueNoise((uv + offset) * scale);
-            case 3 : return float4(valueNoiseGrad(float3((uv + offset) * scale, z)).yzw, 1.0);
-            case 4 : return simplex((uv + offset) * scale);
-            case 5 : return float4(simplexGrad(float3((uv + offset) * scale, z)).yzw, 1.0);
-            case 6 : return worleyFast((uv + offset) * scale);
-            case 7 : return float4(worleyFastGrad(float3((uv + offset) * scale, z)).yzw, 1.0);
+            case 0 : c = perlin((uv + offset) * scale); break;
+            case 1 : c = float4(perlinGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 2 : c = valueNoise((uv + offset) * scale); break;
+            case 3 : c = float4(valueNoiseGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 4 : c = simplex((uv + offset) * scale); break;
+            case 5 : c = float4(simplexGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 6 : c = worleyFast((uv + offset) * scale); break;
+            case 7 : c = float4(worleyFastGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
         }
-        return 0;
+        return lerp(ColorA.Compute(), ColorB.Compute(), c);
     }
 };        
