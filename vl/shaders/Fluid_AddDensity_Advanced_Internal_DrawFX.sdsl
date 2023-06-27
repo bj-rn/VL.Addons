@@ -1,0 +1,33 @@
+﻿[TextureSource]
+[Category("Source")]
+[Summary("")]
+
+shader Fluid_AddDensity_Advanced_Internal_DrawFX : VS_PS_Base, Texturing
+{
+    float vFlowDims;
+    float fRadius;
+    float2 mouse;
+    float init;
+    
+    [Color]
+    float4 cAmb;
+
+    float gaussian(float d2, float radius)
+    {
+      return exp(-d2 / radius);
+    }
+
+    override stage void VSMain()
+    {
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+        float2 pos = float2(mouse.x, 1- mouse.y) - streams.TexCoord;	
+	    float3 result = min(.8f, init * cAmb.rgb *  gaussian(dot(pos, pos), fRadius));
+	    streams.ColorTarget = float4(result.xyz,gaussian(dot(pos, pos), fRadius));
+    }
+};
+
+

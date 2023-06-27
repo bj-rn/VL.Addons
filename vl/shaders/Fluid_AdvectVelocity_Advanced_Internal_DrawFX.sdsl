@@ -1,0 +1,25 @@
+﻿[Category("Filter")]
+[Summary("")]
+
+shader Fluid_AdvectVelocity_Advanced_Internal_DrawFX : VS_PS_Base, Texturing
+{
+    float vFlowDims;
+    float dissipation;
+    float timestep;
+    
+    override stage void VSMain()
+    {
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+        float2 pos = streams.TexCoord;
+  	    float4 v = Texture0.Sample(LinearSampler, pos); 
+  	    pos += timestep * v.xy / vFlowDims;
+  	    float4 newValue =  Texture0.Sample(LinearSampler, pos);  
+	    newValue *= dissipation;	
+	
+	    streams.ColorTarget = newValue;
+	}
+};

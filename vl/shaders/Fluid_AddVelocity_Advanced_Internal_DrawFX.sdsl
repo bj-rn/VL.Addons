@@ -1,0 +1,38 @@
+﻿[TextureSource]
+[Category("Source")]
+[Summary("")]
+//[OutputFormat("R32_Float")]
+
+
+
+shader Fluid_AddVelocity_Advanced_Internal_DrawFX : VS_PS_Base, Texturing
+{
+    float vFlowDims;
+	float fRadius;
+	float2 MousePos;
+	float2 LastMousePos;
+	int init;
+
+    float gaussian(float d2, float radius)
+	{
+	  return exp(-d2 / radius);
+	}
+
+
+    override stage void VSMain()
+    {
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+		float3 mouseVector = vFlowDims * float3( ( MousePos.x - LastMousePos.x ), ( 1-MousePos.y) - (1-LastMousePos.y), 1 ); 
+  		mouseVector = -max(-1., min(1., mouseVector));	
+		float2 pos = float2(MousePos.x,1-MousePos.y) - streams.TexCoord;
+		float3 result = min(.8f,init * mouseVector.xyz * gaussian(dot(pos, pos), fRadius));
+	
+		streams.ColorTarget = float4(result.xyz*1, gaussian(dot(pos, pos), fRadius));
+    }
+};
+
+

@@ -1,0 +1,31 @@
+﻿[Category("Filter")]
+[Summary("")]
+
+shader Fluid_BoundaryConditions_Advanced_Internal_DrawFX : VS_PS_Base, Texturing
+{
+    float vFlowDims;
+    float scale;
+
+    override stage void VSMain()
+    {
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+        float2 tc = streams.TexCoord;
+
+         if(tc.x <  1.0f/vFlowDims)
+            tc.x += 1.0/vFlowDims;
+         else if(tc.y < 1.0f/vFlowDims)
+            tc.y += 1.0f/vFlowDims;
+         else if(tc.x >  (vFlowDims - 1.0f)/vFlowDims)
+            tc.x -= 1.f/vFlowDims.x;
+         else if(tc.y >  (vFlowDims - 1.0f)/vFlowDims)
+            tc.y -= 1.f/vFlowDims;
+         else
+            clip(-1.);     
+	
+	    streams.ColorTarget = scale * Texture0.Sample(LinearSampler, tc);
+	}
+};

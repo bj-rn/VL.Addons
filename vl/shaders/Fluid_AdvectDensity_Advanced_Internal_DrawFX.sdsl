@@ -1,0 +1,42 @@
+﻿[TextureSource]
+[Category("Source")]
+[Summary("")]
+
+shader Fluid_AdvectDensity_Advanced_Internal_DrawFX : VS_PS_Base, Texturing
+{
+    float vFlowDims;
+    float dissipation;
+    float timestep;
+
+    SamplerState sampV
+    {
+        Filter = MIN_MAG_MIP_POINT;
+        AddressU = Clamp;
+        AddressV = Clamp;
+    };
+
+    SamplerState sampT : IMMUTABLE
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Clamp;
+        AddressV = Clamp;
+    };
+
+    override stage void VSMain()
+    {
+        streams.ShadingPosition = mul(streams.Position, WorldViewProjection);
+    }
+
+    override stage void PSMain() 
+    {
+        float2 pos    =  streams.TexCoord;
+  	    float4 v      = Texture0.SampleLevel(sampV, pos, 0); 
+  	    pos += timestep * v.xy / vFlowDims;
+  	    float4 newValue =  Texture1.SampleLevel(sampT, pos, 0);  
+	    newValue *= dissipation;	
+	
+	    streams.ColorTarget = newValue;
+    }
+};
+
+
