@@ -1,0 +1,28 @@
+[Category("Filter.Distortion")]
+[Summary("Offset the UV coordinates for sampling the 1st input by the 2nd inputs red & green channels")]
+[Tags("uv, offset, distort")]
+[DontConvertToLinearOnRead("Texture1")]
+
+shader Displace_Normal_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.5f, 0.5f, 0.5f, 1.0f)]
+	compose ComputeFloat4 NormalMap;
+
+    [Default(0.5, 0.5)]
+    compose ComputeFloat2 Offset;
+
+    [Default(0.1, 0.1)]
+    compose ComputeFloat2 OffsetScale;
+
+    stage SamplerState LinearMirrorSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Mirror;
+        AddressV = Mirror;
+    };
+
+    float4 Filter(float4 tex0col)
+    {
+        return Texture0.SampleLevel(LinearMirrorSampler,streams.TexCoord + (NormalMap.Compute().xy - 0.5) * Offset.Compute() * OffsetScale.Compute(), 0);
+    }
+};

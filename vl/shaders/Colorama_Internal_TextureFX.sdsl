@@ -1,0 +1,41 @@
+//https://beta.vvvv.org/contributions/effects/colorama/index.html
+//catweasel, tonfilm, woei
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader Colorama_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+
+	[Default(0.0f)]
+	compose ComputeFloat Phase;
+	//float phase;
+
+	StructuredBuffer<float4> Colors  ;
+	StructuredBuffer<float> Positions  ;
+
+	float map( float value, float inputMin, float inputMax, float outputMin, float outputMax ) { return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin); }
+	float mapClamped( float value, float inputMin, float inputMax, float outputMin, float outputMax ) { return clamp( ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin),    outputMin, outputMax ); }
+
+
+    float4 Filter(float4 tex0col)
+    {
+        uint count, stride;
+        Colors.GetDimensions(count, stride);
+	    float luma = GetLuminance(tex0col.rgb);
+	    luma = (luma+Phase.Compute())%1;
+	    float4 c = 0;
+	
+		for (uint i=0; i<count; i++)
+	    {
+		    if( ( saturate(Positions[i])<=luma) && (luma< saturate(Positions[i+1])))
+		    {
+			    c = (lerp(Colors[i], Colors[(i+1)%count],   pow(mapClamped(luma , Positions[i], Positions[i+1], 0,1), 1.0)));	
+		    }	
+	    }
+
+	    return c;
+    }
+};
+
+

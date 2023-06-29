@@ -1,0 +1,142 @@
+// source: https://beta.vvvv.org/contributions/effects/crt-shader-dx11/index.html
+// by letoast
+
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader CRT_Internal_TextureFX : FilterBase
+{
+    [Default(0.5f)]
+    compose ComputeFloat MaskDark;
+
+    [Default(1.5f)]
+    compose ComputeFloat MaskLight;
+
+    [Default(0.0f)]
+    compose ComputeFloat HardScan;
+
+    [Default(0.0f)]
+    compose ComputeFloat HardPix;
+
+    [Default(0.1f, 0.1f)]
+    compose ComputeFloat2 Warp;
+
+    [Default(50.0f, 50.0f)]
+    compose ComputeFloat2 Resolution;
+
+    // Nearest emulated sample given floating point position and texel offset.
+    float4 Fetch(float2 pos, float2 off)
+    {
+        float2 res = Resolution.Compute();
+        pos = floor(pos * res + off) / res;
+	    return Texture0.SampleLevel(LinearSampler, pos.xy, 0);
+    }
+
+    // Distance in emulated pixels to nearest texel.
+    float2 Dist(float2 pos) 
+    { 
+        float2 res = Resolution.Compute();
+        pos = pos*res; return -((pos - floor(pos)) - float2(0.5, 0.5)); 
+    }
+
+    // 1D Gaussian.
+    float Gaus(float pos, float scale) 
+    { 
+        return exp2(scale*pos*pos); 
+    }
+
+    // 3-tap Gaussian filter along horz line.
+    float4 Horz3(float2 pos, float off)
+    {
+        float hardPix = HardPix.Compute();
+
+        float4 b = Fetch(pos, float2(-1.0, off));
+        float4 c = Fetch(pos, float2(0.0, off));
+        float4 d = Fetch(pos, float2(1.0, off));
+        float dst = Dist(pos).x;
+        // Convert distance to weight.
+        float scale = hardPix;
+        float wb = Gaus(dst - 1.0, scale);
+        float wc = Gaus(dst + 0.0, scale);
+        float wd = Gaus(dst + 1.0, scale);
+        // Return filtered sample.
+        return (b*wb + c*wc + d*wd) / (wb + wc + wd);
+    }
+
+    // 5-tap Gaussian filter along horz line.
+    float4 Horz5(float2 pos, float off)
+    {
+        float hardPix = HardPix.Compute();
+
+        float4 a = Fetch(pos, float2(-2.0, off));
+        float4 b = Fetch(pos, float2(-1.0, off));
+        float4 c = Fetch(pos, float2(0.0, off));
+        float4 d = Fetch(pos, float2(1.0, off));
+        float4 e = Fetch(pos, float2(2.0, off));
+        float dst = Dist(pos).x;
+        // Convert distance to weight.
+        float scale = hardPix;
+        float wa = Gaus(dst - 2.0, scale);
+        float wb = Gaus(dst - 1.0, scale);
+        float wc = Gaus(dst + 0.0, scale);
+        float wd = Gaus(dst + 1.0, scale);
+        float we = Gaus(dst + 2.0, scale);
+        // Return filtered sample.
+        return (a*wa + b*wb + c*wc + d*wd + e*we) / (wa + wb + wc + wd + we);
+    }
+
+    // Return scanline weight.
+    float Scan(float2 pos, float off)
+    {
+        float dst = Dist(pos).y;
+        return Gaus(dst + off, HardScan.Compute());
+    }
+
+    // Allow nearest three lines to effect pixel.
+    float4 Tri(float2 pos)
+    {
+        float4 a = Horz3(pos, -1.0);
+        float4 b = Horz5(pos, 0.0);
+        float4 c = Horz3(pos, 1.0);
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos, 0.0);
+        float wc = Scan(pos, 1.0);
+        return a*wa + b*wb + c*wc;
+    }
+
+    // Distortion of scanlines, and end of screen alpha.
+    float2 Warper(float2 pos)
+    {
+        float2 warp = Warp.Compute();
+        pos = pos*2.0 - 1.0;
+        pos *= float2(1.0 + (pos.y*pos.y)*warp.x, 1.0 + (pos.x*pos.x)*warp.y);
+        return pos*0.5 + 0.5;
+    }
+
+    // Shadow mask.
+    float4 Mask(float2 pos)
+    {
+        float maskLight = MaskLight.Compute();
+        float maskDark = MaskDark.Compute();
+        
+        pos.x += pos.y * 3.0;
+        float4 mask = float4(maskDark, maskDark, maskDark, 1.0);
+        pos.x = frac(pos.x / 6.0);
+        if (pos.x < 0.333)mask.r = maskLight;
+        else if (pos.x < 0.666)mask.g = maskLight;
+        else mask.b = maskLight;
+        return mask;
+    }
+
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+        float4 color = 0;
+
+        float2 pos = Warper(uv.xy);
+        color = Tri(pos) * Mask(uv/ ViewSize);
+
+        return color;
+    }
+};

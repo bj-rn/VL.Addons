@@ -1,0 +1,77 @@
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader Posterize_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(4.0, 4.0, 4.0, 4.0)]
+    compose ComputeFloat4 Levels;
+
+    [Default(0.0, 0.0, 0.0, 0.0)]
+    compose ComputeFloat4 Dithering;
+
+    bool Alpha = false;
+
+    [Default(0.1)]
+    compose ComputeFloat Smooth = 0.1f;
+
+    [Default(0.0, 0.0, 0.0, 0.0)]
+    compose ComputeFloat4 Phase;
+
+    int ColorSpace;
+
+    stage float4 Posterizer(float4 c, float2 vp)
+    {
+        float4 ph = Phase.Compute();
+        float4 levels = Levels.Compute();
+        float smooth = Smooth.Compute();
+
+        c = c * max(levels, 0) + Dithering.Compute() * (1.0 - smooth) * dot(vp%2, float2(0.75, 0.25))*frac(c * max(levels, 0));
+        c += ph;
+        return (floor(c) - ph + saturate((frac(c) - 0.5)/(0.00001 + smooth) + 0.5))/(max(levels, 0) + 0.000000001);
+    }
+
+    stage float4 PosterizerHSV(float4 c, float2 vp)
+    {
+        c.rgb = RGBtoHSV(c.rgb);
+        c = Posterizer(c,vp);
+        c.rgb = HSVtoRGB(c.rgb);
+        return c;
+    }
+
+    stage float4 PosterizerHSL(float4 c, float2 vp)
+    {
+        c.rgb = RGBtoHSL(c.rgb);
+        c = Posterizer(c,vp);
+        c.rgb = HSLtoRGB(c.rgb);
+        return c;
+    }
+
+    stage float4 PosterizerCMYK(float4 c, float2 vp)
+    {
+        float4 col = c;
+        c = RGBToCMYK(c.rgb);
+        c = Posterizer(c, vp);
+        c = float4(CMYKToRGB(c), col.a);
+        return c;
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float4 c = tex0col;
+        float2 uv = streams.TexCoord;
+        float pa = c.a;
+
+        switch(ColorSpace)
+        {
+            case 0 : c = Posterizer(c,uv); break;
+            case 1 : c = PosterizerHSV(c,uv); break;
+            case 2 : c = PosterizerHSL(c,uv); break;
+            case 3 : c = PosterizerCMYK(c,uv); break;
+        }
+
+        if(!Alpha)c.a = pa;
+        return c;
+    }
+};
+
+

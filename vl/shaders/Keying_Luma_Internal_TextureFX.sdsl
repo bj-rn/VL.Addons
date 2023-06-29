@@ -1,0 +1,15 @@
+[Category("Filter.Keying")]
+[Summary("Compares the pixels of the input texture to brightness value and creates a texture with the keying mask")]
+[Remarks("The default output texture has a one channel 32-bit float pixel format")]
+[Tags("keying brightness mask")]
+[OutputFormat("R32_Float")] //Valid values: https://github.com/stride3d/stride/blob/master/sources/engine/Stride/Graphics/PixelFormat.cs
+shader Keying_Luma_Internal_TextureFX : AddonKeyingBase
+{
+    [Default(0.05f)]
+    compose ComputeFloat LumaKey;
+
+    float CalcKeyDist(float4 col)
+    {
+        return Luminance(col.rgb) - LumaKey.Compute();
+    }
+};

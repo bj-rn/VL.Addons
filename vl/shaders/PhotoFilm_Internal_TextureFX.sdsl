@@ -1,0 +1,40 @@
+// source:
+// https://github.com/vvvv/vvvv-sdk/blob/develop/vvvv45/addonpack/lib/nodes/modules/TextureFX/Filter/PhotoFilm/PhotoFilm.fx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader PhotoFilm_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorA;
+
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
+
+    [Default(1.0f)]
+    compose ComputeFloat SrcRgbAmount;
+
+    [Default(1.0f)]
+    compose ComputeFloat SrcRgbGamma;
+
+    [Default(0.1f)]
+    compose ComputeFloat Brightness;
+
+    [Default(0.1f)]
+    compose ComputeFloat Gamma;
+
+
+    float4 Filter(float4 tex0col)
+    {
+        float4 c = tex0col;
+        float grey = GetLuminance(c);// dot(c.rgb, 1) / 3.0;
+        float3 rgb = (c.rgb - grey);
+
+        c.rgb = grey * pow(2, Brightness.Compute()) * lerp(lerp(ColorA.Compute(), ColorB.Compute(), smoothstep(-0.4, 0.4, grey - 0.4)), 1.0, pow(grey, 2.0));
+        c.rgb = c.rgb + sign(rgb) * pow(abs(rgb) * sqrt(2) * SrcRgbAmount.Compute(), pow(2, SrcRgbGamma.Compute()));
+        c.rgb = pow(c.rgb, pow(2, Gamma.Compute()));
+
+        return c;
+    }
+};

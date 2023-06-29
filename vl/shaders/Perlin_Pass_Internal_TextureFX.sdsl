@@ -1,0 +1,41 @@
+[TextureSource]
+[Category("Source")]
+[Summary("Classic Perlin Noise")]
+[DontConvertToSRgbOnWrite]
+[OutputFormat("R32_Float")]
+
+shader Perlin_Pass_Internal_TextureFX : TextureFX
+{
+    [Default(0.0f)]
+    compose ComputeFloat FrequencyBalance;
+
+    [Default(1.0f)]
+    compose ComputeFloat MorphBalance;
+
+    [Default(0.0f)]
+    compose ComputeFloat Time;
+
+    [Default(0.0f)]
+    compose ComputeFloat RandomSeed;
+
+    int Octave = 1;
+
+    float n1(float3 p)
+    {
+	    return cos(length( sin(p*sqrt(3.3) + frac(sin(p.yzx*sqrt(5) + RandomSeed.Compute()) * sqrt(8)) * 8)) * 288);
+    }
+
+    float octave(float2 x,float n=1)
+    {
+	    float c=0;
+	    float z = Time.Compute() / pow(pow(2, MorphBalance.Compute()), n-6);
+	    float3 p = float3((x.xy+3) * sqrt(1111), floor(z));
+	    c = lerp(n1(p), n1(p+float3(0,0,1)), frac(z));
+	    return c / pow(pow(2,FrequencyBalance.Compute()), n-4);
+    }
+
+    stage override float4 Shading()
+    {
+        return octave(streams.TexCoord, Octave);
+    }
+};

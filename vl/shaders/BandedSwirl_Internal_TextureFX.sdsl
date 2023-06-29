@@ -1,0 +1,40 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader BandedSwirl_Internal_TextureFX : MixerBase
+{
+    [Default(15.0f)]
+    compose ComputeFloat Frequency;
+
+	[Default(0.5f)]
+    compose ComputeFloat Twist;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 center = float2(0.5,0.5);
+		float2 toUV = streams.TexCoord - center;
+		float distanceFromCenter = length(toUV);
+		float2 normToUV = toUV / distanceFromCenter;
+	
+		float frequency = Frequency.Compute();
+		float twist = Twist.Compute();
+
+		float angle = atan2(normToUV.y, normToUV.x);	
+		angle += sin(distanceFromCenter * frequency) * twist * fader;
+		float2 newUV;
+		sincos(angle, newUV.y, newUV.x);
+		newUV = newUV * distanceFromCenter + center;
+	
+		angle = atan2(normToUV.y, normToUV.x);	
+		angle += sin(distanceFromCenter * frequency) * twist * (-1+fader);
+		float2 newUV2;
+		sincos(angle, newUV2.y, newUV2.x);
+		newUV2 = newUV2 * distanceFromCenter + center;	
+	
+		float4 c1 = Texture0.SampleLevel(LinearSampler, newUV, 0);
+		float4 c2 = Texture1.SampleLevel(LinearSampler, newUV2, 0);
+
+		return lerp(c1, c2, fader);
+    }
+};

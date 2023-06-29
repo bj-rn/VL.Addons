@@ -1,0 +1,49 @@
+// source:
+// https://github.com/mrvux/dx11-vvvv-girlpower/blob/master/nodes/texture11/Filter/BlurPerfector.tfx
+
+[Category("Filter.Blur")]
+[Summary("Applies a blur effect")]
+[DontConvertToLinearOnRead]
+[DontConvertToSRgbOnWrite]
+
+shader BlurPerfector_Internal_TextureFX : FilterBase
+{
+    [Default(0.2f)]
+    compose ComputeFloat Radius;
+
+	[Default(0.2f)]
+    compose ComputeFloat Threshold;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+        float threshold = Threshold.Compute();
+
+        float kk = 1;
+        float4 cc = Texture0.SampleLevel(LinearSampler, uv, 0);
+        float4 col = cc;
+        float2 w = Radius.Compute() / 28 * ViewSize / max(ViewSize.x, ViewSize.y);
+        
+
+        for (float i = 0; i < 1; i += 1.0 / 16)
+        {
+            float2 off = sqrt(i + 0.05) * sin((i* 3.5 + float2(0,.25))*acos(-1)*2);
+
+            float4 nc = Texture0.SampleLevel(LinearSampler, uv + off * w, 0);
+            
+            float k = pow(smoothstep(threshold, 0, distance(nc.rgb, cc.rgb)), 0.5);
+            
+            col += nc * k;
+            
+            kk += k;
+        }
+        
+        col /= kk;
+        
+        if(kk < 2) col = cc;
+        
+        col.a = cc.a;
+        
+        return col;
+    }
+};

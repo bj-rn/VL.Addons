@@ -1,0 +1,45 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader DropFade_Internal_TextureFX : MixerBase
+{
+    [Default(0.0f)]
+    compose ComputeFloat DistortAmount;
+
+	[Default(0.0f)]
+    compose ComputeFloat RandomSeed;
+
+	bool Up;
+
+	float4 SampleWithBorder ( float4 border, float2 uv) : COLOR
+	{
+		if (any(saturate(uv) - uv))
+		{
+			return border;
+		}
+		else
+		{
+			return Texture0.SampleLevel(LinearSampler, uv, 0);
+		}
+	}
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+		float dir = 1;
+		if(Up)
+		{
+			dir = -1;
+		}
+
+		float offset = dot(Texture1.SampleLevel(LinearSampler, float2(uv.x * DistortAmount.Compute(), RandomSeed.Compute()), 0), 0.33) * dir;
+		float4 c1 = SampleWithBorder(float4(0,0,0,0), float2(uv.x, uv.y + offset * fader));
+		float4 c2 = Texture1.SampleLevel(LinearSampler, uv, 0);
+
+		if (dot(c1, 0.33) <= 0.0)
+			return c2;
+		else
+			return lerp(c1, c2, fader);
+    }
+};

@@ -1,0 +1,37 @@
+// source:
+// https://github.com/vvvv/vvvv-sdk/blob/develop/vvvv45/addonpack/lib/nodes/modules/TextureFX/Filter/Hexagonize/Hexagonize.fx
+
+[Category("Filter.Pattern")]
+[Summary("")]
+[WantsMips("Texture1")]
+
+shader Hexagonize_Internal_TextureFX : FilterBase
+{
+    [Default(1.0f, 1.0f)]
+    compose ComputeFloat2 CellSize;
+
+    [Default(0.1f)]
+    compose ComputeFloat Morph = 0.1f;
+
+    float4 lm(float4 c)
+    {
+        c.rgb = dot(c.rgb, normalize(float3(0.33, 0.59, 0.11)) / 1.5);
+        return c;
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+
+        float2 sz = ViewSize / min(max(0.5/ ViewSize, CellSize.Compute()), ViewSize) * float2(1, 0.577);
+        float4 m1 = Texture0.SampleLevel(LinearSampler, lerp(uv, (round((uv - 0.5) * sz - 0.5) + 0.5)/sz + 0.5, 1), 0);
+        float4 m2 = Texture0.SampleLevel(LinearSampler,lerp(uv, (round((uv -0.5) * sz)) / sz + 0.5, 1), 0);
+        float4 m = lerp(m1, m2, step(abs(frac((uv.y - 0.5) * sz.y + 0.5) - 0.5), 0.25 + (abs(frac((uv.x- 0.5) * sz.x+.5+.5)-.5)-0.25)/3.0));
+
+        float morph = Morph.Compute();
+        float4 c1 = Texture0.SampleLevel(LinearSampler, lerp(uv, (round((uv - 0.5) * sz - 0.5) + 0.5) / sz + 0.5, morph * lm(m).x), 0);
+        float4 c2= Texture0.SampleLevel(LinearSampler, lerp(uv, (round((uv - 0.5) * sz)) / sz + 0.5, morph * lm(m).x), 0);
+        float4 c = lerp(c1, c2, step(abs(frac((uv.y - 0.5) * sz.y + 0.5) - 0.5), 0.25 + (abs(frac((uv.x - 0.5) * sz.x + 0.5 + 0.5) - 0.5) - 0.25)/3.0));
+        return m1;
+    }
+};

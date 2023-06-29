@@ -1,0 +1,35 @@
+[Category("Filter.Analysis")]
+[Summary("")]
+[WantsMips("Texture0")]
+
+shader Average_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    float4 AveragePass0()
+    {
+        float4 c = Texture0.Sample(LinearSampler, streams.TexCoord);
+	    c.rgb *= c.a;
+        return c;
+    }
+
+    float4 AveragePass1()
+    {
+	    float4 c = Texture0.SampleLevel(LinearSampler, streams.TexCoord, Lod(ViewSize));
+	    c.rgb /= c.a;
+        return c;
+    }
+
+    int Type = 0;
+
+    float4 Filter(float4 tex0col)
+    {
+        float4 col = float4(1.0, 1.0, 1.0, 1.0);
+
+        switch(Type)
+        {
+            case 0 : col = AveragePass0(); break;
+            case 1 : col = AveragePass1(); break;
+        }
+
+        return col;
+    }
+};

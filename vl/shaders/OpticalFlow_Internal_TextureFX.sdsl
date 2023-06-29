@@ -1,0 +1,48 @@
+// DX11 contrib by princemio from WaltzBinaire
+
+[Category("Filter.Analysis")]
+[Summary("")]
+
+shader OpticalFlow_Internal_TextureFX : FilterBase
+{
+	[Default(0.0f, 0.0f)]
+	compose ComputeFloat2 Offset;
+
+    [Default(10.0f, 10.0f)]
+	compose ComputeFloat2 Scale;
+
+    [Default(0.0f)]
+	compose ComputeFloat Lambda;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 offset = Offset.Compute()/ViewSize;
+        float2 uv = streams.TexCoord;
+
+        float4 a = Texture1.SampleLevel(LinearSampler, uv, 0);
+        float4 b = Texture0.SampleLevel(LinearSampler, uv, 0);
+
+        float2 nx = float2(offset.x, 0.0);
+        float2 ny = float2(0.0, offset.y);
+
+        float4 CurrentDifference = b-a;
+
+	    float4 GradientX = ((Texture0.SampleLevel(LinearSampler, uv + nx, 0) - Texture0.SampleLevel(LinearSampler,uv - nx, 0)) + (Texture1.SampleLevel(LinearSampler, uv + nx, 0) - Texture1.SampleLevel(LinearSampler, uv - nx, 0)))/2.;
+        float4 GradientY = ((Texture0.SampleLevel(LinearSampler,uv + ny, 0) - Texture0.SampleLevel(LinearSampler,uv - ny, 0)) + (Texture1.SampleLevel(LinearSampler, uv + ny, 0) - Texture1.SampleLevel(LinearSampler, uv - ny, 0)))/2.;
+        
+        float lambda = Lambda.Compute();
+        float4 GradientMagnitude = sqrt( (GradientX*GradientX)+(GradientY*GradientY) + float4(lambda, lambda, lambda, lambda));
+
+        float4 VelocityX = CurrentDifference * (GradientX/GradientMagnitude);
+        float4 VelocityY = CurrentDifference * (GradientY/GradientMagnitude);
+
+        float vxd = VelocityX.r; // assumes greyscale
+        //float2 xout = float2(max(vxd, 0.), abs(min(vxd, 0.)))*scale.x;
+    
+        float vyd = VelocityY.r; // assumes greyscale
+        //float2 yout = float2(max(vyd, 0.), abs(min(vyd, 0.)))*scale.y;
+        float2 scale = Scale.Compute();
+
+        return float4(vxd * scale.x,vyd * scale.y, 0, 1);//xout,yout);//float4(xout, yout);    }
+    }
+};

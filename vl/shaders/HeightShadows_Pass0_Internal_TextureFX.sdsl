@@ -1,0 +1,281 @@
+// source: Microdee
+// https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/HeightShadows.tfx
+
+[Category("Filter.Enhancement")]
+[Summary("")]
+[WantsMips("Texture0")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader HeightShadows_Pass0_Internal_TextureFX : FilterBase, AddonShaderUtils, NoiseFunctions
+{
+    [Default(0.5f)]
+    compose ComputeFloat Height;
+
+	[Default(0.5f, 0.5f, 0.5f)]
+    compose ComputeFloat3 LightDirection;
+
+	[Default(0.5f)]
+    compose ComputeFloat DotTolerance;
+
+	[Default(0.1f)]
+    compose ComputeFloat RayJitter;
+
+	[Default(1.0f)]
+    compose ComputeFloat RayLength;
+
+	[Default(1.0f)]
+    compose ComputeFloat ShadowFade;
+
+	[Default(1.0f)]
+    compose ComputeFloat ShadowFalloffPow;
+
+
+	float3 LightDir;
+	bool EnableShadows;
+
+	static const int SampleCount = 24;
+	static const float invSampleCount = 0.04166667;
+
+	float MapClamp(float value, float inMin, float inMax, float outMin, float outMax)
+	{
+		return Map(clamp(value, min(inMin, inMax), max(inMin, inMax)), inMin, inMax, outMin, outMax);
+	}
+
+	stage SamplerState ClampSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Clamp;
+        AddressV = Clamp;
+    };
+
+	stage SamplerState BorderSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Border;
+        AddressV = Border;
+    };
+
+
+    float4 Filter(float4 tex0col)
+    {
+		float height = Height.Compute();
+		float rayJitter = RayJitter.Compute();
+		float rayLength = RayLength.Compute();
+		float shadowFade = ShadowFade.Compute();
+		float shadowFalloffPow = ShadowFalloffPow.Compute();
+		float2 uv = streams.TexCoord;
+
+		float3 cpos = float3(uv, Texture0.SampleLevel(BorderSampler, uv, 0).x * height);
+
+		float3 occluderpos = 0;
+		bool gotoccluder = false;
+		float3 orig = cpos;
+		float heightdiff = 1;
+		float3 raydir = -normalize(LightDirection.Compute());
+	
+		float3 norm = Texture1.SampleLevel(BorderSampler, uv, 0).xyz;
+		float dotnorm = dot(raydir, norm);
+		float normtol = MapClamp(abs(dotnorm), 0, DotTolerance.Compute(), 0, 1);
+	
+		//[unroll]
+		for(float i=0; i<SampleCount; i++)
+		{
+			float jitter = hash13(cpos*455) * rayJitter * (i>0);
+			float distfac = 0.2 + distance(cpos, orig);
+		    cpos += raydir * (invSampleCount * rayLength + jitter * distfac);
+			float cheight = Texture0.SampleLevel(BorderSampler, cpos.xy, 0).x * height;
+			//float3 chp = float3(cpos.xy, cheight) + bias * raydir;
+			float cdiff = cpos.z - cheight;
+			heightdiff = lerp(heightdiff, cdiff, cdiff < heightdiff);
+
+			if(!gotoccluder && cdiff < 0)
+			{
+				gotoccluder = true;
+				occluderpos = cpos;
+			}
+		}
+	
+		float dist = lerp(0, distance(occluderpos, orig), gotoccluder);
+	
+		float outdiff = saturate(heightdiff + 1) * (1-(heightdiff >= 0));
+		float outbluram = MapClamp(dist, 0.0, 0.8, 0, 1);
+	
+		float outcol = MapClamp(outbluram, 0, shadowFade, 0, 1);
+		outcol = lerp(1, pow(outcol, shadowFalloffPow), pow(normtol, 0.3333));
+	
+		float4 res = float4(lerp(outcol, 1, heightdiff >= 0), outbluram * (1-(heightdiff >= 0)), orig.z, outdiff);
+		return res;
+    }
+};
+
+
+
+
+
+
+			//	float2 uv = streams.TexCoord;
+	//	float lodBias = LodBias.Compute();
+	//	float heightScale = HeightScale.Compute();
+		
+	//	float	samplecount = SampleCount;// * max(1.0 - abs(IN.lightdir.z), 1.0/SampleCount);
+	//float	invsamplecount = 1.0 / samplecount;
+
+	//float	hardness = ShadowHardness.Compute();
+
+	//float4	res = 0.0;
+	//float	shadow = 0.0;
+	//float3	normal;
+	//float2	uvddx = ddx(uv) * lodBias;
+	//float2	uvddy = ddy(uv) * lodBias;
+	//float3	lightdir = normalize(LightDir.xyz);
+
+	//normal = Texture1.SampleGrad(LinearSampler, uv, uvddx, uvddy);
+	//normal = normal * 2.0 - 1.0;
+
+	//float2	dir = LightDir.xy * float2(1.0,-1.0) * heightScale;
+
+	////can be used for adaptive number of steps
+	////float2	uvwidth = fwidth(dir.xy);
+	////uvwidth.x = max(uvwidth.x, uvwidth.y);
+
+	////lighting with flat normals (from vertex or depth generated)
+	//float	lighting = saturate(dot(lightdir, normal));
+
+	//float	step = invsamplecount;
+	//float	pos = step;
+
+	////randomization of start sample
+	//float2	noise = frac(uv.xy*0.5);
+	//noise.x = noise.x + noise.y*0.5;
+	//pos = step - step * noise.x;
+
+	////do not compute on back faces/pixels
+	//pos = (-lighting >= 0.0) ? 1.001 : pos;
+
+	//if (EnableShadows == false) pos = 1.001;
+
+	//float	slope = -lighting;
+	//float	maxslope = 0.0;
+	//float	invsamplecountplusone = 1.0 + invsamplecount;
+	//while (pos <= 1.0)
+	//{
+	//	float3	tmpNormal = Texture1.SampleGrad(LinearSampler, uv + dir * pos, uvddx, uvddy);
+	//	tmpNormal = tmpNormal * 2.0 - 1.0;
+
+	//	//to save memory bandwidth, you may reconstruct Z if normal have 2 channels (bad precision, sphere transform decoding is better, but slower)
+	//	//tmpNormal.z = sqrt(1.0-dot(tmpNormal.xy, tmpNormal.xy));
+
+	//	float	tmpLighting = dot(lightdir, tmpNormal);
+
+	//	float	shadowed = -tmpLighting;
+
+	//	//for g-buffer normals of deferred render insert here depth comparison to occlude objects, abstract code example:
+	//	//float2	cropminmax = saturate(1.0 - (depth - tmpDepth) * float2(4000.0, -600.0));
+	//	//cropminmax.x = cropminmax.x * cropminmax.y;
+	//	//shadowed *= cropminmax.x;
+
+	//	slope += shadowed;
+
+	//	//if (slope > 0.0) //cheap, but not correct, suitable for hard shadow with early exit
+	//	if (slope > maxslope) //more suitable for calculating soft shadows by distance or/and angle
+	//	{
+	//		shadow += invsamplecountplusone - pos;
+	//	}
+	//	maxslope = max(maxslope, slope);
+
+	//	pos += step;
+	//}
+
+	//shadow = saturate(1.0 - shadow * invsamplecount * hardness);
+
+	////coloring
+	//float3	ambientcolor = AmbientColor.Compute();
+	//float3	lightcolor = LightColor.Compute();
+	//float4	diffuse = Texture0.SampleLevel(LinearSampler, uv, 0);
+	//res.xyz = (shadow * lightcolor + ambientcolor) * diffuse;
+
+	//res.w = 1.0;
+	//return res;
+		//float2 uv = streams.TexCoord;
+		//float lodBias = LodBias.Compute();
+		//float heightScale = HeightScale.Compute();
+
+		//float	samplecount = SampleCount;// * max(1.0 - abs(IN.lightdir.z), 1.0/SampleCount);
+		//float	invsamplecount = 1.0 / samplecount;
+
+		//float	hardness = heightScale * ShadowHardness.Compute();
+
+		//float4	res = 0.0;
+		//float	shadow = 0.0;
+		//float3	normal;
+		//float2	uvddx = ddx(uv) * lodBias;
+		//float2	uvddy = ddy(uv) * lodBias;
+		//float3	lightdir = normalize(LightDir.xyz);
+
+		//normal = Texture1.SampleGrad(LinearSampler, uv, uvddx, uvddy);
+		//normal = normal * 2.0 - 1.0;
+
+		//float2	dir = LightDir.xy * float2(1.0,-1.0) * heightScale;
+
+		////can be used for adaptive number of steps
+		////float2	uvwidth = fwidth(dir.xy);
+		////uvwidth.x = max(uvwidth.x, uvwidth.y);
+
+		////lighting with flat normals (from vertex or depth generated)
+		//float	lighting = saturate(dot(lightdir, normal));
+
+		//float	step = invsamplecount;
+		//float	pos = step;
+
+		////randomization of start sample
+		//float2	noise = frac(uv.xy*0.5); //before vPos 
+		//noise.x = noise.x + noise.y*0.5;
+		//pos = step - step * noise.x;
+
+		////do not compute on back faces/pixels
+		//pos = (-lighting >= 0.0) ? 1.001 : pos;
+
+		//if (EnableShadows == false) pos = 1.001;
+
+		//float	slope = -lighting;
+		//float	maxslope = 0.0;
+		//float	invsamplecountplusone = 1.0 + invsamplecount;
+		//while (pos <= 1.0)
+		//{
+		//	float3	tmpNormal = Texture1.SampleGrad(LinearSampler, uv + dir * pos, uvddx, uvddy);
+		//	tmpNormal = tmpNormal * 2.0 - 1.0;
+
+		//	//to save memory bandwidth, you may reconstruct Z if normal have 2 channels (bad precision, sphere transform decoding is better, but slower)
+		//	//tmpNormal.z = sqrt(1.0-dot(tmpNormal.xy, tmpNormal.xy));
+
+		//	float	tmpLighting = dot(lightdir, tmpNormal);
+
+		//	float	shadowed = -tmpLighting;
+
+		//	//for g-buffer normals of deferred render insert here depth comparison to occlude objects, abstract code example:
+		//	//float2	cropminmax = saturate(1.0 - (depth - tmpDepth) * float2(4000.0, -600.0));
+		//	//cropminmax.x = cropminmax.x * cropminmax.y;
+		//	//shadowed *= cropminmax.x;
+
+		//	slope += shadowed;
+
+		//	//if (slope > 0.0) //cheap, but not correct, suitable for hard shadow with early exit
+		//	if (slope > maxslope) //more suitable for calculating soft shadows by distance or/and angle
+		//	{
+		//		shadow += invsamplecountplusone - pos;
+		//	}
+		//	maxslope = max(maxslope, slope);
+
+		//	pos += step;
+		//}
+
+		//shadow = saturate(1-shadow * invsamplecount * hardness*1);
+
+		////coloring
+		//float3	ambientcolor = AmbientColor.Compute();
+		//float3	lightcolor = LightColor.Compute();
+		//float4	diffuse = Texture0.SampleLevel(LinearSampler, uv, 0);
+		//res.xyz = (lighting * shadow * lightcolor + ambientcolor) * diffuse;
+
+		//res.w = diffuse.a;
+		//return res;

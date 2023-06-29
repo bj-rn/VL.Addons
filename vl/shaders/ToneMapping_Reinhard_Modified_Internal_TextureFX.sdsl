@@ -1,0 +1,36 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Reinhard_Modified_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+    float WhiteLevel;
+    float LuminanceSaturation;
+	float MaxValue = 1.25;
+
+    // Applies Reinhard's modified tone mapping operator
+    float3 ToneMapReinhardModified(float3 color) 
+    {    
+        float pixelLuminance = CalcLuminance(color);
+	    float toneMappedLuminance = pixelLuminance * (1.0f + pixelLuminance / (WhiteLevel * WhiteLevel)) / (1.0f + pixelLuminance);
+	    return toneMappedLuminance * pows(color / pixelLuminance, LuminanceSaturation);
+    }
+
+    float3 ReinhardModified(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+	    color = ToneMapReinhardModified(color);
+        return float3(saturate(color/MaxValue)*MaxValue);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(ReinhardModified(tex0col.rgb), tex0col.a);
+    }
+};
+
+

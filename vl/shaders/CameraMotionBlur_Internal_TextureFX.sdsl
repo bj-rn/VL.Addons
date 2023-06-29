@@ -1,0 +1,71 @@
+//@author: unc
+
+[Category("Filter.Utils")]
+[Summary("")]
+[Tags("")]
+
+shader CameraMotionBlur_Internal_TextureFX : VS_PS_Base, FilterBase
+{
+    [Default(0.5f)]
+    compose ComputeFloat Width;
+
+	[Default(0.5f)]
+    compose ComputeFloat Limit;
+
+	float4x4 tVI_p;
+	float4x4 tPI_p;
+	float4x4 tP_p;
+	float4x4 tV_p;
+
+    float4 UVDtoXYZ(float3 x)
+	{
+		float4 p = float4(-1.0+2.0*x.x,-1.0+2.0*x.y,-1.0+2.0*x.z,1.0);
+		p.y *= -1.0;
+		p = mul(p, ProjectionInverse);
+		p = float4(p.xyz * 2.0 / p.w, 1.0);
+		p = mul(p, ViewInverse);
+		return p;
+	}
+
+	float2 XYZtoUV(float4 p)
+	{
+		p = mul(p, View);
+		p = mul(p, Projection);
+		p /= p.w;
+		return p.xy * float2(1,-1) * 0.5 + 0.5;
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		float2 uv = streams.TexCoord;
+
+		float z = Texture1.SampleLevel(LinearSampler, uv, 0).x;
+
+		float4 p = float4(UVDtoXYZ(float3(uv, Texture1.SampleLevel(LinearSampler, uv, 0).x)).xyz,1);
+
+		float4 pp = mul(mul(p, tV_p), tP_p);
+		pp = pp/pp.w;
+
+		float2 dx = pp.xy / float2(1,-1) * 0.5 + 0.5 - 0.5 / ViewSize;
+		float4 c = 1;
+		float4 p2 = float4(UVDtoXYZ(float3(dx, Texture1.SampleLevel(LinearSampler, dx, 0).x)).xyz,1);
+		c = float4(Texture0.SampleLevel(LinearSampler, uv, 0).xyz,1)*.01;
+		float width = Width.Compute();
+		float limit = Limit.Compute();
+
+		for(float i=0; i<1; i+=1./26.)
+		{
+			float4 p3 = lerp(p, p2, (i-.5) * width);
+			p3 = mul(mul(p3, View), Projection);
+			float2 dx = p3.xy / p3.w * float2(1,-1) * 0.5 + 0.5;
+			if(dx.x<0 || dx.x>1 || dx.y<0 || dx.y>1) continue;
+			c += float4(Texture0.SampleLevel(LinearSampler, dx, 0).xyz, 1) * smoothstep(limit, 0, length(p2.xyz - p.xyz)/z);
+		}
+
+		c.rgb /= c.a;
+		c.a = Texture0.SampleLevel(LinearSampler, uv, 0).a;
+		return c;
+    }
+};
+
+

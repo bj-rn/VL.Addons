@@ -1,0 +1,44 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+[Tags("")]
+
+shader ReactionDiffusion_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+	Texture2D Feedback;
+	Texture2D Init;
+
+	[Default(0.1, 1.0, 1.0, 0.1)]
+	compose ComputeFloat4 ParametersMin;
+
+	[Default(0.1, 1.0, 1.0, 0.1)]
+	compose ComputeFloat4 ParametersMax;
+
+	[Default(0.1, 1.0, 1.0, 0.1)]
+	compose ComputeFloat2 DiameterXY;
+
+    stage override float4 Shading()
+    {
+		float2 uv = streams.TexCoord;
+	    float4 d_1 = Feedback.SampleLevel(LinearSampler, uv, 0);
+		float4 parm = Init.SampleLevel(LinearSampler, uv, 0);
+	
+		parm.rgba = lerp(ParametersMin.Compute(), ParametersMax.Compute(), parm);
+
+		float2  d_1n = Feedback.SampleLevel(LinearSampler, float2(uv.x - DiameterXY.Compute().x, uv.y), 0).xy;
+				d_1n += Feedback.SampleLevel(LinearSampler, float2(uv.x + DiameterXY.Compute().x, uv.y), 0).xy;
+				d_1n += Feedback.SampleLevel(LinearSampler, float2(uv.x, uv.y - DiameterXY.Compute().y), 0).xy;
+				d_1n += Feedback.SampleLevel(LinearSampler, float2(uv.x, uv.y + DiameterXY.Compute().y), 0).xy;
+	
+		float2 diffusion = (d_1n / 4) * parm.rg;
+	
+		float2 reaction = d_1.xx * d_1.yy * d_1n.yy;
+				reaction.x *=-1;
+				reaction.x += (1- parm.x) * d_1.x + parm.z * (1 - d_1.x);
+				reaction.y += (-parm.z - parm.w +(1-parm.y)) * d_1.y;
+
+		float4  result = float4(1.0, 0.0, 0.0, 1.0);
+		result.rg =   diffusion + reaction;
+		return result;
+    }
+};

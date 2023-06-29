@@ -1,0 +1,33 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader Blind_Internal_TextureFX : MixerBase
+{
+    [Default(0.0f)]
+    compose ComputeFloat LineAmount;
+
+	bool Horizontal;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+
+		float dir = uv.x;
+
+		if(Horizontal)
+		{
+			dir = uv.y;
+		}
+
+
+		if(frac(dir * LineAmount.Compute()) < fader)
+		{
+			return Texture1.SampleLevel(LinearSampler, uv, 0);
+		}
+		else
+		{
+			return Texture0.SampleLevel(LinearSampler, uv, 0);
+		}
+    }
+};

@@ -1,0 +1,104 @@
+//inigo quilez - iq/2013 MIT Licence
+//ported to beta by Sebl
+
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+[Tags("")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader Voronoi_Dots_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+	[Default(0.0f)]
+	compose ComputeFloat Time;
+
+	[Default(0.0f)]
+	compose ComputeFloat PointSize;
+
+	[Default(0.0f)]
+	compose ComputeFloat PointFade;
+
+	[Default(1.0f, 1.0f)]
+	compose ComputeFloat2 Size;
+
+	[Default(0.0f, 0.0f, 0.0f, 0.0f)]
+	compose ComputeFloat4 ColorA;
+
+	[Default(1.0f, 1.0f, 1.0f, 1.0f)]
+	compose ComputeFloat4 ColorB;
+
+
+	float2 hash2( float2 p )
+	{
+		return frac(sin(float2(dot(p,float2(127.1,311.7)),dot(p,float2(269.5,183.3))))*43758.5453);
+	}
+
+	float3 voronoi( in float2 x )
+	{
+		float2 time = Time.Compute();
+
+		float2 n = floor(x);
+		float2 f = frac(x);
+	
+		//----------------------------------
+		// first pass: regular voronoi
+		//----------------------------------
+		float2 mg, mr;
+	
+		float md = 8.0;
+		for( int j=-1; j<=1; j++ )
+		for( int i=-1; i<=1; i++ )
+		{
+			float2 g = float2(float(i),float(j));
+			float2 o = hash2( n + g );
+		
+			o = 0.5 + 0.5*sin( time + 6.2831*o );
+		
+			float2 r = g + o - f;
+			float d = dot(r,r);
+		
+			if( d<md )
+			{
+				md = d;
+				mr = r;
+				mg = g;
+			}
+		}
+	
+		//----------------------------------
+		// second pass: distance to borders
+		//----------------------------------
+		md = 8.0;
+		for( int k = -2; k <= 2; k++ )
+		{
+			for( int i = -2; i <= 2; i++ )
+			{
+				float2 g = mg + float2(float(i),float(k));
+				float2 o = hash2( n + g );
+
+				o = 0.5 + 0.5*sin( time + 6.2831*o );
+
+				float2 r = g + o - f;
+			
+				if( dot(mr-r,mr-r)>0.00001 )
+				md = min( md, dot( 0.5*(mr+r), normalize(r-mr) ) );
+			}
+		}
+		return float3( md, mr );
+	}
+
+    stage override float4 Shading()
+    {
+		float2 p = streams.TexCoord;
+		float3 c = voronoi( p / (1/Size.Compute() ));
+		float4 col = float4(0.0, 0.0, 0.0, 0.0);;
+	
+		float dd = length( c.yz );
+
+		float pointSize = PointSize.Compute();
+
+		col = lerp (float4(1.0, 1.0, 1.0, 1.0),  col, smoothstep( pointSize, pointSize + PointFade.Compute(), dd) );
+
+		return lerp(ColorA.Compute(), ColorB.Compute(), col);
+    }
+};

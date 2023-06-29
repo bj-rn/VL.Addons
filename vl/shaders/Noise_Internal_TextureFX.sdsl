@@ -1,0 +1,46 @@
+[TextureSource]
+[Category("Source.Noise")]
+[Summary("Returns a texture with different choosable noise types")]
+shader Noise_Internal_TextureFX : TextureFX, HappyNoise
+{
+    [Default(0.0f, 0.0f, 0.0f, 0.0f)]
+    compose ComputeFloat4 ColorA;
+
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
+    
+    [Default(4.0f, 4.0f)]
+    compose ComputeFloat2 Scale;
+
+    [Default(0.0f, 0.0f)]
+    compose ComputeFloat2 Offset;
+    
+    [Default(0.0f)]
+    compose ComputeFloat Z;
+
+    [EnumType("VL.Stride.Effects.TextureFX.NoiseType")]
+    uint Type;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord;
+        
+        float2 scale = Scale.Compute();
+        float2 offset = Offset.Compute();
+        float z = Z.Compute();
+        
+        float4 c = 0;
+        switch(Type)
+        {
+            case 0 : c = perlin((uv + offset) * scale); break;
+            case 1 : c = float4(perlinGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 2 : c = valueNoise((uv + offset) * scale); break;
+            case 3 : c = float4(valueNoiseGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 4 : c = simplex((uv + offset) * scale); break;
+            case 5 : c = float4(simplexGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+            case 6 : c = worleyFast((uv + offset) * scale); break;
+            case 7 : c = float4(worleyFastGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
+        }
+        return lerp(ColorA.Compute(), ColorB.Compute(), c);
+    }
+};        

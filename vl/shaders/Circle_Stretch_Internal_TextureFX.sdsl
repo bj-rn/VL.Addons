@@ -1,0 +1,58 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader Circle_Stretch_Internal_TextureFX : MixerBase
+{
+    [Default(0.0f)]
+    compose ComputeFloat Radius;
+
+	bool Horizontal;
+
+
+	float DistanceFromCenterToSquareEdge(float2 dir)
+	{
+		dir = abs(dir);
+		float dist = dir.x > dir.y ? dir.x : dir.y;
+		return dist;
+	}
+
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+
+		float2 center = float2(0.5,0.5);
+		float radius = fader * Radius.Compute();
+
+		float2 toUV = uv - center;
+		float len = length(toUV);
+		float2 normToUV = toUV / len;
+	
+		if(len < radius)
+		{
+			float distFromCenterToEdge = -DistanceFromCenterToSquareEdge(normToUV);
+			float2 edgePoint = center + distFromCenterToEdge * normToUV;
+	
+			float minRadius = min(radius, distFromCenterToEdge);
+			float percentFromCenterToRadius = len / minRadius;
+		
+			float2 newUV = lerp(center, edgePoint, percentFromCenterToRadius);
+			return Texture0.SampleLevel(LinearSampler, newUV, 0);
+		}
+		else
+		{
+			float distFromCenterToEdge = DistanceFromCenterToSquareEdge(normToUV);
+			float2 edgePoint = center + distFromCenterToEdge * normToUV;
+			float distFromRadiusToEdge = distFromCenterToEdge - radius;
+		
+			float2 radiusPoint = center + radius * normToUV;
+			float2 radiusToUV = uv - radiusPoint;
+		
+			float percentFromRadiusToEdge = length(radiusToUV) / distFromRadiusToEdge;
+		
+			float2 newUV = lerp(center, edgePoint, percentFromRadiusToEdge);
+			return Texture1.SampleLevel(LinearSampler, newUV, 0);
+		}
+    }
+};

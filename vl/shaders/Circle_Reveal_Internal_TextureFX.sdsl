@@ -1,0 +1,27 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader Circle_Reveal_Internal_TextureFX : MixerBase
+{
+    [Default(0.0f)]
+    compose ComputeFloat Fuzzy;
+
+	bool Horizontal;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+		float fuzzyAmount = Fuzzy.Compute();
+
+		float radius = -fuzzyAmount + fader * (0.70710678 + 2.0 * fuzzyAmount);
+		float fromCenter = length(uv - float2(0.5,0.5));
+		float distFromCircle = fromCenter - radius;
+	
+		float4 c1 = tex0col; 
+		float4 c2 = tex1col; 
+    
+		float p = saturate((distFromCircle + fuzzyAmount) / (2.0 * fuzzyAmount));
+		return lerp(c2, c1, p);
+    }
+};

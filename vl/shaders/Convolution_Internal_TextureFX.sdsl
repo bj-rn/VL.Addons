@@ -1,0 +1,49 @@
+// source:
+// https://github.com/vvvv/vvvv-sdk/blob/develop/vvvv45/addonpack/lib/nodes/modules/TextureFX/Filter/Convolution/Convolution.fx
+
+[Category("Filter.Rendering")]
+[Summary("")]
+
+shader Convolution_Internal_TextureFX : FilterBase
+{
+    [Default(0.1f)]
+    compose ComputeFloat Multiplier;
+
+    //float matr[9] = float[](0.0, 0.0, 0.0, 
+    //                      0.0, 0.0, 0.0,
+    //                      0.0, 0.0, 0.0);
+
+    //BoxBlur Kernel
+    //static const float matr[9] = {1.0/9, 1.0/9, 1.0/9,
+				//	              1.0/9, 1.0/9, 1.0/9, 
+				//	              1.0/9, 1.0/9, 1.0/9};
+
+    //Sharpen Kernel
+    //static const float matr[9] = {0.0, -1.0, 0.0,
+				//	              -1.0, 5.0, -1.0, 
+				//	              0.0, -1.0, 0.0};
+
+    //Edge Kernel
+    static const float matr[9] = {0.0, 1.0, 0.0,
+					              1.0, -3.0, 1.0, 
+					              0.0, 1.0, 0.0};
+
+    float4 Filter(float4 tex0col)
+    {
+        float4 c = tex0col;
+        float2 uv = streams.TexCoord;
+        float pa = c.a;
+        c *= matr[4];
+        float2 off = 1.0 / ViewSize;
+        c += matr[0] * Texture0.SampleLevel(LinearSampler, uv - float2( 1, 1) * off, 0);
+        c += matr[1] * Texture0.SampleLevel(LinearSampler, uv - float2( 0, 1) * off, 0);
+        c += matr[2] * Texture0.SampleLevel(LinearSampler, uv - float2(-1, 1) * off, 0);
+        c += matr[3] * Texture0.SampleLevel(LinearSampler, uv - float2( 1, 0) * off, 0);
+        c += matr[5] * Texture0.SampleLevel(LinearSampler, uv - float2(-1, 0) * off, 0);
+        c += matr[6] * Texture0.SampleLevel(LinearSampler, uv - float2( 1,-1) * off, 0);
+        c += matr[7] * Texture0.SampleLevel(LinearSampler, uv - float2( 0,-1) * off, 0);
+        c += matr[8] * Texture0.SampleLevel(LinearSampler, uv - float2(-1,-1) * off, 0);
+        c *= Multiplier.Compute();
+        return c;
+    }
+};

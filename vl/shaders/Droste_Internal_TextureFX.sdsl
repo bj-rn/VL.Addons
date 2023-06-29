@@ -1,0 +1,64 @@
+//@author: tonfilm ported by circuitb
+//@help: an infinite zoom into an image.
+//@tags: escher
+//@credits: Dag Ã…gren
+
+[Category("Filter.Pattern")]
+[Summary("")]
+[Tags("")]
+
+shader Droste_Internal_TextureFX : FilterBase, ShaderUtils, TextureUtils
+{
+    [Default(0.0f, 0.0f)]
+    compose ComputeFloat2 Time;
+
+    [Default(0.0f, 0.0f)]
+    compose ComputeFloat2 Center;
+
+	[Default(0.0f)]
+    compose ComputeFloat Twirl;
+
+	int2 Iteration;
+
+	stage SamplerState LinearMirrorSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Mirror;
+        AddressV = Mirror;
+    };
+
+
+    float4 Filter(float4 tex0col)
+    {
+		float lo = 1/Twirl.Compute();
+		float2 tc = streams.TexCoord - Center.Compute() - 0.5;
+
+		float u_corner=2.0*Pi*Iteration.y;
+		float v_corner=lo*Iteration.x;
+		float diag=sqrt(u_corner*u_corner+v_corner*v_corner);
+	
+		float sin_a=v_corner/diag;
+		float cos_a=u_corner/diag;
+		float scale=diag/2.0/Pi;
+
+		float a=atan2(-tc.y,tc.x);
+		float r=sqrt(tc.x*tc.x+tc.y*tc.y);
+
+		float fu=a;
+		float fv=log(r);
+
+		float tmp=(fu*cos_a+fv*sin_a)*scale;
+		fv = (-fu*sin_a+fv*cos_a)*scale;
+		fu = tmp;
+
+		fu /= 2.0*Pi;
+		fv /= lo;
+	
+		float4 col = SampleCubicBSpline(Texture0, LinearMirrorSampler, float2(fu,fv) - Time.Compute());
+		//Texture0.SampleCubicBSpline(LinearMirrorSampler, float2(fu,fv) - Time.Compute(), 0);// tex2Dbicubic(Tex, LinearSampler, float2(fu,fv) - Time.Compute());
+		//float4 col = Mirror ?  Tex.Sample(Samp2,float2(fu,fv) - t) : Tex.Sample(Samp,float2(fu,fv) - t);
+		return col;
+    }
+};
+
+

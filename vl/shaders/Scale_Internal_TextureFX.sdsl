@@ -1,0 +1,28 @@
+[Category("Filter.Transformation")]
+[Summary("Rotate a texture from its center")]
+
+shader Scale_Internal_TextureFX : FilterBase, TextureUtils
+{
+    float4x4 Transform;
+    SamplerState CustomSampler;
+
+    [Default(1.0f, 1.0f)]
+    compose ComputeFloat2 Scale;
+
+    [EnumType("VL.Stride.Shaders.ShaderFX.SampleMode")]
+    uint InterpolationMode = 0;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = (streams.TexCoord - 0.5) * Scale.Compute() + 0.5;
+
+        switch (InterpolationMode)
+        {
+            case 0: return Texture0.Sample(CustomSampler, uv);
+            case 1: return SampleCubicBSpline(Texture0, CustomSampler, uv);
+            case 2: return SampleCubicCatmullRom(Texture0, CustomSampler, uv);
+        }
+
+        return 1;
+    }
+};

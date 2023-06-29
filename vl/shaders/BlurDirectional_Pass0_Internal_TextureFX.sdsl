@@ -1,0 +1,16 @@
+// source:
+// https://github.com/mrvux/dx11-vvvv-girlpower/blob/master/nodes/texture11/Filter/BlurDirectional.tfx
+
+[Category("Filter.Blur")]
+[Summary("")]
+
+shader BlurDirectional_Pass0_Internal_TextureFX : BlurDirectionalBase
+{
+    float BlurPass(int iter)
+    {
+        //control texture currently only works when a texture is connected
+        float ctrl = Strength.Compute();
+
+        return ctrl;
+    }
+};

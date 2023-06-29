@@ -1,0 +1,35 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Filmic_ALU_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+	float MaxValue = 1.25;
+
+    // Applies the filmic curve from John Hable's presentation
+    float3 ToneMapFilmicALU(float3 color)
+    {
+        color = max(0, color - 0.004f);
+        color = (color * (6.2f * color + 0.5f)) / (color * (6.2f * color + 1.7f)+ 0.06f);
+        // result has 1/2.2 baked in
+        return pows(color, 2.2f);
+    }
+
+    float3 FilmicALU(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+	    color = ToneMapFilmicALU(color);
+        return float3(saturate(color/MaxValue)*MaxValue);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(FilmicALU(tex0col.rgb), tex0col.a);
+    }
+};
+
+

@@ -1,0 +1,47 @@
+// author: otosatram
+// https://beta.vvvv.org/contributions/effects/opticalflow-dx11-for-real/index.html
+
+[Category("Filter.Analysis")]
+[Summary("LK")]
+
+shader OpticalFlow_LK_Internal_TextureFX : FilterBase
+{
+	float Boost = 1.0f;
+
+	float4 getLK(float2 coord) 
+	{
+		float2 uv = float2(0.0, 0.0); //inital Guess from lower pyramid
+	
+		//prevent div by zero
+		float G0 = 0.0045;
+		float G1 = 0.0;
+		float G2 = 0.0045;
+
+		float v0 = 0.0;
+		float v1 = 0.0; //image mismatch floattor
+	
+		float3 deri = Texture0.SampleLevel(LinearSampler, float2(coord), 0).xyz;
+		float Ix = deri.x;
+		float Iy = deri.y;
+		float It = deri.z;
+	
+		G0 += Ix*Ix; //Ix^2
+		G1 += Ix*Iy; //Ixy
+		G2 += Iy*Iy; //Iy^2
+
+		v0 += Ix * It; 
+		v1 += Iy * It; //image mismatch floattor
+	
+		float det_inv = 1.0 / (G0 * G2 - G1 * G1);
+	
+		uv.x = (-G2 * v0 + G1 * v1) * det_inv;
+		uv.y = (v0 * G1 - G0 * v1) * det_inv;
+
+		return float4(uv.x, uv.y, 0.0, 1.0);
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		return getLK(streams.TexCoord)* Boost;
+    }
+};

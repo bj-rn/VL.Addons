@@ -1,0 +1,36 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Exponential_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+    float WhiteLevel;
+    float LuminanceSaturation;
+	float MaxValue = 1.25;
+
+    // Exponential mapping
+    float3 ToneMapExponential(float3 color)
+    {
+	    float pixelLuminance = CalcLuminance(color);    
+        float toneMappedLuminance = 1 - exp(-pixelLuminance / WhiteLevel);
+	    return toneMappedLuminance * pows(color / pixelLuminance, LuminanceSaturation);
+    }
+
+    float3 Exponential(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+	    color = ToneMapExponential(color);
+        return float3(saturate(color/MaxValue)*MaxValue);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(Exponential(tex0col.rgb), tex0col.a);
+    }
+};
+
+

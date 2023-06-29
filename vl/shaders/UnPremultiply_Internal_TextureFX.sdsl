@@ -1,0 +1,28 @@
+//@author: microdee
+//source : https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/UnPreMultiply.tfx
+
+[Category("Filter.Utils")]
+[Summary("")]
+[Tags("")]
+
+shader UnPremultiply_Internal_TextureFX : FilterBase
+{
+    [Default(0.5f)]
+    compose ComputeFloat Power;
+
+
+    float4 Filter(float4 tex0col)
+    {
+	    float4 c0 = tex0col;
+	    float pa = saturate(c0.a);
+
+	    if((pa!=0) && (pa!=1))
+	    {
+		    c0.rgb /= pow(pa, Power.Compute());
+	    }
+
+        return c0;
+    }
+};
+
+

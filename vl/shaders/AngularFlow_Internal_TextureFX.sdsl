@@ -1,0 +1,60 @@
+[Category("Filter")]
+[Summary("")]
+[Tags("uv, offset, distort")]
+[DontConvertToLinearOnRead("Texture1")]
+
+shader AngularFlow_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+	[Default(0.5)]
+	compose ComputeFloat SquareSize;
+
+	[Default(0.5)]
+	compose ComputeFloat Progress;
+
+	[Default(0.5)]
+	compose ComputeFloat Scale;
+
+	[Default(0.0, 0.0)]
+	compose ComputeFloat2 Direction;
+
+	float2 Offset;
+	float2 OffsetScale;
+
+    float4 Filter(float4 tex0col)
+    {
+		float pixels = SquareSize.Compute() ;
+
+		float2 newUV = round(streams.TexCoord * pixels) / pixels;	
+		float4 pixelTexture = Texture2.SampleLevel(LinearSampler, newUV, 0);
+
+		float2 offset = float2(0, 0);
+		
+		float scale = Scale.Compute() * 0.01;
+
+		if (pixelTexture.r > 0.5) 
+		{
+			offset.x += scale;
+		} 
+		else 
+		{
+			offset.x -= scale;
+		}
+
+		if (pixelTexture.g < 0.5) 
+		{
+			offset.y += scale;
+		} 
+		else 
+		{
+			offset.y -= scale;
+		}
+
+		offset += Direction.Compute() * 0.01;
+
+		float4 from = Texture0.SampleLevel(LinearSampler, streams.TexCoord, 0);
+		float4 to = Texture1.SampleLevel(LinearSampler, streams.TexCoord + offset.xy, 0);
+
+		float4 c = lerp (from, to, saturate(Progress.Compute()));
+		return c;
+    }
+};

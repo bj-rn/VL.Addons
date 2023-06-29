@@ -1,0 +1,25 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Linear_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+	float MaxValue = 1.25;
+
+    float4 Linear(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord.xy);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+        return float4(saturate(color/MaxValue)*MaxValue, 1.0f);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(Linear(tex0col.rgb).rgb, tex0col.a);
+    }
+};
+
+

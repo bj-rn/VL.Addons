@@ -1,0 +1,41 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Logarithmic_Drago_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+    float WhiteLevel;
+    float LuminanceSaturation;
+	float Bias;
+	float MaxValue = 1.25;
+
+    // Drago's Logarithmic mapping
+    float3 ToneMapDragoLogarithmic(float3 color)
+    {
+	    float pixelLuminance = CalcLuminance(color);    
+        float toneMappedLuminance = log10(1 + pixelLuminance);
+	    toneMappedLuminance /= log10(1 + WhiteLevel);
+	    toneMappedLuminance /= log10(2 + 8 * ((pixelLuminance / WhiteLevel) * log10(Bias) / log10(0.5f)));
+	    return toneMappedLuminance * pows(color / pixelLuminance, LuminanceSaturation); 
+    }
+
+    float3 DragoLogarithmic(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+	    color = ToneMapDragoLogarithmic(color);
+        return float3(saturate(color/MaxValue)*MaxValue);
+    }
+
+
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(DragoLogarithmic(tex0col.rgb).rgb, tex0col.a);
+    }
+};
+
+

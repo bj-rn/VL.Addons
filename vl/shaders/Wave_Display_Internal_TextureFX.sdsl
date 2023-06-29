@@ -1,0 +1,20 @@
+[Category("Filter.Feedback")]
+[Summary("")]
+
+shader Wave_Display_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor;
+
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 WaveColor;
+
+    bool Reset;
+
+    float4 Filter(float4 tex0col)
+    {
+        float3 c = GetLuminance(Texture0.SampleLevel(LinearSampler, streams.TexCoord, 0).rgb);
+        return lerp(BackgroundColor.Compute(), WaveColor.Compute(), float4(c, 1.0));
+    }
+};
+

@@ -1,0 +1,59 @@
+// source:
+// https://github.com/vvvv/vvvv-sdk/blob/develop/vvvv45/addonpack/lib/nodes/modules/TextureFX/Filter/Cartoon/Cartoon.fx
+
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader Cartoon_Internal_TextureFX : FilterBase
+{
+    [Default(1.0f)]
+    compose ComputeFloat EdgeWidth;
+
+    [Default(0.25f)]
+    compose ComputeFloat EdgeBoost;
+
+    [Default(0.25f)]
+    compose ComputeFloat ColorBoost;
+
+    [Default(0.5f)]
+    compose ComputeFloat ShadeGamma;
+
+    float4 Filter(float4 tex0col)
+    {
+        
+        float4 a = 0;
+        float2 uv = streams.TexCoord;
+        float2 R = ViewSize;
+
+
+        for(float i=0; i<1; i+=1.0/16.0)
+        {
+		    float2 off = sin((i + float2(0.25, 0.0)) * acos(-1)*2);
+            
+            float4 nc = Texture0.SampleLevel(LinearSampler, uv + (off/R * EdgeWidth.Compute()), 0);           
+            float3 nch = RGBtoHSV(nc.xyz);
+		
+            a = max(nch.z, a);
+	    }
+
+        float4 c = Texture0.SampleLevel(LinearSampler, uv, 0);
+        float3 ch = RGBtoHSV(c.xyz);
+	
+        a = lerp(a, ch.z, 1-2 * EdgeBoost.Compute());
+	    
+        ch.y += ch.z * pow(ch.y, 2) * pow(9, ColorBoost.Compute());
+	
+        ch.z /= a + 0.0000001f;
+
+	    float shd = RGBtoHSV(c).z;
+	
+        ch.z *= pow(smoothstep(0.2, 0.8, sqrt(pow(shd, ShadeGamma.Compute()))), 2);
+	
+	    c.rgb = HSVtoRGB(ch);
+	    c.rgb = max(c.rgb, 0);
+    
+        return c;
+
+        
+    }
+};

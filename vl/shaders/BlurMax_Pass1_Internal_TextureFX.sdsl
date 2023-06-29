@@ -1,0 +1,31 @@
+[Category("Filter.Blur")]
+[Summary("Applies a blur effect")]
+[WantsMips("Texture0")]
+
+shader BlurMax_Pass1_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+	[Default(0.5f)]
+	compose ComputeFloat Width;
+
+    float4 Filter(float4 tex0col)
+    {
+		float2 uv = streams.TexCoord;
+		float lod = Width.Compute() * Lod(ViewSize);
+		float4 c=0;
+		float2 off=.5/ViewSize*pow(2,lod)*saturate(lod);
+	
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(0,0)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(1,1)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(1,-1)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(-1,-1)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(-1,1)*off,lod));
+		off*=1.86;
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(0,1)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(0,-1)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(-1,0)*off,lod));
+		c=max(c,Texture0.SampleLevel(LinearSampler,uv+float2(1,0)*off,lod));
+		return c;
+    }
+};
+
+

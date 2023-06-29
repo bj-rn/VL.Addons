@@ -1,0 +1,29 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+
+shader Square_Internal_TextureFX : TextureFX
+{
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 SquareColor;
+    
+    [Default(3.5f, 3.5f)]
+    compose ComputeFloat2 Scale;
+
+    [Default(0.5f)]
+    compose ComputeFloat SquareSize;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord * Scale.Compute(); 
+        float2 square = frac(uv);
+        float square_dist = min(min(square.x, 1.0-square.x), min(square.y, 1.0-square.y));
+        float edge = (1 - SquareSize.Compute()) * 0.5;
+        float value =  smoothstep(edge, edge , square_dist);
+
+        return lerp(BackgroundColor.Compute(), SquareColor.Compute(), float4(value, value, value, 1.));
+    }
+};

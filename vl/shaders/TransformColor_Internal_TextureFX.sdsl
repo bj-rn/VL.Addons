@@ -1,0 +1,14 @@
+[Category("Filter.ColorManipulation")]
+[Summary("Transform Color")]
+
+shader TransformColor_Internal_TextureFX : FilterBase, ColorMatrixOperations
+{
+    float4x4 Transform;
+
+    float4 Filter(float4 tex0col)
+    {
+        return mul(tex0col, Transform);
+    }
+};
+
+

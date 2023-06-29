@@ -1,0 +1,30 @@
+[TextureSource]
+[Category("Source")]
+[Summary("Returns a texture with a linear gradient")]
+[Tags("ramp")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader Gradient_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 From; 
+    
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 To;    
+    
+    bool isHorizontal;
+
+    float4x4 Transform;
+
+    [Default(2.2f)]
+    compose ComputeFloat Gamma;
+
+    stage override float4 Shading()
+    {   
+        float2 uv = TransformUV(streams.TexCoord, Transform);
+        float fade = isHorizontal ? uv.x : uv.y;
+        fade = pow(fade, Gamma.Compute());
+        float4 c = lerp(From.Compute(), To.Compute(), fade);
+        return c;
+    }
+};

@@ -1,0 +1,87 @@
+// source:
+// https://beta.vvvv.org/contributions/effects/debayer-ex9-texture-filter-bilinear/index.html
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader DeBayer_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+	[Default(0.0f, 0.0f)]
+	compose ComputeFloat2 Size;
+
+	[Default(0.0f)]
+	compose ComputeFloat Red;
+
+	[Default(0.0f)]
+	compose ComputeFloat Green;
+
+	[Default(0.0f)]
+	compose ComputeFloat Blue;
+
+	float gruen;
+	float blau;
+
+    float4 Filter(float4 tex0col)
+    {
+		//the texture coordinate offset with vertical coordinate set to 0
+		float2 PixelSize = 1 / ViewSize + Size.Compute();
+
+		float2 off = float2(PixelSize.x, PixelSize.y);
+		float2 uv = streams.TexCoord;
+
+		//sample the left and the right neighbouring pixels
+		float4 left = Texture0.SampleLevel(LinearSampler, uv - off, 0);
+		float4 right = Texture0.SampleLevel(LinearSampler, uv + off, 0);
+	
+		//the texture coordinate offset with horizonal coordinate set to 0
+		off = float2(0, PixelSize.y);
+		//sample the upper and the lower neighbouring pixels
+		float4 upper = Texture0.SampleLevel(LinearSampler, uv - off, 0);
+		float4 lower = Texture0.SampleLevel(LinearSampler, uv + off, 0);
+	
+		off = float2(PixelSize.x, PixelSize.y);
+		float4 lowerright = Texture0.SampleLevel(LinearSampler, uv + off, 0);
+		float4 upperleft = Texture0.SampleLevel(LinearSampler, uv - off, 0);
+	
+		off = float2(PixelSize.x, -PixelSize.y);
+		float4 upperright = Texture0.SampleLevel(LinearSampler, uv + off, 0);
+		float4 lowerleft = Texture0.SampleLevel(LinearSampler, uv - off, 0);
+	
+		float4 center = Texture0.SampleLevel(LinearSampler, uv, 0);
+	
+	
+		float oddX = (uv.x/PixelSize.x)/2;
+		oddX = frac(oddX);
+		oddX = round(oddX);
+	
+		float oddY = (uv.y/PixelSize.y)/2;
+		oddY = frac(oddY);
+		oddY = round(oddY);
+	
+		float red = Red.Compute();
+		float green = Green.Compute();
+		float blue = Blue.Compute();
+		
+		if (oddX < 0.1 && oddY < 0.1)
+		{
+			return float4 (center.r*red, (upper.g+lower.g+left.g+right.g)/4*green, (upperleft.b+lowerleft.b+upperright.b+lowerright.b)/4*blue, center.a);
+		}
+	
+		if (oddX > 0.1 && oddY < 0.1)
+		{
+			return float4((left.r+right.r)/2*red, center.g*green, (upper.b+lower.b)/2*blue, center.a);
+		}
+	
+		if (oddX > 0.1 && oddY > 0.1)
+		{
+			return float4((upperleft.r+lowerleft.r+upperright.r+lowerright.r)/4*red, (upper.g+lower.g+left.g+right.g)/4*green, center.b*blue, center.a);
+		}
+
+		if (oddX < 0.1 && oddY > 0.1)
+		{
+			return float4((upper.r+lower.r)/2*red, center.g*green, (left.b+right.b)/2*blue, center.a);
+		}
+	
+		return float4(0,0,0,1);
+    }
+};

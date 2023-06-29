@@ -1,0 +1,27 @@
+[Category("Filter.Distortion")]
+[Summary("")]
+[Tags("uv, offset, distort")]
+
+shader Displace_Height_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.5f, 0.5f, 0.5f, 1.0f)]
+	compose ComputeFloat4 Height;
+
+    [Default(0.5f)]
+	compose ComputeFloat Amount;
+
+    stage SamplerState LinearMirrorSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Mirror;
+        AddressV = Mirror;
+    };
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord - 0.5;
+        float height = GetLuminance(Height.Compute());
+
+        return Texture0.SampleLevel(LinearMirrorSampler, (uv * (1 + height * Amount.Compute()))+.5, 0);
+    }
+};

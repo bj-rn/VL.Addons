@@ -1,0 +1,86 @@
+// source : https://beta.vvvv.org/contributions/effects/wave-warp/index.html
+
+[Category("Filter.Distortion")]
+[Summary("")]
+
+shader Wave_Warp_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    int WaveType = 0;
+
+    [Default(0.1f)]
+    compose ComputeFloat Width;
+
+    [Default(0.1f)]
+    compose ComputeFloat Height;
+
+    [Default(0.0f)]
+    compose ComputeFloat Time;
+
+    float4x4 tTex;
+
+    stage SamplerState LinearMirrorSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Mirror;
+        AddressV = Mirror;
+    };
+
+    float2 WaveSine(float2 uv, float sheight)
+    {
+        uv += sheight * sin(fmod(lerp(0.5, 45.0, Width.Compute()) * uv.y + Time.Compute(), 6.283185307179586476925286766559)); //TwoPi
+        return uv;
+    }
+
+    float2 WaveSquare(float2 uv, float sheight)
+    {
+        uv += sheight*step(0.5, fmod(lerp(1.0, 45.0, Width.Compute()) * uv.y + Time.Compute(), 1.0));
+        return uv;
+    }
+
+    float2 WaveSawtooth(float2 uv, float sheight)
+    {
+        uv += sheight * fmod(lerp(1.0, 45.0, Width.Compute()) * uv.y + Time.Compute(), 1.0);
+        return uv;
+    }
+
+    float2 WaveTriangle(float2 uv, float sheight)
+    {
+        uv += sheight * abs(2.0 * fmod(lerp(1.0, 45.0, Width.Compute()) * uv.y + Time.Compute(), 1.0) - 1.0);
+        return uv;
+    } 
+
+
+    float rand(float2 co)
+    {
+        return frac(sin(dot(co.xy ,float2(12.9898, 78.233))) * 43758.5453);
+    }
+
+    float2 WaveNoise(float2 uv, float sheight)
+    {
+        float swidth = Width.Compute();
+        float scale = 200.0;
+        float time = Time.Compute();
+        uv += sheight * rand(float2(uv.y * swidth * scale - frac(uv.y * swidth * scale) + time, uv.y * swidth * scale - frac(uv.y * swidth * scale) + time));
+        return uv;
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 xy = TransformUV(streams.TexCoord, tTex);
+        float height = Height.Compute();
+        xy -= height;
+
+        float2 newUV = 0;
+
+        switch (WaveType)
+        {
+            case 0: newUV = WaveSine(xy, height);break;
+            case 1: newUV = WaveSquare(xy, height);break;
+            case 2: newUV = WaveSawtooth(xy, height);break;
+            case 3: newUV = WaveTriangle(xy, height);break;
+            case 4: newUV = WaveNoise(xy, height);break;
+        }
+
+        return Texture0.SampleLevel(LinearMirrorSampler, newUV, 0);;
+    }
+};

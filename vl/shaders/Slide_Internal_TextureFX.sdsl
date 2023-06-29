@@ -1,0 +1,32 @@
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+
+shader Slide_Internal_TextureFX : MixerBase
+{
+	bool Horizontal;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+
+		if(Horizontal)
+		{
+			uv.y += fader;
+		}
+		else
+		{
+			uv.x += fader;
+		}
+
+		if(any(saturate(uv)-uv))
+		{	
+			uv = frac(uv);
+			return Texture1.SampleLevel(LinearSampler, uv, 0);
+		}
+		else
+		{
+			return Texture0.SampleLevel(LinearSampler, uv, 0);
+		}
+    }
+};

@@ -1,0 +1,15 @@
+[Category("Filter.Pattern")]
+[Summary("")]
+
+shader Tiles_Internal_TextureFX : FilterBase
+{
+    [Default(0.5, 0.5)]
+    compose ComputeFloat2 FactorXY;
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+        float2 sz = ViewSize / min(max(0.5/ ViewSize, FactorXY.Compute() ), ViewSize);
+        return Texture0.SampleLevel(Sampler0, lerp(uv, (round((uv - 0.5) * sz - 0.5) + 0.5)/sz + 0.5, 1), 0);	
+    }
+};

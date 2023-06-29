@@ -1,0 +1,22 @@
+[Category("Filter.Distortion")]
+[Summary("")]
+[Tags("uv, offset, distort")]
+[DontConvertToLinearOnRead("Texture1")]
+
+shader GrowthFlowPass1_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+	Texture2D texFEED;
+
+	float2 Alphamul = float2(1.0f, 10.0f);
+
+
+    float4 Filter(float4 tex0col)
+    {
+		float4 c=Texture0.SampleLevel(LinearSampler,streams.TexCoord, 0);
+		//c.rgb=hsv2rgb(float3((c.x*0.1+c.a),1,1));
+		//c.rgb=c.a;
+		//if(x.x<.15)c.rgb=c.a;
+		//c.a = 1;
+		return c;
+    }
+};

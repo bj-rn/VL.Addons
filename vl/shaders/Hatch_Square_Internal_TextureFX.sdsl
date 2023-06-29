@@ -1,0 +1,31 @@
+// source:
+// https://github.com/mrvux/dx11-vvvv-girlpower/blob/master/nodes/texture11/Filter/HatchCrossed.tfx
+
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader Hatch_Square_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor; 
+    
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 HatchColor;
+
+    [Default(0.5f)]
+    compose ComputeFloat Threshold;
+
+    [Default(0.5f)]
+    compose ComputeFloat Thickness;
+
+    [Default(0.5f)]
+    compose ComputeFloat Rotation;
+
+    float4 Filter(float4 tex0col)
+    {
+	    float4 col = tex0col;
+	    col.rgb = sqrt(col.rgb);
+        float2 rotated = r2d(streams.TexCoord * ViewSize - 0.5, Rotation.Compute());
+	    return lerp(BackgroundColor.Compute(), HatchColor.Compute(), any(((rotated + ViewSize)) % Thickness.Compute() < col.rgb * Threshold.Compute())) * float4(1.0, 1.0, 1.0, col.a);
+    }
+};

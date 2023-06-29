@@ -1,0 +1,99 @@
+[Category("Filter.Rendering")]
+[Summary("")]
+[WantsMips("Texture0")]
+
+shader NormalMap_Internal_TextureFX : FilterBase
+{
+    [Default(1.0f)]
+    compose ComputeFloat Radius;
+
+    [Default(1.0f)]
+    compose ComputeFloat aDepth;
+
+
+    float4 q(float2 x,float2 off,float v)
+    {
+        return Texture0.SampleLevel(LinearSampler,x + off/ ViewSize, v);
+    }
+
+    float gam(float x,float y)
+    {
+        return sign(x)*pow(abs(x),y);
+    }
+
+    float sat(float4 c,float4 d)
+    {
+	    return (dot(c.rgb,1./3.)-dot(d.rgb,1./3.))/sqrt(.00001+abs(dot(c.rgb,1./3.)+dot(d.rgb,1./3.)));
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 x = streams.TexCoord;
+        float rad = max(Radius.Compute(), 0);
+        float3 e = float3(1, -1,0)*rad;
+        float v = log2(rad);
+        float4 cx = q(x, e.xy, v) + q(x, e.xz, v) + q(x, e.xx, v) - q(x, e.yy, v) - q(x, e.yz, v) - q(x, e.yx, v);
+        float4 cy = q(x, e.yy, v) + q(x, e.zy, v) + q(x, e.xy, v) - q(x, e.yx, v) - q(x, e.zx, v) - q(x, e.xx, v);
+        float4 c = 0;
+        float d = pow(2, aDepth.Compute());
+	    c.r = d*sat(q(x, e.xz, v),q(x, e.yz, v));
+	    c.g = d*sat(q(x, e.zx, v),q(x, e.zy, v));
+	    c.b = 1;
+	    c.rgb = normalize(c.rgb);
+	    c.rg = 0.5 + c.rg;
+
+        c.a = Texture0.SampleLevel(LinearSampler, x, 0).a;
+        return c;
+    }
+};
+
+
+
+//@author: 
+//@help: 
+//@tags: filter
+//@credits:
+
+//Texture2D tex0: PREVIOUS;
+//float2 R:TARGETSIZE;
+
+//cbuffer controls:register(b0){
+//	float Radius <float uimin=0.0;> = 1.0;
+//	float Depth=1;
+//};
+
+//SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+
+//float4 q(float2 x,float2 off,float v){return tex0.SampleLevel(s0,x+off/R,v);}
+//float gam(float x,float y){return sign(x)*pow(abs(x),y);}
+//float sat(float4 c,float4 d){
+//	return (dot(c.rgb,1./3.)-dot(d.rgb,1./3.))/sqrt(.00001+abs(dot(c.rgb,1./3.)+dot(d.rgb,1./3.)));
+//}
+//float4 pNORMALMAP(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
+//    float rad=max(Radius,0);
+//    float3 e=float3(1,-1,0)*rad;
+//    float v=log2(rad);
+//    float4 cx=q(x,e.xy,v)+q(x,e.xz,v)+q(x,e.xx,v)-q(x,e.yy,v)-q(x,e.yz,v)-q(x,e.yx,v);
+//    float4 cy=q(x,e.yy,v)+q(x,e.zy,v)+q(x,e.xy,v)-q(x,e.yx,v)-q(x,e.zx,v)-q(x,e.xx,v);
+//    float4 c=0;
+//    float d=pow(2,Depth);
+//	c.r=d*sat(q(x,e.xz,v),q(x,e.yz,v));
+//	c.g=d*sat(q(x,e.zx,v),q(x,e.zy,v));
+//	c.b=1;
+//	c.rgb=normalize(c.rgb);
+//	c.rg=.5+c.rg;
+//    c.a=tex0.SampleLevel(s0,x,0).a;
+//    return c;
+//}
+//float4 pMIPS(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
+//	return tex0.SampleLevel(s0,x,0);
+//}
+//technique10 NormalMap{
+//	pass P0 <bool mips=true;>
+//	{SetPixelShader(CompileShader(ps_4_0,pMIPS()));}
+//	pass P1
+//	{SetPixelShader(CompileShader(ps_4_0,pNORMALMAP()));}
+//}
+
+
+

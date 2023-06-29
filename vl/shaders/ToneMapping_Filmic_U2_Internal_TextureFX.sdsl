@@ -1,0 +1,54 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Filmic_U2_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+    float ShoulderStrength;
+    float LinearStrength;
+    float LinearAngle;
+    float ToeStrength;
+    float ToeNumerator;
+    float ToeDenominator;
+    float LinearWhite;
+	float MaxValue = 1.25;
+
+    // Function used by the Uncharte2D tone mapping curve
+    float3 U2Func(float3 x)
+    {
+        float A = ShoulderStrength;
+        float B = LinearStrength;
+        float C = LinearAngle;
+        float D = ToeStrength;
+        float E = ToeNumerator;
+        float F = ToeDenominator;
+        return ((x*(A*x+C*B)+D*E)/(x*(A*x+B)+D*F)) - E/F;
+    }
+
+    // Applies the Uncharted 2 filmic tone mapping curve
+    float3 ToneMapFilmicU2(float3 color)
+    {
+        float3 numerator = U2Func(color);        
+        float3 denominator = U2Func(LinearWhite);
+
+        return numerator / denominator;
+    }
+
+    float3 FilmicU2(float3 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord);
+	    float exposure = 0;
+        color = AutoExpo(color, avgLuminance, BloomThreshold, exposure);
+	    color = ToneMapFilmicU2(color);
+        return float3(saturate(color/MaxValue)*MaxValue);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(FilmicU2(tex0col.rgb), tex0col.a);
+    }
+};
+
+

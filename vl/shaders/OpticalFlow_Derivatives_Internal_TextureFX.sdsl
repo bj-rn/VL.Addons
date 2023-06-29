@@ -1,0 +1,71 @@
+// author: otosatram
+// https://beta.vvvv.org/contributions/effects/opticalflow-dx11-for-real/index.html
+
+[Category("Filter.Analysis")]
+[Summary("Derivatives for Optical Flow")]
+
+shader OpticalFlow_Derivatives_Internal_TextureFX : FilterBase
+{
+
+    float4 Filter(float4 tex0col)
+    {
+		float2 uv = streams.TexCoord;
+
+		float centerColorPrev = Texture0.SampleLevel(LinearSampler, uv, 0).r;
+
+		//Getting the pixel distances
+		float texelWidth = 1 / ViewSize.x;
+		float texelHeight = 1 / ViewSize.y;
+
+		float centerColor = Texture1.SampleLevel(LinearSampler, uv, 0).r;
+	
+		float c00 = Texture1.SampleLevel(LinearSampler, uv + float2(-2,-2)*float2 (texelWidth,texelHeight), 0).r;
+		float c01 = Texture1.SampleLevel(LinearSampler, uv + float2(-1,-2)*float2 (texelWidth,texelHeight), 0).r;
+		float c02 = Texture1.SampleLevel(LinearSampler, uv + float2(0,-2)* float2(texelWidth,texelHeight), 0).r;
+		float c03 = Texture1.SampleLevel(LinearSampler, uv + float2(1,-2)* float2(texelWidth,texelHeight), 0).r;
+		float c04 = Texture1.SampleLevel(LinearSampler, uv + float2(2,-2)* float2(texelWidth,texelHeight), 0).r;
+
+		float c10 = Texture1.SampleLevel(LinearSampler, uv + float2(-2,-1)* float2(texelWidth,texelHeight), 0).r;
+		float c11 = Texture1.SampleLevel(LinearSampler, uv + float2(-1,-1)* float2(texelWidth,texelHeight), 0).r;
+		float c12 = Texture1.SampleLevel(LinearSampler, uv + float2(0,-1)* 	float2(texelWidth,texelHeight), 0).r;
+		float c13 = Texture1.SampleLevel(LinearSampler, uv + float2(1,-1)* 	float2(texelWidth,texelHeight), 0).r;
+		float c14 = Texture1.SampleLevel(LinearSampler, uv + float2(2,-1)* 	float2(texelWidth,texelHeight), 0).r;
+	
+		float c20 = Texture1.SampleLevel(LinearSampler, uv + float2(-2,0)*float2(texelWidth,texelHeight), 0).r;
+		float c21 = Texture1.SampleLevel(LinearSampler, uv + float2(-1,0)*float2(texelWidth,texelHeight), 0).r;
+
+		float c23 = Texture1.SampleLevel(LinearSampler, uv + float2(1,0)* float2(texelWidth,texelHeight), 0).r;
+		float c24 = Texture1.SampleLevel(LinearSampler, uv + float2(2,0)* float2(texelWidth,texelHeight), 0).r;
+	
+		float c30 = Texture1.SampleLevel(LinearSampler, uv + float2(-2,1)*float2 (texelWidth,texelHeight), 0).r;
+		float c31 = Texture1.SampleLevel(LinearSampler, uv + float2(-1,1)*float2 (texelWidth,texelHeight), 0).r;
+		float c32 = Texture1.SampleLevel(LinearSampler, uv + float2(0,1)* float2(texelWidth,texelHeight), 0).r;
+		float c33 = Texture1.SampleLevel(LinearSampler, uv + float2(1,1)* float2(texelWidth,texelHeight), 0).r;
+		float c34 = Texture1.SampleLevel(LinearSampler, uv + float2(2,1)* float2(texelWidth,texelHeight), 0).r;
+	
+		float c40 = Texture1.SampleLevel(LinearSampler, uv + float2(-2,2)*float2 (texelWidth,texelHeight), 0).r;
+		float c41 = Texture1.SampleLevel(LinearSampler, uv + float2(-1,2)*float2 (texelWidth,texelHeight), 0).r;
+		float c42 = Texture1.SampleLevel(LinearSampler, uv + float2(0,2)* float2(texelWidth,texelHeight), 0).r;
+		float c43 = Texture1.SampleLevel(LinearSampler, uv + float2(1,2)* float2(texelWidth,texelHeight), 0).r;
+		float c44 = Texture1.SampleLevel(LinearSampler, uv + float2(2,2)* float2(texelWidth,texelHeight), 0).r;
+	
+
+		//right Sobel
+		float resultX = c00*-2+c01*-1+c03*1+c04*2;
+		resultX += c10*-3+c11*-2+c12*0+c13*2+c14*3;
+		resultX += c20*-4+c21*-3+c23*3+c24*4;
+		resultX += c30*-3+c31*-2+c33*2+c34*3;
+		resultX += c40*-2+c41*-1+c43*1+c44*2;	
+	
+		//Bottom Sobel
+		float resultY = c00*-2+c01*-3+c02*-4+c03*-3+c04*-2;
+		resultY += c10*-1+c11*-2+c12*-3+c13*-2+c14*-1;
+	
+		resultY += c30*1+c31*2+c32*3+c33*2+c34*1;
+		resultY += c40*2+c41*3+c42*4+c43*3+c44*2;
+
+		float resultZ = (centerColor - centerColorPrev);
+
+		return float4(resultX, resultY, resultZ, 1.);;
+    }
+};

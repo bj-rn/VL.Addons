@@ -1,0 +1,85 @@
+// source: Microdee
+// https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/HeightShadows.tfx
+
+[Category("Filter.Enhancement")]
+[Summary("")]
+[OutputFormat("R16G16B16A16_Float")]
+[WantsMips("Texture0")]
+
+shader HeightShadows_Pass1_Internal_TextureFX : FilterBase, AddonShaderUtils, NoiseFunctions
+{
+	[Default(0.5f, 0.5f, 0.5f)]
+    compose ComputeFloat3 LightDirection;
+
+	[Default(0.01f)]
+    compose ComputeFloat ShadowBlurAmount;
+
+	[Default(1.0f)]
+    compose ComputeFloat ShadowBlurPow;
+
+	[Default(0.0f)]
+    compose ComputeFloat SharpOffset;
+
+	static const float PI = 3.1415926535897932384626433832795;
+	static const float invBlurTaps = 0.166667;
+	static const int BlurTaps = 6;
+
+	stage SamplerState ClampSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Clamp;
+        AddressV = Clamp;
+    };
+
+	stage SamplerState BorderSampler
+    {
+        Filter = MIN_MAG_MIP_LINEAR;
+        AddressU = Border;
+        AddressV = Border;
+    };
+
+	float MapClamp(float value, float inMin, float inMax, float outMin, float outMax)
+	{
+		return Map(clamp(value, min(inMin, inMax), max(inMin, inMax)), inMin, inMax, outMin, outMax);
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		float2 uv = streams.TexCoord;
+
+		float4 input = Texture0.SampleLevel(BorderSampler, uv, 0);
+		//return input.x;
+		float3 orig = float3(uv, input.z);
+		float3 raydir = normalize(-LightDirection.Compute());
+	
+		float bluram = input.y;
+	
+		float shadowBlurAmount = ShadowBlurAmount.Compute();
+
+		[unroll]
+		for(float i=0; i<BlurTaps; i++)
+		{
+			float2 uv2 = uv + float2(cos(i * invBlurTaps * PI * 2), sin(i * invBlurTaps * PI * 2)) * shadowBlurAmount * hash13(float3(uv*1000, i)) * 1.25;
+			float4 cinput = Texture0.SampleLevel(BorderSampler, uv2, 0);
+			bluram = max(bluram, cinput.y * (cinput.z >= input.z));
+		}
+	
+		bluram = pow(max(bluram - SharpOffset.Compute(), 0), ShadowBlurPow.Compute());
+		float lod = Lod(ViewSize) * 0.25 * saturate(bluram);
+		float4 c=0;
+	
+		[unroll]
+		for(float i=0; i<BlurTaps; i++)
+		{
+			float rand = pow(hash13(float3(uv*1000+324, i)), 0.5);
+			float2 deviation = float2(cos(i * invBlurTaps * PI * 2), sin(i * invBlurTaps * PI * 2)) * rand;
+			float2 amount = deviation * bluram * shadowBlurAmount;
+			float2 uv2 = uv + amount;
+			float4 curr = Texture0.SampleLevel(BorderSampler, uv2, lod);
+			curr = lerp(input, curr, curr.z >= input.z) * invBlurTaps;
+			c += curr;
+		}
+	
+		return float4(c.x, c.x, c.x, 1.0);
+    }
+};

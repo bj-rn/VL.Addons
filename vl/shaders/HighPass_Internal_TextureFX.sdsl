@@ -1,0 +1,73 @@
+// source:
+// https://beta.vvvv.org/contributions/effects/highpass-dx11-texturefx/index.html
+
+[Category("Filter.Enhancement")]
+[Summary("")]
+
+shader HighPass_Internal_TextureFX : FilterBase
+{
+    [Default(0.5f)]
+    compose ComputeFloat Contrast;
+
+    bool Composite = true;
+
+
+    float overlay( float s, float d )
+    {
+	    return (d < 0.5) ? 2.0 * s * d : 1.0 - 2.0 * (1.0 - s) * (1.0 - d);
+    }
+
+    float3 overlay( float3 s, float3 d )
+    {
+        float3 c;
+        c.x = overlay(s.x,d.x);
+        c.y = overlay(s.y,d.y);
+        c.z = overlay(s.z,d.z);
+        return c;
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+        float2 step = 1.0/ViewSize;
+
+        float2 offset[9];
+	    float kernel [9];
+	
+        offset[ 0 ] = float2(-step.x, -step.y);
+        offset[ 1 ] = float2(0.0, -step.y);
+        offset[ 2 ] = float2(step.x, -step.y);
+        offset[ 3 ] = float2(-step.x, 0.0);
+        offset[ 4 ] = float2(0.0, 0.0);
+        offset[ 5 ] = float2(step.x, 0.0);
+        offset[ 6 ] = float2(-step.x, step.y);
+        offset[ 7 ] = float2(0.0, step.y);
+        offset[ 8 ] = float2(step.x, step.x);
+        kernel[ 0 ] = -1.;
+        kernel[ 1 ] = -1.;
+        kernel[ 2 ] = -1.;
+        kernel[ 3 ] = -1.;
+        kernel[ 4 ] = 8.;
+        kernel[ 5 ] = -1.;
+        kernel[ 6 ] = -1.;
+        kernel[ 7 ] = -1.;
+        kernel[ 8 ] = -1.;
+
+
+        float3 col = 0;
+	    for( int i=0; i<9; i++ )
+        {
+            float4 tmp = Texture0.Sample(LinearSampler, uv + offset[i]);
+            col += tmp.rgb * kernel[i];
+        }
+	
+	    col = col * Contrast.Compute() + 0.5;
+	
+	    if (Composite)
+	    {
+		    col = overlay (col, tex0col.rgb);
+	    }
+	
+	    return float4 (col, tex0col.a);
+    }
+};

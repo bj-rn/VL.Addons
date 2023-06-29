@@ -1,0 +1,22 @@
+[Category("Filter")]
+[Summary("")]
+
+shader Fluid_Pressure_Internal_TextureFX : TextureFX
+{
+    float vFlowDims;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord;
+
+  	    float xL = Texture0.Sample(LinearSampler, float2(uv.x - 1./vFlowDims, uv.y)).x; 
+  	    float xR = Texture0.Sample(LinearSampler, float2(uv.x + 1./vFlowDims, uv.y)).x; 
+  	    float xB = Texture0.Sample(LinearSampler, float2(uv.x,    uv.y - 1./vFlowDims)).x; 
+  	    float xT = Texture0.Sample(LinearSampler, float2(uv.x, uv.y + 1./vFlowDims)).x; 
+  
+        float bCenter = Texture1.Sample(LinearSampler, uv).x;
+	    float result = (xL + xR + xB + xT - bCenter) * 0.25;
+	
+	    return result;
+	}
+};

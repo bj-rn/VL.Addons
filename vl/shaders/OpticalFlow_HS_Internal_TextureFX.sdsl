@@ -1,0 +1,101 @@
+// author: otosatram
+// https://beta.vvvv.org/contributions/effects/opticalflow-dx11-for-real/index.html
+
+[Category("Filter.Analysis")]
+[Summary("HS")]
+
+shader OpticalFlow_HS_Internal_TextureFX : FilterBase
+{
+	float Boost = 1.0f;
+
+	float lambda = .1;
+
+	float2 getAverage(float2 uv)
+	{	
+		float texelWidth = 1 / ViewSize.x;
+		float texelHeight = 1 / ViewSize.y;
+	
+		//Obtaining the offset
+		float2 widthStep = float2(texelWidth, 0.0);
+		float2 heightStep = float2(0.0, texelHeight);
+		float2 widthHeightStep = float2(texelWidth, texelHeight);
+		float2 widthNegativeHeightStep = float2(texelWidth, -texelHeight);
+	
+		//Getting the uv mapping for the 3x3 matrix
+		float2 textureCoordinate = uv;
+		float2 leftTextureCoordinate = uv - widthStep;
+		float2 rightTextureCoordinate = uv + widthStep;
+	
+		float2 topTextureCoordinate = uv - heightStep;
+		float2 topLeftTextureCoordinate = uv - widthHeightStep;
+		float2 topRightTextureCoordinate = uv + widthNegativeHeightStep;
+	
+		float2 bottomTextureCoordinate = uv + heightStep;
+		float2 bottomLeftTextureCoordinate = uv - widthNegativeHeightStep;
+		float2 bottomRightTextureCoordinate = uv + widthHeightStep;
+	
+		//Getting the color of every pixel in a 3x3 matrix
+		float4 bottomColor = Texture1.Sample(LinearSampler,bottomTextureCoordinate) ;
+		float4 bottomLeftColor = Texture1.Sample(LinearSampler,bottomLeftTextureCoordinate) ;
+		float4 bottomRightColor = Texture1.Sample(LinearSampler,bottomRightTextureCoordinate) ;
+	
+		float4 centerColor = Texture1.Sample(LinearSampler,textureCoordinate) ;
+		float4 leftColor = Texture1.Sample(LinearSampler,leftTextureCoordinate) ;
+		float4 rightColor = Texture1.Sample(LinearSampler,rightTextureCoordinate) ;
+	
+		float4 topColor = Texture1.Sample(LinearSampler,topTextureCoordinate) ;
+		float4 topRightColor = Texture1.Sample(LinearSampler,topRightTextureCoordinate) ;
+		float4 topLeftColor = Texture1.Sample(LinearSampler,topLeftTextureCoordinate) ;
+	
+	
+		float resultX = topLeftColor.r * 1/12 + topColor.r * 1/6 + topRightColor.r * 1/12;
+		resultX += leftColor.r * 1/6 + centerColor.r * -1 + rightColor.r * 1/6;
+		resultX += bottomLeftColor.r * 1/12 + bottomColor.r *1/6 + bottomRightColor.r * 1/12;
+	
+		//right Sobel
+		float resultY = topLeftColor.g * 1/12 + topColor.g * 1/6 + topRightColor.g * 1/12;
+		resultY += leftColor.g * 1/6 + centerColor.g * -1 + rightColor.g * 1/6;
+		resultY += bottomLeftColor.g * 1/12 + bottomColor.g * 1/6 + bottomRightColor.g * 1/12;
+	
+		return float4(resultX, resultY, 0, 1.0).xy;
+	}
+
+	float4 getHS(float2 coord) 
+	{
+		float4 result;
+	
+		float2 uv = float2(0.0, 0.0);
+	
+		//prevent div by zero
+		float Ix2 = 0;
+		float Iy2 = 0;
+
+		float Uav = getAverage(coord).x;
+		float Vav = getAverage(coord).y;
+	
+		float3 deri = Texture0.Sample(LinearSampler, coord).xyz;
+		float Ix = deri.x;
+	
+		float Iy = deri.y;
+		float It = deri.z;
+	
+		Ix2 = pow(Ix,2);
+		Iy2 = pow(Iy,2);
+	
+		float P = Ix*Uav+Iy*Vav+It;
+		float D= lambda + Ix2 +Iy2;
+	
+	
+		uv.x =(Uav - Ix *(P/D));
+		uv.y =(Vav - Iy * (P/D));
+	
+		result = float4(uv.x, uv.y, 0, 1);
+	
+		return result;
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		return getHS(streams.TexCoord) * Boost;
+    }
+};

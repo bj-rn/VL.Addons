@@ -1,0 +1,62 @@
+// Textureless classic 3D noise "cnoise",
+// with an RSL-style periodic variant "pnoise".
+// Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+// Version: 2011-10-11
+// Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+// Distributed under the MIT license. See LICENSE file.
+// https://github.com/ashima/webgl-noise// Textureless classic 3D noise "cnoise",
+// with an RSL-style periodic variant "pnoise".
+// Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+// Version: 2011-10-11
+// Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+// Distributed under the MIT license. See LICENSE file.
+// https://github.com/ashima/webgl-noise
+
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+[Tags("")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader Plasma_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+	[Default(0.0f, 0.0f, 0.0f, 0.0f)]
+    compose ComputeFloat4 ColorA;
+
+	[Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
+
+	[Default(1.0f)]
+    compose ComputeFloat FrequencyA;
+
+	[Default(1.0f)]
+    compose ComputeFloat FrequencyB;
+
+	[Default(1.0f)]
+    compose ComputeFloat Time;
+
+	float4x4 Transform;
+
+	float3 lungth(float2 x,float3 c)
+	{
+       return float3(length(x+c.r),length(x+c.g),length(x+c.b));
+	}
+
+    stage override float4 Shading()
+    {
+		float4 c=0;
+		float2 x = streams.TexCoord - 0.5;
+		float time = Time.Compute();
+		float4 x2 = mul(float4(x, 0, 1), Transform);
+		x=x2.xy / x2.w;
+		x+=sin(time + x.yx*sqrt(float2(13,9)))/5;
+		c.rgb=lungth(sin(-time + x*sqrt(float2(33,43))),float3(5,6,7));
+		x+=sin(time + x.yx*sqrt(float2(73,53)))/5;
+		c.rgb=2*lungth(sin(-time + x*sqrt(float2(33,23))),c/9);
+		x+=sin(time + x.yx*sqrt(float2(93,73)))/7;
+		c.rgb=lungth(sin(-time + x*sqrt(float2(FrequencyA.Compute(),FrequencyB.Compute())*100)), c/2);
+		c=.5+.5*sin(time +c*8);
+		c.a=1;
+		return lerp(ColorA.Compute(), ColorB.Compute(), GetLuminance(c.rgb));
+    }
+};

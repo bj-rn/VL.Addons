@@ -1,0 +1,34 @@
+[Category("Filter.Feedback")]
+[Summary("")]
+
+shader Wave_Iterate_Internal_TextureFX : FilterBase
+{
+	[Default(1.0)]
+    compose ComputeFloat Decay;
+
+    [Default(0.0)]
+    compose ComputeFloat Attack;
+
+    bool Reset;
+
+    float4 Filter(float4 tex0col)
+    {
+	    float2 uv = streams.TexCoord;
+	    float4 mask = Texture0.SampleLevel(LinearSampler, uv, 0);
+        float p_1 = Texture1.SampleLevel(LinearSampler, uv, 0).x;
+        float p_2 = Texture1.Sample(LinearSampler, uv, 0).y;
+    
+	
+        float p_1n =  Texture1.Sample(LinearSampler, uv - float2(1,0) / ViewSize).x;
+        p_1n = p_1n + Texture1.Sample(LinearSampler, uv + float2(1,0) / ViewSize).x;
+        p_1n = p_1n + Texture1.Sample(LinearSampler, uv - float2(0,1) / ViewSize).x;
+        p_1n = p_1n + Texture1.Sample(LinearSampler, uv + float2(0,1) / ViewSize).x;
+        p_1n = p_1n / 4;
+
+        float p = (p_1 + (1 - Decay.Compute() * 0.01) * (p_1 - p_2)) + Attack.Compute() * (p_1n - p_1);
+	    p = lerp(p, mask.x, mask.a);
+
+        return float4(p, p_1, 0.0, 1);
+    }
+};
+

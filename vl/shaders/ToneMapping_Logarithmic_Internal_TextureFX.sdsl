@@ -1,0 +1,37 @@
+//https://github.com/microdee/mp.dx/blob/master/deploy/mp.dx/nodes/texture11/ToneMapping.tfx
+
+[Category("Filter.ColorManipulation")]
+[Summary("")]
+
+shader ToneMapping_Logarithmic_Internal_TextureFX : FilterBase, ToneMappingOperations
+{
+    float BloomThreshold;
+    float WhiteLevel;
+    float LuminanceSaturation;
+	float MaxValue = 1.25;
+
+    //Logarithmic mapping
+    float3 ToneMapLogarithmic(float3 color)
+    {
+	    float pixelLuminance = CalcLuminance(color);    
+        float toneMappedLuminance = log10(1 + pixelLuminance) / log10(1 + WhiteLevel);
+	    return toneMappedLuminance * pows(color / pixelLuminance, LuminanceSaturation); 
+    }
+
+
+    float4 Logarithmic(float4 color)
+    {
+        float avgLuminance = GetAvgLuminance(Texture1, streams.TexCoord.xy);
+	    float exposure = 0;
+        color.rgb = AutoExpo(color.rgb, avgLuminance, BloomThreshold, exposure);
+	    color.rgb = ToneMapLogarithmic(color.rgb);
+        return float4(saturate(color.rgb/MaxValue)*MaxValue, 1.0f);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+	    return float4(Logarithmic(tex0col).rgb, tex0col.a);
+    }
+};
+
+

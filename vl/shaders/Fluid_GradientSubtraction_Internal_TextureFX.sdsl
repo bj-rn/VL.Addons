@@ -1,0 +1,26 @@
+[Category("Filter")]
+[Summary("")]
+
+shader Fluid_GradientSubtraction_Internal_TextureFX : TextureFX
+{
+    float vFlowDims;
+    float GradMul;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord;
+        float4 v = Texture0.Sample(LinearSampler, uv);
+
+        float pL = Texture1.Sample(LinearSampler, float2(uv.x - 1./vFlowDims, uv.y)).x; 
+  	    float pR = Texture1.Sample(LinearSampler, float2(uv.x + 1./vFlowDims, uv.y)).x; 
+  	    float pB = Texture1.Sample(LinearSampler, float2(uv.x, uv.y - 1./vFlowDims)).x; 
+  	    float pT = Texture1.Sample(LinearSampler, float2(uv.x, uv.y + 1./vFlowDims)).x; 
+
+  	    float2 grad = float2(pR - pL, pT - pB) * GradMul;
+
+
+  	    v.xy -= grad;
+	
+  	    return v;
+	}
+};

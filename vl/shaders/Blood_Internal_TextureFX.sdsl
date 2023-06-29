@@ -1,0 +1,26 @@
+[Category("Mixer.Distortion")]
+[Tags("blend fade compose mix")]
+[Summary("Blend between two textures using a drippy smear effect")]
+
+shader Blood_Internal_TextureFX : MixerBase
+{
+    [Default(0.0f, 0.0f)]
+    compose ComputeFloat2 RandomSeed;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+        float2 uv = streams.TexCoord;
+        float2 randomSeed = RandomSeed.Compute();
+        float offset = min(fader + fader * Texture0.SampleLevel(Sampler0, float2(uv.x, randomSeed.y), 0).r, 1.0);
+        uv.y -= offset;
+
+        if(uv.y > 0.0)
+        {
+            return Texture0.SampleLevel(Sampler0, uv, 0);
+        }
+        else
+        {
+            return Texture1.SampleLevel(Sampler1, frac(uv), 0);
+        }
+    }
+};

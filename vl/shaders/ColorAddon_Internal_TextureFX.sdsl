@@ -1,0 +1,13 @@
+[TextureSource]
+[Category("Source")]
+[Summary("Returns a constant colored texture")]
+shader ColorAddon_Internal_TextureFX : TextureFX
+{
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 Color;
+
+    stage override float4 Shading()
+    {
+        return Color.Compute();
+    }
+};

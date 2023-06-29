@@ -1,0 +1,38 @@
+[Category("Filter.Blur")]
+[Summary("")]
+
+shader Blur_Radial_3D_Internal_TextureFX : FilterBase
+{
+	[Default(0.5f, 0.5f)]
+    compose ComputeFloat3 Point;
+
+	[Default(0.0f)]
+	compose ComputeFloat Zoom;
+
+	[Default(0.35f)]
+	compose ComputeFloat Fade;
+
+	int Iteration = 32; 
+
+	float4x4 tW: WORLD;
+	float4x4 tV: VIEW;
+	float4x4 tP: PROJECTION;
+
+	float4 Filter(float4 tex0col)
+	{
+		float4 c = tex0col;
+		float2 uv = streams.TexCoord;
+		float4 pp=mul(mul(mul(float4(Point.Compute().xyz,1),tW),tV),tP);
+		float2 cx=pp.xy*.5*float2(1,-1)/pp.z+.5;
+
+		c=0;
+		float zoom = Zoom.Compute();
+
+		for(float i=0; i<1; i+=1.0/min(Iteration, 80))
+		{
+			float2 dx = (uv-cx)*(1-i*zoom)+cx;
+			c += Texture0.SampleLevel(LinearSampler, dx, 0) / min(Iteration, 80) * lerp(1, 2*smoothstep(1, 0, i), Fade.Compute());
+		}
+		return c;
+	}
+};

@@ -1,0 +1,55 @@
+[Category("Filter.Distortion")]
+[Summary("")]
+[Tags("uv, offset, distort")]
+[DontConvertToLinearOnRead("Texture1")]
+[WantsMips("Texture0")]
+[WantsMips("Texture1")]
+shader GrowthFlowPass0_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+	[Default(1.0f)]
+	compose ComputeFloat Speed;
+
+	[Default(0.1f)]
+	compose ComputeFloat Fade;
+
+	[Default(0.1f)]
+	compose ComputeFloat Blur;
+
+	[Default(1.0f, 1.0f, 1.0f, 1.0f)]
+	compose ComputeFloat4 Img;
+
+	float mx(float3 x)
+	{
+		return max(x.x,max(x.y,x.z));
+	}
+
+    float4 Filter(float4 tex0col)
+    {
+		float2 uv = streams.TexCoord;
+
+		float4 bru = Texture0.SampleLevel(LinearSampler, uv, 0);
+		float4 pre = Texture1.SampleLevel(LinearSampler, uv, 0);
+		float4 img = Img.Compute();
+	
+		float4 c=0;
+
+		c.rgb = pre.rgb;
+
+		float speed = Speed.Compute() * 0.01;
+		float blur = Blur.Compute();
+
+		for(float i=0; i<1; i += 1./12)
+		{
+			float2 off = sin((i + float2(0.25, 0)) * acos(-1) * 2);
+			off *= speed;
+			float4 nc = Texture1.SampleLevel(LinearSampler, uv+off.rg, 1+blur*log2(max(ViewSize.x,ViewSize.y)));
+			c.rgb = lerp(c.rgb, nc.rgb, nc.a > c.a);
+			c.a = max(c.a, nc.a);
+		}
+
+		c = lerp(c, bru, bru.a);
+		c.a *= 0.9;
+		
+		return lerp(c, bru, Fade.Compute());
+    }
+};

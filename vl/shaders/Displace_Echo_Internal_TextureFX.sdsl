@@ -1,0 +1,21 @@
+[Category("Filter.Distortion")]
+[Summary("Offset the UV coordinates for sampling the 1st input by the 2nd inputs red & green channels")]
+[Tags("uv, offset, distort")]
+[DontConvertToLinearOnRead("Texture1")]
+
+shader Displace_Echo_Internal_TextureFX : FilterBase
+{
+    [Default(0.5f)]
+	compose ComputeFloat Speed;
+
+    [Default(0.5f)]
+	compose ComputeFloat Fade;
+
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 dx = Texture1.SampleLevel(LinearSampler, streams.TexCoord + 0.5/ViewSize, 0).xy;
+        dx = lerp(streams.TexCoord, dx, Speed.Compute());
+        return lerp(Texture0.SampleLevel(LinearSampler, dx, 0), Texture2.SampleLevel(LinearSampler, dx, 0), saturate(Fade.Compute()));
+    }
+};

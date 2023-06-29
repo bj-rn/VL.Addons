@@ -1,0 +1,46 @@
+[Category("Filter.Rendering")]
+[Summary("")]
+[Tags("")]
+
+shader Emboss_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.1f)]
+    compose ComputeFloat MapSmooth;
+
+    [Default(1.0f)]
+    compose ComputeFloat MapSharp;
+
+    [Default(0.0f, 1.0f, 0.0f)]
+    compose ComputeFloat3 Direction;
+
+    [Default(1.0f)]
+    compose ComputeFloat BumpAmount;
+
+    bool Colored;
+
+    float4 Filter(float4 tex0col)
+    {
+        float lod = 1+saturate(MapSmooth.Compute()) * Lod(ViewSize);
+        float4 c = tex0col;
+        float2 uv = streams.TexCoord;
+        float2 off = 0.25/ViewSize * pow(2,lod) * saturate(lod-1) + 1.0/ViewSize;
+
+        float3 n=float3(length(Texture1.SampleLevel(LinearSampler, float4(uv - float2(1,0)*off, 0, lod), 0).rgb)
+                       -length(Texture1.SampleLevel(LinearSampler, float4(uv + float2(1,0)*off, 0, lod), 0).rgb),
+                        length(Texture1.SampleLevel(LinearSampler, float4(uv - float2(0,1)*off, 0, lod), 0).rgb)
+                       -length(Texture1.SampleLevel(LinearSampler, float4(uv + float2(0,1)*off, 0, lod), 0).rgb),0);
+
+        n.z = -max(abs(n.x), abs(n.y));
+        n = normalize(n) * pow(length(n), pow(2, MapSharp.Compute()));
+        
+        float lgt = dot(n.xyz, normalize(Direction.Compute())) * BumpAmount.Compute();
+        
+        if(!Colored)c.rgb = 0.5;
+        
+        c.rgb+=lgt;
+        
+        return c;
+    }
+};
+
+

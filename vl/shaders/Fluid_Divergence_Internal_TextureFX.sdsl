@@ -1,0 +1,18 @@
+[Category("Filter")]
+[Summary("")]
+
+shader Fluid_Divergence_Internal_TextureFX : TextureFX
+{
+    float vFlowDims;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord;
+
+        float4 vL = Texture0.Sample(LinearSampler, float2(uv.x - 1./vFlowDims, uv.y)); 
+        float4 vR = Texture0.Sample(LinearSampler, float2(uv.x + 1./vFlowDims, uv.y)); 
+        float4 vB = Texture0.Sample(LinearSampler, float2(uv.x, uv.y - 1./vFlowDims)); 
+        float4 vT = Texture0.Sample(LinearSampler, float2(uv.x, uv.y + 1./vFlowDims)); 
+        return 0.5 * ((vR.x - vL.x) + (vT.y - vB.y));
+	}
+};

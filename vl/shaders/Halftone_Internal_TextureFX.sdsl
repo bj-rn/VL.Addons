@@ -1,0 +1,142 @@
+// source:
+// Halftone by Sanch https://vvvv.org/tiki-download_file.php?fileId=771
+
+[Category("Filter.Stylize")]
+[Summary("")]
+
+shader Halftone_Internal_TextureFX : FilterBase
+{
+    int Type = 0;
+
+    [Defaul(0.1f)]
+    compose ComputeFloat NumberOfTiles;
+
+    [Defaul(0.1f)]
+    compose ComputeFloat DotSize;
+
+    [Defaul(1.35f)]
+    compose ComputeFloat Softness;
+
+    [Defaul(1.0f)]
+    compose ComputeFloat Brightness;
+
+    static const float ht = 1.732051; // white = (1 + 1 + 1)^.5 
+
+    
+    float4 Pixels(float2 uv, float2 pCenter)
+    {
+        float4 tileColor = Texture0.Sample(LinearRepeatSampler, pCenter);
+
+        float isInDot = length(uv - pCenter) < DotSize.Compute() / 2;
+
+        float3 col = tileColor.rgb *  isInDot * Brightness.Compute();
+        
+        return float4(col, tileColor.a);
+    };
+
+
+    float4 Halftone(float2 uv, float2 pCenter)
+    {
+        float4 tileColor = Texture0.Sample(LinearRepeatSampler, pCenter);
+
+        float bright = length(tileColor.rgb) / ht;
+        
+        float isInDot = length(uv - pCenter) < bright * DotSize.Compute();
+
+        float3 col = tileColor.rgb *  isInDot * Brightness.Compute();
+        
+        return float4 (col, tileColor.a);
+    };
+
+    
+    float4 SoftHalftone(float2 uv, float2 pCenter)
+    {
+        float4 tileColor = Texture0.Sample(LinearRepeatSampler, pCenter);
+
+        float bright = length(tileColor.rgb) / ht;
+        
+        float rad = length(uv - pCenter);
+
+        float s = bright * DotSize.Compute();
+
+        float3 col = (0.5 - (rad / s -1) / Softness.Compute()) * tileColor.rgb * Brightness.Compute();
+        
+        return float4(col, tileColor.a);
+    };
+
+    
+    float4 BWHalftone(float2 uv, float2 pCenter, float stride)
+    {
+        float dotSize = DotSize.Compute();
+
+        float2 currentCircle;
+        float4 currentColor;
+        float bright;; 
+        float isInDot;
+        float tileColor;
+
+        for (int x = -1; x <= 1; x++)
+        {
+            currentCircle = pCenter + float2(x, 0) * stride;
+            currentColor = Texture0.Sample(LinearRepeatSampler, currentCircle);
+            bright = currentColor.r;
+            isInDot = length(uv - currentCircle) < bright * dotSize;
+            tileColor = tileColor + isInDot;
+        }   
+          
+        float3 col = tileColor * Brightness.Compute();
+
+        return float4(col, currentColor.a);
+
+    };
+
+
+    float4 LineHalftone(float2 uv, float2 pBase)
+    {
+        float4 tileColor = Texture0.Sample(LinearRepeatSampler, pBase);
+
+        float bright = tileColor.rgb / ht;
+        
+        float isInDot = uv - pBase < bright * DotSize.Compute();
+        
+        float3 col = isInDot * Brightness.Compute();
+
+        return float4(col, tileColor.a);
+    };
+
+
+    float4 TexturedHalftone(float2 uv, float2 pBase)
+    {
+        float4 tile =  Texture1.Sample(LinearRepeatSampler, uv * NumberOfTiles.Compute());
+        float4 tileColor = Texture0.Sample(LinearRepeatSampler, pBase);
+
+        float3 col = tile.rgb * tileColor.rgb * 2 * Brightness.Compute();
+        
+        return float4(col, tileColor.a);
+    };
+
+
+    float4 Filter(float4 tex0col)
+    {
+        float stride = 1.0f / NumberOfTiles.Compute();
+        float halfstride = stride / 2.0f;
+        float2 uv = streams.TexCoord;
+
+        float2 pBase = uv - fmod(uv, stride);
+        float2 pCenter = pBase + halfstride;
+       
+        float4 col = (0.0f, 0.0f, 0.0f, 1.0f);
+
+         switch (Type)
+         {
+            case 0 : col = Pixels(uv, pCenter); break;
+            case 1 : col = Halftone(uv, pCenter); break;
+            case 2 : col = SoftHalftone(uv, pCenter); break;
+            case 3 : col = BWHalftone(uv, pCenter, stride); break;
+            case 4 : col = LineHalftone(uv, pBase); break;
+            case 5 : col = TexturedHalftone(uv, pBase); break;
+         }
+         
+        return col;
+    }
+};

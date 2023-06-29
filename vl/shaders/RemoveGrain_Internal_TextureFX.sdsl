@@ -1,0 +1,35 @@
+[Category("Filter.Blur")]
+[Summary("Applies a blur effect")]
+[WantsMips("Texture0")]
+
+shader RemoveGrain_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+    [Default(0.25f)]
+    compose ComputeFloat SharpEdges; 
+
+    [Default(0.25f)]
+    compose ComputeFloat Width; 
+
+    [Default(0.0f)]
+    compose ComputeFloat Balance; 
+
+    float4 Filter(float4 tex0col)
+    {
+        float4 c = 0;
+        float sharp = 0;
+        float2 uv = streams.TexCoord;//(vp+.5)/R
+        float balance = Balance.Compute();
+
+        sharp = max(sharp, fwidth(length(Texture0.SampleLevel(LinearSampler,uv, 5).xyz))) * pow(2.0, balance/1.0);
+        sharp = max(sharp, fwidth(length(Texture0.SampleLevel(LinearSampler,uv, 4).xyz))) * pow(2.0, balance/2.0);
+        sharp = max(sharp, fwidth(length(Texture0.SampleLevel(LinearSampler,uv, 3).xyz))) * pow(2.0, balance/3.0);
+        sharp = max(sharp, fwidth(length(Texture0.SampleLevel(LinearSampler,uv, 2).xyz))) * pow(2.0, balance/4.0);
+        c = sharp * 4;
+        c = saturate(1 - pow(sharp*SharpEdges.Compute(), 0.05));
+
+        float width = Width.Compute();
+        c = Texture0.SampleLevel(LinearSampler, uv, 1+saturate(width)*.6*pow(c.x,1./(1+max(0,width-1)))*log2(max(ViewSize.x,ViewSize.y)));
+        c.a = Texture0.SampleLevel(LinearSampler, uv, 0).a;
+        return c;
+    }
+};
