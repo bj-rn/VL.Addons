@@ -1,5 +1,6 @@
-<Document xmlns:p="property" xmlns:r="reflection" Id="U3rsV2ssUInMDdfx0JMNjK" LanguageVersion="2023.5.1" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="U3rsV2ssUInMDdfx0JMNjK" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -34,7 +35,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="BBojJqhY8fDMvc9oMbkuJd" Name="Bounds" Kind="InputPin" DefaultValue="1184.5714, 88.57143, 584.5714, 584.5714" />
+            <Pin Id="BBojJqhY8fDMvc9oMbkuJd" Name="Bounds" Kind="InputPin" DefaultValue="1184, 88, 584, 584" />
             <Pin Id="QAlitftZ91WQKlLvpuZLYG" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="VkvsxjpZsDyLrmmUOfENy5" Name="Input" Kind="InputPin" />
             <Pin Id="VIUHRx957PQMCh3zXLkRqR" Name="Title" Kind="InputPin" DefaultValue="Translate" />
@@ -94,7 +95,7 @@
             <Pin Id="RolicyTw6ckOCKgICf7scf" Name="Interpolation Mode" Kind="InputPin" />
             <Pin Id="P3kgxTR0qeIMr4cvyIEwUL" Name="Translate" Kind="InputPin" />
             <Pin Id="ErUJFPbOF12LBsEuM75RKA" Name="Control" Kind="InputPin" />
-            <Pin Id="KAewk181oqCME5avpjuPI8" Name="Apply" Kind="InputPin" />
+            <Pin Id="IzgrzqG0h96OHfk7858Ln5" Name="Enabled" Kind="InputPin" />
             <Pin Id="BPLEjpfk8xHMMB2OEjoIN3" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="216,512,52,19" Id="K5jqU1FDWBUMS8TN0kP0kQ">
@@ -107,10 +108,10 @@
             <Pin Id="TwYzjo3kc21LL1Cc3MCqnK" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="237,444,61,19" Id="EgMVi4aIG9LLRhsaWunbrF">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -118,7 +119,7 @@
             <Pin Id="Cgv79mntcshMXDgUN45g1H" Name="Type" Kind="InputPin" />
             <Pin Id="RbTUGHFBfYOPzmX1tzCJN8" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="157,565,105,19" Id="ILyzm3IkHbcNiixhgMCF1U">
+          <Node Bounds="157,565,125,19" Id="ILyzm3IkHbcNiixhgMCF1U">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Checkerboard" />
@@ -132,14 +133,15 @@
             <Pin Id="LKFXE7tQUfBNv9cBoJ8bfC" Name="White" Kind="InputPin" />
             <Pin Id="TOT27CZbAMsLj9U8hyMavC" Name="Cell Count" Kind="InputPin" />
             <Pin Id="TTQa6vuVdIMMlwG3u4WkeB" Name="Output Size" Kind="InputPin" />
+            <Pin Id="McXYCEHep6aP5RfQ0DZwCK" Name="Enabled" Kind="InputPin" />
             <Pin Id="QwxfKJobDjyLikLsqE21TS" Name="Apply" Kind="InputPin" />
             <Pin Id="GaJa0fpyLc4NPqg43pOl7V" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="157,609,61,19" Id="LOl6pn8DxnNNHdNhhiUv0v">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -156,7 +158,7 @@
             <Pin Id="MW9tlfQW7hxP7nYMO65gIS" Name="Y" Kind="InputPin" />
             <Pin Id="AO2Xmk5HxC3PTkJoYERtpa" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="237,407,105,19" Id="FMK49Ob3q2MNzx3XLuAOSa">
+          <Node Bounds="237,407,125,19" Id="FMK49Ob3q2MNzx3XLuAOSa">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Checkerboard" />
@@ -170,6 +172,7 @@
             <Pin Id="SpRCRasG747QIS12CbG7VB" Name="White" Kind="InputPin" />
             <Pin Id="OJNoTkPd3p6L3Y8vN76swe" Name="Cell Count" Kind="InputPin" />
             <Pin Id="EIpNKUFhTNOPdyDJE8FGC5" Name="Output Size" Kind="InputPin" />
+            <Pin Id="FEOvD8kwZ7aMqVT6EdoKOH" Name="Enabled" Kind="InputPin" />
             <Pin Id="NjVJlyHYFtePWoRWwpzvXC" Name="Apply" Kind="InputPin" />
             <Pin Id="SaUYnowaDeHPcEepZ2cBQK" Name="Output" Kind="OutputPin" />
           </Node>
@@ -235,6 +238,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
   <DocumentDependency Id="SDiK0MU08qMLFD5lCJuaXi" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>

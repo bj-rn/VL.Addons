@@ -1,5 +1,6 @@
-<Document xmlns:p="property" xmlns:r="reflection" Id="LmlL13WtXdKNloVMacSTml" LanguageVersion="2023.5.1" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="LmlL13WtXdKNloVMacSTml" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -19,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1184.5714, 88, 584.5714, 584.5714" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1184, 88, 584, 584" />
             <Pin Id="SCuMs0FzLoxMA1Xnq1oZTE" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Dots" />
@@ -48,15 +49,16 @@
             <Pin Id="O7o8dBWxL6RP3nNQYNLofG" Name="Time" Kind="InputPin" />
             <Pin Id="Qo7CflTdkysNkKSj0hOihX" Name="Frequency" Kind="InputPin" />
             <Pin Id="IotbSIBC9FjP029SnXt4b5" Name="Contrast" Kind="InputPin" />
+            <Pin Id="RbVHyQcqQnqPrNOHQENfCX" Name="Output Texture" Kind="InputPin" />
             <Pin Id="OPYnnZhuvsjPvdZZCbQWGH" Name="Output Size" Kind="InputPin" />
-            <Pin Id="SFh3GGnv6p0PrQHNoKkVep" Name="Apply" Kind="InputPin" />
+            <Pin Id="Sl4GhXBlwJLPYgUn0CXmZV" Name="Enabled" Kind="InputPin" />
             <Pin Id="Ef3NjpqujrALfT6u1bjq3i" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="399,449,61,19" Id="B4doJLXl6A4LKk5luYPNPB">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -98,7 +100,7 @@
             <Pin Id="O61KbCJ8YDCPLwO5yUv61m" Name="Smooth" Kind="InputPin" />
             <Pin Id="OHh2AoN5lLINrr9RkeoWWl" Name="Scale" Kind="InputPin" />
             <Pin Id="IMdSyWckw2YQB8awIiTGN2" Name="Control" Kind="InputPin" />
-            <Pin Id="IkK9JZBXqffMVt3JvZXdch" Name="Apply" Kind="InputPin" />
+            <Pin Id="NpBRI48qMAnL8krZu8OQaI" Name="Enabled" Kind="InputPin" />
             <Pin Id="H5QJIuAJAHhNe3oGId8oBK" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="104,421,105,19" Id="Ra9w0FfqKpwOMGkCPvgFPc">
@@ -162,15 +164,16 @@
             <Pin Id="FMsy33AofyKO8ysetCw0AA" Name="Time" Kind="InputPin" />
             <Pin Id="Roobr3WMPLGQODTZq4hG61" Name="Frequency" Kind="InputPin" />
             <Pin Id="Lh8MGvdh3lJNj8JzZPl9RG" Name="Contrast" Kind="InputPin" />
+            <Pin Id="Hmja7Y1ZWCqPIK4Jovn9RK" Name="Output Texture" Kind="InputPin" />
             <Pin Id="R3Sg6L6UoSrMKT7ItdT7Of" Name="Output Size" Kind="InputPin" />
-            <Pin Id="OyPlBc8zVXANO9i5RXA3xN" Name="Apply" Kind="InputPin" />
+            <Pin Id="OW7NpNLVBEjQbWPlr77FTk" Name="Enabled" Kind="InputPin" />
             <Pin Id="FTWW7J7ad3EQNfx01WSz5E" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="950,449,61,19" Id="VRtxWLI51IkNhd9n2M8CAO">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -249,15 +252,16 @@
             <Pin Id="NGhglVcB6pcNgmZFVBfrkN" Name="Time" Kind="InputPin" />
             <Pin Id="ENdl0wbVnyBMIZwmrZUfOe" Name="Frequency" Kind="InputPin" />
             <Pin Id="EKxspfsvEbJOSypUv8POZ1" Name="Contrast" Kind="InputPin" />
+            <Pin Id="Shq99lcngIyNcMylGbDVNC" Name="Output Texture" Kind="InputPin" />
             <Pin Id="P6mOWdUlXH8PRhOqtbeiIk" Name="Output Size" Kind="InputPin" />
-            <Pin Id="HsM2HMwhWC5PV1soNSTz6L" Name="Apply" Kind="InputPin" />
+            <Pin Id="StlgWJhQeUNQCtTtqoo4Vv" Name="Enabled" Kind="InputPin" />
             <Pin Id="TV2XBGrjOarQbRK9ioBEJ2" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="668,449,61,19" Id="TGLMgSEGvwcORGTdmYXtfs">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -421,6 +425,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
   <DocumentDependency Id="O001xa8Wc67NFrnmVJJ9Ag" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>

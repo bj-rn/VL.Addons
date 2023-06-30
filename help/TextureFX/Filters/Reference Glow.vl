@@ -1,5 +1,6 @@
-<Document xmlns:p="property" xmlns:r="reflection" Id="Kat3qQR9U9MME8S8b2uvQl" LanguageVersion="2023.5.1" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="Kat3qQR9U9MME8S8b2uvQl" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -35,18 +36,17 @@
             <Pin Id="Gfm1vXQmLgtPwTHejCtSP8" Name="Client Bounds" Kind="OutputPin" />
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
           </Node>
-          <Node Bounds="99,567,245,19" Id="DGeLAPv6IWYP9MlJCoKOiY">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Glow" LastDependency="VL.Addons.Stride.vl">
+          <Node Bounds="99,567,265,19" Id="DGeLAPv6IWYP9MlJCoKOiY">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Filter.Glow" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Filter" />
-              <CategoryReference Kind="Category" Name="Glow" />
-              <CategoryReference Kind="ClassType" Name="Glow" />
-              <CategoryReference Kind="ClassType" Name="Glow" />
+              <CategoryReference Kind="Category" Name="Glow" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
+              </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Glow" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
             <Pin Id="UyAj26sJeO5NHB1kq1sRcX" Name="Input" Kind="InputPin" />
-            <Pin Id="SWiuAD4DYYMNVA36CnA4ry" Name="Always Generate Mips for Input" Kind="InputPin" />
+            <Pin Id="Kducuv73xk5MKZP56vjckg" Name="Always Generate Mips for Input" Kind="InputPin" />
             <Pin Id="IrsXhkEPNxmNAkb0JgKr2J" Name="Sampler" Kind="InputPin" />
             <Pin Id="IAbUB6gEiLvPBSdV1nk7y0" Name="Amount" Kind="InputPin" />
             <Pin Id="ALZjXJ6IMKkMKSg4kR40Y5" Name="Shape" Kind="InputPin" />
@@ -57,8 +57,9 @@
             <Pin Id="NyceQKOYPyOQag9edoWEFO" Name="Max Radius" Kind="InputPin" />
             <Pin Id="U5eHAn5gj4AMTlKURhR7Vh" Name="Pre Blur Width" Kind="InputPin" />
             <Pin Id="Oo7kXsyIsvQL0M3F4pJjTF" Name="Control" Kind="InputPin" />
-            <Pin Id="KMTZIRZ2GtRMgvtwrUjx26" Name="Apply" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="ROSN111IFUuNb7dVdv9REm" Name="Enabled" Kind="InputPin" />
             <Pin Id="IJxWLacrfcdQbs7ojaYu6r" Name="Output" Kind="OutputPin" />
+            <Pin Id="KMTZIRZ2GtRMgvtwrUjx26" Name="Apply" Kind="InputPin" DefaultValue="True" />
           </Node>
           <Node Bounds="99,131,105,19" Id="H2CdSMr5r2ZMdJ5bXVPbR8">
             <p:NodeReference LastCategoryFullName="Stride.Assets" LastDependency="VL.Stride.vl">
@@ -116,10 +117,10 @@
             </p:TypeAnnotation>
           </Pad>
           <Node Bounds="158,330,61,19" Id="Pa4DFc4TeCxNerpijHCDRb">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -127,7 +128,7 @@
             <Pin Id="AOXTTYMXjF7Nd1rZuJOREa" Name="Type" Kind="InputPin" />
             <Pin Id="Moz8SsKFEoIMcgyCcug0Pg" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="158,297,125,19" Id="Krx219erDtzLhkgrA5si4Q">
+          <Node Bounds="158,297,145,19" Id="Krx219erDtzLhkgrA5si4Q">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noise" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Noise" NeedsToBeDirectParent="true">
@@ -140,8 +141,9 @@
             <Pin Id="LVB0JmKu68lMqGo0nWms7A" Name="Time" Kind="InputPin" />
             <Pin Id="Tgjpd10GiKnN3zmdN6jzKq" Name="Frequency" Kind="InputPin" />
             <Pin Id="Jr9xIAq7drbNWS0Quqzxkw" Name="Contrast" Kind="InputPin" />
+            <Pin Id="OjNlad45MpRNHJeq3IGD2F" Name="Output Texture" Kind="InputPin" />
             <Pin Id="Fr17glK2PqKOllGKN76RG0" Name="Output Size" Kind="InputPin" />
-            <Pin Id="Md1UjMZHCXcL6TvfKSURrn" Name="Apply" Kind="InputPin" />
+            <Pin Id="EVzbqfRsQZmOXSDV5pKDZL" Name="Enabled" Kind="InputPin" />
             <Pin Id="KMjt03GcjO2OHKEWvmfnHV" Name="Output" Kind="OutputPin" />
           </Node>
           <Pad Id="Ijv4jAMTKuaL6m5QQ5VWaw" Comment="Frequency" Bounds="220,246,35,15" ShowValueBox="true" isIOBox="true" Value="0.14999999">
@@ -195,6 +197,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
   <DocumentDependency Id="E84J0Es0hr6LnKLvnzsTtf" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>

@@ -1,5 +1,6 @@
-<Document xmlns:p="property" xmlns:r="reflection" Id="FS7G14aZbkHL0TnhRKZYwp" LanguageVersion="2023.5.1" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.1" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="FS7G14aZbkHL0TnhRKZYwp" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -19,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1185.7142, 89.71429, 585.1429, 585.1429" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1185.3334, 89.333336, 584.6667, 584.6667" />
             <Pin Id="Fc6yDf9KbKKNRep46J1TMb" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Mosaic" />
@@ -48,15 +49,16 @@
             <Pin Id="O7o8dBWxL6RP3nNQYNLofG" Name="Time" Kind="InputPin" />
             <Pin Id="Qo7CflTdkysNkKSj0hOihX" Name="Frequency" Kind="InputPin" />
             <Pin Id="IotbSIBC9FjP029SnXt4b5" Name="Contrast" Kind="InputPin" />
+            <Pin Id="M9wOV5dmctsOtr2nokPMm9" Name="Output Texture" Kind="InputPin" />
             <Pin Id="OPYnnZhuvsjPvdZZCbQWGH" Name="Output Size" Kind="InputPin" />
-            <Pin Id="UM7aE30ZuUhLsDYAuociUY" Name="Apply" Kind="InputPin" />
+            <Pin Id="Ln4pjK7k0krPsn6n22cJqc" Name="Enabled" Kind="InputPin" />
             <Pin Id="Ef3NjpqujrALfT6u1bjq3i" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="434,324,61,19" Id="B4doJLXl6A4LKk5luYPNPB">
-            <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX.Texture" LastDependency="VL.Addons.Stride.vl">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Texture" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+              <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="ValueMap" />
             </p:NodeReference>
@@ -69,17 +71,17 @@
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="DoZEN8NhlJCNYWb2Xg4jaq" Comment="Frequency" Bounds="526,207,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+          <Pad Id="DoZEN8NhlJCNYWb2Xg4jaq" Comment="Frequency" Bounds="513,210,35,15" ShowValueBox="true" isIOBox="true" Value="1">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="AHlVZ708fIXMd8VU3dxzGi" Comment="Contrast" Bounds="556,238,35,15" ShowValueBox="true" isIOBox="true" Value="0.089999996">
+          <Pad Id="AHlVZ708fIXMd8VU3dxzGi" Comment="Contrast" Bounds="538,237,35,15" ShowValueBox="true" isIOBox="true" Value="0.089999996">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="TKZrf27aWfKQDTKlXxmcAg" Comment="Background Color" Bounds="466,108,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
+          <Pad Id="TKZrf27aWfKQDTKlXxmcAg" Comment="Background Color" Bounds="462,110,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -98,7 +100,7 @@
             <Pin Id="LgEwktIMnZWOCMKiC83dCV" Name="Rotation" Kind="InputPin" />
             <Pin Id="TLgEszGFh5gNkMTiu4f4ab" Name="Scaling" Kind="InputPin" />
             <Pin Id="Ns2BNkwBWLRNnxbQj7j9fA" Name="Control" Kind="InputPin" />
-            <Pin Id="SAAfPTQJpIdLnslLhY5puK" Name="Apply" Kind="InputPin" />
+            <Pin Id="QYQyyzCoW1TLs00BHIOP1h" Name="Enabled" Kind="InputPin" />
             <Pin Id="KzyUShGUJ98LukDeHlUItD" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="100,229,105,19" Id="EEygnUoqMXdOMk4e14MiqM">
@@ -130,7 +132,7 @@
             <Pin Id="DOLEdFDuhecLhvUksZaamS" Name="Y" Kind="InputPin" />
             <Pin Id="PwVW6MIQBiKLh1Ox1DOUv7" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="495,166,62,19" Id="JRB2KWmlwGVMUPM3I4yUfa">
+          <Node Bounds="486,171,62,19" Id="JRB2KWmlwGVMUPM3I4yUfa">
             <p:NodeReference LastCategoryFullName="Animation.FrameBased" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Integrator" />
@@ -140,7 +142,7 @@
             <Pin Id="QG5lQcqY4a5O3ryqkZqvJm" Name="Reset Value" Kind="InputPin" />
             <Pin Id="CqxQnJYmXg1LVgSg1FrU8L" Name="Value" Kind="OutputPin" />
           </Node>
-          <Pad Id="A7hpEbqKpJML9hA2o463fW" Comment="Offset" Bounds="525,144,35,15" ShowValueBox="true" isIOBox="true" Value="0.0050000004">
+          <Pad Id="A7hpEbqKpJML9hA2o463fW" Comment="Offset" Bounds="516,149,35,15" ShowValueBox="true" isIOBox="true" Value="0.0050000004">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -178,7 +180,7 @@
             <Pin Id="Vevu4gcCtkrMII6euak7mn" Name="Premultiply Alpha" Kind="InputPin" />
             <Pin Id="GE7Tgmk0Z77QMgLFdGz1MP" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="464,124,49,19" Id="KH3acjZHyGUNOly9TGunBk">
+          <Node Bounds="460,126,49,19" Id="KH3acjZHyGUNOly9TGunBk">
             <p:NodeReference LastCategoryFullName="Stride.Materials.Inputs" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true" />
@@ -217,6 +219,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.1" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
   <DocumentDependency Id="NfiZ47vKBGVPg0mrksumM4" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
