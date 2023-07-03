@@ -25,9 +25,9 @@ shader Grain_Internal_TextureFX : FilterBase, AddonShaderUtils
         c = frac(seed + c * sqrt(float4(4.5, 5.54, 7.5, 9.0) * 2243));
 
 
-        float4 map = Texture0.SampleLevel(LinearSampler, uv, 0);
-        c = lerp(map, step(c, pow(map,1)), Amount.Compute() + (saturate(map * 2-1) * saturate(1 - map * 2)  * (1 - 2 * abs(frac(map) - 0.5))));
-	    c.a = map.a;
+     //   float4 map = Texture0.SampleLevel(LinearSampler, uv, 0);
+     //   c = lerp(map, step(c, pow(map,1)), Amount.Compute() + (saturate(map * 2-1) * saturate(1 - map * 2)  * (1 - 2 * abs(frac(map) - 0.5))));
+	    //c.a = map.a;
         return c;
     }
 };

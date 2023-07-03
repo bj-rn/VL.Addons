@@ -1,0 +1,31 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+[Tags("")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader Grain_Source_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+    [Default(0.0f)]
+    compose ComputeFloat Seed;
+
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 ColorA;
+
+    [Default(0.0f, 1.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 ColorB;
+
+    stage override float4 Shading()
+    {   
+        float seed = Seed.Compute();
+        float2 uv = streams.TexCoord;
+        float2 dx = uv;
+	    dx += sin(dx.yx * 28 + seed) * 4;
+
+        float4 c = float4(sin(dx.yx * 28)+ dx * dx.yx * 2, length(uv * 2),sin(dx.x * 12 + dx.y * 28));
+	    c.xyz += sin(c.yzx * 17) * 3;
+        c = frac(seed + c * sqrt(float4(4.5, 5.54, 7.5, 9.0) * 2243));
+
+        return lerp(ColorA.Compute(), ColorB.Compute(), GetLuminance(c.rgb));
+    }
+};
