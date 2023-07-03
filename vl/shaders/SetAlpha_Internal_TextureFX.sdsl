@@ -1,0 +1,50 @@
+[Category("Filter.Utils")]
+[Summary("")]
+
+shader SetAlpha_Internal_TextureFX : FilterBase, AddonShaderUtils, ColorUtilityTemp
+{
+    [Default(1, 1, 1, 1)]
+    compose ComputeFloat4 AlphaMask;
+
+    //[EnumType("VL.Stride.Effects.TextureFX.AlphaChannel")]
+    int AlphaChannel = 0;
+
+    float Opacity = 1;
+
+    bool Invert = false;
+    bool KeepOriginalAlpha = true;
+
+    stage override float4 Shading()
+    {
+        float4 col = InTex0();
+        float4 alphaMask = AlphaMask.Compute();
+        float alpha;
+
+        switch(AlphaChannel)
+        {
+            case 0 : alpha = alphaMask.r; break; //Red;
+            case 1 : alpha = alphaMask.g; break; //Green;
+            case 2 : alpha = alphaMask.b; break; //Blue;
+            case 3 : alpha = alphaMask.a; break; //Alpha;
+            case 4 : alpha = RGBtoHSV(alphaMask.rgb).z; break; //Value;
+            case 5 : alpha = RGBtoHCV(alphaMask.rgb).z; break; //Lightness;
+            case 6 : alpha = RGBtoHSV(alphaMask.rgb).y; break; //Saturation;
+            case 7 : alpha = RGBtoHSV(alphaMask.rgb).x; break; //Hue;
+            case 8 : alpha = RGBToCMYK(alphaMask.rgb).x; break; //Cyan;
+            case 9 : alpha = RGBToCMYK(alphaMask.rgb).y; break; //Magenta;
+            case 10 : alpha = RGBToCMYK(alphaMask.rgb).z; break; //Yellow;
+            case 11 : alpha = RGBToCMYK(alphaMask.rgb).w; break; //Black;
+            case 12 : alpha = (alphaMask.r + alphaMask.g + alphaMask.b + alphaMask.a) / 4; break; //Average;
+        }
+
+        alpha = 1 - alpha;
+
+        if(Invert)alpha = 1 - alpha;
+        alpha *= Opacity;
+        if(KeepOriginalAlpha) alpha = col.a * alpha;
+
+        return float4(col.rgb, alpha);
+    }
+};
+
+
