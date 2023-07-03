@@ -2,13 +2,13 @@
 <Document xmlns:p="property" xmlns:r="reflection" Id="Avs5BiVFsUWNAEZidCECBD" LanguageVersion="2023.5.2" Version="0.128">
   <NugetDependency Id="GpiR7BsnscoMGmgohwMYHs" Location="VL.CoreLib" Version="2023.5.2" />
   <Patch Id="LAc2jf6T3a5LOuoHvYmELy">
-    <Canvas Id="OOQqDnfrfqlNunQ65hcA5k" DefaultCategory="Main" CanvasType="FullCategory">
+    <Canvas Id="OOQqDnfrfqlNunQ65hcA5k" DefaultCategory="Maths" CanvasType="FullCategory">
       <!--
 
     ************************ Expr ************************
 
 -->
-      <Node Name="Expr" Bounds="251,221" Id="LOwI9GkiiEaL0raz1riWvS">
+      <Node Name="Expr" Bounds="251,221" Id="LOwI9GkiiEaL0raz1riWvS" Summary="Parses a mathematical expression and returns its result">
         <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
           <Choice Kind="ContainerDefinition" Name="Process" />
         </p:NodeReference>
@@ -325,9 +325,9 @@
           </Patch>
           <Patch Id="DE553se3B3KPfguA3fmyRu" Name="Update" ManuallySortedPins="true">
             <Pin Id="F8Hsid1CN9xMio8BlIZGmU" Name="Output" Kind="OutputPin" Bounds="1104,700" />
-            <Pin Id="LPqCGyTuoK5OFq4oZIzwXd" Name="Failure" Kind="OutputPin" Bounds="1045,804" />
-            <Pin Id="AXqAQJRWG5oOPTybkSbgoC" Name="Error Message" Kind="OutputPin" Bounds="1081,777" />
-            <Pin Id="KPteBHhtaDXOB5C1nQ9I2I" Name="Variables Names" Kind="InputPin" />
+            <Pin Id="LPqCGyTuoK5OFq4oZIzwXd" Name="Failure" Kind="OutputPin" Bounds="1045,804" Summary="True if expression evaluation has failed" />
+            <Pin Id="AXqAQJRWG5oOPTybkSbgoC" Name="Error Message" Kind="OutputPin" Bounds="1081,777" Summary="Reason for evaluation failure" />
+            <Pin Id="KPteBHhtaDXOB5C1nQ9I2I" Name="Variables Names" Kind="InputPin" Summary="A list of variable names, comma-separated. Each of those will turn into an input pin." />
             <Pin Id="G6jAetQztJfNsz321hkXs5" Name="Variables" Kind="InputPin" IsPinGroup="true">
               <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="TypeFlag" Name="Dictionary" />
