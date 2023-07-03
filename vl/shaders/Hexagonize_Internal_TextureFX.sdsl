@@ -32,6 +32,6 @@ shader Hexagonize_Internal_TextureFX : FilterBase
         float4 c1 = Texture0.SampleLevel(LinearSampler, lerp(uv, (round((uv - 0.5) * sz - 0.5) + 0.5) / sz + 0.5, morph * lm(m).x), 0);
         float4 c2= Texture0.SampleLevel(LinearSampler, lerp(uv, (round((uv - 0.5) * sz)) / sz + 0.5, morph * lm(m).x), 0);
         float4 c = lerp(c1, c2, step(abs(frac((uv.y - 0.5) * sz.y + 0.5) - 0.5), 0.25 + (abs(frac((uv.x - 0.5) * sz.x + 0.5 + 0.5) - 0.5) - 0.25)/3.0));
-        return m1;
+        return c;
     }
 };
