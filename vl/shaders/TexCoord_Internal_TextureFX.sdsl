@@ -1,0 +1,13 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+[Tags("")]
+[OutputFormat("R16G16B16A16_Float")]
+
+shader TexCoord_Internal_TextureFX : TextureFX
+{
+    stage override float4 Shading()
+    {   
+        return float4(streams.TexCoord, 0, 1);
+    }
+};
