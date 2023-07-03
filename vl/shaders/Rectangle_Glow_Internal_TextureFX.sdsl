@@ -1,0 +1,48 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+
+shader Rectangle_Glow_Internal_TextureFX : TextureFX, AddonShaderUtils
+{
+    [Default(0.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeFloat4 BackgroundColor;
+
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeFloat4 RectangleColor;
+
+
+    [Default(0.5f, 0.5f)]
+    compose ComputeFloat2 Size;
+
+    [Default(0.1f)]
+	compose ComputeFloat Round;
+
+    [Default(0.5f)]
+	compose ComputeFloat EdgeWidth;
+    
+	[Default(0.0f)]
+	compose ComputeFloat Gamma;
+
+	bool ClipColor;
+
+	float4x4 Transform;
+
+    stage override float4 Shading()
+    {
+	    float4 c = 0;
+	    float2 uv = TransformUV(streams.TexCoord, Transform);
+
+	    float2 sz = max(0, Size.Compute()/2);
+	    float rd = Round.Compute();
+        float fade = length(max(0, abs(uv - 0.5) - (sz - rd)));
+	    fade = 1 - (fade-rd) * 8 / max(fwidth(fade)* 8 * 1 + 0.0000001, EdgeWidth.Compute());
+
+	    if(ClipColor)fade = saturate(fade);
+
+	    fade = sign(fade) * pow(abs(fade), pow(2, Gamma.Compute()));
+	    if(ClipColor)fade = saturate(fade);
+	    c = lerp(BackgroundColor.Compute(), RectangleColor.Compute(), fade);
+
+        return c;
+    }
+};

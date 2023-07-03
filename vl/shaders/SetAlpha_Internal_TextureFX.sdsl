@@ -6,10 +6,10 @@ shader SetAlpha_Internal_TextureFX : FilterBase, AddonShaderUtils, ColorUtilityT
     [Default(1, 1, 1, 1)]
     compose ComputeFloat4 AlphaMask;
 
-    //[EnumType("VL.Stride.Effects.TextureFX.AlphaChannel")]
     int AlphaChannel = 0;
 
-    float Opacity = 1;
+    [Default(1.0f)]
+    compose ComputeFloat Opacity = 1;
 
     bool Invert = false;
     bool KeepOriginalAlpha = true;
@@ -40,7 +40,7 @@ shader SetAlpha_Internal_TextureFX : FilterBase, AddonShaderUtils, ColorUtilityT
         alpha = 1 - alpha;
 
         if(Invert)alpha = 1 - alpha;
-        alpha *= Opacity;
+        alpha *= Opacity.Compute();
         if(KeepOriginalAlpha) alpha = col.a * alpha;
 
         return float4(col.rgb, alpha);
