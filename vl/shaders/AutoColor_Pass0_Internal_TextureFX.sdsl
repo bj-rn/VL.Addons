@@ -25,9 +25,11 @@ shader AutoColor_Pass0_Internal_TextureFX : FilterBase
        c.x = pow(max(u.r, max(u.g, u.b)), power);
        c.y = dot(u.rgb, 1.0) / 3.0;
        c.z = 0;
+
        float4 pre = Texture1.SampleLevel(LinearSampler, streams.TexCoord, 0);
        c.x = pow(lerp(pow(c.x, 1.0 / power), pow(pre.x, 1.0 / power), fade), power);
        c.y = lerp(c.y, pre.y, fade * !Reset);
+
        return c;
     }
 };
