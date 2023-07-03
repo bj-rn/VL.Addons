@@ -10052,64 +10052,6 @@
             </Node>
             <!--
 
-    ************************ Invert ************************
-
--->
-            <Node Name="Invert" Bounds="118,228" Id="BsyKsxdrVGsOtqe0brf7o5">
-              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                <Choice Kind="ContainerDefinition" Name="Process" />
-              </p:NodeReference>
-              <Patch Id="Ne3x2NBNeDRLeEtR7H11aZ">
-                <Canvas Id="ETOD2wBkGmMPICEF3autRH" CanvasType="Group">
-                  <Node Bounds="102,214,65,19" Id="UHDBFcaKBLENANu8TyMMEv">
-                    <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
-                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                      <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
-                      <Choice Kind="ProcessAppFlag" Name="Invert" />
-                      <PinReference Kind="InputPin" Name="Invert Type" />
-                    </p:NodeReference>
-                    <Pin Id="Q6pyvhkVoBrMU7nzawpmtC" Name="Color In" Kind="InputPin" />
-                    <Pin Id="Bu5iDc5fXlXMHEoTbd3m3X" Name="Factor" Kind="InputPin" />
-                    <Pin Id="CaLsmwE9Iy2MqJ0eyDNJdu" Name="Invert Alpha" Kind="InputPin" />
-                    <Pin Id="G5qHJfkwt5oMOffAp1EIom" Name="Invert Type" Kind="InputPin" DefaultValue="11" />
-                    <Pin Id="GzQ8OEG7GjxMv76hvJbY9t" Name="Output" Kind="OutputPin" />
-                  </Node>
-                  <ControlPoint Id="B6gdJdQlvv2Nn50PUKFVp2" Bounds="164,174" />
-                  <ControlPoint Id="DYMjrLxGqYNLrGMaglgTFi" Bounds="104,286" />
-                  <ControlPoint Id="J8bQd0ZBxA8M3m1BOPPION" Bounds="104,102" />
-                  <ControlPoint Id="BvMj4EhTqAjQKAVDJiS88V" Bounds="124,126" />
-                  <ControlPoint Id="AYaglF7wbttOkkAsELCRqH" Bounds="144,148" />
-                </Canvas>
-                <ProcessDefinition Id="IAAqjcIL7lEMhQlqwZHv9H">
-                  <Fragment Id="EecNVluFdg5PiYF3AvfBWP" Patch="Cu0eGYZlGd6LtlAvaAWCeB" Enabled="true" />
-                  <Fragment Id="ITVMhxiPJR9MdWioSp5bgb" Patch="EplFwxT8BSxLK8T5Ihcvtk" Enabled="true" />
-                </ProcessDefinition>
-                <Link Id="Nohm6sbjmdLQLRuu7xgl6Q" Ids="DwFk995LEBcMhY2Vj5dib9,B6gdJdQlvv2Nn50PUKFVp2" IsHidden="true" />
-                <Link Id="GAKGxye9jsXLVoKntlDWRK" Ids="GzQ8OEG7GjxMv76hvJbY9t,DYMjrLxGqYNLrGMaglgTFi" />
-                <Link Id="BwFRuu8ivnkPfxfTewqPOu" Ids="DYMjrLxGqYNLrGMaglgTFi,TMp0wIPnqxFPM443Qiohgv" IsHidden="true" />
-                <Link Id="ULE90qfnjsWMLRdq6NolhJ" Ids="J8bQd0ZBxA8M3m1BOPPION,Q6pyvhkVoBrMU7nzawpmtC" />
-                <Link Id="DOmQsLne7yhMXiKIhPJAGk" Ids="IIrgTMePRifPQANENEKM0R,J8bQd0ZBxA8M3m1BOPPION" IsHidden="true" />
-                <Link Id="TXKAbViDkKlLtjgIN31xWN" Ids="BvMj4EhTqAjQKAVDJiS88V,Bu5iDc5fXlXMHEoTbd3m3X" />
-                <Link Id="PZoKH8ifGTzM2YGN6jhlKr" Ids="Bl4ORENt5RiLyslPVJnjXV,BvMj4EhTqAjQKAVDJiS88V" IsHidden="true" />
-                <Link Id="GPQuIErScRZLSL6sCqQyh9" Ids="AYaglF7wbttOkkAsELCRqH,CaLsmwE9Iy2MqJ0eyDNJdu" />
-                <Link Id="JLBc1QFtyNvPbrdWBbfN8B" Ids="IjlmxB5qnVzPCrCz1wfNl2,AYaglF7wbttOkkAsELCRqH" IsHidden="true" />
-                <Patch Id="Cu0eGYZlGd6LtlAvaAWCeB" Name="Create" />
-                <Patch Id="EplFwxT8BSxLK8T5Ihcvtk" Name="Update" ManuallySortedPins="true">
-                  <Pin Id="IIrgTMePRifPQANENEKM0R" Name="Color In" Kind="InputPin" Bounds="116,73" />
-                  <Pin Id="DwFk995LEBcMhY2Vj5dib9" Name="Invert Mode" Kind="InputPin" Bounds="445,537">
-                    <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
-                      <Choice Kind="TypeFlag" Name="InvertMode" />
-                    </p:TypeAnnotation>
-                  </Pin>
-                  <Pin Id="IjlmxB5qnVzPCrCz1wfNl2" Name="Invert Alpha" Kind="InputPin" Bounds="155,121" />
-                  <Pin Id="Bl4ORENt5RiLyslPVJnjXV" Name="Factor" Kind="InputPin" Bounds="140,95" />
-                  <Pin Id="TMp0wIPnqxFPM443Qiohgv" Name="Output" Kind="OutputPin" Bounds="114,268" />
-                </Patch>
-                <Link Id="N2bIjshi0ReNr5pJcMXZj6" Ids="B6gdJdQlvv2Nn50PUKFVp2,G5qHJfkwt5oMOffAp1EIom" />
-              </Patch>
-            </Node>
-            <!--
-
     ************************ ColorMatrix ************************
 
 -->
@@ -10238,54 +10180,131 @@
                 <Link Id="PEFRXwOOV2yPwrWhv7BJMm" Ids="VVvqMyavfYZK9pixShLzDz,Gp7wSeCGfx4LpweF6SQ9y6" IsHidden="true" />
               </Patch>
             </Node>
-            <!--
+            <Node Bounds="90,177,269,170" Id="HAV6lRyfuRsLAZKbDr4e9G">
+              <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+                <Choice Kind="ProcessAppFlag" Name="Comment" />
+              </p:NodeReference>
+              <Patch Id="IfqPJboJwo7Nc5Opxe8sXx" ManuallySortedPins="true">
+                <Patch Id="KQx4dbsxd82LTLizLMEEHb" Name="Create" ManuallySortedPins="true" />
+                <Patch Id="O4yDM4DZTEXNrjxYmWark1" Name="Update" ManuallySortedPins="true" />
+                <!--
 
-    ************************ Transform (Color) ************************
+    ************************ Invert (Experimental) ************************
 
 -->
-            <Node Name="Transform (Color)" Bounds="115,328" Id="JZOKaU3cVJ3OYyyXKeLMOW">
-              <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
-                <Choice Kind="ContainerDefinition" Name="Process" />
-              </p:NodeReference>
-              <Patch Id="RFw1Ulh2IQNPGSM2Z0jhtq">
-                <Canvas Id="VIEdkRNS3DUPZL0R6X6wMP" CanvasType="Group">
-                  <Node Bounds="102,166,88,19" Id="TxsERaiJcc4NPB8AFdokRl">
-                    <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
-                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                      <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
-                      <Choice Kind="ProcessNode" Name="TransformColor" />
-                    </p:NodeReference>
-                    <Pin Id="VFpKj6DhrtSN0S2TId2NNu" Name="Color In" Kind="InputPin" />
-                    <Pin Id="HmKnDJRPe6LLIHcS1zKEQW" Name="Control" Kind="InputPin" />
-                    <Pin Id="Vhy48gJXqkXQcsDILU8hAU" Name="Transform" Kind="InputPin" />
-                    <Pin Id="TFl4EFRBVSqMaC6WQvGHDo" Name="Output" Kind="OutputPin" />
-                  </Node>
-                  <ControlPoint Id="OT3dkGXMhg3LL6BZU9j5sj" Bounds="104,95" />
-                  <ControlPoint Id="K5iHjUn5IkIM1m9EK6tSx2" Bounds="146,120" />
-                  <ControlPoint Id="LMT7f4nl21OL5n45FrKRer" Bounds="187,139" />
-                  <ControlPoint Id="LQ1dP9fjsp1MDp63Iaj4RT" Bounds="104,233" />
-                </Canvas>
-                <Patch Id="KdgNg8Iwqr9LngfqQHitDf" Name="Create" />
-                <Patch Id="QgNnzVppvbYPmm2ULxxBEV" Name="Update">
-                  <Pin Id="KAmBKo5EJsPLWGV1Yk44l0" Name="Color In" Kind="InputPin" Bounds="109,71" />
-                  <Pin Id="A5W008D9QuWMKsOfqY4Cxf" Name="Control" Kind="InputPin" Bounds="207,87" />
-                  <Pin Id="IKI0ONRiyCeLLCBL18UM8r" Name="Transform" Kind="InputPin" Bounds="280,113" />
-                  <Pin Id="OzdjqLdGW0UPOC9LczMO5g" Name="Output" Kind="OutputPin" Bounds="109,210" />
-                </Patch>
-                <ProcessDefinition Id="FdGNhKyqdvfPsOBMtaN5Fu">
-                  <Fragment Id="VGOfXOuUUuSP6TeOBLZvpT" Patch="KdgNg8Iwqr9LngfqQHitDf" Enabled="true" />
-                  <Fragment Id="RYbl42wZ3nALy1yNVOKUG2" Patch="QgNnzVppvbYPmm2ULxxBEV" Enabled="true" />
-                </ProcessDefinition>
-                <Link Id="SabKHA8RK2TPup5CAufZWW" Ids="OT3dkGXMhg3LL6BZU9j5sj,VFpKj6DhrtSN0S2TId2NNu" />
-                <Link Id="DRn8GWZcDcKOfMVTphPcMg" Ids="KAmBKo5EJsPLWGV1Yk44l0,OT3dkGXMhg3LL6BZU9j5sj" IsHidden="true" />
-                <Link Id="M30jjlLHNUnK9kKLZ50tht" Ids="K5iHjUn5IkIM1m9EK6tSx2,HmKnDJRPe6LLIHcS1zKEQW" />
-                <Link Id="E1zrQ7yzohDOiuAP8LvlbV" Ids="A5W008D9QuWMKsOfqY4Cxf,K5iHjUn5IkIM1m9EK6tSx2" IsHidden="true" />
-                <Link Id="SW9ONaVwdYyQI425rsWWKD" Ids="LMT7f4nl21OL5n45FrKRer,Vhy48gJXqkXQcsDILU8hAU" />
-                <Link Id="QdW0JsaIO1dPnTzbpHS2Td" Ids="IKI0ONRiyCeLLCBL18UM8r,LMT7f4nl21OL5n45FrKRer" IsHidden="true" />
-                <Link Id="M1KOYOwsvTLNaUxAk9PVk7" Ids="TFl4EFRBVSqMaC6WQvGHDo,LQ1dP9fjsp1MDp63Iaj4RT" />
-                <Link Id="CMpwYDM5Ke8MEgwffbPs9q" Ids="LQ1dP9fjsp1MDp63Iaj4RT,OzdjqLdGW0UPOC9LczMO5g" IsHidden="true" />
+                <Node Name="Invert (Experimental)" Bounds="122,227" Id="BsyKsxdrVGsOtqe0brf7o5">
+                  <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                    <Choice Kind="ContainerDefinition" Name="Process" />
+                  </p:NodeReference>
+                  <Patch Id="Ne3x2NBNeDRLeEtR7H11aZ">
+                    <Canvas Id="ETOD2wBkGmMPICEF3autRH" CanvasType="Group">
+                      <Node Bounds="102,214,65,19" Id="UHDBFcaKBLENANu8TyMMEv">
+                        <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
+                          <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                          <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+                          <Choice Kind="ProcessAppFlag" Name="Invert" />
+                          <PinReference Kind="InputPin" Name="Invert Type" />
+                        </p:NodeReference>
+                        <Pin Id="Q6pyvhkVoBrMU7nzawpmtC" Name="Color In" Kind="InputPin" />
+                        <Pin Id="Bu5iDc5fXlXMHEoTbd3m3X" Name="Factor" Kind="InputPin" />
+                        <Pin Id="CaLsmwE9Iy2MqJ0eyDNJdu" Name="Invert Alpha" Kind="InputPin" />
+                        <Pin Id="G5qHJfkwt5oMOffAp1EIom" Name="Invert Type" Kind="InputPin" DefaultValue="11" />
+                        <Pin Id="GzQ8OEG7GjxMv76hvJbY9t" Name="Output" Kind="OutputPin" />
+                      </Node>
+                      <ControlPoint Id="B6gdJdQlvv2Nn50PUKFVp2" Bounds="164,174" />
+                      <ControlPoint Id="DYMjrLxGqYNLrGMaglgTFi" Bounds="104,286" />
+                      <ControlPoint Id="J8bQd0ZBxA8M3m1BOPPION" Bounds="104,102" />
+                      <ControlPoint Id="BvMj4EhTqAjQKAVDJiS88V" Bounds="124,126" />
+                      <ControlPoint Id="AYaglF7wbttOkkAsELCRqH" Bounds="144,148" />
+                    </Canvas>
+                    <ProcessDefinition Id="IAAqjcIL7lEMhQlqwZHv9H">
+                      <Fragment Id="EecNVluFdg5PiYF3AvfBWP" Patch="Cu0eGYZlGd6LtlAvaAWCeB" Enabled="true" />
+                      <Fragment Id="ITVMhxiPJR9MdWioSp5bgb" Patch="EplFwxT8BSxLK8T5Ihcvtk" Enabled="true" />
+                    </ProcessDefinition>
+                    <Link Id="Nohm6sbjmdLQLRuu7xgl6Q" Ids="DwFk995LEBcMhY2Vj5dib9,B6gdJdQlvv2Nn50PUKFVp2" IsHidden="true" />
+                    <Link Id="GAKGxye9jsXLVoKntlDWRK" Ids="GzQ8OEG7GjxMv76hvJbY9t,DYMjrLxGqYNLrGMaglgTFi" />
+                    <Link Id="BwFRuu8ivnkPfxfTewqPOu" Ids="DYMjrLxGqYNLrGMaglgTFi,TMp0wIPnqxFPM443Qiohgv" IsHidden="true" />
+                    <Link Id="ULE90qfnjsWMLRdq6NolhJ" Ids="J8bQd0ZBxA8M3m1BOPPION,Q6pyvhkVoBrMU7nzawpmtC" />
+                    <Link Id="DOmQsLne7yhMXiKIhPJAGk" Ids="IIrgTMePRifPQANENEKM0R,J8bQd0ZBxA8M3m1BOPPION" IsHidden="true" />
+                    <Link Id="TXKAbViDkKlLtjgIN31xWN" Ids="BvMj4EhTqAjQKAVDJiS88V,Bu5iDc5fXlXMHEoTbd3m3X" />
+                    <Link Id="PZoKH8ifGTzM2YGN6jhlKr" Ids="Bl4ORENt5RiLyslPVJnjXV,BvMj4EhTqAjQKAVDJiS88V" IsHidden="true" />
+                    <Link Id="GPQuIErScRZLSL6sCqQyh9" Ids="AYaglF7wbttOkkAsELCRqH,CaLsmwE9Iy2MqJ0eyDNJdu" />
+                    <Link Id="JLBc1QFtyNvPbrdWBbfN8B" Ids="IjlmxB5qnVzPCrCz1wfNl2,AYaglF7wbttOkkAsELCRqH" IsHidden="true" />
+                    <Patch Id="Cu0eGYZlGd6LtlAvaAWCeB" Name="Create" />
+                    <Patch Id="EplFwxT8BSxLK8T5Ihcvtk" Name="Update" ManuallySortedPins="true">
+                      <Pin Id="IIrgTMePRifPQANENEKM0R" Name="Color In" Kind="InputPin" Bounds="116,73" />
+                      <Pin Id="DwFk995LEBcMhY2Vj5dib9" Name="Invert Mode" Kind="InputPin" Bounds="445,537">
+                        <p:TypeAnnotation LastCategoryFullName="Stride.Effects.Common" LastDependency="VL.Addons.Stride.vl">
+                          <Choice Kind="TypeFlag" Name="InvertMode" />
+                        </p:TypeAnnotation>
+                      </Pin>
+                      <Pin Id="IjlmxB5qnVzPCrCz1wfNl2" Name="Invert Alpha" Kind="InputPin" Bounds="155,121" />
+                      <Pin Id="Bl4ORENt5RiLyslPVJnjXV" Name="Factor" Kind="InputPin" Bounds="140,95" />
+                      <Pin Id="TMp0wIPnqxFPM443Qiohgv" Name="Output" Kind="OutputPin" Bounds="114,268" />
+                    </Patch>
+                    <Link Id="N2bIjshi0ReNr5pJcMXZj6" Ids="B6gdJdQlvv2Nn50PUKFVp2,G5qHJfkwt5oMOffAp1EIom" />
+                  </Patch>
+                </Node>
+                <!--
+
+    ************************ Transform (Color Experimental) ************************
+
+-->
+                <Node Name="Transform (Color Experimental)" Bounds="119,327" Id="JZOKaU3cVJ3OYyyXKeLMOW">
+                  <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                    <Choice Kind="ContainerDefinition" Name="Process" />
+                  </p:NodeReference>
+                  <Patch Id="RFw1Ulh2IQNPGSM2Z0jhtq">
+                    <Canvas Id="VIEdkRNS3DUPZL0R6X6wMP" CanvasType="Group">
+                      <Node Bounds="102,166,88,19" Id="TxsERaiJcc4NPB8AFdokRl">
+                        <p:NodeReference LastCategoryFullName="Stride.Rendering.ShaderFX" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
+                          <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                          <CategoryReference Kind="Category" Name="ShaderFX" NeedsToBeDirectParent="true" />
+                          <Choice Kind="ProcessNode" Name="TransformColor" />
+                        </p:NodeReference>
+                        <Pin Id="VFpKj6DhrtSN0S2TId2NNu" Name="Color In" Kind="InputPin" />
+                        <Pin Id="HmKnDJRPe6LLIHcS1zKEQW" Name="Control" Kind="InputPin" />
+                        <Pin Id="Vhy48gJXqkXQcsDILU8hAU" Name="Transform" Kind="InputPin" />
+                        <Pin Id="TFl4EFRBVSqMaC6WQvGHDo" Name="Output" Kind="OutputPin" />
+                      </Node>
+                      <ControlPoint Id="OT3dkGXMhg3LL6BZU9j5sj" Bounds="104,95" />
+                      <ControlPoint Id="K5iHjUn5IkIM1m9EK6tSx2" Bounds="146,120" />
+                      <ControlPoint Id="LMT7f4nl21OL5n45FrKRer" Bounds="187,139" />
+                      <ControlPoint Id="LQ1dP9fjsp1MDp63Iaj4RT" Bounds="104,233" />
+                    </Canvas>
+                    <Patch Id="KdgNg8Iwqr9LngfqQHitDf" Name="Create" />
+                    <Patch Id="QgNnzVppvbYPmm2ULxxBEV" Name="Update">
+                      <Pin Id="KAmBKo5EJsPLWGV1Yk44l0" Name="Color In" Kind="InputPin" Bounds="109,71" />
+                      <Pin Id="A5W008D9QuWMKsOfqY4Cxf" Name="Control" Kind="InputPin" Bounds="207,87" />
+                      <Pin Id="IKI0ONRiyCeLLCBL18UM8r" Name="Transform" Kind="InputPin" Bounds="280,113" />
+                      <Pin Id="OzdjqLdGW0UPOC9LczMO5g" Name="Output" Kind="OutputPin" Bounds="109,210" />
+                    </Patch>
+                    <ProcessDefinition Id="FdGNhKyqdvfPsOBMtaN5Fu">
+                      <Fragment Id="VGOfXOuUUuSP6TeOBLZvpT" Patch="KdgNg8Iwqr9LngfqQHitDf" Enabled="true" />
+                      <Fragment Id="RYbl42wZ3nALy1yNVOKUG2" Patch="QgNnzVppvbYPmm2ULxxBEV" Enabled="true" />
+                    </ProcessDefinition>
+                    <Link Id="SabKHA8RK2TPup5CAufZWW" Ids="OT3dkGXMhg3LL6BZU9j5sj,VFpKj6DhrtSN0S2TId2NNu" />
+                    <Link Id="DRn8GWZcDcKOfMVTphPcMg" Ids="KAmBKo5EJsPLWGV1Yk44l0,OT3dkGXMhg3LL6BZU9j5sj" IsHidden="true" />
+                    <Link Id="M30jjlLHNUnK9kKLZ50tht" Ids="K5iHjUn5IkIM1m9EK6tSx2,HmKnDJRPe6LLIHcS1zKEQW" />
+                    <Link Id="E1zrQ7yzohDOiuAP8LvlbV" Ids="A5W008D9QuWMKsOfqY4Cxf,K5iHjUn5IkIM1m9EK6tSx2" IsHidden="true" />
+                    <Link Id="SW9ONaVwdYyQI425rsWWKD" Ids="LMT7f4nl21OL5n45FrKRer,Vhy48gJXqkXQcsDILU8hAU" />
+                    <Link Id="QdW0JsaIO1dPnTzbpHS2Td" Ids="IKI0ONRiyCeLLCBL18UM8r,LMT7f4nl21OL5n45FrKRer" IsHidden="true" />
+                    <Link Id="M1KOYOwsvTLNaUxAk9PVk7" Ids="TFl4EFRBVSqMaC6WQvGHDo,LQ1dP9fjsp1MDp63Iaj4RT" />
+                    <Link Id="CMpwYDM5Ke8MEgwffbPs9q" Ids="LQ1dP9fjsp1MDp63Iaj4RT,OzdjqLdGW0UPOC9LczMO5g" IsHidden="true" />
+                  </Patch>
+                </Node>
               </Patch>
             </Node>
+            <Pad Id="Lm9NPnqcKpSNKp6hGSGTVf" Bounds="362,223,216,68" ShowValueBox="true" isIOBox="true" Value="Not working atm seems to be a vvvv bug, some inputs are not updating correctly">
+              <p:TypeAnnotation>
+                <Choice Kind="TypeFlag" Name="String" />
+              </p:TypeAnnotation>
+              <p:ValueBoxSettings>
+                <p:fontsize p:Type="Int32">9</p:fontsize>
+                <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+              </p:ValueBoxSettings>
+            </Pad>
           </Canvas>
         </Canvas>
       </Canvas>
