@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="Fpws1pkNjoUMABXUWqAIEa" Name="Bounds" Kind="InputPin" DefaultValue="869.3333, 528.6667, 584.6667, 584.6667" />
+            <Pin Id="Fpws1pkNjoUMABXUWqAIEa" Name="Bounds" Kind="InputPin" DefaultValue="1383, 106, 584, 584" />
             <Pin Id="NZCWsIZuJpWPX2B2Qd9kxw" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="Vy77BsJ2Ro1P90PpDdngka" Name="Input" Kind="InputPin" />
             <Pin Id="Bump2gLkTvOOVRXEvYzerk" Name="Title" Kind="InputPin" DefaultValue="Echo" />
@@ -63,14 +63,10 @@
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
             <Pin Id="T3ztbtOS3jHMmZ4wQ8wpjd" Name="Input" Kind="InputPin" />
             <Pin Id="CkbpywHCdB9LXVr6yCokiN" Name="Fade" Kind="InputPin" />
-            <Pin Id="ItNXmWQKqsDNFZyC1YjCtG" Name="Alpha" Kind="InputPin" />
-            <Pin Id="AisIuH4zTerMUdN4jbbwYB" Name="SetParameters" Kind="InputPin" />
-            <Pin Id="Tl8w18EXUn2PFsJqWEQOcX" Name="Control" Kind="InputPin" />
-            <Pin Id="DU1fjSXq23BP6AFNuZZcub" Name="Enabled" Kind="InputPin" />
+            <Pin Id="ItNXmWQKqsDNFZyC1YjCtG" Name="Alpha" Kind="InputPin" DefaultValue="False" />
             <Pin Id="LOuxRFHH4x3NYOF7dgDtZP" Name="Reset" Kind="InputPin" />
+            <Pin Id="DU1fjSXq23BP6AFNuZZcub" Name="Enabled" Kind="InputPin" />
             <Pin Id="CXlcE9F8jH4O8kwRUTeETw" Name="Output" Kind="OutputPin" />
-            <Pin Id="NYSjA45GxbdL0DwTbT8I0d" Name="Format" Kind="InputPin" />
-            <Pin Id="Bv6PcXuepdJLKK9nglr361" Name="Apply" Kind="InputPin" DefaultValue="False" />
           </Node>
           <Node Bounds="147,180,125,19" Id="LDbL47K64e3L1UwR74eAYT">
             <p:NodeReference LastCategoryFullName="Stride" LastDependency="VL.Stride.vl">
@@ -118,21 +114,7 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="CfHybFGt9iBMfJwu1saDk8" Bounds="322,336,145,45" ShowValueBox="true" isIOBox="true" Value="Control Pin doesn't do anything here">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">9</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="Dj4UQEp31IuOWiLvdouVyv" Comment="Format" Bounds="288,281,172,15" ShowValueBox="true" isIOBox="true" Value="R16G16B16A16_Float">
-            <p:TypeAnnotation LastCategoryFullName="Stride.API.Graphics" LastDependency="VL.Stride.vl">
-              <Choice Kind="TypeFlag" Name="PixelFormat" />
-            </p:TypeAnnotation>
-          </Pad>
-          <Pad Id="KBk4jYBVoGJNW8xcQu7bNM" Comment="Reset" Bounds="268,234,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+          <Pad Id="KBk4jYBVoGJNW8xcQu7bNM" Comment="Reset" Bounds="268,273,35,35" ShowValueBox="true" isIOBox="true" Value="False">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
               <CategoryReference Kind="Category" Name="Primitive" />
@@ -141,10 +123,19 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KAzkq0Nyni3LazRJMluUqY" Comment="Fade" Bounds="168,283,35,15" ShowValueBox="true" isIOBox="true" Value="0.97">
+          <Pad Id="KAzkq0Nyni3LazRJMluUqY" Comment="Fade" Bounds="188,250,35,15" ShowValueBox="true" isIOBox="true" Value="0.97">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="CjmpIQErbGHNR91CB5hral" Comment="Reset" Bounds="443,205,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
           </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
@@ -157,11 +148,10 @@
         <Link Id="Tj5rTcmWU3uOIVbsq8clOh" Ids="PKMYWInsPB5NNBOP029Bvt,Ucc8tkQOK9PPEBzkCj6iMZ" />
         <Link Id="V0LIDEbFPNiNvWok1qtwSJ" Ids="EVxoSEvwLwHLUY9EeV4c1f,NfwDENVJ8nBLemsXFQpEsS" />
         <Link Id="T1GUIJKlyNELkBqQ1bbyDP" Ids="JwcBXrQRJDNPMN66xwy69K,TfuN6akCvnkOhReHaCihDW" />
-        <Link Id="M4RK493MSvqMIqqJWZxo0j" Ids="Dj4UQEp31IuOWiLvdouVyv,NYSjA45GxbdL0DwTbT8I0d" />
-        <Link Id="Mul73IUFvdmLHCoMpbQyAh" Ids="KBk4jYBVoGJNW8xcQu7bNM,LOuxRFHH4x3NYOF7dgDtZP" />
         <Link Id="CM5NmgNQnSAMWnzmjLboFO" Ids="KAzkq0Nyni3LazRJMluUqY,CkbpywHCdB9LXVr6yCokiN" />
         <Link Id="M7Kr8smsCuePDurcCWpDdc" Ids="I1p0KMXe1EDLXlD7lPhoUS,T3ztbtOS3jHMmZ4wQ8wpjd" />
         <Link Id="JSOcFhvjbgkOLOlcVdQ0cA" Ids="CXlcE9F8jH4O8kwRUTeETw,Vy77BsJ2Ro1P90PpDdngka" />
+        <Link Id="RKq9PAVfAsMNMZo4Oy55QG" Ids="KBk4jYBVoGJNW8xcQu7bNM,LOuxRFHH4x3NYOF7dgDtZP" />
       </Patch>
     </Node>
   </Patch>
