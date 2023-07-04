@@ -22,10 +22,10 @@ jobs:
       uses: nuget/setup-nuget@v1
       
     - name: Publish VL Nuget
-      uses: vvvv/PublishVLNuget@1.0.41
+      uses: vvvv/PublishVLNuget@1.0.42
       with:
         csproj: src\VL.Addons.sln
         nuspec: deployment\VL.Addons.nuspec
-        icon-src: https://raw.githubusercontent.com/vvvv/PublicContent/master/nugeticon.png
-        icon-dst: ./deployment/nugeticon.png
+        icon-src: https://raw.githubusercontent.com/bj-rn/VL.Addons/master/resources/icon.png
+        icon-dst: ./deployment/icon.png
         nuget-key: ${{ secrets.NUGET_KEY }}
