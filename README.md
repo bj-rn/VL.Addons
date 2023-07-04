@@ -1,6 +1,11 @@
 # VL.Addons
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/VL.Addons?style=flat-square)](https://www.nuget.org/packages/VL.Addons)
 
-Various VL addons provided by the community.
+A place to gather contributions by the vvvv community that:
+
+- don’t get added to the core libraries for _reasons_
+- don’t (yet?) merit their own nuget packages
+- get lost in the chat or forum otherwise
 
 
 ## Using the library
@@ -16,4 +21,3 @@ Download: http://visualprogramming.net
 ### License
 
 ### [MIT](https://github.com/bj-rn/VL.Addons/blob/master/LICENSE)
-  
