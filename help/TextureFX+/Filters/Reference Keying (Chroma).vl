@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="TIzVpAf11WeOqJvndgMEfE" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="TIzVpAf11WeOqJvndgMEfE" LanguageVersion="2023.5.3-0069-g910876198c" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0069-g910876198c" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -36,7 +36,7 @@
             <Pin Id="Gfm1vXQmLgtPwTHejCtSP8" Name="Client Bounds" Kind="OutputPin" />
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
           </Node>
-          <Node Bounds="66,119,105,19" Id="ChoHFhFycGFQCxyrVYnejJ">
+          <Node Bounds="67,119,105,19" Id="ChoHFhFycGFQCxyrVYnejJ">
             <p:NodeReference LastCategoryFullName="Stride.Assets" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FileTexture" />
@@ -51,7 +51,7 @@
             <Pin Id="SstgV5Av5LULotcdWx1qQy" Name="Is Loading" Kind="OutputPin" />
             <Pin Id="E7igpcHRt5WO4NeJJ0Ruk4" Name="Already Loaded" Kind="OutputPin" />
           </Node>
-          <Pad Id="TWt5mjopfUfQJLfp50fsdn" Comment="Path" Bounds="68,96,67,15" ShowValueBox="true" isIOBox="true" Value="..\..\..\resources\textures\TextureArray\002.dds">
+          <Pad Id="TWt5mjopfUfQJLfp50fsdn" Comment="Path" Bounds="69,96,67,15" ShowValueBox="true" isIOBox="true" Value="..\..\..\resources\textures\TextureArray\002.dds">
             <p:TypeAnnotation LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
@@ -92,25 +92,6 @@
             </p:TypeAnnotation>
           </Pad>
           <Pad Id="IxKnxiZWezPLcpek91ek5Z" Comment="" Bounds="133,401,188,165" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="71,655,85,19" Id="AWSAX1Q6sBIONfjfm8mPRG">
-            <p:NodeReference LastCategoryFullName="Stride.Textures.Utils" LastDependency="VL.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="Category" Name="Utils" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true" />
-              </CategoryReference>
-              <Choice Kind="ProcessAppFlag" Name="SetAlpha" />
-              <PinReference Kind="InputPin" Name="Node Context" />
-              <PinReference Kind="InputPin" Name="SetTexture" />
-              <PinReference Kind="InputPin" Name="SetParameters" />
-            </p:NodeReference>
-            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
-            <Pin Id="K6QbbLvnU3VL1fr5GXcxmv" Name="Input" Kind="InputPin" />
-            <Pin Id="AVTdhD9Gwa0P0P1AmO88Ik" Name="Alpha Channel" Kind="InputPin" DefaultValue="R" />
-            <Pin Id="UjQpSIbrDL9QPAd2jOQ0NU" Name="Opacity" Kind="InputPin" DefaultValue="1" />
-            <Pin Id="LTjAttLFuF5NuvUg0v9NKR" Name="Alpha Mask" Kind="InputPin" />
-            <Pin Id="Gvsx2VL9NceLoIhU3waWEn" Name="Apply" Kind="InputPin" />
-            <Pin Id="GCOlOqtT4WXLnuP5RIdT6y" Name="Output" Kind="OutputPin" />
-          </Node>
           <Node Bounds="131,593,60,19" Id="MuL8Em4lpZDPGbuMiMyAdr">
             <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -137,6 +118,24 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="71,657,145,19" Id="GGcpAOcrffiQZg0cZqybeg">
+            <p:NodeReference LastCategoryFullName="Stride.TextureFX.Utils" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Utils" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="TextureFX" NeedsToBeDirectParent="true" />
+              </CategoryReference>
+              <Choice Kind="ProcessAppFlag" Name="SetAlpha" />
+            </p:NodeReference>
+            <Pin Id="KiyFuIEvQRnLrIMb0iuTnS" Name="Input" Kind="InputPin" />
+            <Pin Id="ShKFbleMLYkMO1L2tRkiOK" Name="Alpha Channel" Kind="InputPin" />
+            <Pin Id="Bu3dyxSzlBHN0IbQfMJWp0" Name="Invert" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="A2BCodeocgRMP3rTKvZGsg" Name="Keep Original Alpha" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="JKO68rIoIRrLDsi3N1iQGr" Name="Alpha Mask" Kind="InputPin" />
+            <Pin Id="T38cJ4b1cXALixOFMTTNoy" Name="Opacity" Kind="InputPin" />
+            <Pin Id="Qql1ag3cNKRMWhkZ5UNBqm" Name="Control" Kind="InputPin" />
+            <Pin Id="UjLZIo6sU2nMSQwuD4XuKW" Name="Enabled" Kind="InputPin" />
+            <Pin Id="RwLZxcX8m1CNEDOSnTgwod" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -150,15 +149,15 @@
         <Link Id="NfZ5QHsakNHMuzCzL4doWN" Ids="TWHiWI5YVjvM96Pos7xZoX,G2hcuYZm7KIPHEb9Z7VVT6" />
         <Link Id="K7b7ShzWC5XMuhx066IDKg" Ids="BupYQbQ3g1CLRxQ7ROK0Xd,UWigKpTxsjPNafhp9c8Wyh" />
         <Link Id="BBzkN5RYUCSLFUnCCJCzzW" Ids="QkADGDbslLXNioY8gB0fiL,IxKnxiZWezPLcpek91ek5Z" />
-        <Link Id="CcIXU0GA02FPgVjSTLGWWR" Ids="TV9lp4zIOWOMSzH8pp8WCT,K6QbbLvnU3VL1fr5GXcxmv" />
-        <Link Id="D5HWyNWypMLLqkf7jYpVOT" Ids="PAVlFiN2FCQPLPmvjv1KIZ,LTjAttLFuF5NuvUg0v9NKR" />
-        <Link Id="OP9Xb7N3SABPvQg9elYn72" Ids="GCOlOqtT4WXLnuP5RIdT6y,RqIONKDIENdND6i48864uK" />
         <Link Id="Vtfdk5F3dooPwx6vPkX8zs" Ids="IxKnxiZWezPLcpek91ek5Z,EhNZ2ZzS0D8LKiUOuFOpGK" />
         <Link Id="Hwg7jtybWxjP3l8if6gIhC" Ids="IozW5smYpuYPfycXLOuAEZ,PP1L6yaKAE8MUEwZCtRtQQ" />
         <Link Id="SteGheNLZxKNbnJlXnJNCG" Ids="UdP1Co5XVVEMKRUbwTxcve,OTbIIMAvoGlPTuOIPyy4Ec" />
+        <Link Id="QdcaKJlPgbCLwap2adEvFU" Ids="PAVlFiN2FCQPLPmvjv1KIZ,JKO68rIoIRrLDsi3N1iQGr" />
+        <Link Id="KChtIqstCwEN2vNWn7mo3w" Ids="TV9lp4zIOWOMSzH8pp8WCT,KiyFuIEvQRnLrIMb0iuTnS" />
+        <Link Id="UwLLgG7nxFaMLH6T42GG6k" Ids="RwLZxcX8m1CNEDOSnTgwod,RqIONKDIENdND6i48864uK" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0069-g910876198c" />
   <DocumentDependency Id="E84J0Es0hr6LnKLvnzsTtf" Location="../../../vl/VL.Addons.Stride.vl" />
 </Document>
