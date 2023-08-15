@@ -15,12 +15,12 @@ shader ConvertColorSpace_Internal_TextureFX : TextureFX
         
         switch(type)
         {
-            case 0 : c = ColorUtilityTemp.GammaToLinear(InTex0(), Gamma); break;
-            case 1 : c = ColorUtilityTemp.SRgbToLinear(InTex0()); break;
-            case 2 : c = ColorUtilityTemp.SRgbToLinearPrecise(InTex0()); break;
-            case 3 : c = ColorUtilityTemp.LinearToGamma(InTex0(), Gamma); break;
-            case 4 : c = ColorUtilityTemp.LinearToSRgb(InTex0()); break;
-            case 5 : c = ColorUtilityTemp.LinearToSRgbPrecise(InTex0()); break;
+            case 0 : c = AddonColorUtility.GammaToLinear(InTex0(), Gamma); break;
+            case 1 : c = AddonColorUtility.SRgbToLinear(InTex0()); break;
+            case 2 : c = AddonColorUtility.SRgbToLinearPrecise(InTex0()); break;
+            case 3 : c = AddonColorUtility.LinearToGamma(InTex0(), Gamma); break;
+            case 4 : c = AddonColorUtility.LinearToSRgb(InTex0()); break;
+            case 5 : c = AddonColorUtility.LinearToSRgbPrecise(InTex0()); break;
         }
 
         return c;
