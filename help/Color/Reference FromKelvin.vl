@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="VYJ1xvx6GpnPsGEpaWE53S" LanguageVersion="2023.5.3-0168-gac681433c2" Version="0.128">
+  <NugetDependency Id="KBqq59MLIIyM9O29VbmEoW" Location="VL.CoreLib" Version="2023.5.3-0168-gac681433c2" />
+  <Patch Id="U7chVjA5vxaQSqHcugqgg9">
+    <Canvas Id="Kd1vmgcFy1XMKd7eLF7ng8" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="JacWOkdB3O5PhgNGcMFa6b">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="MWThHsSEgc8PGDPICTBUJa">
+        <Canvas Id="SQFlb8WQDCcMnmdJSfWHjM" CanvasType="Group">
+          <Node Bounds="109,149,67,19" Id="Fy8KdyzyPSRLIKUnuTnx7J">
+            <p:NodeReference LastCategoryFullName="Color.RGBA" LastDependency="VL.Addons.Color.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="FromKelvin" />
+            </p:NodeReference>
+            <Pin Id="LAAuesLxMlANKXiz5bB4rh" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="I5XaeVKDQrzO6H8Zul8duB" Name="Input" Kind="InputPin" />
+            <Pin Id="PTsk5VXPPzhL0S0EtpWBN0" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="UIYWeNOQnzNPgcnUfAicUg" Comment="Color temperature" Bounds="111,104,51,15" ShowValueBox="true" isIOBox="true" Value="5000">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:maximum p:Type="Int32">40000</p:maximum>
+              <p:minimum p:Type="Int32">1000</p:minimum>
+              <p:unit p:Type="String">°K</p:unit>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="EL4E08R5QVuLmnW39lTyrl" Comment="" Bounds="111,206,136,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="134,296,25,19" Id="Jk9YSDq1XgWLfcvM31GURK">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="I" />
+            </p:NodeReference>
+            <Pin Id="EAI12nqmFGrL6lwF5xVny6" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JwAtmvOQeumO5We6eiXXIY" Name="Start" Kind="InputPin" DefaultValue="1000" />
+            <Pin Id="Nq89FfYbmEuPEYaWBWHDmV" Name="Count" Kind="InputPin" DefaultValue="30000" />
+            <Pin Id="GltvsgDnFf6MuV4t4mYiep" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="KOf1ebtyj9SPXX47m7Geq8" Comment="" Bounds="22,591,903,92" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:horizontal p:Type="Boolean">true</p:horizontal>
+              <p:maxvisibleentries p:Type="Int32">50</p:maxvisibleentries>
+              <p:showvalue p:Type="Boolean">false</p:showvalue>
+            </p:ValueBoxSettings>
+            <p:Value>
+              <Item>1, 1, 1, 1</Item>
+            </p:Value>
+          </Pad>
+          <Node Bounds="70,341,231,212" Id="RpjRe2KaEhjLAhvz5ijrKn">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+              <Choice Kind="ProcessStatefulRegion" Name="Cache" />
+            </p:NodeReference>
+            <Pin Id="NFeRVWGIszcOqaRvPxB1Ec" Name="Force" Kind="InputPin" DefaultValue="False" />
+            <Pin Id="KmOvSRn9YOWMOmorcOlGoA" Name="Dispose Cached Outputs" Kind="InputPin" />
+            <Pin Id="DSO1ECDySZKNb9ekmHtlo4" Name="Has Changed" Kind="OutputPin" />
+            <ControlPoint Id="PtZShmNvhUNOnOLUfeASsF" Bounds="136,347" Alignment="Top" />
+            <ControlPoint Id="NgeeaD59b6LNoJe11tOful" Bounds="136,547" Alignment="Bottom" />
+            <Patch Id="BQi7sVCmmDmPVQ8N5v46Qm" ManuallySortedPins="true">
+              <Patch Id="CZLttDZDO2hNc9eMtqAeef" Name="Create" ManuallySortedPins="true" />
+              <Patch Id="G4hHLkQ48y6N5lnArkHuIf" Name="Then" ManuallySortedPins="true" />
+              <Node Bounds="122,371,167,162" Id="A2spRvm3ypOOryH3yzUlua">
+                <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+                  <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+                  <CategoryReference Kind="Category" Name="Primitive" />
+                  <Choice Kind="ApplicationStatefulRegion" Name="ForEach" />
+                </p:NodeReference>
+                <Pin Id="RLhEd8KAuqDOhkxSSOtT9j" Name="Break" Kind="OutputPin" />
+                <ControlPoint Id="MpLHiKLf6QGNMZRVjfmAz1" Bounds="136,377" Alignment="Top" />
+                <ControlPoint Id="VGgn5MnoK0ZLMQrOFJahxR" Bounds="136,527" Alignment="Bottom" />
+                <Patch Id="JwsfJ310OnUNBX6x1MDuee" ManuallySortedPins="true">
+                  <Patch Id="I0QZO5YnyuuLfFifHgqP3O" Name="Create" ManuallySortedPins="true" />
+                  <Patch Id="UJvQYXJwUDNP7saNNpoes1" Name="Update" ManuallySortedPins="true">
+                    <Pin Id="AXhFD88mtNWQBUyqQrdvnJ" Name="Keep" Kind="OutputPin" />
+                    <Pin Id="VCPmnS0zWHYLFJUnqc2HDJ" Name="Index" Kind="InputPin" />
+                  </Patch>
+                  <Patch Id="LoZhpbqENAsMGt7gbZuO97" Name="Dispose" ManuallySortedPins="true" />
+                  <Node Bounds="134,412,67,19" Id="SowYIhr5GmwMvQYSpfJ3zY">
+                    <p:NodeReference LastCategoryFullName="Color.RGBA" LastDependency="VL.Addons.Color.vl">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="ProcessAppFlag" Name="FromKelvin" />
+                    </p:NodeReference>
+                    <Pin Id="Lz3FFNncE8DMA5g6W3b9gZ" Name="Node Context" Kind="InputPin" IsHidden="true" />
+                    <Pin Id="Au5afFNJgt2OCxsrWJ0EKM" Name="Input" Kind="InputPin" />
+                    <Pin Id="LlAi2uyxuZuLKsiut6K6Kx" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <ControlPoint Id="LlSBS7owO7fM1KaKYkmzFz" Bounds="240,516" />
+                  <ControlPoint Id="GLznNxPjcFlO7MNd4LonxT" Bounds="240,398" />
+                  <Node Bounds="238,424,39,19" Id="N03wfza2DMIL1LMWKzuwvR">
+                    <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="OperationCallFlag" Name="MOD" />
+                    </p:NodeReference>
+                    <Pin Id="UKNHYvzFbI8QXhBujaE8Vm" Name="Input" Kind="InputPin" />
+                    <Pin Id="D6xaiAOWBfUMSASKepS1kS" Name="Input 2" Kind="InputPin" DefaultValue="731" />
+                    <Pin Id="TQwibcbaWPyLXQkd4MxBdM" Name="Output" Kind="OutputPin" />
+                  </Node>
+                  <Node Bounds="238,462,25,19" Id="Fa5v9DfZdyuPdIQARm5HM4">
+                    <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                      <Choice Kind="OperationCallFlag" Name="=" />
+                    </p:NodeReference>
+                    <Pin Id="Sqg5WBeg1G6PNkjPdMb0Ao" Name="Input" Kind="InputPin" />
+                    <Pin Id="Pe8Th8DPYYYMFs1Od7ME2F" Name="Input 2" Kind="InputPin" />
+                    <Pin Id="DVoEbWoYLFePjK6Dyw0wbO" Name="Result" Kind="OutputPin" />
+                  </Node>
+                </Patch>
+              </Node>
+            </Patch>
+          </Node>
+          <Pad Id="KRKkVPfT6CrONHvXTXQpNz" Bounds="386,98,185,19" ShowValueBox="true" isIOBox="true" Value="For more information see:">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="Cq1uWBGIViwMJyWrDCyEtu" Bounds="554,98,302,19" ShowValueBox="true" isIOBox="true" Value="https://en.wikipedia.org/wiki/Color_temperature">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Link</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="FFFLIPQ8NR5MhXKwXvE9Ev" Bounds="308,452,353,19" ShowValueBox="true" isIOBox="true" Value="Quick and reduced sample of the provided color spectrum">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="QtBbDSkUn1uNtGsKgqVOsx" Bounds="46,693,619,55" ShowValueBox="true" isIOBox="true" Value="These colors can be used to emulate light source colors found in the real world (e.g. the sun, sky, fire), as well as general light temperature.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="T52o92Ql3U0Pj1wN2r83wK" Bounds="554,133,541,19" ShowValueBox="true" isIOBox="true" Value="https://tannerhelland.com/2012/09/18/convert-temperature-rgb-algorithm-code.html">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Link</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="QiFwoXKVLY3Mc4v7GCWary" Name="Create" />
+        <Patch Id="LjNGSuxOK43QaTVsosVYwa" Name="Update" />
+        <ProcessDefinition Id="O78FsVeRDpSO0Op88CMwlv">
+          <Fragment Id="Ko5NSMveDLVLl0HGdvnzUy" Patch="QiFwoXKVLY3Mc4v7GCWary" Enabled="true" />
+          <Fragment Id="T04SodT5qolMIPnyUm7uKn" Patch="LjNGSuxOK43QaTVsosVYwa" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="KBQ3VqICnsXPRJup04lzvP" Ids="UIYWeNOQnzNPgcnUfAicUg,I5XaeVKDQrzO6H8Zul8duB" />
+        <Link Id="A5zsFVhXWtQO5rM2xnR9gJ" Ids="PTsk5VXPPzhL0S0EtpWBN0,EL4E08R5QVuLmnW39lTyrl" />
+        <Link Id="QYDtUuUT8H8MRceUpkJ6ud" Ids="LlSBS7owO7fM1KaKYkmzFz,AXhFD88mtNWQBUyqQrdvnJ" IsHidden="true" />
+        <Link Id="Q6z0zIa2z01PUPnJ7rooBm" Ids="VCPmnS0zWHYLFJUnqc2HDJ,GLznNxPjcFlO7MNd4LonxT" IsHidden="true" />
+        <Link Id="Ad8lAsPxsNIMj3YLYHRIcr" Ids="GLznNxPjcFlO7MNd4LonxT,UKNHYvzFbI8QXhBujaE8Vm" />
+        <Link Id="POUtShupnA0LNU5Lo0zTpl" Ids="TQwibcbaWPyLXQkd4MxBdM,Sqg5WBeg1G6PNkjPdMb0Ao" />
+        <Link Id="QXzWcfhw7flMbJ1M9DZqlc" Ids="DVoEbWoYLFePjK6Dyw0wbO,LlSBS7owO7fM1KaKYkmzFz" />
+        <Link Id="EvnlLtTlgRHPPgwqg0HVkZ" Ids="MpLHiKLf6QGNMZRVjfmAz1,Au5afFNJgt2OCxsrWJ0EKM" />
+        <Link Id="IjcN9dnFJTiO6o1b615rkN" Ids="LlAi2uyxuZuLKsiut6K6Kx,VGgn5MnoK0ZLMQrOFJahxR" />
+        <Link Id="Kz65vJL8LNKMuDM27s1ZQV" Ids="GltvsgDnFf6MuV4t4mYiep,PtZShmNvhUNOnOLUfeASsF" />
+        <Link Id="JpWIQh0SJnmOJOFQo18WuF" Ids="PtZShmNvhUNOnOLUfeASsF,MpLHiKLf6QGNMZRVjfmAz1" />
+        <Link Id="I9dJpHh3BAILO6qu2gdza4" Ids="VGgn5MnoK0ZLMQrOFJahxR,NgeeaD59b6LNoJe11tOful" />
+        <Link Id="T8YR2Cfx4NhNdv3IhGSX87" Ids="NgeeaD59b6LNoJe11tOful,KOf1ebtyj9SPXX47m7Geq8" />
+      </Patch>
+    </Node>
+  </Patch>
+  <DocumentDependency Id="QMNMLI8GRsLNKJza33pca7" Location="../../vl/VL.Addons.Color.vl" />
+</Document>
