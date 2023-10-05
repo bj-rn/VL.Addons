@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="MxlSWT79pf1MYKHSwLzo8I" LanguageVersion="2023.5.3-0192-g8dd4ea9c96" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="QHA6BoYcvTXLTKMWQI0wp7" LanguageVersion="2023.5.3-0192-g8dd4ea9c96" Version="0.128">
   <NugetDependency Id="Q17KbXI0mcuMV42CAG18Pr" Location="VL.CoreLib" Version="2023.5.3-0192-g8dd4ea9c96" />
   <Patch Id="S25Gr1WMWcMQSRiHRWO4uq">
     <Canvas Id="GH8DZEWEW7hN2B8H0Xzxf8" DefaultCategory="Stride" CanvasType="FullCategory" />
@@ -16,13 +16,13 @@
       <Patch Id="R8yS9f66hKqPamToAb385Y">
         <Canvas Id="SEGevHNIoA4NfVQPE4QTGK" CanvasType="Group">
           <Pad Id="AipwsZsWZ1fLkeZHdMomDI" Comment="" Bounds="1688,2488,220,220" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="106,510,245,19" Id="QyweS2Sn288PWlnPcK4Vnt">
+          <Node Bounds="107,537,245,19" Id="QyweS2Sn288PWlnPcK4Vnt">
             <p:NodeReference LastCategoryFullName="Stride" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="RenderWindow" />
             </p:NodeReference>
             <Pin Id="R168ijTSX6lPRq49JjTJog" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="OImhO4Ia1oQP3zVjIONPVr" Name="Bounds" Kind="InputPin" DefaultValue="1386, 103, 512, 512">
+            <Pin Id="OImhO4Ia1oQP3zVjIONPVr" Name="Bounds" Kind="InputPin" DefaultValue="1385, 103, 512, 512">
               <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="TypeFlag" Name="Rectangle" />
               </p:TypeAnnotation>
@@ -35,9 +35,9 @@
             <Pin Id="KFas89tgZbxNhd5f8IprWd" Name="Multisample Count" Kind="InputPin" IsHidden="true" />
             <Pin Id="Bj1x0fD7s0CQT167itkrYA" Name="Input" Kind="InputPin" />
             <Pin Id="N09tEVhzrJQP797bn0kbGW" Name="Render View" Kind="InputPin" />
-            <Pin Id="H05NC6jz4AWOAELriOI8n7" Name="Title" Kind="InputPin" DefaultValue="AlphaAdd" />
+            <Pin Id="H05NC6jz4AWOAELriOI8n7" Name="Title" Kind="InputPin" DefaultValue="BlendStates" />
             <Pin Id="RwPgqN4NxCINb5bTMYhi75" Name="Clear Flags" Kind="InputPin" IsHidden="true" />
-            <Pin Id="DhtYpD9PZj1LpIaEd4qCSx" Name="Clear Color" Kind="InputPin" />
+            <Pin Id="DhtYpD9PZj1LpIaEd4qCSx" Name="Clear Color" Kind="InputPin" DefaultValue="0.49999994, 0.49999994, 0.49999994, 1" />
             <Pin Id="J6cPJPtjz1MMmVq3mIJOPN" Name="Clear Depth" Kind="InputPin" IsHidden="true" />
             <Pin Id="Q9ITL73ZhmIPJsVF5l8Qbm" Name="Clear Stencil" Kind="InputPin" IsHidden="true" />
             <Pin Id="TNXpkhnIxYmPACqYkKAr1s" Name="Clear" Kind="InputPin" />
@@ -50,15 +50,6 @@
             <Pin Id="IbKQhILNZaOLxS7iiSIzNR" Name="Input Source" Kind="OutputPin" />
             <Pin Id="CPlw5YaGZA0K9ntrODhagP" Name="Back Buffer" Kind="OutputPin" />
             <Pin Id="DdDNwcTavp9MCOo4OaWB1W" Name="Depth Buffer" Kind="OutputPin" />
-          </Node>
-          <Node Bounds="545,314,61,19" Id="Be6kDPiySzyMTLj3xCURo2">
-            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="AlphaAdd" />
-            </p:NodeReference>
-            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
-            <Pin Id="SJIiuLnS7J1NAKdlfTTMEW" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="K0igLlv2L85M2YcJRr18kA" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="142,173,333,246" Id="F0vISh1dBjCNgRVbD91tGa">
             <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
@@ -171,6 +162,174 @@
               </p:TypeArguments>
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="557,314,64,19" Id="POlBKsLW8HnOKRLLziNO3v">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="BlendState" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="RAFLz87htZXQGltZH2sgV7" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HXcvc1OQrN7OxKdIiXR0sI" Name="BlendState" Kind="InputPin" />
+            <Pin Id="CpbcVICavQZLl1t01O3OB3" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="PX40ccC11jFPNNlWJ2fh1j" Comment="BlendState" Bounds="559,143,105,158" ShowValueBox="true" isIOBox="true" Value="TextDefault">
+            <p:TypeAnnotation LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="BlendStateEnum" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">VerticalList</p:selectionmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="FvObZjXLuU7NtbVQ3mY2hc" Bounds="626,321,151,20" ShowValueBox="true" isIOBox="true" Value="convenience node for :">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="798,351,35,19" Id="N5LidNW2j3VMaxe087dY9Z">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="BlendStateDescription" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Graphics" NeedsToBeDirectParent="true">
+                  <p:OuterCategoryReference Kind="Category" Name="Stride" NeedsToBeDirectParent="true" />
+                </p:OuterCategoryReference>
+              </CategoryReference>
+              <Choice Kind="ProcessAppFlag" Name="Add" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="INpkytYqIdZNy0uOWm0LIr" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="S33PA9dtczvLVxVHdcjpMo" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="886,350,61,19" Id="Os72PpacE9KOk1BlI2h7Lr">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="AlphaAdd" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="LcPclXdVDj3MAExDuZQDQp" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HeCCgHstqM4LB9TDz8QSMF" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="798,381,41,19" Id="RCICncR3t1nOWYiueVr1Du">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="BlendStateDescription" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Graphics" NeedsToBeDirectParent="true">
+                  <p:OuterCategoryReference Kind="Category" Name="Stride" NeedsToBeDirectParent="true" />
+                </p:OuterCategoryReference>
+              </CategoryReference>
+              <Choice Kind="ProcessAppFlag" Name="Blend" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="MoiBqF23nLAOmWcRb3M4X3" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HhuwSI4rPaUPXkriK123i4" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="798,321,56,19" Id="Qs1mmU28G4fPUt9FkEs172">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Disabled" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="EcqrnZFBJoMNqKhq8BQvhv" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="STpkgsPm9dSQGvoJrOza1s" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="886,320,53,19" Id="K4LIZrsbaElM5ki3pCuAbq">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="BlendStateDescription" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Graphics" NeedsToBeDirectParent="true">
+                  <p:OuterCategoryReference Kind="Category" Name="Stride" NeedsToBeDirectParent="true" />
+                </p:OuterCategoryReference>
+              </CategoryReference>
+              <Choice Kind="ProcessAppFlag" Name="Multiply" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="KzXQDLNIaIAPjto3wq7ITL" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="U0quHsZS0JOLGAB1ZjSeOG" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="886,380,70,19" Id="N9J4QMwNtjIMVFecMUt5LM">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="TextDefault" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="VhOkwRPTyypLGOVik3y3uV" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VFrXy5fZT91PAIjnDXK4y1" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="980,320,39,19" Id="S99pW4XKPUQLwpxW8ol0Eo">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Keep" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="KTWlO4eYasWMPF8tcajaQI" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RUBJtMyDfjNMm3Tm0NFGGN" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="980,350,85,19" Id="Jpk2SifJ232NxlRvRJpWAm">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ConstantFactor" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="GVNXaPHxXDsPWlpyuHLBw0" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="I7a7bxpr2U7NysU3iiuYo8" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="980,380,93,19" Id="S0oFPveyaqDPGjbWTnrKXx">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="BlendDestination" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="VQhYNyHCqqYM7zYvbghaUY" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OnKxUflNwUnO9aSu3Qizyk" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="1089,319,77,19" Id="M3haMyyXU5BP6CpGs4grSG">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ReplaceAlpha" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="Rpxq3SE3z7qQMrTZ3PGHdD" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CqdjU9kxK79OZOhcRDwiTt" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="1089,349,79,19" Id="DHWOFIO9vmZO8HO2Fg6Ihs">
+            <p:NodeReference LastCategoryFullName="Stride.Graphics.BlendStateDescription" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="MultiplyAlpha" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="CmGmJqzFHVUPKheCNXT3mM" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="E1mf7v9ANHqLd6z0DtbLaI" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="OLzbtcdvfZrLGLnqcRVqeJ" Bounds="541,431,195,19" ShowValueBox="true" isIOBox="true" Value="BlendState settings taken from:">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="H7VuQwdZfX2M5mhUdiOlQv" Bounds="544,455,547,19" ShowValueBox="true" isIOBox="true" Value="https://github.com/mrvux/FeralTic/blob/master/Core/DX11/States/DX11BlendStates.cs">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Link</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="STVq1vggEYIObsgrdkEQUb" Bounds="546,489,355,77" ShowValueBox="true" isIOBox="true" Value="Added all of them though I can't make sense of some. If you do please consider helping out with a reference patch.&#xD;&#xA;&#xD;&#xA;b">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="KEPLpmhjLZVQIRA1UCbCCx" Name="Create" />
         <Patch Id="A0Eu5QHBEa9NRnFPP1qryh" Name="Update" />
@@ -184,13 +343,14 @@
         <Link Id="K12y0qfGGC1MGLNNvG3vkB" Ids="BILa4tD8zkMOWa0u4FNO4d,L5RH24lQoT5LrgBnGJ95Tj" />
         <Link Id="PXZznINdVDOP2aNYn9aA2w" Ids="A4zusWGNnKCLWf1KjswDDh,GcpjA6a8jXjQXwY0lqcUnl" />
         <Link Id="DBhkrSMRx9DLgO4865VSgp" Ids="Gjp1ScppcAQNZpw3ReJhwq,S9ebONThcywP9XHHFMzlqC" />
-        <Link Id="HUz3QX1ap8BNRKHn6wMTp1" Ids="JbTJ4T7uPXWPPBpsJdtFx7,Bj1x0fD7s0CQT167itkrYA" />
         <Link Id="OrpkF5eyZKHNYLr246wtSa" Ids="G0YDdf3Opf6PpT7jrTu8Y4,U4uBFpjzz2rOHUJZYpFtjE" />
         <Link Id="CXpb3ui2xjhOmDKxijHv0Q" Ids="CDwoKXLdBw7N8rkIDNcfYf,Q6sdmF2HTe3M3wCsuP8ABV" />
         <Link Id="MMwWq0dQtiKNtWYJLIvGe3" Ids="CYDGGIyPDATM8FuCdNRAXx,Q7PW7jFp3UxQIfdEGuuFSh" />
         <Link Id="U1Lxir1o9XZQU4NTnXFKsx" Ids="V8S69AQAiOcLuqnYJWUFqg,CYDGGIyPDATM8FuCdNRAXx" />
         <Link Id="RDLu2KZCZ2UPfR5BZaQnPH" Ids="NAuRau5O4Y3MGQgdRaTKh2,HJGSbXlUh6hL8SyQCYkSA6" />
-        <Link Id="ArTTlhz9vfoN5f5PRrT13E" Ids="K0igLlv2L85M2YcJRr18kA,K5mJ0Jxn5ZgOzwsBeemmEx" />
+        <Link Id="JnVlXIpVAhjPqIKVMgqAU9" Ids="CpbcVICavQZLl1t01O3OB3,K5mJ0Jxn5ZgOzwsBeemmEx" />
+        <Link Id="L8rOiUydJQPLT3BIYc9Psj" Ids="PX40ccC11jFPNNlWJ2fh1j,HXcvc1OQrN7OxKdIiXR0sI" />
+        <Link Id="PVF6RcNPDAoOIUOjZpVUpe" Ids="JbTJ4T7uPXWPPBpsJdtFx7,Bj1x0fD7s0CQT167itkrYA" />
       </Patch>
     </Node>
   </Patch>
