@@ -4,7 +4,7 @@
 [TextureSource]
 [Category("Source")]
 [Summary("Returns a halo texture derived from a 1d texture")]
-shader HaloAddon_Gradient_Internal_TextureFX : TextureFX
+shader AddonHalo_Gradient_Internal_TextureFX : TextureFX
 {
     [Default(0.0f)]
 	compose ComputeFloat InnerRadius;
@@ -13,10 +13,10 @@ shader HaloAddon_Gradient_Internal_TextureFX : TextureFX
 	compose ComputeFloat OuterRadius;
 
     [Default(0.0f, 0.0f, 0.0f, 0.0f)]
-    compose ComputeFloat4 BackgroundColor;
+    compose ComputeColor BackgroundColor;
 
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 HaloColor;
+    compose ComputeColor HaloColor;
 
     [Default(0.5f)]
 	compose ComputeFloat Gamma;
