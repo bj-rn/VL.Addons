@@ -5,15 +5,15 @@
 [Category("Source")]
 [Tags("fractal")]
 [Summary("Renders a Mandelbrot fractal texture")]
-shader MandelbrotAddon_Internal_TextureFX : TextureFX
+shader AddonMandelbrot_Internal_TextureFX : TextureFX
 {
     float4x4 Transform;
     
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 BackgroundColor; 
+    compose ComputeColor BackgroundColor; 
     
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 Color;
+    compose ComputeColor Color;
     
     
     int Iterations = 16;
