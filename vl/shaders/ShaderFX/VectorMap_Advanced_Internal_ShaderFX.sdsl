@@ -1,0 +1,27 @@
+[Category("")]
+[Tags("")]
+[Summary("")]
+
+
+shader VectorMap_Advanced_Internal_ShaderFX : ComputeFloat4, AddonShaderUtils
+{
+    compose ComputeFloat4 ColorIn;
+    stage int type = 0;
+
+    override float4 Compute()
+    {
+        float4 color = ColorIn.Compute();
+        float3 rgb = color.rgb;
+        
+        switch(type)
+        {
+            case 0 : rgb = rgb; break; //RGBA
+            case 1 : rgb = RGBtoHSV(rgb); break;
+            case 2 : rgb = RGBtoHCV(rgb); break;
+            case 3 : rgb = RGBToCMYK(rgb); break;
+            case 4 : rgb = RGBtoOKLAB(rgb); break;
+        }
+
+        return float4(rgb, color.a);
+    }
+};
