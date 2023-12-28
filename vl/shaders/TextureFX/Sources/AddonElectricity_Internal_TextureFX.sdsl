@@ -6,7 +6,7 @@
 [Summary("Returns an electricity texture")]
 [OutputFormat("R16G16B16A16_Float")]
 
-shader ElectricityAddon_Internal_TextureFX : TextureFX
+shader AddonElectricity_Internal_TextureFX : TextureFX
 {
     // set by wrapper patch
     [Default(0.0f)]
@@ -15,10 +15,10 @@ shader ElectricityAddon_Internal_TextureFX : TextureFX
     Texture3D NoiseTexture;
 
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 BackgroundColor; 
+    compose ComputeColor BackgroundColor; 
     
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 ElectricityColor;
+    compose ComputeColor ElectricityColor;
         
     [Default(0.25f)]
     compose ComputeFloat Height;
