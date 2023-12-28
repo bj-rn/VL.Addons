@@ -10,10 +10,10 @@ shader Grain_Source_Internal_TextureFX : TextureFX, AddonShaderUtils
     compose ComputeFloat Seed;
 
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 ColorA;
+    compose ComputeColor ColorA;
 
     [Default(0.0f, 1.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 ColorB;
+    compose ComputeColor ColorB;
 
     stage override float4 Shading()
     {   
