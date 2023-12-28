@@ -42916,7 +42916,7 @@
                   <ControlPoint Id="DndRWY5szRsMEJ37djMflT" Bounds="254,251" />
                   <ControlPoint Id="HKBdw9rtVLgLmkapKtgVpl" Bounds="274,274" />
                   <ControlPoint Id="JoxMw4U9NsZNzZdDbzIHw2" Bounds="94,372" />
-                  <ControlPoint Id="UWeo2Z67DdVO65II9PVArO" Bounds="295,296" />
+                  <ControlPoint Id="UWeo2Z67DdVO65II9PVArO" Bounds="294,296" />
                   <Node Bounds="92,306,205,19" Id="IsorywDNRd4OEjFFBe6d4w">
                     <p:NodeReference LastCategoryFullName="Stride.Textures.Source.Noise" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)" OverloadStrategy="AllPinsThatAreNotCommon">
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -42986,6 +42986,9 @@
                 <Link Id="RB7xrls5hNAP6cNDBTuTLh" Ids="FGJCTKSYhouOwGVDdWjDcz,GVJpio4QTD9Nln5eJ2hPL4" IsHidden="true" />
                 <Link Id="PFO4br118FULc9hWfqJ9oH" Ids="GfcPEyCxArFPqzUzEHqgJC,EA3haUrz108ONVMzhID99I" />
                 <Link Id="SXewhZmDv6QOaulFSgUBFL" Ids="B4KVhe6TY5YOMXMerXrbDI,GfcPEyCxArFPqzUzEHqgJC" IsHidden="true" />
+                <Link Id="Iki3uCONUPdM977A57Qaoi" Ids="Rv9qs424HrcOINqLELB9pE,Jgdgu6FSKhaLiZglegW5pd" />
+                <Link Id="UfgaLnN5VteLAFwG9VvfE9" Ids="DndRWY5szRsMEJ37djMflT,RNwVoFomVX0LZuzh84vHV6" />
+                <Link Id="Vwdj6Ns2jiJMs0ouWmy5MO" Ids="HKBdw9rtVLgLmkapKtgVpl,Ae6EFjRRQv6OEaVX6NYROk" />
                 <Patch Id="OixK0DfpabTLRO8CS5maOf" Name="Create" />
                 <Patch Id="NvIjmUDeASuMKlQMNwMhlJ" Name="GetTexture">
                   <Pin Id="LLlz5Q7FgGINDjeJ22rnIV" MergeId="6913" Name="Output" Kind="OutputPin">
@@ -42998,7 +43001,11 @@
                   <Pin Id="J0NvWG5x91yQdGZmV1Mm42" Name="Enabled" Kind="InputPin" />
                 </Patch>
                 <Patch Id="U8lfioWqHIuO6MFB5r9MQJ" Name="SetParameters">
-                  <Pin Id="MxZlxn5tpv6L5Qz0Yx4yB2" Name="Type" Kind="InputPin" />
+                  <Pin Id="MxZlxn5tpv6L5Qz0Yx4yB2" Name="Type" Kind="InputPin">
+                    <p:TypeAnnotation LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Stride.TextureFX.vl">
+                      <Choice Kind="TypeFlag" Name="NoiseType" />
+                    </p:TypeAnnotation>
+                  </Pin>
                   <Pin Id="FGJCTKSYhouOwGVDdWjDcz" Name="Color A" Kind="InputPin" />
                   <Pin Id="B4KVhe6TY5YOMXMerXrbDI" Name="Color B" Kind="InputPin" />
                   <Pin Id="VrXtaAuik5eO8uu8Yx5TTd" Name="Scale" Kind="InputPin" />
@@ -43031,9 +43038,6 @@
                 <Patch Id="JIPfAOFjXQRNJ4nJCL3TYj" Name="SetOutputSize">
                   <Pin Id="D82SuJboDSSMOTU5QhzdaE" MergeId="696136" Name="Output Size" Kind="InputPin" />
                 </Patch>
-                <Link Id="Iki3uCONUPdM977A57Qaoi" Ids="Rv9qs424HrcOINqLELB9pE,Jgdgu6FSKhaLiZglegW5pd" />
-                <Link Id="UfgaLnN5VteLAFwG9VvfE9" Ids="DndRWY5szRsMEJ37djMflT,RNwVoFomVX0LZuzh84vHV6" />
-                <Link Id="Vwdj6Ns2jiJMs0ouWmy5MO" Ids="HKBdw9rtVLgLmkapKtgVpl,Ae6EFjRRQv6OEaVX6NYROk" />
               </Patch>
             </Node>
             <!--
