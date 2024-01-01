@@ -10,13 +10,13 @@ shader Colorize_Internal_TextureFX : FilterBase, ComputeFloat4
 {
     [Color]
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 ColorA;
+    compose ComputeColor ColorA;
 
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 ColorB;
+    compose ComputeColor ColorB;
 
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 ColorC;
+    compose ComputeColor ColorC;
     
     
     float4 Filter(float4 tex0col)
