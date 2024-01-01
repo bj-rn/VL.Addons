@@ -11,13 +11,13 @@ shader Bump_Internal_TextureFX : FilterBase
     float3 LightDirection = float3(0.25f, -0.5f, 0.1f);//light direction in world space
 
     [Default(0.15f, 0.15f, 0.15f, 1.0f)]
-    compose ComputeFloat4 AmbientColor;
+    compose ComputeColor AmbientColor;
 
     [Default(0.85f, 0.85f, 0.85f, 1.0f)]
-    compose ComputeFloat4 DiffuseColor;
+    compose ComputeColor DiffuseColor;
 
     [Default(0.35f, 0.35f, 0.35f, 1.0f)]
-    compose ComputeFloat4 SpecularColor;
+    compose ComputeColor SpecularColor;
 
     [Default(25.0f)]
     compose ComputeFloat LightPower;
