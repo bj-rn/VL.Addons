@@ -1,10 +1,10 @@
 [Summary("Color Matrix")]
 [Tags("Color Grading")]
 
-shader ColorMatrix_Advanced_Internal_ShaderFX : ComputeFloat4, ColorMatrixOperations
+shader ColorMatrix_Advanced_Internal_ShaderFX : ComputeColor, ColorMatrixOperations
 {
     [Default(1.0, 1.0, 1.0, 1.0)]
-    compose ComputeFloat4 Color;
+    compose ComputeColor Color;
 
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
     compose ComputeFloat4 Channel0;
