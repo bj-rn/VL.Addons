@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="Oh0iWaScmZjO08nCNIHiCr" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="Oh0iWaScmZjO08nCNIHiCr" LanguageVersion="2023.5.3-0423-gee17475a3a" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0423-gee17475a3a" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -20,8 +20,12 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1385, 103, 960, 540" />
+            <Pin Id="Qq3PUxKjEurMxDdO7y7VGF" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1184.5714, 89.14286, 960, 540" />
+            <Pin Id="T4rT0br7kgEQNKMG1aHzfZ" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
+            <Pin Id="J6axrlATX1IO0a8pnEGTx4" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="R6iOB6xGnYCN2n5U6c7mjs" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="Uc6gTBcfHsWLoBowhDgFGz" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
             <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="AutoColor" />
             <Pin Id="PP1L6yaKAE8MUEwZCtRtQQ" Name="Clear Color" Kind="InputPin" />
@@ -35,6 +39,7 @@
             <Pin Id="D4jSsSBNlqcMaIC9J9wZv3" Name="Output" Kind="OutputPin" />
             <Pin Id="Gfm1vXQmLgtPwTHejCtSP8" Name="Client Bounds" Kind="OutputPin" />
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
+            <Pin Id="CBYPRfS9wBvNTrwUagDXhq" Name="Back Buffer" Kind="OutputPin" IsHidden="true" />
           </Node>
           <Node Bounds="100,476,185,19" Id="IDpIdcqwikqL7hvFkM9CoV">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.ColorManipulation" LastDependency="VL.Addons.Stride.vl">
@@ -43,6 +48,7 @@
               <Choice Kind="ProcessAppFlag" Name="AutoColor" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="DP1LVVFBUGZOxQetrzyUJE" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="DwlV1L05nkcP41w4rQq5jx" Name="Input" Kind="InputPin" />
             <Pin Id="BpDvtY7N47PPmHyWK7n8yW" Name="Accuracy" Kind="InputPin" />
             <Pin Id="EYh3bT3qXIDNehEqav2TlJ" Name="Auto Gamma" Kind="InputPin" />
@@ -50,6 +56,10 @@
             <Pin Id="JJis0wuPfWPMv9I2DnCOub" Name="Fade" Kind="InputPin" />
             <Pin Id="UhvaYFdd5hbLs04gpGpOfO" Name="Reset" Kind="InputPin" />
             <Pin Id="VQh0rpUujmYOA9UBYt4AGk" Name="Control" Kind="InputPin" />
+            <Pin Id="FpfryuODpjbLFvqGoMzAO3" Name="Output Texture" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MR91lIfQ9IzNKuICZFktoG" Name="Output Size" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T7WRLV1LZJlLGRYcyYDrtt" Name="Output Format" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RQPAuXsp2eaQLcxDzeSFgD" Name="Render Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="NBGn5bJIf2GMRk3QPe7uDo" Name="Enabled" Kind="InputPin" />
             <Pin Id="Kub8h5BcV4WMojqdALjaZJ" Name="Output" Kind="OutputPin" />
           </Node>
@@ -58,8 +68,10 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FileTexture" />
             </p:NodeReference>
+            <Pin Id="V6dNIhismrtMAKOHU3I1Uz" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="NIBIrpBpemyMdMj3P5lQDF" Name="Path" Kind="InputPin" />
             <Pin Id="MMFpd3rKraUNCCpMwetEkN" Name="Generate Mipmaps" Kind="InputPin" />
+            <Pin Id="UydIPzqYzyhLb7EWvTfYJe" Name="Is sRGB" Kind="InputPin" IsHidden="true" />
             <Pin Id="Tjh5YiLqCr5QcdcpvuuT8Z" Name="Premultiply Alpha" Kind="InputPin" />
             <Pin Id="QkhpQhXwQsPNFrmSPgapAA" Name="Compress" Kind="InputPin" />
             <Pin Id="HRQ9n9Ht0wyQE5yeur7cC5" Name="Alpha Format" Kind="InputPin" />
@@ -116,6 +128,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="ChangeFormat" />
             </p:NodeReference>
+            <Pin Id="HuC2A3qV23HLQtD7PAbsfX" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="ISi30MtuqNTNI11TVBKdMo" Name="Input" Kind="InputPin" />
             <Pin Id="BF4c6nWs78sPuRMofGZ5Io" Name="Target Format" Kind="InputPin" DefaultValue="R32G32B32A32_Float" />
             <Pin Id="Iy1IKcT1ohaOn3IA4tK24q" Name="Always Generate Mipmaps" Kind="InputPin" />
@@ -144,7 +157,8 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
-  <NugetDependency Id="NuXO5jnsV57LwdRRiajieH" Location="VL.Skia" Version="2023.5.3-0019-g04bfa216f7" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0423-gee17475a3a" />
+  <NugetDependency Id="NuXO5jnsV57LwdRRiajieH" Location="VL.Skia" Version="2023.5.3-0423-gee17475a3a" />
   <DocumentDependency Id="NRHLD6trTjIMwLKrMoK0qA" Location="../../../vl/VL.Addons.Stride.vl" />
+  <NugetDependency Id="AszrB329A9lOnmr41nghsM" Location="VL.Stride.TextureFX" Version="2023.5.3-0423-gee17475a3a" />
 </Document>
