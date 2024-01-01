@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="OEqZMyM1BUZM8LvENKH7wU" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="OEqZMyM1BUZM8LvENKH7wU" LanguageVersion="2023.5.3-0423-gee17475a3a" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0423-gee17475a3a" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -21,6 +21,7 @@
               <Choice Kind="ProcessAppFlag" Name="OpticalFlow (LK)" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="KmOjuxfn9gCQIkGtiBJjCC" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="ABWGbPqN1FkOAfablc4AVd" Name="Input" Kind="InputPin" />
             <Pin Id="CW4lRnnlK9sOsyLMhsAka2" Name="PreSmooth" Kind="InputPin" />
             <Pin Id="LRJCET34vdwOURELSMFts4" Name="PostSmooth" Kind="InputPin" />
@@ -33,6 +34,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Brush" />
             </p:NodeReference>
+            <Pin Id="FyEdjgtl43tLAROVM6x0Oq" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="AePcrkIvn3YLOTDi1ZIBGY" Name="Size" Kind="InputPin" />
             <Pin Id="I3cI4sbi8VhNyrDZlr9K5e" Name="Index" Kind="InputPin" />
             <Pin Id="Bql1sjNQZSTM3izfDbvkZZ" Name="Pos" Kind="InputPin" />
@@ -59,6 +61,7 @@
               <Choice Kind="ProcessAppFlag" Name="FluidSolver" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="GzKNU5SUdtPNFY1oHMntsf" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="BDMoTPh5kOpPwYpb7LBW4u" Name="Input" Kind="InputPin" />
             <Pin Id="NdXIhsHj665MrmIpOy93Hk" Name="Iteration" Kind="InputPin" />
             <Pin Id="Hmv2WY6TUByNphLWNIxVTQ" Name="V Flow Dims" Kind="InputPin" />
@@ -66,6 +69,8 @@
             <Pin Id="UQdtvvz4639OOMUeFos4qT" Name="Timestep" Kind="InputPin" />
             <Pin Id="VHeptS1Cb2DQYFf2Eg9LsB" Name="OpticalFlow" Kind="InputPin" />
             <Pin Id="TpvW5njZd59NI3LVyhr3oe" Name="Output Size" Kind="InputPin" />
+            <Pin Id="FK21lB6xpQQOyaLadPbUJB" Name="Output Format" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AYuSZEjSmy6LXOg7NyzAux" Name="Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="HBY7h6KX31wMC17G14F5Ia" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="100,98,145,19" Id="MjDPLFRhQWJN5QHmegNijW">
@@ -76,15 +81,22 @@
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Mouse" />
             </p:NodeReference>
+            <Pin Id="D46NwAOQUZPMEubCGGBlxj" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="E0AgOli1HgWLnYQndfIv2k" Name="Camera" Kind="InputPin" />
             <Pin Id="BNbfwn5cTwSQHXDOYdCqeH" Name="Output" Kind="OutputPin" />
             <Pin Id="UaqbG0rNcMlLQpUDuav79s" Name="Position in World" Kind="OutputPin" />
             <Pin Id="LBMDF32Omw4LCn9UdohJfM" Name="Ray" Kind="OutputPin" />
             <Pin Id="VyFL16rS8bmMdAbz7nURMa" Name="Position in Projection" Kind="OutputPin" />
+            <Pin Id="ULAH7R9SLsZMlqiOgwpWpl" Name="Position" Kind="OutputPin" IsHidden="true" />
             <Pin Id="IvQmsLm6ZfzO34b8YVXsTg" Name="Left Pressed" Kind="OutputPin" />
             <Pin Id="EUWjrO9yhg9MVmj746ZYW8" Name="Middle Pressed" Kind="OutputPin" />
             <Pin Id="MA3Ymm2B2aJNrCV4nGxVQj" Name="Right Pressed" Kind="OutputPin" />
+            <Pin Id="NSIDbeHzRPNO96y9XmiyZR" Name="Extended 1 Pressed" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="KRvVgQ3FOJeMBNeQHEfjsF" Name="Extended 2 Pressed" Kind="OutputPin" IsHidden="true" />
             <Pin Id="Nbjfdw9U1CJOnhnQkFseAE" Name="Mouse Wheel Delta" Kind="OutputPin" />
+            <Pin Id="QZwVFZUkZAqQdlidBO9LmJ" Name="Surface Size" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="FO94AxeSD12MrXG5dbvzD0" Name="Surface Aspect Ratio" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="OSkXyDgYEWILOH32aMEpUd" Name="Mouse Device" Kind="OutputPin" IsHidden="true" />
           </Node>
           <Node Bounds="102,680,85,19" Id="IBhCXfF5N0MOYzNKhEKlQq">
             <p:NodeReference LastCategoryFullName="Stride" LastDependency="VL.Stride.vl">
@@ -92,10 +104,12 @@
               <CategoryReference Kind="Category" Name="Stride" NeedsToBeDirectParent="true" />
               <Choice Kind="ProcessAppFlag" Name="RootScene" />
             </p:NodeReference>
+            <Pin Id="NgcXvClBd77Pr9YKjd4puY" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="C1LnwllS5DJP8bKmIT3db7" Name="Child" Kind="InputPin" />
             <Pin Id="CzUqljXRqLwMCvqq8hdv26" Name="Child 2" Kind="InputPin" />
             <Pin Id="PRu7Hv7lpbtOeL8hJRoPlG" Name="Child 3" Kind="InputPin" />
             <Pin Id="HpYs8wv9hDALy2PaNs2frr" Name="Child 4" Kind="InputPin" />
+            <Pin Id="H8Ebzp5IH0kLNEujs5BiCQ" Name="Child Scenes" Kind="InputPin" IsHidden="true" />
             <Pin Id="U8kiYciHTrkM4VyzsQnjgj" Name="Enabled" Kind="InputPin" />
             <Pin Id="HEKPDqW2dp0PsOZHop0zrJ" Name="Output" Kind="OutputPin" />
           </Node>
@@ -104,6 +118,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Quad" />
             </p:NodeReference>
+            <Pin Id="IpOHjIwvpDcLMu0JMLIQKV" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="ONyCfsRpGZeMvUnvKWX4Np" Name="Transformation" Kind="InputPin" />
             <Pin Id="HEqOyBhrIhVN110dWCsV2i" Name="Texture" Kind="InputPin" />
             <Pin Id="B7TkJb6r4NZP3418nO1M4j" Name="Color" Kind="InputPin" />
@@ -137,8 +152,13 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="SceneWindow" />
             </p:NodeReference>
-            <Pin Id="BjSEaoCJAtHMvPEeVGIQ6E" Name="Bounds" Kind="InputPin" DefaultValue="1387, 101, 682, 682" />
+            <Pin Id="GfHbi6HxwgYLIniW6DlHtW" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BjSEaoCJAtHMvPEeVGIQ6E" Name="Bounds" Kind="InputPin" DefaultValue="1386.8572, 100.57143, 681.7143, 681.7143" />
             <Pin Id="QHAHVQVMb6ZNJucRzkKNL2" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="JpcLGlVbKNdNJ7uJuAQR48" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GcEJq9i0hs7LGv6LG4dn8d" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RlpnuUdY9TrNPihG458E99" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VVkcAtwLi82NcFxVmZnmry" Name="Depth Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="Vls9lFvUrNHOJVmdmAdquy" Name="Input" Kind="InputPin" />
             <Pin Id="T1ZrCH4XDmmPvezt89R5ES" Name="Camera" Kind="InputPin" />
             <Pin Id="N3iRYuRKgVqMMjsenQGmBv" Name="Enable Default Camera" Kind="InputPin" DefaultValue="False" />
@@ -147,12 +167,24 @@
             <Pin Id="R2r4g0k4QMlNY4BXc44iAj" Name="Clear" Kind="InputPin" />
             <Pin Id="R7S8PpuqnfBMlLG949caMJ" Name="Post Effects" Kind="InputPin" />
             <Pin Id="VUDgJfV70XTQCYB6EGDb0Y" Name="Enable Default Post Effects" Kind="InputPin" />
+            <Pin Id="H6xjhVHJPX2NggYEQWIG7o" Name="Render Group Mask" Kind="InputPin" IsHidden="true" />
             <Pin Id="QwnlyMcPDBvOu8D7siAWmv" Name="Enable Keyboard Shortcuts" Kind="InputPin" />
+            <Pin Id="MX5SFOoxodwLJuSu2nxeus" Name="Model Effect Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LsUBXKLueXCMCNBjCFNLox" Name="Additional Scene Renderers" Kind="InputPin" IsHidden="true" />
             <Pin Id="MIj0mymKd77NCaYfrp7mtY" Name="Enabled" Kind="InputPin" />
             <Pin Id="L2TPTpXV0KqPGrT5rImQDT" Name="Present Interval" Kind="InputPin" />
+            <Pin Id="ReehDaqN7yKNDt2cOZJvsS" Name="MSAALevel" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BeaFdCDKgSHPI6GNqfPy8T" Name="MSAAResolver" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NDYoHdjCIQGLzKKA4EXGAI" Name="Light Shafts" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JIF8Uy3C1meONEk2YPbEp1" Name="VR Settings" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OEpFojdqFz3NQGcbz6HKWq" Name="Viewport Settings" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DkYfDG5Fs0VLZoGE8Xuk7J" Name="Subsurface Scattering Blur Settings" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Tz1qgmPbwZfQZIsOob6pnD" Name="Bind Depth As Resource During Transparent Rendering" Kind="InputPin" IsHidden="true" />
             <Pin Id="Osntgn9LCErMLKivhrQSOJ" Name="Output" Kind="OutputPin" />
             <Pin Id="E33zFCxhQKON9cwU64binN" Name="Client Bounds" Kind="OutputPin" />
             <Pin Id="UUsrWlPrpPQMXMpxFum1n3" Name="Input Source" Kind="OutputPin" />
+            <Pin Id="Af1KbOkUL7uMRCqpiyKgal" Name="Back Buffer" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="PY1ppQtLPgYM5ZIBtfdXZJ" Name="Depth Buffer" Kind="OutputPin" IsHidden="true" />
           </Node>
           <Pad Id="ByQYMeY8cUhLTGMwnBPrgG" Comment="V Flow Dims" Bounds="198,304,52,15" ShowValueBox="true" isIOBox="true" Value="1024">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -344,6 +376,7 @@
               <Choice Kind="ProcessAppFlag" Name="OpticalFlow (HS)" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">Low</p:HelpFocus>
+            <Pin Id="DVTWbwFzUzpNbEJTRUcabq" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="D9lJmKo7pA7O6K39pmtWYi" Name="Input" Kind="InputPin" />
             <Pin Id="KKBU7w3cWruN3beaWUMcFX" Name="PreSmooth" Kind="InputPin" />
             <Pin Id="BfGuCCdIbAPLT6rutiHtBk" Name="PostSmooth" Kind="InputPin" />
@@ -413,6 +446,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0019-g04bfa216f7" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0423-gee17475a3a" />
   <DocumentDependency Id="Kx39dx7ohwNLPkyTrEI7G9" Location="../../../vl/VL.Addons.Stride.vl" />
+  <NugetDependency Id="K1go9lqfJDmQdQHbrLxXfa" Location="VL.Stride.TextureFX" Version="2023.5.3-0423-gee17475a3a" />
 </Document>
