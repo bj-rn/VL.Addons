@@ -19,17 +19,17 @@ shader SiftHSV_Internal_TextureFX : FilterBase
     compose ComputeFloat NONMatch;
 
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 RefCol;
+    compose ComputeColor RefCol;
 
 
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 ReplaceMatchRefColor;
+    compose ComputeColor ReplaceMatchRefColor;
 
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
-    compose ComputeFloat4 ReplaceNONmatchRefColor;
+    compose ComputeColor ReplaceNONmatchRefColor;
 
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
-    compose ComputeFloat4 ReferenceColor;
+    compose ComputeColor ReferenceColor;
 
     bool SwitchMatchColTex;
     bool SwitchNONmatchColTex;
