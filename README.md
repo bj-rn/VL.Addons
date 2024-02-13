@@ -1,4 +1,4 @@
-# VL.Addons
+VL.Addons
 [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/VL.Addons?style=flat-square)](https://www.nuget.org/packages/VL.Addons)
 
 A place to gather contributions by the vvvv community that:
@@ -8,7 +8,7 @@ A place to gather contributions by the vvvv community that:
 - get lost in the chat or forum otherwise
 
 
-## Using the library
+# Using the library
 In order to use this library with VL you have to install the nuget that is available via nuget.org. For information on how to use nugets with VL, see [Managing Nugets](https://thegraybook.vvvv.org/reference/hde/managing-nugets.html) in the VL documentation. As described there you go to the commandline and then type:
 
     nuget install VL.Addons
