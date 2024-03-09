@@ -32,13 +32,13 @@ shader Noise_Internal_TextureFX : TextureFX, HappyNoise
         float4 c = 0;
         switch(Type)
         {
-            case 0 : c = perlin((uv + offset) * scale); break;
+            case 0 : c = perlin(float3((uv + offset) * scale, z)); break;
             case 1 : c = float4(perlinGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
-            case 2 : c = valueNoise((uv + offset) * scale); break;
+            case 2 : c = valueNoise(float3((uv + offset) * scale, z)); break;
             case 3 : c = float4(valueNoiseGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
-            case 4 : c = simplex((uv + offset) * scale); break;
+            case 4 : c = simplex(float3((uv + offset) * scale, z)); break;
             case 5 : c = float4(simplexGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
-            case 6 : c = worleyFast((uv + offset) * scale); break;
+            case 6 : c = worleyFast(float3((uv + offset) * scale, z)); break;
             case 7 : c = float4(worleyFastGrad(float3((uv + offset) * scale, z)).yzw, 1.0); break;
         }
         return lerp(ColorA.Compute(), ColorB.Compute(), c);
