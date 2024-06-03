@@ -1,0 +1,17 @@
+[Summary("")]
+[Category("")]
+shader Lerp_Spectral_ShaderFX : ComputeColor, Spectral
+{
+    [Default(1.0f, 0.0f, 0.0f, 1.0f)]
+    compose ComputeColor ColorA;
+
+    [Default(0.0f, 1.0f, 0.0f, 1.0f)]
+    compose ComputeColor ColorB;
+
+    compose ComputeFloat Scalar;
+
+    override float4 Compute()
+    {
+        return spectral_lerp(ColorA.Compute(), ColorB.Compute(), Scalar.Compute());
+    }
+};
