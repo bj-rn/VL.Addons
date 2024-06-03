@@ -4,7 +4,7 @@
 [Tags("ramp")]
 [OutputFormat("R16G16B16A16_Float")]
 
-shader Gradient_Internal_TextureFX : TextureFX, AddonShaderUtils
+shader Gradient_Internal_TextureFX : TextureFX, AddonShaderUtils, Spectral
 {
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
     compose ComputeColor From; 
@@ -16,6 +16,9 @@ shader Gradient_Internal_TextureFX : TextureFX, AddonShaderUtils
 
     float4x4 Transform;
 
+    [EnumType("VL.Stride.Effects.TextureFX.GradientType, TextureFX")]
+    int GradientType;
+
     [Default(2.2f)]
     compose ComputeFloat Gamma;
 
@@ -24,7 +27,15 @@ shader Gradient_Internal_TextureFX : TextureFX, AddonShaderUtils
         float2 uv = TransformUV(streams.TexCoord, Transform);
         float fade = isHorizontal ? uv.x : uv.y;
         fade = pow(fade, Gamma.Compute());
-        float4 c = lerp(From.Compute(), To.Compute(), fade);
+
+        float4 c;
+        
+        switch(GradientType)
+        {
+            case 0 : c = lerp(From.Compute(), To.Compute(), fade); break;
+            case 1 : c = spectral_lerp(From.Compute(), To.Compute(), fade); break;
+        }
+        
         return c;
     }
 };
