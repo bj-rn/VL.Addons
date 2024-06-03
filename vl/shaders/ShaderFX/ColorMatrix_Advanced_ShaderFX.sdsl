@@ -1,7 +1,7 @@
 [Summary("Color Matrix")]
 [Tags("Color Grading")]
 
-shader ColorMatrix_Advanced_Internal_ShaderFX : ComputeColor, ColorMatrixOperations
+shader ColorMatrix_Advanced_ShaderFX : ComputeColor, ColorMatrixOperations
 {
     [Default(1.0, 1.0, 1.0, 1.0)]
     compose ComputeColor Color;
@@ -18,13 +18,14 @@ shader ColorMatrix_Advanced_Internal_ShaderFX : ComputeColor, ColorMatrixOperati
     [Default(1.0f, 1.0f, 1.0f, 1.0f)]
     compose ComputeFloat4 Channel3;
 
-    int type;
+    [EnumType("VL.Stride.Effects.Common.ColorSpace, TextureFX")]
+    int ColorSpace;
 
     override float4 Compute()
     {
         float4 c;
 
-        switch(type)
+        switch(ColorSpace)
         {
             case 0 : c = RGBAMatrix(Color.Compute(), Channel0.Compute(), Channel1.Compute(), Channel2.Compute(), Channel3.Compute()); break;
             case 1 : c = HSLAMatrix(Color.Compute(), Channel0.Compute(), Channel1.Compute(), Channel2.Compute(), Channel3.Compute()); break;
