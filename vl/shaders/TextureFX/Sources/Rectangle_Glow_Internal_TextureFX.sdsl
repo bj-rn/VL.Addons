@@ -2,7 +2,7 @@
 [Category("Source")]
 [Summary("")]
 
-shader Rectangle_Glow_Internal_TextureFX : TextureFX, AddonShaderUtils
+shader Rectangle_Glow_Internal_TextureFX : TextureFX, AddonShaderUtils, Spectral
 {
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
     compose ComputeColor BackgroundColor;
@@ -25,6 +25,9 @@ shader Rectangle_Glow_Internal_TextureFX : TextureFX, AddonShaderUtils
 
 	bool ClipColor;
 
+	[EnumType("VL.Stride.Effects.TextureFX.GradientType, TextureFX")]
+    int GradientType;
+
 	float4x4 Transform;
 
     stage override float4 Shading()
@@ -41,7 +44,12 @@ shader Rectangle_Glow_Internal_TextureFX : TextureFX, AddonShaderUtils
 
 	    fade = sign(fade) * pow(abs(fade), pow(2, Gamma.Compute()));
 	    if(ClipColor)fade = saturate(fade);
-	    c = lerp(BackgroundColor.Compute(), RectangleColor.Compute(), fade);
+
+	    switch(GradientType)
+        {
+            case 0 : c = lerp(BackgroundColor.Compute(), RectangleColor.Compute(), fade); break;
+            case 1 : c = spectral_lerp(BackgroundColor.Compute(), RectangleColor.Compute(), fade); break;
+        }
 
         return c;
     }

@@ -4,7 +4,7 @@
 [TextureSource]
 [Category("Source")]
 [Summary("Returns a halo texture derived from a 1d texture")]
-shader AddonHalo_Gradient_Internal_TextureFX : TextureFX
+shader AddonHalo_Gradient_Internal_TextureFX : TextureFX, Spectral
 {
     [Default(0.0f)]
 	compose ComputeFloat InnerRadius;
@@ -23,15 +23,29 @@ shader AddonHalo_Gradient_Internal_TextureFX : TextureFX
 
     [Default(0.5f)]
 	compose ComputeFloat GradientY;
+
+
+    [EnumType("VL.Stride.Effects.TextureFX.GradientType, TextureFX")]
+    int GradientType;
     
     stage Texture2D GradientTexture;
+
+
 
     float4 Textured(float f, float g)
     {
         f = GradientTexture.SampleLevel(LinearSampler, float2(f.x, GradientY.Compute()), 0).x;
         f = sign(f) * pow(abs(f), g);
         
-        return lerp(HaloColor.Compute(), BackgroundColor.Compute(), f);
+        float4 c;
+
+        switch(GradientType)
+        {
+            case 0 : c = lerp(HaloColor.Compute(), BackgroundColor.Compute(), f); break;
+            case 1 : c = spectral_lerp(HaloColor.Compute(), BackgroundColor.Compute(), f); break;
+        }
+        
+        return c;
     }
 
     stage override float4 Shading()

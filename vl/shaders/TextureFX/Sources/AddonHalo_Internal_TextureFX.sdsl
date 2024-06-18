@@ -4,7 +4,7 @@
 [TextureSource]
 [Category("Source")]
 [Summary("Returns a halo texture")]
-shader AddonHalo_Internal_TextureFX : TextureFX, AddonShaderUtils
+shader AddonHalo_Internal_TextureFX : TextureFX, AddonShaderUtils, Spectral
 {
 
     [Default(0.0f)]
@@ -14,7 +14,10 @@ shader AddonHalo_Internal_TextureFX : TextureFX, AddonShaderUtils
 	compose ComputeFloat OuterRadius;
     
     [EnumType("VL.Stride.Effects.TextureFX.HaloType")]
-    int Type = 0;
+    int HaloType = 0;
+
+    [EnumType("VL.Stride.Effects.TextureFX.GradientType, TextureFX")]
+    int GradientType;
     
     [Default(0.0f, 0.0f, 0.0f, 1.0f)]
     compose ComputeColor BackgroundColor;
@@ -31,14 +34,32 @@ shader AddonHalo_Internal_TextureFX : TextureFX, AddonShaderUtils
     float4 Linear(float f, float g, float4 bgc, float4 hc)
     {
         f = pow(f, g);
-        return lerp(hc, bgc, f);
+        
+        float4 c;
+        
+        switch(GradientType)
+        {
+            case 0 : c = lerp(hc, bgc, f); break;
+            case 1 : c = spectral_lerp(hc, bgc, f); break;
+        }
+        
+        return c;
     }
 
     float4 Smooth(float f, float g, float4 bgc, float4 hc)
     {
         f = smoothstep(0,1,f);
         f = pow(f, g);
-        return lerp(hc, bgc, f);
+
+        float4 c;
+        
+        switch(GradientType)
+        {
+            case 0 : c = lerp(hc, bgc, f); break;
+            case 1 : c = spectral_lerp(hc, bgc, f); break;
+        }
+        
+        return c;;
     }
     
     stage override float4 Shading()
@@ -66,7 +87,7 @@ shader AddonHalo_Internal_TextureFX : TextureFX, AddonShaderUtils
         float halo = clamp(distance(float2(0, 0), uv-0.5)-innerRadius, 0, thickness);
         float f = halo/thickness;
 
-        switch(Type)
+        switch(HaloType)
         {
             case 0 : col = Smooth(f, g, bgColor, haloColor); break;
             case 1 : col = Linear(f, g, bgColor, haloColor); break;

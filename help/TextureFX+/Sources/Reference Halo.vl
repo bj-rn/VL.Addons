@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="MbxR6gq1L2JMm3kA1eicrQ" LanguageVersion="2023.5.3-0423-gee17475a3a" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0423-gee17475a3a" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="MbxR6gq1L2JMm3kA1eicrQ" LanguageVersion="2024.6.4" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2024.6.4" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -41,7 +41,7 @@
             <Pin Id="MEdiLKSbNJcOLEJapvaY54" Name="Input Source" Kind="OutputPin" />
             <Pin Id="NkzwP2V5wg4P2kB3PP7N1r" Name="Back Buffer" Kind="OutputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="102,579,165,19" Id="K2MDUbEmtvFL4vjDLFgk3P">
+          <Node Bounds="102,579,185,19" Id="K2MDUbEmtvFL4vjDLFgk3P">
             <p:NodeReference LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Halo" />
@@ -54,7 +54,8 @@
             <Pin Id="GUHn3rcq71xL6oEAnQMrXo" Name="Transform" Kind="InputPin" />
             <Pin Id="LBMNJEI8SRIMDTocajprAF" Name="Inner Radius" Kind="InputPin" />
             <Pin Id="IddRFBZ5rdrNDdoZuR4O3c" Name="Outer Radius" Kind="InputPin" />
-            <Pin Id="SNUyViXucHmMz9AJDblHUM" Name="Type" Kind="InputPin" />
+            <Pin Id="SNUyViXucHmMz9AJDblHUM" Name="Halo Type" Kind="InputPin" />
+            <Pin Id="FN1JKvMjFSRPtabZ15a4QF" Name="Gradient Type" Kind="InputPin" />
             <Pin Id="NE7T9IDnHamPlnMkl1W0GD" Name="Background Color" Kind="InputPin" />
             <Pin Id="OWhK8kqRkAYPt2CGZPbdrw" Name="Halo Color" Kind="InputPin" />
             <Pin Id="JN9mNumPqZqQRWz9jTn6Tk" Name="Gamma" Kind="InputPin" />
@@ -65,7 +66,7 @@
             <Pin Id="Cj8pIJv71g5L89VgbASEVp" Name="Enabled" Kind="InputPin" />
             <Pin Id="DoqfqWOvnQmPU8gFSgZGPo" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="202,459,105,19" Id="Ln3zadcwlMoMAaRSyz6rwT">
+          <Node Bounds="222,456,105,19" Id="Ln3zadcwlMoMAaRSyz6rwT">
             <p:NodeReference LastCategoryFullName="Stride.Assets" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FileTexture" />
@@ -82,7 +83,7 @@
             <Pin Id="BPi6vhBoEkMMTKmYGwCCWX" Name="Is Loading" Kind="OutputPin" />
             <Pin Id="SGfW8JSQdzBMSg9s9WyOdp" Name="Already Loaded" Kind="OutputPin" />
           </Node>
-          <Node Bounds="202,504,60,19" Id="J4H36Z4nF15LHNLs3Yaw8s">
+          <Node Bounds="222,501,60,19" Id="J4H36Z4nF15LHNLs3Yaw8s">
             <p:NodeReference LastCategoryFullName="Stride.TextureFX.Inputs" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Inputs" NeedsToBeDirectParent="true">
@@ -96,7 +97,7 @@
             <Pin Id="ShvZA3YAir7MkOKjs6l2Zd" Name="Sampler" Kind="InputPin" IsHidden="true" />
             <Pin Id="GJiANnDyI2ZP4JyHR34qCX" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="ANDjPjX0zPiP7o4leqLSeX" Comment="" Bounds="184,396,136,15" ShowValueBox="true" isIOBox="true" Value="0.50000006, 0.50000006, 0.50000006, 1">
+          <Pad Id="ANDjPjX0zPiP7o4leqLSeX" Comment="" Bounds="206,405,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0.5019608, 0, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -106,7 +107,7 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="McDCLgx4QhANxFVPzrWr6b" Comment="Gamma" Bounds="224,541,35,15" ShowValueBox="true" isIOBox="true" Value="0.7">
+          <Pad Id="McDCLgx4QhANxFVPzrWr6b" Comment="Gamma" Bounds="244,538,35,15" ShowValueBox="true" isIOBox="true" Value="0.7">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -116,12 +117,12 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Q47c5C88KNdMYdrvJNnqBo" Comment="Type" Bounds="164,362,63,15" ShowValueBox="true" isIOBox="true" Value="Smooth">
+          <Pad Id="Q47c5C88KNdMYdrvJNnqBo" Comment="Halo Type" Bounds="164,355,63,15" ShowValueBox="true" isIOBox="true" Value="Smooth">
             <p:TypeAnnotation LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Stride.TextureFX.vl">
               <Choice Kind="TypeFlag" Name="HaloType" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Sawt5kRz8TDO7r4j2so2Mu" Comment="Path" Bounds="204,444,99,15" ShowValueBox="true" isIOBox="true" Value="..\..\..\resources\textures\TextureArray\002.dds">
+          <Pad Id="Sawt5kRz8TDO7r4j2so2Mu" Comment="Path" Bounds="224,441,99,15" ShowValueBox="true" isIOBox="true" Value="..\..\..\resources\textures\TextureArray\002.dds">
             <p:TypeAnnotation LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
@@ -147,7 +148,7 @@
             <Pin Id="NzeXsmCyV8aLDiJnm3i6UZ" Name="Clock" Kind="InputPin" IsHidden="true" />
             <Pin Id="QSn9PMF4kimLgfOqxt1lQ8" Name="New Clock" Kind="InputPin" IsHidden="true" />
             <Pin Id="Bv9ajgiS5phLSYtT8pP9df" Name="Period" Kind="InputPin" DefaultValue="4" />
-            <Pin Id="BHapUcl7udVN8mOWo2po7j" Name="Pause" Kind="InputPin" />
+            <Pin Id="BHapUcl7udVN8mOWo2po7j" Name="Pause" Kind="InputPin" DefaultValue="False" />
             <Pin Id="As4J4rL2i8bQF8Yo22sjk2" Name="Reset" Kind="ApplyPin" />
             <Pin Id="Q9fUvybO5CuQONWf0C0HKm" Name="Phase" Kind="OutputPin" />
             <Pin Id="COYEuVXE8ZhLLQK9SWctkJ" Name="On New Cycle" Kind="OutputPin" />
@@ -180,6 +181,28 @@
             <Pin Id="Pm26eYXSzQ4NjhkhYMoSMr" Name="Y" Kind="InputPin" />
             <Pin Id="OHEpaf0zaIiL7cbDG8AQXp" Name="Output" Kind="StateOutputPin" />
           </Node>
+          <Pad Id="S1D2SDUzXVPONsQjmsqHuK" Comment="Gradient Type" Bounds="185,380,60,15" ShowValueBox="true" isIOBox="true" Value="RGBA">
+            <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="GradientType" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="213,131,39,19" Id="Kf5nwsUAb4ILvj8rWaHRys">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="MOD" />
+            </p:NodeReference>
+            <Pin Id="JS8FF2dmaujNkszvCt0mPq" Name="Input" Kind="InputPin" />
+            <Pin Id="UMVdW31dHGyLO0q5Xq4bJw" Name="Input 2" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="VQIe7ru1uQVNFe4usTDVPk" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="213,169,65,19" Id="Ra73hYRQreJQbPtG0Gtu5f">
+            <p:NodeReference LastCategoryFullName="Primitive.Enum" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Ord2Enum" />
+            </p:NodeReference>
+            <Pin Id="N1e3DEgxU4tNbRHmoyEPLX" Name="Input" Kind="StateInputPin" />
+            <Pin Id="ChxJXAHio54PZ0mvyrqXRJ" Name="Result" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -192,7 +215,6 @@
         <Link Id="G34ow3Cv98BQZorDmFsejA" Ids="P3OOTilDeprMhul3X8vhjX,K8DR6QhxZN3MQXewyPMPd1" />
         <Link Id="J53MXaty4CtLe0qF3iwaUu" Ids="CKAGrC4ukVOPNlw1Q58IM1,IddRFBZ5rdrNDdoZuR4O3c" />
         <Link Id="ILypLbXVJapOwPtD2rfa4P" Ids="Uq9IEIdPCQILsVSZTNxMxv,LBMNJEI8SRIMDTocajprAF" />
-        <Link Id="CKYV4mtgdJVQctfPQSzdoA" Ids="Q47c5C88KNdMYdrvJNnqBo,SNUyViXucHmMz9AJDblHUM" />
         <Link Id="RJmSm1Y8ulbPdYsZMBN3KQ" Ids="McDCLgx4QhANxFVPzrWr6b,JN9mNumPqZqQRWz9jTn6Tk" />
         <Link Id="Ur9LkreNbZ1LiDxqSVUrsh" Ids="Sawt5kRz8TDO7r4j2so2Mu,J7Jxi7t5lY6QEwjn1WL78G" />
         <Link Id="RT9gNl0zTPXOKRUVpdtTE6" Ids="Ts4Ccu2tgjTOkOoFb4JKjQ,GUHn3rcq71xL6oEAnQMrXo" />
@@ -202,10 +224,15 @@
         <Link Id="DOcguU5cmMRO6B0alMBGIn" Ids="L3URipxHH3lPg9VzZ1iJ0r,NjAAVI07h2GMlb7KVZjClp" />
         <Link Id="NlG1mmZzjCMLFpTGlOumVR" Ids="L3URipxHH3lPg9VzZ1iJ0r,Pm26eYXSzQ4NjhkhYMoSMr" />
         <Link Id="T6u1ublYhncPt5hRnk0qJD" Ids="ANDjPjX0zPiP7o4leqLSeX,NE7T9IDnHamPlnMkl1W0GD" />
+        <Link Id="J6XVfUHiEpvLEM6QOm3Jht" Ids="Q47c5C88KNdMYdrvJNnqBo,SNUyViXucHmMz9AJDblHUM" />
+        <Link Id="J6gjC5RCKmRM1JdKV658YO" Ids="S1D2SDUzXVPONsQjmsqHuK,FN1JKvMjFSRPtabZ15a4QF" />
+        <Link Id="NpPRbZPgbsdNxWiS45iHBe" Ids="VQIe7ru1uQVNFe4usTDVPk,N1e3DEgxU4tNbRHmoyEPLX" />
+        <Link Id="St36kKogYLAOaUASUMJbvF" Ids="JJXtcXzV1mbPBso2hGp4ix,JS8FF2dmaujNkszvCt0mPq" />
+        <Link Id="RSq2lmSH1IWPlxZxxA6ONd" Ids="ChxJXAHio54PZ0mvyrqXRJ,S1D2SDUzXVPONsQjmsqHuK" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0423-gee17475a3a" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2024.6.4" />
   <DocumentDependency Id="CFduCALLNZ0M1H9OP9XtVm" Location="../../../vl/VL.Addons.Stride.vl" />
-  <NugetDependency Id="MJViaZ6NBPENSvaIurrl7x" Location="VL.Stride.TextureFX" Version="2023.5.3-0423-gee17475a3a" />
+  <NugetDependency Id="MJViaZ6NBPENSvaIurrl7x" Location="VL.Stride.TextureFX" Version="2024.6.4" />
 </Document>

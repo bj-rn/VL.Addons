@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="NALlKNjiCkPOVKlMyZxkRW" LanguageVersion="2023.5.3-0423-gee17475a3a" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2023.5.3-0423-gee17475a3a" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="NALlKNjiCkPOVKlMyZxkRW" LanguageVersion="2024.6.4" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2024.6.4" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -15,12 +15,12 @@
       </p:NodeReference>
       <Patch Id="Q8sCQ8DMW8YME67P0dnYWX">
         <Canvas Id="H5BgwWBaGwNPnrRZzEF23u" CanvasType="Group">
-          <Pad Id="THoVZgCncZhLM4LIiZzRMO" Comment="To" Bounds="184,345,136,15" ShowValueBox="true" isIOBox="true" Value="1, 0, 0.8946047, 1">
+          <Pad Id="THoVZgCncZhLM4LIiZzRMO" Comment="To" Bounds="176,349,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0.3346033, 1, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="S7fnIp3l2X2Ni2I9tPwoUy" Comment="From" Bounds="161,310,136,15" ShowValueBox="true" isIOBox="true" Value="0, 0, 0, 0.99">
+          <Pad Id="S7fnIp3l2X2Ni2I9tPwoUy" Comment="From" Bounds="158,314,136,15" ShowValueBox="true" isIOBox="true" Value="0.95000005, 0.3800001, 0, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
@@ -66,11 +66,12 @@
             <Pin Id="VPKCogEK0zsOmLYWUrYCkY" Name="Transform" Kind="InputPin" />
             <Pin Id="TWVWKtWzdZjQYGF8aZN6hz" Name="Background Color" Kind="InputPin" />
             <Pin Id="KafkJV8AkBZOEFal2UO40k" Name="Rectangle Color" Kind="InputPin" />
-            <Pin Id="NgfrDo8RRfRN9PgKVTZlA2" Name="Clip Color" Kind="InputPin" DefaultValue="False" />
+            <Pin Id="NgfrDo8RRfRN9PgKVTZlA2" Name="Clip Color" Kind="InputPin" DefaultValue="True" />
             <Pin Id="DiRvhKgdHKgPKAvZQC9mn5" Name="Size" Kind="InputPin" />
             <Pin Id="AvHQMQcmFbhOfu6LIh6KlP" Name="Round" Kind="InputPin" />
             <Pin Id="K3gBpvqlbziPHRqSIqMu0c" Name="Edge Width" Kind="InputPin" />
             <Pin Id="Jbp7CWob3W0MKBkRBIPeO9" Name="Gamma" Kind="InputPin" />
+            <Pin Id="CCaBYt6c9sFOUACtKNyKd6" Name="Gradient Type" Kind="InputPin" />
             <Pin Id="TBDw2olk1XsOVbw8yfln4v" Name="Enabled" Kind="InputPin" />
             <Pin Id="MMwcbBvIKgJObobEMUxeqp" Name="Output Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="HDp8GmH571iLYGiWHRVjY2" Name="Output Size" Kind="InputPin" IsHidden="true" />
@@ -92,7 +93,7 @@
             <Pin Id="OpZyDLdfHUcLDE3NGTqo4Y" Name="Translation" Kind="InputPin" />
             <Pin Id="SB5TGuW1VEFNCBBJ4ZPKrg" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="EHku59Bmkh5O0zuGMdOq9V" Comment="Scaling" Bounds="163,103,35,28" ShowValueBox="true" isIOBox="true" Value="0.72, 0.72">
+          <Pad Id="EHku59Bmkh5O0zuGMdOq9V" Comment="Scaling" Bounds="163,103,35,28" ShowValueBox="true" isIOBox="true" Value="0.5, 0.5">
             <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Vector2" />
             </p:TypeAnnotation>
@@ -106,22 +107,22 @@
               <p:stepsize p:Type="Single">0.01</p:stepsize>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="E7ffGHZUXoyLFIzPRN5WQJ" Comment="Size" Bounds="226,386,35,28" ShowValueBox="true" isIOBox="true" Value="0.31, 0.31">
+          <Pad Id="E7ffGHZUXoyLFIzPRN5WQJ" Comment="Size" Bounds="218,423,35,28" ShowValueBox="true" isIOBox="true" Value="0.31, 0.31">
             <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Vector2" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="DkaY2IRre4NOy6nIf3IPl6" Comment="Round" Bounds="249,437,35,15" ShowValueBox="true" isIOBox="true" Value="0.3">
+          <Pad Id="DkaY2IRre4NOy6nIf3IPl6" Comment="Round" Bounds="238,461,35,15" ShowValueBox="true" isIOBox="true" Value="0.3">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="QfqmB5acjw1QGrsJuV30aI" Comment="Edge Width" Bounds="272,468,35,15" ShowValueBox="true" isIOBox="true" Value="1.18">
+          <Pad Id="QfqmB5acjw1QGrsJuV30aI" Comment="Edge Width" Bounds="257,492,35,15" ShowValueBox="true" isIOBox="true" Value="0.99">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="RNKBVefT4UzPgP9x3fgNWf" Comment="Gamma" Bounds="294,499,35,15" ShowValueBox="true" isIOBox="true" Value="2.63">
+          <Pad Id="RNKBVefT4UzPgP9x3fgNWf" Comment="Gamma" Bounds="277,523,35,15" ShowValueBox="true" isIOBox="true" Value="1">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -146,6 +147,37 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
+          <Pad Id="Vt7omJZnbI2MIbxhAaj36z" Comment="Gradient Type" Bounds="297,551,60,15" ShowValueBox="true" isIOBox="true" Value="RGBA">
+            <p:TypeAnnotation LastCategoryFullName="VL.Stride.Effects.TextureFX" LastDependency="VL.Addons.Stride.vl">
+              <Choice Kind="TypeFlag" Name="GradientType" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="HXb2YM7XM8dLctAbPFySTl" Comment="Clip Color" Bounds="199,381,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="360,212,39,19" Id="P1gADcF7JSRMQGTwakchcg">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="MOD" />
+            </p:NodeReference>
+            <Pin Id="Ib3XcLoKhGCMcD3FPhZgYH" Name="Input" Kind="InputPin" />
+            <Pin Id="HLlE7a5nis7K9n7uXi7KUW" Name="Input 2" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="T1WQ8nl4QWDNjhfIonzS7L" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="360,250,65,19" Id="GuIsi7alM3wPhrhi3d0ati">
+            <p:NodeReference LastCategoryFullName="Primitive.Enum" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Ord2Enum" />
+            </p:NodeReference>
+            <Pin Id="HiMHmB5A6UbLdqgvcQSJoi" Name="Input" Kind="StateInputPin" />
+            <Pin Id="UB0JzVuRkDELzAR8FMUfYu" Name="Result" Kind="OutputPin" />
+          </Node>
+          <ControlPoint Id="RmFIFgMqSNxLARUnujAFxG" Bounds="359,538" />
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
         <Patch Id="E3o2of9KQaVPZakiXXm9Xe" Name="Update" />
@@ -166,10 +198,15 @@
         <Link Id="MXJigaarIdcNsEDXCeAukN" Ids="NqhKBBmdsg9OWYckXn8rkw,VuVQ4bMzH3QPQBl8IRMfRl" />
         <Link Id="GvA9ubCcCSINGhmWAdvFMs" Ids="S7fnIp3l2X2Ni2I9tPwoUy,TWVWKtWzdZjQYGF8aZN6hz" />
         <Link Id="GDjVGVcbcGdMZSW9nv2dYD" Ids="THoVZgCncZhLM4LIiZzRMO,KafkJV8AkBZOEFal2UO40k" />
+        <Link Id="JO90YeTXNeWPniyvBQatfH" Ids="Vt7omJZnbI2MIbxhAaj36z,CCaBYt6c9sFOUACtKNyKd6" />
+        <Link Id="AiQ4djYx1TFLCxugjAg6FH" Ids="HXb2YM7XM8dLctAbPFySTl,NgfrDo8RRfRN9PgKVTZlA2" />
+        <Link Id="IUoP8x6cDIrOqMHEvZdsMq" Ids="EgRexCvCexOQVERnNQuupM,Ib3XcLoKhGCMcD3FPhZgYH" />
+        <Link Id="EQvg9i3RCFbOwuYOL3mbup" Ids="T1WQ8nl4QWDNjhfIonzS7L,HiMHmB5A6UbLdqgvcQSJoi" />
+        <Link Id="EplQafhMVbaN3sHIEP6tso" Ids="UB0JzVuRkDELzAR8FMUfYu,RmFIFgMqSNxLARUnujAFxG,Vt7omJZnbI2MIbxhAaj36z" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2023.5.3-0423-gee17475a3a" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2024.6.4" />
   <DocumentDependency Id="VQTGKn1lhc1LtC3nwPNJj8" Location="../../../vl/VL.Addons.Stride.vl" />
-  <NugetDependency Id="A0LXpSabVXXMph7oFDbUNF" Location="VL.Stride.TextureFX" Version="2023.5.3-0423-gee17475a3a" />
+  <NugetDependency Id="A0LXpSabVXXMph7oFDbUNF" Location="VL.Stride.TextureFX" Version="2024.6.4" />
 </Document>
