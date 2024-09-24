@@ -1,5 +1,4 @@
-﻿using Stride.Input;
-using VL.Lib.Collections;
+﻿using VL.Lib.Collections;
 using VL.Core.CompilerServices;
 using System.Reactive.Subjects;
 
