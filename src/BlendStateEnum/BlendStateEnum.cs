@@ -27,5 +27,29 @@ namespace Stride.Graphics.BlendStateDescription
         ReplaceApha = 9,
         [Description("MultiplyAlpha")]
         MultiplyAlpha = 10,
+        [Description("SourceOver")]
+        SourceOver = 11,
+        [Description("DestinationOver")]
+        DestinationOver = 12,
+        [Description("SourceOut")]
+        SourceOut = 13,
+        [Description("DestinationOut")]
+        DestinationOut = 14,
+        [Description("SourceIn")]
+        SourceIn = 15,
+        [Description("DestinationIn")]
+        DestinationIn = 16,
+        [Description("SourceAtop")]
+        SourceAtop = 17,
+        [Description("DestinationAtop")]
+        DestinationAtop = 18,
+        [Description("Xor")]
+        Xor = 19,
+        [Description("Source")]
+        Source = 20,
+        [Description("Destination")]
+        Destination = 21,
+        [Description("Clear")]
+        Clear = 22,
     }
 }
