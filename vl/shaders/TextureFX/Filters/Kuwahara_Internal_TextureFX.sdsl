@@ -1,0 +1,71 @@
+// sauce: https://blog.maximeheckel.com/posts/on-crafting-painterly-shaders
+
+[Category("Filter")]
+[Summary("")]
+shader Kuwahara_Internal_TextureFX : FilterBase
+{
+
+    #define SECTOR_COUNT 4
+
+    [Default(8.0)]
+    compose ComputeFloat KernelSize;
+
+    float3 sampleColor(float2 offset) 
+    {
+        float2 coord = streams.TexCoord + (offset / ViewSize);
+        return Texture0.Sample(Sampler0, coord).rgb;
+    }
+
+    void getSectorVarianceAndAverageColor(float2 offset, int boxSize, out float3 avgColor, out float variance) 
+    {
+        float3 colorSum = float3(0.0, 0.0, 0.0);
+        float3 squaredColorSum = float3(0.0, 0.0, 0.0);
+        float sampleCount = 0.0;
+
+    
+        for (int y = 0; y < boxSize; y++) 
+        {
+            for (int x = 0; x < boxSize; x++) 
+            {
+                float2 sampleOffset = offset + float2(float(x), float(y));
+                float3 color = sampleColor(sampleOffset);
+                colorSum += color;
+                squaredColorSum += color * color;
+                sampleCount += 1.0;
+            }
+        }
+
+        // Calculate average color and variance
+        avgColor = colorSum / sampleCount;
+        float3 varianceRes = (squaredColorSum / sampleCount) - (avgColor * avgColor);
+        variance = dot(varianceRes, float3(0.299, 0.587, 0.114));
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float3 boxAvgColors[SECTOR_COUNT];
+        float boxVariances[SECTOR_COUNT];
+
+        float kernelSize = KernelSize.Compute();
+
+        getSectorVarianceAndAverageColor(float2(-kernelSize, -kernelSize), kernelSize, boxAvgColors[0], boxVariances[0]);
+        getSectorVarianceAndAverageColor(float2(0, -kernelSize), kernelSize, boxAvgColors[1], boxVariances[1]);
+        getSectorVarianceAndAverageColor(float2(-kernelSize, 0), kernelSize, boxAvgColors[2], boxVariances[2]);
+        getSectorVarianceAndAverageColor(float2(0, 0), kernelSize, boxAvgColors[3], boxVariances[3]);
+
+        float minVariance = boxVariances[0];
+        float3 finalColor = boxAvgColors[0];
+
+        for (int i = 1; i < SECTOR_COUNT; i++) 
+        {
+            if (boxVariances[i] < minVariance) 
+            {
+                minVariance = boxVariances[i];
+                finalColor = boxAvgColors[i];
+            }
+        }
+        
+        
+        return float4(finalColor, 1.0);
+    }
+};

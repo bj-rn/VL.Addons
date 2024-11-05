@@ -1,0 +1,55 @@
+// sauce: https://blog.maximeheckel.com/posts/on-crafting-painterly-shaders
+
+[Category("Filter")]
+[Summary("")]
+shader Tensor_Sobel_Internal_TextureFX : FilterBase
+{
+
+   // Sobel kernels
+
+   // x direction kernel
+    static const float3x3 Gx = 
+    { 
+        {-1, -2, -1}, 
+        { 0,  0,  0}, 
+        { 1,  2,  1} 
+    }; 
+
+    // y direction kernel
+    static const float3x3 Gy = 
+    { 
+        {-1,  0,  1}, 
+        {-2,  0,  2}, 
+        {-1,  0,  1} 
+    }; 
+
+    float4 computeStructureTensor() 
+    {
+        float2 uv = streams.TexCoord;
+        
+        float3 tx0y0 = Texture0.Sample(Sampler0, uv + float2(-1, -1) / ViewSize).rgb;
+        float3 tx0y1 = Texture0.Sample(Sampler0, uv + float2(-1,  0) / ViewSize).rgb;
+        float3 tx0y2 = Texture0.Sample(Sampler0, uv + float2(-1,  1) / ViewSize).rgb;
+        float3 tx1y0 = Texture0.Sample(Sampler0, uv + float2( 0, -1) / ViewSize).rgb;
+        float3 tx1y1 = Texture0.Sample(Sampler0, uv + float2( 0,  0) / ViewSize).rgb;
+        float3 tx1y2 = Texture0.Sample(Sampler0, uv + float2( 0,  1) / ViewSize).rgb;
+        float3 tx2y0 = Texture0.Sample(Sampler0, uv + float2( 1, -1) / ViewSize).rgb;
+        float3 tx2y1 = Texture0.Sample(Sampler0, uv + float2( 1,  0) / ViewSize).rgb;
+        float3 tx2y2 = Texture0.Sample(Sampler0, uv + float2( 1,  1) / ViewSize).rgb;
+
+        float3 Sx = Gx[0][0] * tx0y0 + Gx[1][0] * tx1y0 + Gx[2][0] * tx2y0 +
+                    Gx[0][1] * tx0y1 + Gx[1][1] * tx1y1 + Gx[2][1] * tx2y1 +
+                    Gx[0][2] * tx0y2 + Gx[1][2] * tx1y2 + Gx[2][2] * tx2y2;
+
+        float3 Sy = Gy[0][0] * tx0y0 + Gy[1][0] * tx1y0 + Gy[2][0] * tx2y0 +
+                    Gy[0][1] * tx0y1 + Gy[1][1] * tx1y1 + Gy[2][1] * tx2y1 +
+                    Gy[0][2] * tx0y2 + Gy[1][2] * tx1y2 + Gy[2][2] * tx2y2;
+
+        return float4(dot(Sx, Sx), dot(Sy, Sy), dot(Sx, Sy), 1.0);
+    }   
+
+    float4 Filter(float4 tex0col)
+    {
+        return computeStructureTensor();
+    }
+};

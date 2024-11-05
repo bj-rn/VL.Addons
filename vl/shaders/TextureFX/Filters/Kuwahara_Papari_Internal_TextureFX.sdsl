@@ -1,0 +1,83 @@
+// sauce: https://blog.maximeheckel.com/posts/on-crafting-painterly-shaders
+
+
+[Category("Filter")]
+[Summary("")]
+shader Kuwahara_Papari_Internal_TextureFX : FilterBase
+{
+
+    #define SECTOR_COUNT 8
+
+    [Default(16.0)]
+    compose ComputeFloat Radius;
+
+    float random(float2 c) 
+    {
+        return frac(sin(dot(c.xy, float2(12.9898, 78.233))) * 43758.5453);
+    }
+
+    float3 sampleColor(float2 offset) 
+    {
+        float2 coord = streams.TexCoord + (offset / ViewSize);
+        return Texture0.Sample(Sampler0, coord).rgb;
+    }
+
+    float gaussianWeight(float distance, float sigma) 
+    {
+        return exp(-(distance * distance) / (2.0 * sigma * sigma));
+    }
+
+    void getSectorVarianceAndAverageColor(float angle, float radius, out float3 avgColor, out float variance) 
+    {
+        float3 weightedColorSum = float3(0.0, 0.0, 0.0);
+        float3 weightedSquaredColorSum = float3(0.0, 0.0, 0.0);
+        float totalWeight = 0.0;
+
+        float sigma = radius / 3.0;
+
+        for (float r = 1.0; r <= radius; r += 1.0) 
+        {
+            for (float a = -0.392699; a <= 0.392699; a += 0.196349) 
+            {
+                float2 sampleOffset = r * float2(cos(angle + a), sin(angle + a));
+                float3 color = sampleColor(sampleOffset);
+                float weight = gaussianWeight(length(sampleOffset), sigma);  
+
+                weightedColorSum += color * weight;
+                weightedSquaredColorSum += color * color * weight;
+                totalWeight += weight;
+            }
+        }
+
+        // Calculate average color and variance
+        avgColor = weightedColorSum / totalWeight;
+        float3 varianceRes = (weightedSquaredColorSum / totalWeight) - (avgColor * avgColor);
+        variance = dot(varianceRes, float3(0.299, 0.587, 0.114)); // Convert to luminance
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float3 sectorAvgColors[SECTOR_COUNT];
+        float sectorVariances[SECTOR_COUNT];
+
+        for (int i = 0; i < SECTOR_COUNT; i++)
+        {
+            float angle = float(i) * 6.28318 / float(SECTOR_COUNT); // 2π / SECTOR_COUNT
+            getSectorVarianceAndAverageColor(angle, float(Radius.Compute()), sectorAvgColors[i], sectorVariances[i]);
+        }
+
+        float minVariance = sectorVariances[0];
+        float3 finalColor = sectorAvgColors[0];
+
+        for (int i = 1; i < SECTOR_COUNT; i++) 
+        {
+            if (sectorVariances[i] < minVariance)
+            {
+                minVariance = sectorVariances[i];
+                finalColor = sectorAvgColors[i];
+            }
+        }
+        
+        return float4(finalColor, 1.0);
+    }
+};
