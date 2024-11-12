@@ -25563,17 +25563,19 @@
               </p:Interfaces>
               <Patch Id="RIrCI1rDBeHMrSTP2Vqtp2">
                 <Canvas Id="P6MLwiiDmOJQJg236hVy1X" CanvasType="Group">
-                  <ControlPoint Id="SjQ9uqAtwp6QVvX7lbIGAu" Bounds="332,277" />
-                  <ControlPoint Id="LQ4LJZzOM0fNXaVUeb1rtF" Bounds="358,298" />
-                  <ControlPoint Id="GlwqdwqK0koMLWcsPGzqyn" Bounds="281,232" />
-                  <ControlPoint Id="QbF4tCPygzVLBXbgJYVXnn" Bounds="307,255" />
+                  <ControlPoint Id="SjQ9uqAtwp6QVvX7lbIGAu" Bounds="338,277" />
+                  <ControlPoint Id="LQ4LJZzOM0fNXaVUeb1rtF" Bounds="360,298" />
+                  <ControlPoint Id="GlwqdwqK0koMLWcsPGzqyn" Bounds="290,232" />
+                  <ControlPoint Id="QbF4tCPygzVLBXbgJYVXnn" Bounds="314,255" />
                   <Node Bounds="101,337,285,19" Id="GiGIrYa9YSaMKwnkS7ofHy">
                     <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       <CategoryReference Kind="Category" Name="Distortion" NeedsToBeDirectParent="true">
-                        <p:OuterCategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
+                        <p:OuterCategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true">
+                          <p:OuterCategoryReference Kind="Category" Name="Textures" NeedsToBeDirectParent="true" />
+                        </p:OuterCategoryReference>
                       </CategoryReference>
-                      <Choice Kind="ProcessNode" Name="Undistort (OpenCV)" />
+                      <Choice Kind="ProcessAppFlag" Name="Undistort (OpenCV)" />
                     </p:NodeReference>
                     <Pin Id="HYPcyk5ul4KOxZ1p9IEu6k" Name="Input" Kind="InputPin" />
                     <Pin Id="CJEexUL7jVUN0xZT03bdrS" Name="Sampler" Kind="InputPin" />
@@ -25581,23 +25583,25 @@
                     <Pin Id="DSWIy39jDDtLOGqTRetdmW" Name="Optical Center" Kind="InputPin" />
                     <Pin Id="RC6IuVMomBXLq21pZbqdH3" Name="Radial Distortion Coefficients" Kind="InputPin" />
                     <Pin Id="Ngm5FrpFnDmPrOEdmXk6nw" Name="Tangential Distortion Coefficients" Kind="InputPin" />
+                    <Pin Id="BzOOJ3ndkP1QRa0z675bCx" Name="Center Pixel" Kind="InputPin" />
                     <Pin Id="FH0A80kBfpkMOWb8M3C7RA" Name="Control" Kind="InputPin" />
                     <Pin Id="Jk3DDnYNcSBNTp4GAyndVV" Name="Output Texture" Kind="InputPin" />
                     <Pin Id="IyFOpZknQYSNFlxpEsLZv6" Name="Output Size" Kind="InputPin" />
                     <Pin Id="MbFehiwyUe9OYUt6tVxPAV" Name="Output Format" Kind="InputPin" />
                     <Pin Id="QTiCjCf56kCL9DGqiLIW3x" Name="Render Format" Kind="InputPin" />
-                    <Pin Id="HaxnFTJM84wLvqNK7AaMoS" Name="Apply" Kind="InputPin" />
+                    <Pin Id="EY7Mu85WIBRNktm5kbs9oe" Name="Apply" Kind="InputPin" />
                     <Pin Id="GJsHUxbnn9JONi5Aqfi7nJ" Name="Output" Kind="OutputPin" />
                   </Node>
-                  <ControlPoint Id="SwMCbo0weeOLspNlyJjOCF" Bounds="105,101" />
-                  <ControlPoint Id="Vdn2mXxH9DmL2SdWP7eg5e" Bounds="157,129" />
-                  <ControlPoint Id="SErwgH57woFL3MSjwBU1Lz" Bounds="383,318" />
+                  <ControlPoint Id="SwMCbo0weeOLspNlyJjOCF" Bounds="102,86" />
+                  <ControlPoint Id="Vdn2mXxH9DmL2SdWP7eg5e" Bounds="154,114" />
+                  <ControlPoint Id="SErwgH57woFL3MSjwBU1Lz" Bounds="383,317" />
                   <ControlPoint Id="HHwWGCMzxlsLgMR8r7v1w1" Bounds="103,392" />
-                  <ControlPoint Id="OvEPXYhGozrP5FUveAkhqJ" Bounds="257,209" />
-                  <ControlPoint Id="H2ZQoRqhnJJOzQeY4UFv6o" Bounds="131,114" />
-                  <ControlPoint Id="TNPahFzn4ohNp8jfrrNYw1" Bounds="181,145" />
-                  <ControlPoint Id="UdmNOj9OrfUNOuxrjNTkNf" Bounds="206,168" />
-                  <ControlPoint Id="POfJd05VLgwLqhy2scioiw" Bounds="233,185" />
+                  <ControlPoint Id="OvEPXYhGozrP5FUveAkhqJ" Bounds="268,209" />
+                  <ControlPoint Id="H2ZQoRqhnJJOzQeY4UFv6o" Bounds="128,99" />
+                  <ControlPoint Id="TNPahFzn4ohNp8jfrrNYw1" Bounds="178,130" />
+                  <ControlPoint Id="UdmNOj9OrfUNOuxrjNTkNf" Bounds="197,153" />
+                  <ControlPoint Id="POfJd05VLgwLqhy2scioiw" Bounds="221,173" />
+                  <ControlPoint Id="E1UWhrBX5EvOF0IYEk0T53" Bounds="244,191" />
                 </Canvas>
                 <ProcessDefinition Id="DENwVW1xuumOb1imtwDCwE">
                   <Fragment Id="MdTFHHl2KpwOgY3ngeLCfc" Patch="RGlwDDJMYutMJXV1gTGaML" Enabled="true" />
@@ -25619,7 +25623,6 @@
                 <Link Id="Hi3Im62wEx0NFmfYexV598" Ids="SwMCbo0weeOLspNlyJjOCF,HYPcyk5ul4KOxZ1p9IEu6k" />
                 <Link Id="FiYc0Kp5XejMgnO7FRGWrt" Ids="IT1AD6dvZARLJbmocAluAP,Vdn2mXxH9DmL2SdWP7eg5e" IsHidden="true" />
                 <Link Id="BgLspMrt3zFN7dzzmsGTJ5" Ids="Vdn2mXxH9DmL2SdWP7eg5e,P8v5rpzuWEYLaoNwkLbJjm" />
-                <Link Id="FEfRh3IOKdiNzK8tXEFukV" Ids="SErwgH57woFL3MSjwBU1Lz,HaxnFTJM84wLvqNK7AaMoS" />
                 <Link Id="RvQSVyKak9dOtxbHjef5Om" Ids="HHwWGCMzxlsLgMR8r7v1w1,Kd0G9Kby3JhM7k80131BJX" IsHidden="true" />
                 <Link Id="ELLkP3K6uL8NaHR0jUfEdh" Ids="GJsHUxbnn9JONi5Aqfi7nJ,HHwWGCMzxlsLgMR8r7v1w1" />
                 <Link Id="Ea8My3Q7UJHMWkS75K41lQ" Ids="OvEPXYhGozrP5FUveAkhqJ,FH0A80kBfpkMOWb8M3C7RA" />
@@ -25650,6 +25653,7 @@
                   <Pin Id="RQxCpFja8WDNc2N7vtxO3k" Name="Optical Center" Kind="InputPin" />
                   <Pin Id="FXaiGzC2jRPNxqqmHLfIQY" Name="Radial Distortion Coefficients" Kind="InputPin" />
                   <Pin Id="Ce6cCX4O20pP3ikPrSNSXB" Name="Tangential Distortion Coefficients" Kind="InputPin" />
+                  <Pin Id="UIMJG2CnmjONuRVa8EJLFR" Name="Center Pixel" Kind="InputPin" />
                 </Patch>
                 <Patch Id="UNNTr4a9yKaNNC7DFTMqDA" Name="SetControl">
                   <Pin Id="OUGjDYf4dvEOKNhsGXCD3v" Name="Control" Kind="InputPin">
@@ -25704,6 +25708,9 @@
                 <Link Id="LDcjTJxeMHeLZMetmM8ZqZ" Ids="FXaiGzC2jRPNxqqmHLfIQY,UdmNOj9OrfUNOuxrjNTkNf" IsHidden="true" />
                 <Link Id="EcoUWeldnjCLQmgGAWwVQU" Ids="POfJd05VLgwLqhy2scioiw,Ngm5FrpFnDmPrOEdmXk6nw" />
                 <Link Id="SuEpgnPYdpROFVknSSQ9c5" Ids="Ce6cCX4O20pP3ikPrSNSXB,POfJd05VLgwLqhy2scioiw" IsHidden="true" />
+                <Link Id="JMrx7X6z0tiPBgJmtFRkCw" Ids="SErwgH57woFL3MSjwBU1Lz,EY7Mu85WIBRNktm5kbs9oe" />
+                <Link Id="KTnJQRuSal1MuLikVw5vdz" Ids="E1UWhrBX5EvOF0IYEk0T53,BzOOJ3ndkP1QRa0z675bCx" />
+                <Link Id="RPXfemBUVqZNx6WDvnOE9u" Ids="UIMJG2CnmjONuRVa8EJLFR,E1UWhrBX5EvOF0IYEk0T53" IsHidden="true" />
               </Patch>
             </Node>
             <!--
