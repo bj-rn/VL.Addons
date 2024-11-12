@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="EYual6BsUeBMzgQyRuXppa" LanguageVersion="2024.6.7-0220-ge2c006c41f" Version="0.128">
-  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2024.6.7-0220-ge2c006c41f" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="EYual6BsUeBMzgQyRuXppa" LanguageVersion="2024.6.7-0235-g5172ef47fd" Version="0.128">
+  <NugetDependency Id="GFBaA1xQ5F2NjgUCO9vziQ" Location="VL.CoreLib" Version="2024.6.7-0235-g5172ef47fd" />
   <Patch Id="VeJSap7sIKJNwnBokjEoI8">
     <Canvas Id="KAeiw0WXEdQNQT9FSe5ubO" DefaultCategory="Stride" CanvasType="FullCategory">
       <Canvas Id="La2rwazVWI1LNRD2Wi4LG0" Name="Graphics" Position="298,128">
@@ -25549,10 +25549,10 @@
             </Node>
             <!--
 
-    ************************ Undistort ************************
+    ************************ Undistort (OpenCV) ************************
 
 -->
-            <Node Name="Undistort" Bounds="518,128" Id="AOwBt7OyK3hNmCSOt0norx">
+            <Node Name="Undistort (OpenCV)" Bounds="518,128" Id="AOwBt7OyK3hNmCSOt0norx">
               <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
                 <Choice Kind="ClassDefinition" Name="Class" />
               </p:NodeReference>
@@ -25563,24 +25563,24 @@
               </p:Interfaces>
               <Patch Id="RIrCI1rDBeHMrSTP2Vqtp2">
                 <Canvas Id="P6MLwiiDmOJQJg236hVy1X" CanvasType="Group">
-                  <ControlPoint Id="SjQ9uqAtwp6QVvX7lbIGAu" Bounds="282,279" />
-                  <ControlPoint Id="LQ4LJZzOM0fNXaVUeb1rtF" Bounds="303,301" />
-                  <ControlPoint Id="GlwqdwqK0koMLWcsPGzqyn" Bounds="243,237" />
-                  <ControlPoint Id="QbF4tCPygzVLBXbgJYVXnn" Bounds="263,259" />
-                  <Node Bounds="101,337,225,19" Id="GiGIrYa9YSaMKwnkS7ofHy">
-                    <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes">
+                  <ControlPoint Id="SjQ9uqAtwp6QVvX7lbIGAu" Bounds="332,277" />
+                  <ControlPoint Id="LQ4LJZzOM0fNXaVUeb1rtF" Bounds="358,298" />
+                  <ControlPoint Id="GlwqdwqK0koMLWcsPGzqyn" Bounds="281,232" />
+                  <ControlPoint Id="QbF4tCPygzVLBXbgJYVXnn" Bounds="307,255" />
+                  <Node Bounds="101,337,285,19" Id="GiGIrYa9YSaMKwnkS7ofHy">
+                    <p:NodeReference LastCategoryFullName="Stride.Textures.Filter.Distortion" LastDependency="VL.Stride.Rendering.EffectShaderNodes (D:\_Dev\_vl-libs\VL.Addons\vl)">
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       <CategoryReference Kind="Category" Name="Distortion" NeedsToBeDirectParent="true">
                         <p:OuterCategoryReference Kind="Category" Name="Filter" NeedsToBeDirectParent="true" />
                       </CategoryReference>
-                      <Choice Kind="ProcessNode" Name="UndistortAddon" />
+                      <Choice Kind="ProcessNode" Name="Undistort (OpenCV)" />
                     </p:NodeReference>
                     <Pin Id="HYPcyk5ul4KOxZ1p9IEu6k" Name="Input" Kind="InputPin" />
                     <Pin Id="CJEexUL7jVUN0xZT03bdrS" Name="Sampler" Kind="InputPin" />
                     <Pin Id="P8v5rpzuWEYLaoNwkLbJjm" Name="Focal Length" Kind="InputPin" />
-                    <Pin Id="UnVRb1XeVP0P7aii0ACDyB" Name="Principal Point" Kind="InputPin" />
-                    <Pin Id="IEnGvBJ8tV1L9Q9kbFJSQv" Name="Distortion" Kind="InputPin" />
-                    <Pin Id="AfizYVEDGdfOSaYRBUHxHT" Name="Resolution" Kind="InputPin" />
+                    <Pin Id="DSWIy39jDDtLOGqTRetdmW" Name="Optical Center" Kind="InputPin" />
+                    <Pin Id="RC6IuVMomBXLq21pZbqdH3" Name="Radial Distortion Coefficients" Kind="InputPin" />
+                    <Pin Id="Ngm5FrpFnDmPrOEdmXk6nw" Name="Tangential Distortion Coefficients" Kind="InputPin" />
                     <Pin Id="FH0A80kBfpkMOWb8M3C7RA" Name="Control" Kind="InputPin" />
                     <Pin Id="Jk3DDnYNcSBNTp4GAyndVV" Name="Output Texture" Kind="InputPin" />
                     <Pin Id="IyFOpZknQYSNFlxpEsLZv6" Name="Output Size" Kind="InputPin" />
@@ -25590,14 +25590,14 @@
                     <Pin Id="GJsHUxbnn9JONi5Aqfi7nJ" Name="Output" Kind="OutputPin" />
                   </Node>
                   <ControlPoint Id="SwMCbo0weeOLspNlyJjOCF" Bounds="105,101" />
-                  <ControlPoint Id="Vdn2mXxH9DmL2SdWP7eg5e" Bounds="144,129" />
-                  <ControlPoint Id="Is0pOTpOushPZqEta3Qnoc" Bounds="163,148" />
-                  <ControlPoint Id="PnEKsPmFHLiMw9dSrkznwB" Bounds="182,168" />
-                  <ControlPoint Id="VVA9yDdlCYqLprwhEcGZwz" Bounds="203,189" />
-                  <ControlPoint Id="SErwgH57woFL3MSjwBU1Lz" Bounds="323,319" />
+                  <ControlPoint Id="Vdn2mXxH9DmL2SdWP7eg5e" Bounds="157,129" />
+                  <ControlPoint Id="SErwgH57woFL3MSjwBU1Lz" Bounds="383,318" />
                   <ControlPoint Id="HHwWGCMzxlsLgMR8r7v1w1" Bounds="103,392" />
-                  <ControlPoint Id="OvEPXYhGozrP5FUveAkhqJ" Bounds="223,211" />
-                  <ControlPoint Id="H2ZQoRqhnJJOzQeY4UFv6o" Bounds="124,114" />
+                  <ControlPoint Id="OvEPXYhGozrP5FUveAkhqJ" Bounds="257,209" />
+                  <ControlPoint Id="H2ZQoRqhnJJOzQeY4UFv6o" Bounds="131,114" />
+                  <ControlPoint Id="TNPahFzn4ohNp8jfrrNYw1" Bounds="181,145" />
+                  <ControlPoint Id="UdmNOj9OrfUNOuxrjNTkNf" Bounds="206,168" />
+                  <ControlPoint Id="POfJd05VLgwLqhy2scioiw" Bounds="233,185" />
                 </Canvas>
                 <ProcessDefinition Id="DENwVW1xuumOb1imtwDCwE">
                   <Fragment Id="MdTFHHl2KpwOgY3ngeLCfc" Patch="RGlwDDJMYutMJXV1gTGaML" Enabled="true" />
@@ -25619,12 +25619,6 @@
                 <Link Id="Hi3Im62wEx0NFmfYexV598" Ids="SwMCbo0weeOLspNlyJjOCF,HYPcyk5ul4KOxZ1p9IEu6k" />
                 <Link Id="FiYc0Kp5XejMgnO7FRGWrt" Ids="IT1AD6dvZARLJbmocAluAP,Vdn2mXxH9DmL2SdWP7eg5e" IsHidden="true" />
                 <Link Id="BgLspMrt3zFN7dzzmsGTJ5" Ids="Vdn2mXxH9DmL2SdWP7eg5e,P8v5rpzuWEYLaoNwkLbJjm" />
-                <Link Id="JnCSM4kFtSmNLEkGpTKDtT" Ids="Rh0hOf7oVN6QUJDCHYx6Uv,Is0pOTpOushPZqEta3Qnoc" IsHidden="true" />
-                <Link Id="C7qP0O3Due4LWZmm1w9KhK" Ids="Is0pOTpOushPZqEta3Qnoc,UnVRb1XeVP0P7aii0ACDyB" />
-                <Link Id="RxKOqxEJpmYLCrTs1tHNck" Ids="LGv9XmKbCYnPK7ZUllUEuL,PnEKsPmFHLiMw9dSrkznwB" IsHidden="true" />
-                <Link Id="JMU0iE7UWYONNzHzdRM8ZL" Ids="PnEKsPmFHLiMw9dSrkznwB,IEnGvBJ8tV1L9Q9kbFJSQv" />
-                <Link Id="QcDTzEWz1xJMONmzsPrvfT" Ids="VlxS88bwrQEP78kOlJvPDa,VVA9yDdlCYqLprwhEcGZwz" IsHidden="true" />
-                <Link Id="AJd0tU2F3F9P95kDnXfLcp" Ids="VVA9yDdlCYqLprwhEcGZwz,AfizYVEDGdfOSaYRBUHxHT" />
                 <Link Id="FEfRh3IOKdiNzK8tXEFukV" Ids="SErwgH57woFL3MSjwBU1Lz,HaxnFTJM84wLvqNK7AaMoS" />
                 <Link Id="RvQSVyKak9dOtxbHjef5Om" Ids="HHwWGCMzxlsLgMR8r7v1w1,Kd0G9Kby3JhM7k80131BJX" IsHidden="true" />
                 <Link Id="ELLkP3K6uL8NaHR0jUfEdh" Ids="GJsHUxbnn9JONi5Aqfi7nJ,HHwWGCMzxlsLgMR8r7v1w1" />
@@ -25653,9 +25647,9 @@
                 <Patch Id="PVkDdlRKFqgOpfGe76xFZn" Name="SetParameters">
                   <Pin Id="EUfffwqCjQNP6R9A7ZLeFy" Name="Sampler" Kind="InputPin" Bounds="207,128" />
                   <Pin Id="IT1AD6dvZARLJbmocAluAP" Name="Focal Length" Kind="InputPin" />
-                  <Pin Id="Rh0hOf7oVN6QUJDCHYx6Uv" Name="Principal Point" Kind="InputPin" />
-                  <Pin Id="LGv9XmKbCYnPK7ZUllUEuL" Name="Distortion" Kind="InputPin" />
-                  <Pin Id="VlxS88bwrQEP78kOlJvPDa" Name="Resolution" Kind="InputPin" />
+                  <Pin Id="RQxCpFja8WDNc2N7vtxO3k" Name="Optical Center" Kind="InputPin" />
+                  <Pin Id="FXaiGzC2jRPNxqqmHLfIQY" Name="Radial Distortion Coefficients" Kind="InputPin" />
+                  <Pin Id="Ce6cCX4O20pP3ikPrSNSXB" Name="Tangential Distortion Coefficients" Kind="InputPin" />
                 </Patch>
                 <Patch Id="UNNTr4a9yKaNNC7DFTMqDA" Name="SetControl">
                   <Pin Id="OUGjDYf4dvEOKNhsGXCD3v" Name="Control" Kind="InputPin">
@@ -25704,6 +25698,12 @@
                 <Link Id="NShc9VkVoBrOYk7fTBKbpr" Ids="QbF4tCPygzVLBXbgJYVXnn,IyFOpZknQYSNFlxpEsLZv6" />
                 <Link Id="QcgM2xuR1fzLFdh6jrTt80" Ids="SjQ9uqAtwp6QVvX7lbIGAu,MbFehiwyUe9OYUt6tVxPAV" />
                 <Link Id="Uqa0crgYVtuPbweFRFZmxR" Ids="LQ4LJZzOM0fNXaVUeb1rtF,QTiCjCf56kCL9DGqiLIW3x" />
+                <Link Id="QwBeOH76GbpLcBxZSaJ5QI" Ids="TNPahFzn4ohNp8jfrrNYw1,DSWIy39jDDtLOGqTRetdmW" />
+                <Link Id="MSOw9AQY3tNOUQH4PTHAry" Ids="RQxCpFja8WDNc2N7vtxO3k,TNPahFzn4ohNp8jfrrNYw1" IsHidden="true" />
+                <Link Id="PuOLA3wRKUoPeo5k0mG8oC" Ids="UdmNOj9OrfUNOuxrjNTkNf,RC6IuVMomBXLq21pZbqdH3" />
+                <Link Id="LDcjTJxeMHeLZMetmM8ZqZ" Ids="FXaiGzC2jRPNxqqmHLfIQY,UdmNOj9OrfUNOuxrjNTkNf" IsHidden="true" />
+                <Link Id="EcoUWeldnjCLQmgGAWwVQU" Ids="POfJd05VLgwLqhy2scioiw,Ngm5FrpFnDmPrOEdmXk6nw" />
+                <Link Id="SuEpgnPYdpROFVknSSQ9c5" Ids="Ce6cCX4O20pP3ikPrSNSXB,POfJd05VLgwLqhy2scioiw" IsHidden="true" />
               </Patch>
             </Node>
             <!--
@@ -51818,7 +51818,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2024.6.7-0220-ge2c006c41f" />
+  <NugetDependency Id="SeF1XJDWKKVMFCcSlHilsh" Location="VL.Stride" IsFriend="true" Version="2024.6.7-0235-g5172ef47fd" />
   <PlatformDependency Id="MLVA0izfRMkORdIZzd9kvt" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.dll" />
   <PlatformDependency Id="CvdCU2DNQlRMaSdivNSZJy" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Graphics.dll" />
   <PlatformDependency Id="CfSqI9CZTJZLV5hRh33DGP" Location="../../../../_vvvv/vvvv_gamma_2022.5.0-0485-g8f46e4a34a/Stride.Core.dll" />
@@ -51829,10 +51829,10 @@
   <PlatformDependency Id="PeNAMNxQWUrMV5g5hGAyGV" Location="../lib/net6.0/WedgeSphereMesh.dll" />
   <PlatformDependency Id="RvU2SpKfd9CMHxub5pcUns" Location="../../../../vvvv/vvvv_gamma_5.2/packs/dependencies/Stride.Rendering.dll" />
   <PlatformDependency Id="QOMAA7aFPMPMaK05Hr5VSy" Location="../lib/net8.0/BlendStateEnum.dll" />
-  <NugetDependency Id="MmtxChKI1dzMxCk3l7IMIR" Location="VL.Stride.Runtime" Version="2024.6.7-0220-ge2c006c41f" />
+  <NugetDependency Id="MmtxChKI1dzMxCk3l7IMIR" Location="VL.Stride.Runtime" Version="2024.6.7-0235-g5172ef47fd" />
   <PlatformDependency Id="JmutFlQmKNGLOpnX7AoH1C" Location="../../../../vvvv/vvvv_gamma_6.3/packs/dependencies/Stride.Input.dll" />
   <NodeFactoryDependency Id="MqnEKIzvfjYMgHcjG0azUy" Location="VL.Stride.Engine.Nodes" />
   <PlatformDependency Id="S82Kuh72LPhMGXQtdU4CSH" Location="VL.Stride.Runtime.dll" />
   <PlatformDependency Id="O1WvCSamSHjMPmfYbnEGDB" Location="../lib/net8.0/Stride.Input.ControllerDeviceEnum.dll" />
-  <NugetDependency Id="UfiVlBqvJqpN2opB31jlaf" Location="VL.Stride.TextureFX" Version="2024.6.7-0220-ge2c006c41f" />
+  <NugetDependency Id="UfiVlBqvJqpN2opB31jlaf" Location="VL.Stride.TextureFX" Version="2024.6.7-0235-g5172ef47fd" />
 </Document>
