@@ -1,63 +1,67 @@
 [Category("Filter.Distortion")]
-[Summary("Undistorts an image given camera calibration data")]
-[Tags("lens camera distortion opencv")]
-
-shader UndistortAddon_Internal_TextureFX : FilterBase
+[Summary("Undistorts an image given opencv camera calibration data (intrinsics)")]
+[Tags("lens camera intrinsics distortion opencv")]
+shader Undistort_OpenCV_Internal_TextureFX : FilterBase
 {
-    [Default(0.5, 0.5)]
-    compose ComputeFloat2 FocalLength;
 
-    [Default(0.5, 0.5)]
-    compose ComputeFloat2 PrincipalPoint;
+    // float3x3 cameraMatrix; // 3x3 matrix for fx, fy, cx, cy
+    // fx 0 cx
+    // 0 fy cy
+    // 0  0  1    
+    float2 FocalLength; // fx, fy (pixels)
+    float2 OpticalCenter; // aka Principal point cx, cy (pixels)
+    
+    float3 RadialDistortionCoefficients; // k1, k2, k3 
+    float2 TangentialDistortionCoefficients; // p1, p2
 
-    [Default(0.5, 0.5, 0.5, 0.5)]
-    compose ComputeFloat4 Distortion;
+    bool CenterPixel = true;
+    
+    float2 Undistort(float2 uv)
+    {
+        float2 fl = FocalLength;
+        float2 oc = OpticalCenter;
+        
+        // Convert uv to normalized pixel coordinates
+        // Where exactly are pixel centers located?  
+        // If CenterPixel = false, the code assumes that pixel centers are at integer + 0.5. 
+        // The texture coordinate (0,0) is not the center of the lower left pixel, but the corner point. 
+        // The parameters used for the distortion might (depending on OpenCV's conventions) assume the pixel centers at integers, 
+        // so that instead of the conversion pixelSpace = uv * imageSize, one might need to offset this by half a pixel like pixelSpace = uv * imageSize - 0.5.
+        // For that set CenterPixel to true.
+        
+        float offset = CenterPixel ? -0.5 : 0.0;
+        
+        float2 normalized = ((uv * ViewSize) - oc - offset) / fl;
+            
+        float k1 = RadialDistortionCoefficients.x; // Radial distortion coefficient
+        float k2 = RadialDistortionCoefficients.y; // Radial distortion coefficient
+        float k3 = RadialDistortionCoefficients.z; // Higher-order radial distortion coefficient
+        float p1 = TangentialDistortionCoefficients.x; // Tangential distortion coefficient
+        float p2 = TangentialDistortionCoefficients.y; // Tangential distortion coefficient
 
-    [Default(0.5, 0.5)]
-    compose ComputeFloat2 Resolution;
+        // Calculate radius (squared)
+        float r2 = dot(normalized, normalized);
+        float r4 = r2 * r2;
+        float r6 = r4 * r2;
+
+        // Apply radial distortion
+        float xDistorted = normalized.x * (1 + k1 * r2 + k2 * r4 + k3 * r6);
+        float yDistorted = normalized.y * (1 + k1 * r2 + k2 * r4 + k3 * r6);
+
+        // Apply tangential distortion
+        xDistorted += 2 * p1 * normalized.x * normalized.y + p2 * (r2 + 2 * normalized.x * normalized.x);
+        yDistorted += p1 * (r2 + 2 * normalized.y * normalized.y) + 2 * p2 * normalized.x * normalized.y;
+
+        // Convert back to uv space
+        return (float2(xDistorted, yDistorted) * fl + oc) / ViewSize;
+    }
 
 
     float4 Filter(float4 tex0col)
     {
-        float2 uv = Undistort(streams.TexCoord-0.5, FocalLength.Compute(), PrincipalPoint.Compute(), Distortion.Compute(), Resolution.Compute());
-        return Texture0.SampleLevel(Sampler0, uv, 0);
-    }
+        // Undistort uv coordinates
+        float2 undistortedUV = Undistort(streams.TexCoord);
 
-    float2 tranf(float2 TexCd, float2 Trans, float2 Scale, float2 Resolution)
-    {
-        return (TexCd * Scale + Trans) / Resolution + 0.5;
-    };
-
-    float2 tranf_inv(float2 TexCd, float2 Trans, float2 Scale, float2 Resolution)
-    {
-        return (TexCd * Resolution - Trans) / Scale;
-    };
-
-    float2 distort(float2 p, float k1, float k2, float p1, float p2)
-    {
-        float sq_r = p.x*p.x + p.y*p.y;
-
-        float2 q = p;
-        float a = 1 + sq_r * (k1 + k2 * sq_r);
-        float b = 2*p.x*p.y;
-
-        q.x = a*p.x + b*p1 + p2*(sq_r+2*p.x*p.x);
-        q.y = a*p.y + p1*(sq_r+2*p.y*p.y) + b*p2;
-
-        return q;
-    }
-
-    float2 Undistort(float2 TexCd, float2 FocalLength, float2 PrincipalPoint, float4 Distortion, float2 Resolution)
-    {
-	    float2 scale = FocalLength;
-	    float2 trans = PrincipalPoint;
-	
-	    float2 t = tranf_inv(TexCd, trans, scale, Resolution);
-	    t = distort(t, Distortion[0], Distortion[1], Distortion[2], Distortion[3]);
-	    t = tranf(t, trans, scale, Resolution);
-
-	    return t;
+        return Texture0.Sample(Sampler0, undistortedUV);
     }
 };
-
-
