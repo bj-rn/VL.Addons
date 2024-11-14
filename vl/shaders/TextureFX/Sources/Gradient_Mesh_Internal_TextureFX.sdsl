@@ -1,0 +1,129 @@
+// sauce:   https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/mesh-gradient.ts
+//          https://www.shadertoy.com/view/wdyczG
+           
+[TextureSource]
+[Category("Source")]
+[Summary("Renders a mesh gradient with a rotating noise pattern and several layers of fractal noise")]
+shader Gradient_Mesh_Internal_TextureFX : TextureFX, Spectral
+{
+    [Color]
+    float4 Color = float4(1, 1, 1, 1);
+
+    [Default(0.957f, 0.804f, 0.623f, 1.0f)]
+    compose ComputeColor Color1;
+
+    [Default(0.192f, 0.384f, 0.933f, 1.0f)]
+    compose ComputeColor Color2;
+
+    [Default(0.91f, 0.51f, 0.8f, 1.0f)]
+    compose ComputeColor Color3;
+
+    [Default(0.35f, 0.71f, 0.953f, 1.0f)]
+    compose ComputeColor Color4;
+
+    [Default(0.0f)]
+	compose ComputeFloat Time;
+
+    [Default(0.1f)]
+	compose ComputeFloat RotationSpeed;
+
+
+    [EnumType("VL.Stride.Effects.TextureFX.GradientType, TextureFX")]
+    int GradientType;
+
+
+    float2x2 rot(float a)
+    {
+        float s = sin(a);
+        float c = cos(a);
+        return float2x2(c, -s, s, c);
+    }
+
+    float2 hash(float2 p) 
+    {
+        float3 p3 = frac(float3(p.xyx) * float3(.1031, .1030, .0973));
+        p3 += dot(p3, p3.yzx + 33.33);
+        return frac((p3.xx+p3.yz)*p3.zy);
+    }
+
+    float noise( in float2 p )
+    {
+        float2 i = floor( p );
+        float2 f = frac( p );
+
+        float2 u = f*f*(3.0-2.0*f);
+
+        float n = lerp( lerp( dot( -1.0+2.0*hash( i + float2(0.0,0.0) ), f - float2(0.0,0.0) ),
+                            dot( -1.0+2.0*hash( i + float2(1.0,0.0) ), f - float2(1.0,0.0) ), u.x),
+                    lerp( dot( -1.0+2.0*hash( i + float2(0.0,1.0) ), f - float2(0.0,1.0) ),
+                            dot( -1.0+2.0*hash( i + float2(1.0,1.0) ), f - float2(1.0,1.0) ), u.x), u.y);
+        return 0.5 + 0.5*n;
+    }
+
+    float3 gradient(float3 color1, float3 color2, float3 color3, float3 color4, float scalarLayer, float scalarComp)
+    {
+        float3 layer1 = lerp(color1, color2, scalarLayer);
+        float3 layer2 = lerp(color3, color4, scalarLayer);
+
+        return lerp(layer1, layer2, scalarComp);
+    }
+
+    float3 gradient_spectral(float3 color1, float3 color2, float3 color3, float3 color4, float scalarLayer, float scalarComp)
+    {
+        float3 layer1 = spectral_lerp(color1, color2, scalarLayer);
+        float3 layer2 = spectral_lerp(color3, color4, scalarLayer);
+
+        return spectral_lerp(layer1, layer2, scalarComp);
+    }
+
+    stage override float4 Shading()
+    {
+        float3 color1 = Color1.Compute().rgb;
+        float3 color2 = Color2.Compute().rgb;
+        float3 color3 = Color3.Compute().rgb;
+        float3 color4 = Color4.Compute().rgb;
+
+        float time = Time.Compute();
+        float rotationspeed = RotationSpeed.Compute();
+        
+        float2 uv = streams.TexCoord;
+        float ratio = ViewSize.x / ViewSize.y;
+
+        float2 tuv = uv;
+        tuv -= .5;
+
+        // rotate with Noise
+        float degree = noise(float2(time * rotationspeed, tuv.x * tuv.y));
+
+        tuv.y *= 1./ratio;
+        tuv = mul(rot(radians((degree-.5)*720.+180.)), tuv);
+        tuv.y *= ratio;
+
+
+        // Wave warp with sin
+        float frequency = 5.;
+        float amplitude = 30.;
+        float speed = time * 2.;
+        tuv.x += sin(tuv.y * frequency + speed) / amplitude;
+        tuv.y += sin(tuv.x * frequency * 1.5 + speed) / (amplitude * .5);
+
+
+        // draw the image
+        float scalarLayer =  smoothstep(-.3, .2, mul(tuv, rot(radians(-5.))).x);  
+        float scalarComp = smoothstep(.5, -.3, tuv.y);
+
+
+        float3 layer1 = lerp(color1, color2, scalarLayer);
+        float3 layer2 = lerp(color3, color4, scalarLayer);
+
+        float3 c;
+
+        switch(GradientType)
+        {
+            case 0 : c = gradient(color1, color2, color3, color4, scalarLayer, scalarComp); break;
+            case 1 : c = gradient_spectral(color1, color2, color3, color4, scalarLayer, scalarComp); break;
+        }
+
+        return float4(c, 1.0);;
+    }
+};
