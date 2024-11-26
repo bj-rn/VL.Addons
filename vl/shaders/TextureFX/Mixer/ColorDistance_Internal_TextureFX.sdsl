@@ -1,0 +1,23 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader ColorDistance_Internal_TextureFX : MixerBase
+{
+	[Default(1.0f)]
+    compose ComputeFloat InterpolationPower;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+		
+        float4 ca =  Texture0.Sample(LinearRepeatSampler, uv);
+        float4 cb = Texture1.Sample(LinearRepeatSampler, uv);
+
+        return lerp(distance(ca, cb) > fader ? ca : cb,
+                   		cb,
+                     pow(fader, InterpolationPower.Compute()));    
+    }
+};

@@ -1,0 +1,24 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader VerticalFlow_Internal_TextureFX : MixerBase
+{
+	[Default(1.0f)]
+    compose ComputeFloat Scale;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+		
+        float4 from =  Texture0.Sample(LinearRepeatSampler, uv);
+
+        float2 offset = float2(0, Scale.Compute() * from.r);
+
+        float4 to = Texture1.Sample(LinearRepeatSampler, uv + offset);
+
+        return lerp(from, to, fader);    
+    }
+};
