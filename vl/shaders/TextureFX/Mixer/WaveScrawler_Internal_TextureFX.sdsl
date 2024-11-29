@@ -1,0 +1,52 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader WaveScrawler_Internal_TextureFX : MixerBase
+{
+    [Default(1.0f)]
+    compose ComputeFloat Amplitude;
+
+    [Default(30.0f)]
+    compose ComputeFloat Waves;
+
+    [Default(0.3f)]
+    compose ComputeFloat ColorSeparation;
+
+    float compute(float2 p, float fader, float2 center) 
+    {
+        float2 o = p*sin(fader * Amplitude.Compute()) - center;
+
+        // horizontal vector
+        float2 h = float2(1., 0.);
+        
+        // butterfly polar function (don't ask me why this one :))
+        float theta = acos(dot(o, h)) * Waves.Compute();
+        
+        return (exp(cos(theta)) - 2.*cos(4.*theta) + pow(sin((2.*theta - Pi) / 24.), 5.)) / 10.;
+    }
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+        float colorSeparation = ColorSeparation.Compute();
+
+  	    float inv = 1. - fader;
+        float2 dir = uv - float2(.5, 0.5);
+  	    float dist = length(dir);
+  	    float disp = compute(uv, fader, float2(0.5, 0.5));
+
+  	    float4 To = Texture1.Sample(LinearSampler, uv + inv*disp);
+	    float4 From = float4(
+                                Texture0.Sample(LinearSampler, uv + fader*disp*(1.0 - colorSeparation)).r,
+                                Texture0.Sample(LinearSampler, uv + fader*disp).g,
+                                Texture0.Sample(LinearSampler, uv + fader*disp*(1.0 + colorSeparation)).b,
+                                1.0
+                            );
+
+
+	    return  lerp(From, To, fader);
+    }
+};
