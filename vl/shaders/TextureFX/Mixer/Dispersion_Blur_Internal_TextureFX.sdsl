@@ -1,0 +1,43 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader Dispersion_Blur_Internal_TextureFX : MixerBase
+{
+    [Default(0.3f)]
+    compose ComputeFloat Radius;
+
+    uint Quality = 64; 
+
+    static const float GOLDEN_ANGLE = 2.399963229728653; // PI * (3.0 - sqrt(5.0))
+
+    float4 blur(Texture2D t, float2 c, float radius) 
+    {
+        float4 sum = float4(0,0,0,1);
+        float q = float(Quality);
+  
+        for (int i=0; i < Quality; ++i) 
+        {
+            float fi = float(i);
+            float a = fi * GOLDEN_ANGLE;
+            float r = sqrt(fi / q) * radius;
+            float2 uv = c + r * float2(cos(a), sin(a));
+            
+            sum += t.Sample(LinearSampler, uv);
+        }
+        
+        return sum / q;
+    }
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+	    float inv = 1. - fader;
+        float radius = Radius.Compute();
+
+
+		return inv * blur(Texture0, uv, fader * radius) + fader * blur(Texture1, uv, inv * radius);
+    }
+};
