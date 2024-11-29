@@ -1,0 +1,40 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader FlyEye_Internal_TextureFX : MixerBase
+{
+    [Default(0.05f)]
+    compose ComputeFloat Size;
+
+    [Default(30.0f)]
+    compose ComputeFloat Zoom;
+
+    [Default(0.3f)]
+    compose ComputeFloat ColorSeparation;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+
+        float zoom = Zoom.Compute();
+        float colorSeparation = ColorSeparation.Compute();
+
+
+	    float inv = 1. - fader;
+	    float2 disp = Size.Compute() * float2(cos(zoom * uv.x), sin(zoom * uv.y));
+	
+        // original uses LinearRepeatSampler, not sure which looks better...
+        float4 To = Texture1.Sample(LinearSampler, uv + inv * disp);
+	    float4 From = float4(
+	                                Texture0.Sample(LinearSampler, uv + fader * disp * (1.0 - colorSeparation)).r,
+	                                Texture0.Sample(LinearSampler, uv + fader * disp).g,
+	                                Texture0.Sample(LinearSampler, uv + fader * disp * (1.0 + colorSeparation)).b,
+                                    1.0
+                                );
+
+		return lerp(From, To, fader);
+    }
+};
