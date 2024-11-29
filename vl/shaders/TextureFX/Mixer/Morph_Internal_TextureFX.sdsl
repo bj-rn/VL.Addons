@@ -1,0 +1,35 @@
+// source: https://vvvv.org/contribution/acid-glitch-shaders
+[Category("Mixer.Distortion")]
+[Tags("")]
+[Summary("")]
+[Remarks("Initially developed by IdwyR for vvvv beta")]
+
+shader Morph_Internal_TextureFX : MixerBase
+{
+    [Default(0.5f)]
+    compose ComputeFloat Strength;
+
+	bool Horizontal;
+
+    float4 Mix(float4 tex0col, float4 tex1col, float fader)
+    {
+		float2 uv = streams.TexCoord;
+
+		float oa = (((tex0col.rg + tex0col.b) * 0.5) * 2.0 - 1.0);
+ 		float ob = (((tex1col.rg + tex1col.b) * 0.5) * 2.0 - 1.0);
+ 		float oc = lerp(oa, ob, 0.5) * Strength.Compute();
+
+		float inv = 1.0 - fader;
+
+		float2 uva = float2(uv.x, uv.y + oc * fader);
+		float2 uvb = float2(uv.x, uv.y - oc * inv);
+
+		if(Horizontal)
+		{
+			uva = float2(uv.x + oc * fader, uv.y);
+			uvb = float2(uv.x - oc * inv, uv.y);
+		}
+
+		return lerp(Texture0.Sample(LinearRepeatSampler, uva), Texture1.Sample(LinearRepeatSampler, uvb), fader);
+    }
+};
