@@ -1,0 +1,110 @@
+[Summary("Draws Atmosphere around planets")]
+shader FakeAtmosphere_DrawFX : VS_PS_Base, Texturing
+{
+    stage float AtmosphereRadius=1.1;
+    stage float PlanetRadius=1;
+    stage float3 LightDirection=1;
+    stage float AtmosphereBrightness=1;
+    stage float GroundBrightness=1;
+    stage float AtmosphereGamma=2;
+    stage float GroundGamma=2;
+    stage float ShadeGamma=2;
+
+    [Color]
+    float4 Color = float4(1, 1, 1, 1);
+
+    stage float Alpha = 1;
+
+    stream float3 CameraView;
+    stream float4 PositionWorld;
+
+    override stage void VSMain()
+    {
+        streams.PositionWorld = mul(streams.Position, World);
+        streams.ShadingPosition = mul(streams.PositionWorld, ViewProjection);
+        streams.CameraView = streams.PositionWorld - mul(float4(0,0,0,1),ViewInverse).xyz;
+        streams.meshNormalWS = mul(streams.meshNormal, (float3x3)WorldInverseTranspose);
+    }
+
+    // Returns the near intersection point of a line and a sphere 
+    float getNearIntersection(float3 v3Pos, float3 v3Ray, float fDistance2, float fRadius2) 
+    { 
+        float B = 2.0 * dot(v3Pos, v3Ray); 
+        float C = fDistance2 - fRadius2; 
+        float fDet = max(0.0, B*B - 4.0 * C); 
+        return 0.5 * (-B - sqrt(fDet)); 
+    } 
+
+    // Returns the far intersection point of a line and a sphere 
+    float getFarIntersection(float3 v3Pos, float3 v3Ray, float fDistance2, float fRadius2) 
+    { 
+        float B = 2.0 * dot(v3Pos, v3Ray); 
+        float C = fDistance2 - fRadius2; 
+        float fDet = max(0.0, B*B - 4.0 * C); 
+        return 0.5 * (-B + sqrt(fDet)); 
+    } 
+
+    struct Sphere {
+        float3 centre;
+        float rad2;	// radius^2
+    };
+
+    struct Ray {
+        float3 o;	// origin
+        float3 d;	// direction
+    };
+    
+    static const float eps = 0.001;
+
+    float2 SphereIntersect(Sphere s, Ray ray, out bool hit)
+    {
+        float3 v = s.centre - ray.o;
+        float b = dot(v, ray.d);
+        float disc = (b*b) - dot(v, v) + s.rad2;
+
+        hit = true;
+
+        if (disc<=0) hit = false;;
+
+        disc = sqrt(disc);
+        float t2 = b + disc;
+
+        if (t2<=eps) hit = false; // behind ray origin
+
+        float t1 = b - disc;
+        return float2(t1,t2);
+    }
+
+    override stage void PSMain() 
+    {
+        float4 c = Texture0.Sample(LinearSampler, streams.TexCoord) * Color;
+        Sphere sph;
+        sph.centre = mul(float4 (0,0,0,1), World);
+        sph.rad2 = pow(AtmosphereRadius, 2);
+        Ray ray;
+        ray.o = mul(float4(0,0,0,1), ViewInverse).xyz;
+        ray.d = normalize(streams.CameraView);
+
+        bool hit = false;
+        float2 f = SphereIntersect(sph, ray, hit);
+        float a= (f.y - f.x) * 0.5 / AtmosphereRadius;
+
+        c.rgb = a * AtmosphereBrightness;
+        sph.rad2 = pow(PlanetRadius, 2);
+
+        float2 f2 = SphereIntersect(sph,ray,hit);
+	    float ld = max(0, 0.5-0.5 * dot(normalize(streams.meshNormalWS),normalize(LightDirection)));
+
+        c = pow(max(0,c),AtmosphereGamma);
+        
+	    if(hit)
+            c.rgb = lerp(c.rgb, pow(max(0, 1 - (f2.y - f2.x) * 0.5 / PlanetRadius), GroundGamma) * GroundBrightness, 0.95);
+        
+        c.rgb *=0.01 + pow(ld,ShadeGamma);
+        
+        c *= Color;
+        c.a = Alpha;
+
+        streams.ColorTarget = c;
+    }
+};
