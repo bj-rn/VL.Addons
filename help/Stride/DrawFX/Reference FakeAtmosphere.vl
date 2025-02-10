@@ -42,7 +42,7 @@
               <Choice Kind="ProcessAppFlag" Name="SceneWindow" />
             </p:NodeReference>
             <Pin Id="UMgAkL5TbNdPY8uhaQE7yl" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Ge4yGguHa0hOIST3Xxiurf" Name="Bounds" Kind="InputPin" DefaultValue="1466.6666, 118.666664, 960, 720" IsHidden="true" />
+            <Pin Id="Ge4yGguHa0hOIST3Xxiurf" Name="Bounds" Kind="InputPin" DefaultValue="1466, 118, 960, 720" IsHidden="true" />
             <Pin Id="RmMjOajfTMZMrmZEjySBk1" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="BYtpDMQ1b0zOZpSZ5oq3j9" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
             <Pin Id="TtJ9o8Vf7QcODOtMZr4W6Y" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
@@ -1305,11 +1305,6 @@
               <Patch Id="Tqz3OUG4XkONNLCksrCOml" Name="Update">
                 <Pin Id="Ez1MWI5XtqOOlRsrgtvTBL" Name="Entity" Kind="OutputPin" />
               </Patch>
-              <!--
-
-    ************************  ************************
-
--->
               <ProcessDefinition Id="RQBjnxYc6XPM4bFOicDpFj">
                 <Fragment Id="Qoqjh1lu3KANFC6geZSmLk" Patch="EY8DUujodAhNm0MDG39LyY" Enabled="true" />
                 <Fragment Id="ATZAICAAalxPfBzkuFJLzh" Patch="Tqz3OUG4XkONNLCksrCOml" Enabled="true" />
@@ -1348,6 +1343,20 @@
             </p:NodeReference>
             <Pin Id="RHeH7DMQxWSPCgkUV7cMdA" Name="Entity" Kind="OutputPin" />
             <Pin Id="P1sdIbvpMeFLRHCyY9yoSf" Name="Node Context" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Node Bounds="363,994,105,19" Id="TTRpQBmtSG7MgxxaC8WSHr">
+            <p:NodeReference LastCategoryFullName="Stride.Rendering.PostFX" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="ClassType" Name="PostFX" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="DepthOfField" />
+            </p:NodeReference>
+            <Pin Id="F9RYxhXmJLUPnI6wONnXJ2" Name="Size" Kind="InputPin" />
+            <Pin Id="SoTXxIs2aU5MiYyvSVRyUu" Name="DOFAreas" Kind="InputPin" />
+            <Pin Id="CfLA8MnD9CEL3sIxLA7YBx" Name="Quality Preset" Kind="InputPin" />
+            <Pin Id="CVRtWaIUpdDNWeoz4mHUDR" Name="Technique" Kind="InputPin" />
+            <Pin Id="PEHdDXKciXVQdBDb0j3IFP" Name="Auto Focus" Kind="InputPin" />
+            <Pin Id="GVMQwKaVaZgO6eTAnxW9D4" Name="Enabled" Kind="InputPin" />
+            <Pin Id="FmofMYCOo7tNyWiyQGold3" Name="Output" Kind="OutputPin" />
           </Node>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
@@ -1394,6 +1403,7 @@
         <Link Id="NBE4Tmrh4PYLQX4SsL7vjh" Ids="IHHlK3UH4JPO1Fs3quDhhW,V4q907g0aSKMQiyJ1mLkqz" />
         <Link Id="DQREA4C2KjuPiSts7yhJbJ" Ids="RHeH7DMQxWSPCgkUV7cMdA,FHDQzTxoTkZL1OryGTTlBn" />
         <Link Id="B6swozKTMB3MCdxGaZCLTU" Ids="BuyrQpFQI5pP0TKKnX99Ca,PNnJ3l5VBsbPkd1P18KtfG" />
+        <Link Id="Em8ojV7uKwlP9QOXCFEUgW" Ids="FmofMYCOo7tNyWiyQGold3,TZkCQmuAPQQMsenyLAeXrr" />
       </Patch>
     </Node>
   </Patch>
