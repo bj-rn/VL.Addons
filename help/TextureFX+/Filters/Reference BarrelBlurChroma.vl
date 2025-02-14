@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="IuMOHzNUFjtQFyxywJrXgu" LanguageVersion="2025.7.0-0119-g1236945387" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2025.7.0-0119-g1236945387" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="IuMOHzNUFjtQFyxywJrXgu" LanguageVersion="2025.7.0-0126-geaacba9216" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2025.7.0-0126-geaacba9216" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -21,13 +21,13 @@
               <Choice Kind="ProcessAppFlag" Name="TextureWindow" />
             </p:NodeReference>
             <Pin Id="NBe7f0TTE1DMkBLnY7CUUM" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="1386, 103, 585, 585" />
+            <Pin Id="GImBmSXVypHQCxwX3WdSuJ" Name="Bounds" Kind="InputPin" DefaultValue="838.5, 111, 585, 585" />
             <Pin Id="AMc7DH1SnSuMjMs57FG5L4" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="G8xgWAAbqxYOtAwcjASDNj" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="LsEHGlOZPjhOIE8HA9LRmH" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="FuClxHZCIX3N3mwzENzEV7" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
             <Pin Id="RqIONKDIENdND6i48864uK" Name="Input" Kind="InputPin" />
-            <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="Blur" />
+            <Pin Id="R29TH8ffpICMRhzag38jqa" Name="Title" Kind="InputPin" DefaultValue="BarrelBlurChroma" />
             <Pin Id="PP1L6yaKAE8MUEwZCtRtQQ" Name="Clear Color" Kind="InputPin" />
             <Pin Id="RSPPruQEpmWL4HLlKXHC5f" Name="Clear" Kind="InputPin" />
             <Pin Id="AEf6rLH97vKPH1uh7kWUwF" Name="Is Premultiplied Alpha" Kind="InputPin" />
@@ -41,7 +41,7 @@
             <Pin Id="FXB9L3LM9nyOXc3IEaFhEa" Name="Input Source" Kind="OutputPin" />
             <Pin Id="OAbZEiVqEYsLd92MuwP2Vg" Name="Back Buffer" Kind="OutputPin" IsHidden="true" />
           </Node>
-          <Pad Id="I6y1CQjXTOYLPmKiWxzF7C" Comment="Strength" Bounds="127,250,35,15" ShowValueBox="true" isIOBox="true" Value="0.35999998">
+          <Pad Id="I6y1CQjXTOYLPmKiWxzF7C" Comment="Strength" Bounds="152,273,35,15" ShowValueBox="true" isIOBox="true" Value="0.35999998">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -69,7 +69,7 @@
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="125,191,113,19" Id="A0OdVVJKa70POmNEAXuX8l">
+          <Node Bounds="150,214,113,19" Id="A0OdVVJKa70POmNEAXuX8l">
             <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="LFO" />
@@ -89,15 +89,20 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="BarrelBlurChroma" />
             </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
             <Pin Id="GuwXeefrhHzL288tanfhdr" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="JN05D3gfi3CMNIz9tw3uqp" Name="Input" Kind="InputPin" />
-            <Pin Id="J8ma4qbQKApLCMB8rvfIf9" Name="Distort" Kind="InputPin" />
             <Pin Id="BRCrzxPLRJXQCwBQALfNqB" Name="Iterations" Kind="InputPin" />
+            <Pin Id="J8ma4qbQKApLCMB8rvfIf9" Name="Distort" Kind="InputPin" />
             <Pin Id="POOKIQeSMwnPIFBFxDBmDp" Name="Control" Kind="InputPin" />
+            <Pin Id="DDHaFFhRBM5OGchV8nVpI2" Name="Output Texture" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EIuopuncEpzN1KhVeHJNi5" Name="Output Size" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NtH3s6Fqt3EOEDTvbRS0BC" Name="Output Format" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PxCl2I2Pr8uNXtrwOJcA8p" Name="Render Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="MV2DUW5bEsQNPEdOf67Ww1" Name="Enabled" Kind="InputPin" />
             <Pin Id="TNoG5FtibGFNExP6tasvSf" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="125,283,58,19" Id="Rzi2mX6aqZeOfDk7V2M5kG">
+          <Node Bounds="150,306,58,19" Id="Rzi2mX6aqZeOfDk7V2M5kG">
             <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="SineWave" />
@@ -105,7 +110,7 @@
             <Pin Id="IE7IMvKlVzAMrF3GdtLhOv" Name="Phase" Kind="InputPin" />
             <Pin Id="LU3ndy30neZPGZKQs1eXeB" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="GHtJk9R7Ft5MIiX8BiYnwL" Comment="Iterations" Bounds="152,343,35,15" ShowValueBox="true" isIOBox="true" Value="12">
+          <Pad Id="GHtJk9R7Ft5MIiX8BiYnwL" Comment="Iterations" Bounds="127,187,35,15" ShowValueBox="true" isIOBox="true" Value="12">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32 (Unsigned)" />
             </p:TypeAnnotation>
@@ -127,7 +132,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2025.7.0-0119-g1236945387" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2025.7.0-0126-geaacba9216" />
   <DocumentDependency Id="E84J0Es0hr6LnKLvnzsTtf" Location="../../../vl/VL.Addons.Stride.vl" />
-  <NugetDependency Id="NWNIkVMPguCPIGdSUIlRQy" Location="VL.Stride.TextureFX" Version="2025.7.0-0119-g1236945387" />
+  <NugetDependency Id="NWNIkVMPguCPIGdSUIlRQy" Location="VL.Stride.TextureFX" Version="2025.7.0-0126-geaacba9216" />
 </Document>
