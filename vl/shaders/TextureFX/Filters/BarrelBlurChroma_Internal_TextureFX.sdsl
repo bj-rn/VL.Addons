@@ -1,0 +1,65 @@
+// source:
+// https://www.shadertoy.com/view/td2XDz
+
+[Category("Filter")]
+[Summary("Simulates Chromatic Aberration by linearly interpolating blur-weights from red to green to blue.")]
+[Tags("filter blur chroma post postfx")]
+shader BarrelBlurChroma_Internal_TextureFX : FilterBase
+{
+    [Dafault(0.15)]
+    compose ComputeFloat Distort;
+
+    uint Iterations <int uimin= 1; int uimax = 128;> = 12;
+
+    float2 BarrelDistortion(float2 coord, float amt) 
+    {
+        float2 cc = coord - 0.5;
+        float dist = dot(cc, cc);
+        return coord + cc * dist * amt;
+    }
+
+    float sat( float t )
+    {
+        return clamp( t, 0.0, 1.0 );
+    }
+
+    float linterp( float t )
+    {
+        return sat( 1.0 - abs( 2.0*t - 1.0 ) );
+    }
+
+    float remap( float t, float a, float b ) 
+    {
+        return sat( (t - a) / (b - a) );
+    }
+
+    float3 spectrum_offset( float t )
+    {
+        float3 ret;
+        float lo = step(t,0.5);
+        float hi = 1.0-lo;
+        float w = linterp( remap( t, 1.0/6.0, 5.0/6.0 ) );
+        ret = float3(lo,1.0,hi) * float3(1.0-w, w, 1.0-w);
+
+        return pow( ret, (1.0/2.2) );
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+        
+        float3 sumcol, sumw;
+        
+        float reci_num_iter_f = 1.0 / (float)Iterations;
+            
+        for ( int i=0; i < (int)Iterations; ++i )
+        {
+            float t = i * reci_num_iter_f;
+            float3 w = spectrum_offset( t );
+            sumw += w;
+            sumcol += w * Texture0.SampleLevel(LinearSampler, BarrelDistortion(uv, -Distort.Compute()*t ), 0 ).rgb;
+        }
+                    
+        return float4 (sumcol.rgb / sumw, 1.0);  
+    }
+};
