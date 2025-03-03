@@ -1,0 +1,52 @@
+[Category("Filter.Distortion")]
+[Summary("Mirrors the texture along a horizontal or vertical axis")]
+shader Mirror_Internal_TextureFX : FilterBase
+{
+
+    [Default(0.5)]
+    compose ComputeFloat Border;
+
+    bool Vertical = false;
+    
+    bool SwitchSides = true;
+
+
+    float4 Filter(float4 tex0col)
+    {
+        float border = Border.Compute();
+        float border2 = border * 2;
+        
+        float2 uv = streams.TexCoord;
+
+        if(Vertical)
+        {
+            if(uv.y > border & !SwitchSides)
+            {
+                uv.y = border2 - uv.y;
+            }
+
+        
+            if(uv.y < border & SwitchSides)
+            {
+                uv.y =  -uv.y + border2;
+            }
+        }
+        else
+        {
+            if(uv.x > border & !SwitchSides)
+            {
+                uv.x = border2 - uv.x;
+            }
+
+        
+            if(uv.x < border & SwitchSides)
+            {
+                uv.x =  -uv.x + border2;
+            }
+        }
+
+        float4 col = Texture0.Sample(Sampler0, uv);
+
+        return col;
+    }
+};
