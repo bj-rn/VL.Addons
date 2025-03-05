@@ -1,0 +1,48 @@
+// source: https://beta.vvvv.org/contributions/modules/lutz/index.html
+[Category("Filter.ColorManipulation")]
+[Summary("Standard LUT Creator")]
+[Tags("Color Grading LUT")]
+shader ColorEncoder_LUTZ_Internal_TextureFX : FilterBase
+{
+
+    [Default(32.0)]
+    compose ComputeFloat Size;
+
+    float3 Lutz(float3 colorIN, Texture2D LUTtex)
+    {   
+        float size = Size.Compute();
+        
+        //Stepsize
+        float2 s = float2(size*size, size);
+        float2 LUT_s =  1 / s;
+        float4 Lut_uv = 0.0;
+        
+        //find uv
+        colorIN   = saturate(colorIN) * (size-1);
+        Lut_uv.w  = floor(colorIN.b);
+        Lut_uv.xy = (colorIN.rg + 0.5) * LUT_s;
+            
+        Lut_uv.x += Lut_uv.w * LUT_s.y;
+        Lut_uv.z  = Lut_uv.x + LUT_s.y;
+        
+        //resize to R
+        float2 uvL1=Lut_uv.xy/ViewSize * s;
+        float2 uvL2=Lut_uv.zy/ViewSize * s;
+        
+        //interpolate blue
+        float3 c = lerp(LUTtex.SampleLevel(LinearSampler, uvL1, 0).rgb, LUTtex.SampleLevel(LinearSampler, uvL2, 0).rgb, colorIN.b - Lut_uv.w);
+        return c;
+    }
+    
+    
+    float4 Filter(float4 tex0col)
+    {
+        float2 uv = streams.TexCoord;
+
+        float4 c = Texture0.SampleLevel(LinearSampler, uv, 0);
+	    
+        c.rgb = Lutz(c.rgb, Texture1);
+	    
+        return c;
+    }
+};
