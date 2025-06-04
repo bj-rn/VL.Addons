@@ -21,5 +21,3 @@ Download: http://visualprogramming.net
 ### License
 
 ### [MIT](https://github.com/bj-rn/VL.Addons/blob/master/LICENSE)
----
-[Support bj-rn on Ko-fi](https://ko-fi.com/Q5Q61EQB8X)
