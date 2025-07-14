@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="QTfTMvqdVCjMhFHndrPK4N" LanguageVersion="2023.5.3-0019-g04bfa216f7" Version="0.128">
-  <NugetDependency Id="JsZeTdK0U5KOVb1kJl6Okj" Location="VL.CoreLib" Version="2023.5.3-0019-g04bfa216f7" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="MebI6kYcoQiNrmuHqTF6UW" LanguageVersion="2025.7.0-0407-g8675153500" Version="0.128">
+  <NugetDependency Id="JsZeTdK0U5KOVb1kJl6Okj" Location="VL.CoreLib" Version="2025.7.0-0407-g8675153500" />
   <Patch Id="CezKXFytGaJOKUQJFOYSlX">
     <Canvas Id="OY5Aci9oKcPOH1uiWUCj0t" DefaultCategory="2D" CanvasType="FullCategory">
       <Canvas Id="Ctb9EBxiEwzMpz15Ups6eO" Name="Transform" Position="299,128">
@@ -693,6 +693,7 @@
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       <Choice Kind="ProcessAppFlag" Name="GridSpread (2D)" />
                     </p:NodeReference>
+                    <Pin Id="Ssrf9GazvGMMk3wKnrFZbB" Name="Node Context" Kind="InputPin" IsHidden="true" />
                     <Pin Id="A9iDOzr80QoLNOj1GStfgR" Name="Center" Kind="InputPin" />
                     <Pin Id="Op7cH0ixJ7ELmkJlzntmUT" Name="Width" Kind="InputPin" />
                     <Pin Id="FIPZt3zVod0OvALh28xIJs" Name="Alignment" Kind="InputPin" DefaultValue="Block" />
@@ -840,6 +841,7 @@
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       <Choice Kind="ProcessAppFlag" Name="GridSpread (2D)" />
                     </p:NodeReference>
+                    <Pin Id="ClV2ByWSIaQMEfA88FmU8V" Name="Node Context" Kind="InputPin" IsHidden="true" />
                     <Pin Id="E5JsmCKyWbQM2G9Ek6sMiY" Name="Center" Kind="InputPin" />
                     <Pin Id="Q4s5fpynzOMN8VVtw1EFQa" Name="Width" Kind="InputPin" />
                     <Pin Id="SwWJAqKSZCULS01xcL4lIU" Name="Alignment" Kind="InputPin" DefaultValue="Block" />
@@ -1418,6 +1420,38 @@
           </Patch>
         </Node>
       </Canvas>
+      <!--
+
+    ************************ InverseBilerp ************************
+
+-->
+      <Node Name="InverseBilerp" Bounds="303,260,112,82" Id="H8wTkg1xMcFQOiXpemotZX">
+        <p:NodeReference>
+          <Choice Kind="OperationDefinition" Name="Operation" />
+          <CategoryReference Kind="Category" Name="Primitive" />
+        </p:NodeReference>
+        <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+        <Patch Id="C9udALTnHdSNvxaFGtVmfk">
+          <Node Bounds="315,292,85,19" AutoConnect="true" Id="DjnGE8NEgbGL8LsURX4Cup">
+            <p:NodeReference LastCategoryFullName="Bilerp.Bilerp" LastDependency="Bilerp.dll">
+              <Choice Kind="OperationNode" Name="InverseBilerp" />
+              <FullNameCategoryReference ID="Bilerp.Bilerp" />
+            </p:NodeReference>
+            <Pin Id="Sw5VwKCquWuOwPjSgvr0wX" Name="P" Kind="InputPin" />
+            <Pin Id="Il3uN7eGL77PDBoM38OMjc" Name="A" Kind="InputPin" />
+            <Pin Id="V6QvjiPuP8IMAFLqltYG20" Name="B" Kind="InputPin" />
+            <Pin Id="KthTUdlErriPIpaehTFPan" Name="C" Kind="InputPin" />
+            <Pin Id="MVUkaZX23JbLO0LmIZ1dap" Name="D" Kind="InputPin" />
+            <Pin Id="B7XU2B9w5TfOVyzaN2VZmp" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pin Id="KeMWmSF14jAOq994pPfwA6" Name="P" Kind="InputPin" />
+          <Pin Id="NLGb08rntt5NwdxD3XUhPY" Name="A" Kind="InputPin" />
+          <Pin Id="Tx9GRHsq4XEPYtAMnmeFry" Name="B" Kind="InputPin" />
+          <Pin Id="Op9Py5YyJ3JQZ9nEJWoKfj" Name="C" Kind="InputPin" />
+          <Pin Id="FVXWOjvBjfvLt34FmORFnU" Name="D" Kind="InputPin" />
+          <Pin Id="NwZITBsRZxoOnKXGKqJY48" Name="Output" Kind="OutputPin" />
+        </Patch>
+      </Node>
     </Canvas>
     <!--
 
@@ -1440,4 +1474,5 @@
       </Patch>
     </Node>
   </Patch>
+  <PlatformDependency Id="K5Z1yJxzUK1NghOEma84gU" Location="../lib/net8.0/Bilerp.dll" />
 </Document>
