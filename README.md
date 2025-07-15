@@ -10,7 +10,7 @@ A place to gather contributions by the vvvv community that:
 
 ## Using the library
 
-As of version __0.4.3__ VL.Addons is split into multiple packages, one for each available category, currently:
+As of version __0.5.0__ VL.Addons is split into multiple packages, one for each available category, currently:
 
 * VL.Addons.2D
 * VL.Addons.Animation
@@ -26,6 +26,7 @@ In order to use one of the packages with VL you have to install the correspondin
 
     nuget install VL.Addons.Stride
 
+Beware that some help patches from one package might be dependend on another package. If you encounter red nodes just install the missing package.
 
 There is also a *VL.Addons* meta package, installing it will install all available packages in one go. Use the following cmd:
 
