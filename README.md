@@ -26,7 +26,7 @@ In order to use one of the packages with VL you have to install the correspondin
 
     nuget install VL.Addons.Stride
 
-Beware that some help patches from one package might be dependend on another package. If you encounter red nodes just install the missing package.
+Beware that some help patches from one package might be dependent on another package. If you encounter red nodes just install the missing package.
 
 There is also a *VL.Addons* meta package, installing it will install all available packages in one go. Use the following cmd:
 
