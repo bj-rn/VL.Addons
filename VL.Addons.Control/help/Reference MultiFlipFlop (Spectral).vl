@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="PrjMKpvBB5oM7A01sqGAnr" LanguageVersion="2025.7.0-0410-g6aae25fc4c" Version="0.128">
+  <NugetDependency Id="KBqq59MLIIyM9O29VbmEoW" Location="VL.CoreLib" Version="2025.7.0-0410-g6aae25fc4c" />
+  <Patch Id="U7chVjA5vxaQSqHcugqgg9">
+    <Canvas Id="Kd1vmgcFy1XMKd7eLF7ng8" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="JacWOkdB3O5PhgNGcMFa6b">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="MWThHsSEgc8PGDPICTBUJa">
+        <Canvas Id="SQFlb8WQDCcMnmdJSfWHjM" CanvasType="Group">
+          <Node Bounds="313,204,113,19" Id="Tdf24FMl1ORMWKjQb7qSRF">
+            <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="MultiFlipFlop" />
+            </p:NodeReference>
+            <Pin Id="Eiyo2CBYaeRLCDFRCUk9dN" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GjhETOk9SbgOJIqugTpCn4" Name="Set" Kind="InputPin" />
+            <Pin Id="PCatNQ5nFlgP9ePTG87ckV" Name="Set 2" Kind="InputPin" />
+            <Pin Id="I5thXFAoMLTP7Dze0olVpt" Name="Index" Kind="OutputPin" />
+            <Pin Id="DBLut9u3jg7LjU02v8UC2j" Name="Set 3" Kind="InputPin" />
+          </Node>
+          <Pad Id="ROc5FgpSoDsO5gEF8jRRiI" Comment="Index" Bounds="315,258,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="98,209,111,19" Id="TJcxyRroEQBMudOdQmE4tv">
+            <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.Addons.Control.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="MultiFlipFlop (Spectral)" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="NUcsEP8KnM3MGi1cgnzVVI" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UKUKOFeBBSpMwqY92CadCB" Name="Set" Kind="InputPin" />
+            <Pin Id="VR5YZOcZLsDNnmYFW06j7k" Name="Index" Kind="OutputPin" />
+          </Node>
+          <Pad Id="TWVXz4h9RbVLSYlvUP6YYG" Comment="" Bounds="100,100,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="LVIrOFnuWa8QGITqVMNrx7" Comment="" Bounds="154,100,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="H3zvUQ8L1jZOOkxttBfrCi" Comment="" Bounds="208,100,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="98,176,112,19" Id="L90dyNwtVg3PJrY03XAegv">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="ClassType" Name="Spread" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="Cons" />
+            </p:NodeReference>
+            <Pin Id="T7H34cDoVdFLtd6fIVgjRR" Name="Input" Kind="InputPin" />
+            <Pin Id="M8djYttOeOqNwh1tVRaOFK" Name="Input 2" Kind="InputPin" />
+            <Pin Id="JdP5Dne3JS5Lm7Z2bMYxtb" Name="Result" Kind="OutputPin" />
+            <Pin Id="RDMAOd9hK3rQJ7XyHph7sb" Name="Input 3" Kind="InputPin" />
+          </Node>
+          <Pad Id="PongmhiFVvyOgXYzKVEP7d" Comment="Index" Bounds="100,258,41,15" ShowValueBox="true" isIOBox="true" />
+        </Canvas>
+        <Patch Id="QiFwoXKVLY3Mc4v7GCWary" Name="Create" />
+        <Patch Id="LjNGSuxOK43QaTVsosVYwa" Name="Update" />
+        <ProcessDefinition Id="O78FsVeRDpSO0Op88CMwlv">
+          <Fragment Id="Ko5NSMveDLVLl0HGdvnzUy" Patch="QiFwoXKVLY3Mc4v7GCWary" Enabled="true" />
+          <Fragment Id="T04SodT5qolMIPnyUm7uKn" Patch="LjNGSuxOK43QaTVsosVYwa" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="IpUw513dMYePqTNG8utuuy" Ids="I5thXFAoMLTP7Dze0olVpt,ROc5FgpSoDsO5gEF8jRRiI" />
+        <Link Id="O3NlPWz6egtPOlPjY2RnDX" Ids="TWVXz4h9RbVLSYlvUP6YYG,GjhETOk9SbgOJIqugTpCn4" />
+        <Link Id="M4kMtlz7tntPEeNY6Uxh54" Ids="TWVXz4h9RbVLSYlvUP6YYG,T7H34cDoVdFLtd6fIVgjRR" />
+        <Link Id="EKsHxJWE1O0PNCOVrSzBpr" Ids="LVIrOFnuWa8QGITqVMNrx7,M8djYttOeOqNwh1tVRaOFK" />
+        <Link Id="G3BvisdPShxLOvcx5Zch7C" Ids="H3zvUQ8L1jZOOkxttBfrCi,RDMAOd9hK3rQJ7XyHph7sb" />
+        <Link Id="TD8wvdxRKSbM1s9JX0qW5k" Ids="LVIrOFnuWa8QGITqVMNrx7,PCatNQ5nFlgP9ePTG87ckV" />
+        <Link Id="PsxEivlDPdzMGoWwub6fzQ" Ids="H3zvUQ8L1jZOOkxttBfrCi,DBLut9u3jg7LjU02v8UC2j" />
+        <Link Id="P1s9nKNn9DEPiM69e0N32n" Ids="VR5YZOcZLsDNnmYFW06j7k,PongmhiFVvyOgXYzKVEP7d" />
+        <Link Id="BRZWd02gWojPiZtS42cwU4" Ids="JdP5Dne3JS5Lm7Z2bMYxtb,UKUKOFeBBSpMwqY92CadCB" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="TO7vfgRhXjoOqsVc0H18aV" Location="VL.Addons.Control" Version="0.0.0" />
+</Document>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="QMaYCKm2fcML0phvboQD7n" LanguageVersion="2025.7.0-0410-g6aae25fc4c" Version="0.128">
+  <NugetDependency Id="DlLmP4n72dSOoFmnu3YBgB" Location="VL.CoreLib" Version="2025.7.0-0410-g6aae25fc4c" />
+  <Patch Id="SQjrISMSq2bMwlXjJTlg1u">
+    <Canvas Id="JCe1Lnaww6CQHsFqxQPAMB" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="P4LRxpGH1GxL2dONgrYRFr">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="H33WVf6aoGILKXiiZS72E0">
+        <Canvas Id="DxWsnpAFaaYNA7tovls82Y" CanvasType="Group">
+          <Node Bounds="118,357,56,19" Id="CZl1KF6x3DyNDD9PTtOPYa">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.Addons.Animation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Disperse" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="Ga2Z2POcvm2QMnYD74crgp" Name="Input" Kind="InputPin" DefaultValue="1.26" />
+            <Pin Id="LnX4GKh5gJPLwcWC6FyUVg" Name="Gamma" Kind="InputPin" />
+            <Pin Id="PLhoItAKH6MMOJSvsRynJi" Name="Spread Count" Kind="InputPin" />
+            <Pin Id="Kl69kqyjuJcLylYJVWJGMz" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="J0DFiF3mfZWOmLEjppNtl2" Comment="Spread Count" Bounds="171,314,35,15" ShowValueBox="true" isIOBox="true" Value="10">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="S0LWaGsnAhGLFERK3pwY4Z" Comment="" Bounds="120,420,68,402" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:ValueBoxSettings>
+              <p:horizontal p:Type="Boolean">false</p:horizontal>
+              <p:maximum p:Type="Single">1</p:maximum>
+              <p:maxvisibleentries p:Type="Int32">10</p:maxvisibleentries>
+              <p:minimum p:Type="Single">0</p:minimum>
+              <p:showslider p:Type="Boolean">true</p:showslider>
+              <p:sliderdirection p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SliderDirectionEnum">Horizontal</p:sliderdirection>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="M241embbRYdNgNABZmqKCk" Comment="Gamma" Bounds="146,290,35,15" ShowValueBox="true" isIOBox="true" Value="1.25">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="99,134,45,19" Id="NnPevhiPRsTOuB8iTMLEBr">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LFO" />
+            </p:NodeReference>
+            <Pin Id="OcpDHYZrbN4MzzI2sjTtYf" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VwEPgBYl74WOqGSYw31bFH" Name="Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NrkRuokYLbTOiwiPGivlBr" Name="New Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RzExubD9QAmOwLT4JQP9QF" Name="Period" Kind="InputPin" />
+            <Pin Id="O5B4Au8f0OQO6UcQPqYVyd" Name="Pause" Kind="InputPin" />
+            <Pin Id="CP0HxHJuJuFLT8TR4yRRdD" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="FPbZqr8oir5MTVWyHa25ep" Name="Phase" Kind="OutputPin" />
+            <Pin Id="GfimMZEZzNAL4mQMGoHTPd" Name="On New Cycle" Kind="OutputPin" />
+            <Pin Id="R1LRS2tSCLcOwQHrq1bbWT" Name="Cycles" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="139,172,39,19" Id="VIaNbJrSVLMOYxJBwyFtZt">
+            <p:NodeReference LastCategoryFullName="Primitive.Float32" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Float32Type" Name="Float32" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="MOD" />
+            </p:NodeReference>
+            <Pin Id="FRNkMBY97o7PhICoruYZAl" Name="Input" Kind="InputPin" />
+            <Pin Id="SmIJI3nG7B5McLprVnupHB" Name="Input 2" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="Razgp3gfL8vPBbUGUtgQIp" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="119,239,105,19" Id="K9hF7sPIl2vL8ChJ2HfSen">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Filter" />
+            </p:NodeReference>
+            <Pin Id="AhwSiY4UmeSOmCYKDGjejH" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KN79BCD4RhRQEDIFoPhgbE" Name="Initial Position" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NVEo1AwOtwpMeyYgOurBi7" Name="Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GC5ePLZwYSYMJVIVDK18yS" Name="New Clock" Kind="InputPin" />
+            <Pin Id="KXNKWFG0AbWOhm3AuMPFWR" Name="Goto Position" Kind="InputPin" />
+            <Pin Id="IydxgoVgqDTOnnTYc7ZAxK" Name="Filter Time" Kind="InputPin" />
+            <Pin Id="Roc5UOr3LqxP1rxYyOZZ3s" Name="Transition" Kind="InputPin" />
+            <Pin Id="Ipsu8HJJYCLPGjY4rVVvk6" Name="Mode" Kind="InputPin" />
+            <Pin Id="OEPsRZX0e5OPAF8t0MPzZn" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="Gv6cbTegWj4LzfewhmXA4G" Name="Position" Kind="OutputPin" />
+            <Pin Id="FyAihoWA2cNMgOSlkHNSoW" Name="Progress" Kind="OutputPin" />
+          </Node>
+          <Pad Id="EjgL78tWZlLQS87Iw4TXQN" Comment="Filter Time" Bounds="161,204,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="EZ8MNSAnCOVMhbAZ60iCHM" Comment="Period" Bounds="101,103,35,15" ShowValueBox="true" isIOBox="true" Value="2">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="PuTPv9HLeQ3MA8eM5t6OXL" Comment="" Bounds="175,156,20,15" ShowValueBox="true" isIOBox="true" Value="2">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:precision p:Type="Int32">0</p:precision>
+              <p:stepsize p:Type="Single">1</p:stepsize>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="LIECos0yozhPxJiRQwRXFo" Name="Create" />
+        <Patch Id="Q8R3liuCpqpM3wYWcTGquy" Name="Update" />
+        <ProcessDefinition Id="SKC9WlZeSUtQFT62HPuYb7">
+          <Fragment Id="MRfepRb0y3AMDcM9cFuy26" Patch="LIECos0yozhPxJiRQwRXFo" Enabled="true" />
+          <Fragment Id="B2CnpZOsAhtMv5hFYTRsSX" Patch="Q8R3liuCpqpM3wYWcTGquy" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="GE0QuEBmS6VM8WHIAE6CJC" Ids="J0DFiF3mfZWOmLEjppNtl2,PLhoItAKH6MMOJSvsRynJi" />
+        <Link Id="URloJMNCo2WLi2KRUnVTOY" Ids="Kl69kqyjuJcLylYJVWJGMz,S0LWaGsnAhGLFERK3pwY4Z" />
+        <Link Id="HAaW4UUZOdRM32oWYalBu1" Ids="M241embbRYdNgNABZmqKCk,LnX4GKh5gJPLwcWC6FyUVg" />
+        <Link Id="L0KYLCFHMrRMyYldJSVzWT" Ids="R1LRS2tSCLcOwQHrq1bbWT,FRNkMBY97o7PhICoruYZAl" />
+        <Link Id="ECy9dgO4ArBPcFagY4bzzG" Ids="Razgp3gfL8vPBbUGUtgQIp,KXNKWFG0AbWOhm3AuMPFWR" />
+        <Link Id="Ty72etNLlR3MhoZs9JfiOs" Ids="EjgL78tWZlLQS87Iw4TXQN,IydxgoVgqDTOnnTYc7ZAxK" />
+        <Link Id="DVKIY0VZo8SQdjnsgZ0qKz" Ids="EZ8MNSAnCOVMhbAZ60iCHM,RzExubD9QAmOwLT4JQP9QF" />
+        <Link Id="MgXZ3utlB2FMnM3dJ5javM" Ids="Gv6cbTegWj4LzfewhmXA4G,Ga2Z2POcvm2QMnYD74crgp" />
+        <Link Id="ADISWMFdn20NW8N9AGTChz" Ids="PuTPv9HLeQ3MA8eM5t6OXL,SmIJI3nG7B5McLprVnupHB" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="EaqEmAQxVQiMo3JvPE1pON" Location="VL.Addons.Animation" Version="0.0.0" />
+</Document>

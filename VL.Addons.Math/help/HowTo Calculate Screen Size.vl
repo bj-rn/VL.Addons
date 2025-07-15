@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="TWLrlJFLxD5PtdRbsWhGXf" LanguageVersion="2025.7.0-0410-g6aae25fc4c" Version="0.128">
+  <NugetDependency Id="AkN1mBHx2CoLj9AVK5fiWb" Location="VL.CoreLib" Version="2025.7.0-0410-g6aae25fc4c" />
+  <Patch Id="MQzbpezq8SdLBALG64Dxs3">
+    <Canvas Id="VcLMl95fLw8Pt3E1PhitmW" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="UG79sEAWKgTNHZSdBO5xpE">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="KNwRx5LWqUjPC9O5ngd9lM">
+        <Canvas Id="LzSILS5bjzkN19qhqn89rP" CanvasType="Group">
+          <Node Bounds="227,197,80,19" Id="PMoDCg6XqPVNLv2mjS6rp0">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="Screensize_Calculator.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="FromDiagonal" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="EuyQCHrd6tMOCtKEvrM7e6" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VfRMFGgfwIKLZoXv4ObDTf" Name="Aspect Ratio" Kind="InputPin" />
+            <Pin Id="CVnhSDUHOmxOsbb7Ayg6r2" Name="Diagonal" Kind="InputPin" />
+            <Pin Id="I3hveht0dHNOiwvxI9bwCx" Name="Width" Kind="OutputPin" />
+            <Pin Id="OTEiU5nEFMbMLz9C0UDxkJ" Name="Height" Kind="OutputPin" />
+            <Pin Id="JppuhLo8c7OQFGLzwUE2LW" Name="Area" Kind="OutputPin" />
+          </Node>
+          <Pad Id="OhEGaVEA5ReMSyP65nXMRe" Comment="Width" Bounds="229,296,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="N4lfufxeTLYNDKtsbKeRjk" Comment="Height" Bounds="267,266,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="DsS0G1X8V71M85UTCimeF7" Comment="Diagonal" Bounds="304,184,35,15" ShowValueBox="true" isIOBox="true" Value="4.444">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:precision p:Type="Int32">3</p:precision>
+              <p:stepsize p:Type="Single">0.01</p:stepsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="GBzuBGilZzSODWL1HSIYdG" Comment="Area" Bounds="304,235,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="HZsekAjm1rMLQW5Hi4o0ms" Comment="Aspect Ratio" Bounds="102,184,61,15" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:precision p:Type="Int32">6</p:precision>
+              <p:stepsize p:Type="Single">0.01</p:stepsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="166,313,66,19" Id="NchDIyqCDelNiyLeNP0W4t">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="Screensize_Calculator.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="FromWidth" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="ELzr0sDkvGJL5lwhUIqsVc" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NCZDu529FoyN0anhL2Mqod" Name="Aspect Ratio" Kind="InputPin" />
+            <Pin Id="N3ADZeHJziaOohiHACwlZm" Name="Width" Kind="InputPin" />
+            <Pin Id="FJiZTJwXHshLb1Z6OiUuTb" Name="Height" Kind="OutputPin" />
+            <Pin Id="Rt4qmvaPRJUMhl4gI28pRR" Name="Diagonal" Kind="OutputPin" />
+            <Pin Id="Oov7fLeyODoLV3JWQ6qWlZ" Name="Area" Kind="OutputPin" />
+          </Node>
+          <Pad Id="AD8k2DGxXD4OOt247u8qPa" Comment="Area" Bounds="229,352,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="GWqF3JP3PHHL2qX60hHcuT" Comment="Diagonal" Bounds="199,382,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="UpErTdj3yJ0M0Xs0knhRx9" Comment="Height" Bounds="168,412,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="101,429,70,19" Id="U9IOFULEIswMLWZ3p4HnZY">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="Screensize_Calculator.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="FromHeight" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="OqVQhRWJ1RiLp4GsAxmCFj" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RQnZfRHNxJrQFYJjZR9LcM" Name="Aspect Ratio" Kind="InputPin" />
+            <Pin Id="VPisfAZppbSNgIFyVbzGcD" Name="Height" Kind="InputPin" />
+            <Pin Id="JiWObcDfimMPOzTPgQsZN4" Name="Width" Kind="OutputPin" />
+            <Pin Id="VFxCpjWYS7wNLc3ToETUYa" Name="Diagonal" Kind="OutputPin" />
+            <Pin Id="J41wrEr8pnlMgu0lkdJ3WI" Name="Area" Kind="OutputPin" />
+          </Node>
+          <Pad Id="U4KiEA6YJugOPx0eFuxCwF" Comment="Width" Bounds="103,528,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="HYThNpy1EM4OHNo2lnVRPD" Comment="Diagonal" Bounds="135,498,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="IKRjP7YlhKfO8pIUkOXH5b" Comment="Area" Bounds="168,468,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="100,145,25,19" Id="AT5oYzL3Q3gMFwDBc8Biuq">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="/" />
+            </p:NodeReference>
+            <Pin Id="BhwHCgO9WIMOO8lhw8SfLr" Name="Input" Kind="InputPin" />
+            <Pin Id="I1Nu9cjGVFCOyHXWTLTrTB" Name="Input 2" Kind="InputPin" />
+            <Pin Id="HvbZyeBGrOaOcgHSJluEXe" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="CpgibSr5NG2L33pIyLcdYB" Comment="" Bounds="102,102,35,15" ShowValueBox="true" isIOBox="true" Value="16">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:precision p:Type="Int32">0</p:precision>
+              <p:stepsize p:Type="Single">1</p:stepsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="GH7i9WGgi1EL1NLs234EM6" Comment="" Bounds="122,125,35,15" ShowValueBox="true" isIOBox="true" Value="9">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:precision p:Type="Int32">0</p:precision>
+              <p:stepsize p:Type="Single">1</p:stepsize>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="E1XqScUBb0SNBaUK6rLLvP" Name="Create" />
+        <Patch Id="RxgqzxwplaXLhSDhyxeB83" Name="Update" />
+        <ProcessDefinition Id="CkiS5g6pKGbP2xYzMDrdze">
+          <Fragment Id="M4k4uDUDnJ6L0qxpth0LEr" Patch="E1XqScUBb0SNBaUK6rLLvP" Enabled="true" />
+          <Fragment Id="PeKgoLJWjJROHdXh7Bhggh" Patch="RxgqzxwplaXLhSDhyxeB83" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="Jvu3gRfjRsfPX1XO5vgpci" Ids="I3hveht0dHNOiwvxI9bwCx,OhEGaVEA5ReMSyP65nXMRe" />
+        <Link Id="Up39UM5aoccLicR23inMPA" Ids="OTEiU5nEFMbMLz9C0UDxkJ,N4lfufxeTLYNDKtsbKeRjk" />
+        <Link Id="UD18Ru8JS50QPnwRrNJUG8" Ids="DsS0G1X8V71M85UTCimeF7,CVnhSDUHOmxOsbb7Ayg6r2" />
+        <Link Id="GefHmQLxuSQMvJHKf3UWKz" Ids="JppuhLo8c7OQFGLzwUE2LW,GBzuBGilZzSODWL1HSIYdG" />
+        <Link Id="Hj3tQmXVWzPPdWBFeVHn8x" Ids="HZsekAjm1rMLQW5Hi4o0ms,VfRMFGgfwIKLZoXv4ObDTf" />
+        <Link Id="RmuEOrZ1nbcMeanbgm6gzz" Ids="HZsekAjm1rMLQW5Hi4o0ms,NCZDu529FoyN0anhL2Mqod" />
+        <Link Id="K7j4dgpPTGtMwWqx7ccdMN" Ids="OhEGaVEA5ReMSyP65nXMRe,N3ADZeHJziaOohiHACwlZm" />
+        <Link Id="HNRBX02uR7QQZyZLoeh6au" Ids="Oov7fLeyODoLV3JWQ6qWlZ,AD8k2DGxXD4OOt247u8qPa" />
+        <Link Id="FowG2FbmFPwPy7xNeNK5om" Ids="Rt4qmvaPRJUMhl4gI28pRR,GWqF3JP3PHHL2qX60hHcuT" />
+        <Link Id="AFbmvBGbQ5TOE2N2Sukgy7" Ids="FJiZTJwXHshLb1Z6OiUuTb,UpErTdj3yJ0M0Xs0knhRx9" />
+        <Link Id="NYGQ56T91uCLUIpq2tz5gN" Ids="UpErTdj3yJ0M0Xs0knhRx9,VPisfAZppbSNgIFyVbzGcD" />
+        <Link Id="OGBicFtOAKXOWLuhHNtGYp" Ids="HZsekAjm1rMLQW5Hi4o0ms,RQnZfRHNxJrQFYJjZR9LcM" />
+        <Link Id="NEMeiuyRAtGL5XdNfOMKY0" Ids="JiWObcDfimMPOzTPgQsZN4,U4KiEA6YJugOPx0eFuxCwF" />
+        <Link Id="NVQVmOn0ZwvPPWHRcFFbU5" Ids="VFxCpjWYS7wNLc3ToETUYa,HYThNpy1EM4OHNo2lnVRPD" />
+        <Link Id="BvuaBYs2I9SPurgdYjnCqP" Ids="J41wrEr8pnlMgu0lkdJ3WI,IKRjP7YlhKfO8pIUkOXH5b" />
+        <Link Id="UpTu99l7sa5LpY43XUGzf5" Ids="CpgibSr5NG2L33pIyLcdYB,BhwHCgO9WIMOO8lhw8SfLr" />
+        <Link Id="KruQvB44VSwN4eTsj3yuj5" Ids="GH7i9WGgi1EL1NLs234EM6,I1Nu9cjGVFCOyHXWTLTrTB" />
+        <Link Id="NxzvTh6QZO8Pjiew87Lnxe" Ids="HvbZyeBGrOaOcgHSJluEXe,HZsekAjm1rMLQW5Hi4o0ms" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="LUtWXP5Npz8OrlaieoQDs2" Location="VL.Addons" Version="0.0.0" />
+</Document>
