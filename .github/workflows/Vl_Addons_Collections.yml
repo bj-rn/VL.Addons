@@ -1,0 +1,34 @@
+name: Push VL.Addons.Collections Nuget
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Git Checkout
+      uses: actions/checkout@main
+    
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup Nuget.exe
+      uses: nuget/setup-nuget@v2.0.0
+
+    - name: Patch Version from tag
+      run: |
+        cd deployment
+        .\patch-version.cmd "VL.Addons.Collections.nuspec" "${{ github.ref_name }}"
+        cd ..
+      
+    - name: Publish VL Nuget
+      uses: vvvv/PublishVLNuget@1.0.43
+      with:
+        nuspec: deployment\VL.Addons.Collections.nuspec
+        icon-src: https://raw.githubusercontent.com/bj-rn/VL.Addons/master/resources/icon.png
+        icon-dst: ./deployment/icon.png
+        nuget-key: ${{ secrets.NUGET_KEY }}

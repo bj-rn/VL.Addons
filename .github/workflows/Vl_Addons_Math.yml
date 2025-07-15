@@ -1,12 +1,10 @@
-name: push_release_nuget
+name: Push VL.Addons.Math Nuget
 
-# on push on master
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - README.md
+    tags:
+      - '*.*.*'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,12 +18,17 @@ jobs:
 
     - name: Setup Nuget.exe
       uses: nuget/setup-nuget@v2.0.0
+
+    - name: Patch Version from tag
+      run: |
+        cd deployment
+        .\patch-version.cmd "VL.Addons.Math.nuspec" "${{ github.ref_name }}"
+        cd ..
       
     - name: Publish VL Nuget
       uses: vvvv/PublishVLNuget@1.0.43
       with:
-        csproj: src\VL.Addons.sln
-        nuspec: deployment\VL.Addons.nuspec
+        nuspec: deployment\VL.Addons.Math.nuspec
         icon-src: https://raw.githubusercontent.com/bj-rn/VL.Addons/master/resources/icon.png
         icon-dst: ./deployment/icon.png
         nuget-key: ${{ secrets.NUGET_KEY }}
