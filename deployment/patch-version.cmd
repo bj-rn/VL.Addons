@@ -1,0 +1,1 @@
+powershell -Command "(gc %1) -replace '{{ VERSION }}', '%2' | Out-File -encoding UTF8 %1"
