@@ -9,13 +9,27 @@ A place to gather contributions by the vvvv community that:
 
 
 ## Using the library
-In order to use this library with VL you have to install the nuget that is available via nuget.org. For information on how to use nugets with VL, see [Managing Nugets](https://thegraybook.vvvv.org/reference/hde/managing-nugets.html) in the VL documentation. As described there you go to the commandline and then type:
+
+As of version __0.4.3__ VL.Addons is split into multiple packages, one for each available category, currently:
+
+* VL.Addons.2D
+* VL.Addons.Animation
+* VL.Addons.Collections
+* VL.Addons.Color
+* VL.Addons.Control
+* VL.Addons.Math
+* VL.Addons.Skia
+* VL.Addons.Stride
+
+
+In order to use one of the packages with VL you have to install the corresponding nuget that is available via nuget.org. For information on how to use nugets with VL, see [Managing Nugets](https://thegraybook.vvvv.org/reference/hde/managing-nugets.html) in the VL documentation. As described there you go to the commandline and then type for example:
+
+    nuget install VL.Addons.Stride
+
+
+There is also a *VL.Addons* meta package, installing it will install all available packages in one go. Use the following cmd:
 
     nuget install VL.Addons
-
-
-Try it with vvvv, the visual live-programming environment for .NET  
-Download: http://visualprogramming.net
 
 ---
 ### License
