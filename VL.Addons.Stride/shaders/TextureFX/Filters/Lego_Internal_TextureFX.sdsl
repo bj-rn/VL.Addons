@@ -1,0 +1,64 @@
+// sauce: https://blog.maximeheckel.com/posts/post-processing-as-a-creative-medium "Lego"
+
+[Category("Filter.Stylize")]
+[Summary("")]
+shader Lego_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+   
+    [Default(24.0f)]
+    compose ComputeFloat PixelSize;
+
+    [Default(0.0f, 0.8f)]
+    compose ComputeFloat2 LightPosition;
+
+    [Default(16.0f)]
+    compose ComputeFloat ColorNum;
+
+    [Default(1.5f)]
+    compose ComputeFloat MaskBorder;
+
+    float random(float2 st) 
+    {
+        return frac(sin(dot(st, float2(12.9898, 78.233))) * 43758.5453123);
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 normalizedPixelSize = PixelSize.Compute() / ViewSize;
+        float2 uv = streams.TexCoord;
+
+        float2 cellPosition = floor(uv / normalizedPixelSize);
+        float2 uvPixel = normalizedPixelSize * cellPosition;
+
+        float2 cellUV = frac(uv / normalizedPixelSize);
+
+        float4 col = Texture0.Sample(LinearSampler, uvPixel);
+
+        float colorNum = ColorNum.Compute();
+
+         // Quantize color channels
+        col.r = floor(col.r * (colorNum - 1.0) + 0.5) / (colorNum - 1.0);
+        col.g = floor(col.g * (colorNum - 1.0) + 0.5) / (colorNum - 1.0);
+        col.b = floor(col.b * (colorNum - 1.0) + 0.5) / (colorNum - 1.0);
+
+        col.rgb = saturate(col.rgb); // clamp between 0 and 1
+
+        float lighting = dot(normalize(cellUV - float2(0.5, 0.5)), LightPosition.Compute()) * 0.7;
+        float dis = abs(distance(cellUV, float2(0.5, 0.5)) * 2.0 - 0.5);
+        col.rgb *= smoothstep(0.1, 0.0, dis) * lighting + 1.0;
+
+        float2 centeredCellUV = cellUV * 2.0 - 1.0;
+        float mask = 1.0;
+        float2 border = 1.05 - pow(centeredCellUV, float2(8.0, 8.0)) * MaskBorder.Compute();
+        mask *= border.x * border.y;
+        float maskStrength = smoothstep(0.0, 0.8, mask);
+        col.rgb *= 0.8 + (maskStrength * 0.1);
+
+        float hueShift = random(cellPosition) * 0.02;
+        float3 hsv = RGBtoHSV(col.rgb);
+        hsv.x += hueShift;
+        col.rgb = HSVtoRGB(hsv);
+        
+        return col;
+    }
+};

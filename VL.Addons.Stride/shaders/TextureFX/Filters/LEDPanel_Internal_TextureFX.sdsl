@@ -1,0 +1,56 @@
+// sauce: https://blog.maximeheckel.com/posts/post-processing-as-a-creative-medium "Staggered LED cell panel"
+
+[Category("Filter.Stylize")]
+[Summary("")]
+shader LEDPanel_Internal_TextureFX : FilterBase
+{
+    [Default(8.0f)]
+    compose ComputeFloat PixelSize;
+
+    [Default(0.5f)]
+    compose ComputeFloat MaskStagger;
+
+    [Default(0.9f)]
+    compose ComputeFloat MaskBorder;
+
+    [Default(1.25f)]
+    compose ComputeFloat MaskIntensity;
+
+    
+    float4 Filter(float4 tex0col)
+    {
+        
+        float2 normalizedPixelSize = PixelSize.Compute() / ViewSize;
+        float2 uv = streams.TexCoord;
+        float2 coord = uv / normalizedPixelSize;
+
+        float maskStagger = MaskStagger.Compute();
+
+        float columnStagger = fmod(floor(coord.x), 2.0) * maskStagger;
+        float2 subcoord = coord * float2(3, 1);
+        float subPixelIndex = fmod(floor(subcoord.x), 3.0);
+        float subPixelStagger = subPixelIndex * maskStagger;
+
+        float2 offsetUV = uv;
+        offsetUV.y += (columnStagger + subPixelStagger) * normalizedPixelSize.y;
+
+        float2 uvPixel = normalizedPixelSize * floor(offsetUV / normalizedPixelSize);
+        
+        float4 col = Texture0.Sample(LinearSampler, uvPixel);
+
+        float luma = dot(float3(0.2126, 0.7152, 0.0722), col.rgb);
+
+        float2 cellOffset = float2(0.0, columnStagger + subPixelStagger);
+        float2 subCellUV = frac(subcoord + cellOffset) * 2.0 - 1.0;
+
+        float mask = 1.0;
+        float2 border = 1.0 - subCellUV * subCellUV * (MaskBorder.Compute() - luma * 0.25);
+        mask *= border.x * border.y;
+        float maskStrength = smoothstep(0.0, 0.95, mask);
+
+        col += 0.005;
+        col.rgb *= 1.0 + (maskStrength - 1.0) * MaskIntensity.Compute();
+
+        return col;
+    }
+};

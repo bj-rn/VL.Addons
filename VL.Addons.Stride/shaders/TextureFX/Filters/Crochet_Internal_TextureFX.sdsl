@@ -1,0 +1,77 @@
+// sauce: https://blog.maximeheckel.com/posts/post-processing-as-a-creative-medium "Woven Crochet Effect"
+
+[Category("Filter.Stylize")]
+[Summary("")]
+shader Crochet_Internal_TextureFX : FilterBase, AddonShaderUtils
+{
+   
+    [Default(8.0f)]
+    compose ComputeFloat PixelSize;
+
+    float random(float2 st) 
+    {
+        return frac(sin(dot(st, float2(12.9898, 78.233))) * 43758.5453123);
+    }
+
+    float noise(float2 st) 
+    {
+        float2 i = floor(st);
+        float2 f = frac(st);
+        float a = random(i);
+        float b = random(i + float2(1.0, 0.0));
+        float c = random(i + float2(0.0, 1.0));
+        float d = random(i + float2(1.0, 1.0));
+        float2 u = f * f * (3.0 - 2.0 * f);
+        return lerp(a, b, u.x)
+            + (c - a) * u.y * (1.0 - u.x)
+            + (d - b) * u.x * u.y;
+    }
+
+    float4 Filter(float4 tex0col)
+    {
+        float2 normalizedPixelSize = PixelSize.Compute() / ViewSize;
+        float2 uv = streams.TexCoord;
+
+        float2 cellPosition = floor(uv / normalizedPixelSize);
+        float2 uvPixel = normalizedPixelSize * cellPosition;
+    
+        float4 col = Texture0.Sample(LinearSampler, uvPixel);
+
+        float2 cellUV = frac(uv / normalizedPixelSize);
+
+        float rowOffset = sin((random(float2(0.0, uvPixel.y)) - 0.5) * 0.25);
+        cellUV.x += rowOffset; 
+        float2 centered = cellUV - 0.5;
+
+        float noiseAmount = 0.18;
+        float2 noisyCenter = centered + (float2(
+            random(cellPosition + centered),
+            random(cellPosition + centered)
+        ) - 0.5) * noiseAmount;
+
+        float isAlternate = fmod(cellPosition.x, 2.0);
+        float angle = isAlternate == 0.0 ? radians(-65.0) : radians(65.0);
+
+        float sina = sin(angle);
+        float cosa = cos(angle);
+        float2 rotated = float2(
+            noisyCenter.x * cosa - noisyCenter.y * sina,
+            noisyCenter.x * sina + noisyCenter.y * cosa
+        );
+
+        float aspectRatio = 1.55;
+        float ellipse = length(float2(rotated.x, rotated.y * aspectRatio - 0.075));
+        col.rgb *= smoothstep(0.2, 1.0, 1.0 - ellipse);
+
+        float stripeNoise = noise(float2(centered.x, centered.y * 100.0));
+        col.rgb *= stripeNoise + 0.4;
+
+        float hueShift = (random(cellPosition) - 0.5) * 0.08;
+        float3 hsv = RGBtoHSV(col.rgb);
+        hsv.x += hueShift;
+        col.rgb = HSVtoRGB(hsv);
+
+        col.rgb *= smoothstep(0.2, 1.0, 1.0 - ellipse);
+        return col;
+    }
+};

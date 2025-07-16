@@ -1,0 +1,73 @@
+// sauce: https://blog.maximeheckel.com/posts/post-processing-as-a-creative-medium "Complex pixel patterns"
+
+[Category("Filter.Stylize")]
+[Summary("")]
+shader LumaDots_Internal_TextureFX : FilterBase
+{
+    [Default(8.0f)]
+    compose ComputeFloat PixelSize;
+
+    [Color]
+    [Default(1.0f, 1.0f, 1.0f, 1.0f)]
+    compose ComputeColor ColorA;
+
+    [Default(0.0f, 0.31f, 0.933f, 1.0f)]
+    compose ComputeColor ColorB;
+    
+    float circleSDF(float2 p) 
+    {
+        return length(p - 0.5);    
+    }
+    
+    float4 Filter(float4 tex0col)
+    {
+        
+        float2 normalizedPixelSize = PixelSize.Compute() / ViewSize;
+        float2 uv = streams.TexCoord;
+        float2 uvPixel = normalizedPixelSize * floor(uv / normalizedPixelSize);
+    
+        float4 colA = ColorA.Compute();
+        float4 colB = ColorB.Compute();
+
+        float4 col = Texture0.Sample(LinearSampler, uvPixel);
+
+        float luma = dot(float3(0.2126, 0.7152, 0.0722), col.rgb);
+
+        float2 cellUV = frac(uv / normalizedPixelSize);
+        
+        col = colA;
+
+        float d = circleSDF(cellUV);
+
+        if (luma > 0.2)
+        {
+            if (d < 0.3)
+            {
+                col = colB;
+            }
+            else
+            {
+                col = colA;
+            }
+        }
+
+        if (luma > 0.75)
+        {
+            if (d < 0.3)
+            {
+                col = colA;
+            }
+            else
+            {
+                col = colB;
+            }
+        }
+
+        if (luma > 0.99)
+        {
+            col = colB;
+        }
+
+        return col;
+    }
+};
