@@ -1,0 +1,56 @@
+shader VertexDisplacement_ShaderFX : Transformation, TransformationInstancing, PositionStream4, Texturing, ShadingBase, NormalBase
+{
+	cbuffer PerMaterial
+    {
+        stage float4x4 tTex;
+    }
+
+    rgroup PerMaterial 
+    {
+		stage Texture2D DisplaceTexture;
+        stage SamplerState CustomSampler;
+		stage compose ComputeFloat Strength;
+    }
+
+	float3 filterNormalLod(float2 uv, float texelSize, float strength)
+    {
+        float4 h;
+        float3 center = mul(streams.meshNormal, InstanceWorld[streams.InstanceID].Matrix);
+
+		
+        float3 right = float3(texelSize, 0.0, 0.0) + DisplaceTexture.SampleLevel(LinearSampler, uv + float2( texelSize, 0), 0).xyz * strength;
+        float3 left = float3(-texelSize, 0.0, 0.0) + DisplaceTexture.SampleLevel(LinearSampler, uv + float2(-texelSize, 0), 0).xyz * strength;
+        float3 top = float3(0.0, 0.0, -texelSize) + DisplaceTexture.SampleLevel(LinearSampler, uv + float2( 0, -texelSize), 0).xyz * strength;
+        float3 bottom = float3(0.0, 0.0, texelSize) + DisplaceTexture.SampleLevel(LinearSampler, uv + float2( 0, texelSize), 0).xyz * strength;
+
+        float3 topRight = cross(right, top);
+        float3 topLeft = cross(top, left);
+        float3 bottomLeft = cross(left, bottom);
+        float3 bottomRight = cross(bottom, right);
+
+        return normalize(topRight + topLeft + bottomLeft + bottomRight);
+    }
+
+
+	override stage void VSMain() 
+    {
+        float strength = Strength.Compute();
+
+        base.VSMain();
+
+        float4 pos = streams.PositionWS;
+
+		uint width, height;
+		DisplaceTexture.GetDimensions(width, height);
+
+        float3 normal = filterNormalLod(streams.TexCoord, 1.0 / width, strength);
+        float Disp = DisplaceTexture.SampleLevel(LinearSampler, streams.TexCoord, 0).x ;
+        pos.xyz +=  strength * Disp * streams.meshNormal * 10;
+
+        streams.PositionWS = mul(pos, InstanceWorld[streams.InstanceID].Matrix);
+        streams.ShadingPosition  = mul(streams.PositionWS, ViewProjection);
+        streams.normalWS = mul(normal, InstanceWorld[streams.InstanceID].Matrix);
+		streams.meshNormalWS = mul(normal, InstanceWorld[streams.InstanceID].Matrix);
+        streams.TexCoord  = mul(streams.TexCoord, tTex);
+    }
+};
