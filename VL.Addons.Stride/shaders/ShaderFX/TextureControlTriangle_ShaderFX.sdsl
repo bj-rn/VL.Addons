@@ -1,0 +1,81 @@
+shader TextureControlTriangle_ShaderFX : MaterialExtension, TransformationInstancing
+{
+	cbuffer PerMaterial
+    {
+        stage float4x4 TransformShrinkTexture;
+		stage float4x4 TransformExplodeTexture;
+    }
+
+    rgroup PerMaterial 
+    {
+        stage Texture2D ShrinkTexture;
+		stage Texture2D ExplodeTexture;
+		stage compose ComputeFloat ShrinkStrength;
+		stage compose ComputeFloat ExplodeStrength;
+		stage compose ComputeFloat FlatNormals;
+    }
+
+
+	float CalcAmount(Texture2D tex, Input input[3], float4x4 tTex, float strength)
+	{
+		float3 col0 = tex.SampleLevel(LinearSampler, mul(input[0].TexCoord, tTex), 0).xyz;
+		float3 col1 = tex.SampleLevel(LinearSampler, mul(input[1].TexCoord, tTex), 0).xyz;
+		float3 col2 = tex.SampleLevel(LinearSampler, mul(input[2].TexCoord, tTex), 0).xyz;
+
+		float amt = (dot(col0, 0.33) + dot(col1, 0.33) + dot(col2, 0.33))/3;
+		return amt * strength;
+	}
+
+
+    [maxvertexcount(3)]
+    stage void GSMain(triangle Input input[3], inout TriangleStream<Output> gsOut)
+    {
+		float3 p1 = input[0].Position.xyz;
+		float3 p2 = input[1].Position.xyz;
+		float3 p3 = input[2].Position.xyz;
+
+
+		///SHRINK TRIANGLE WITH TEXTURE
+		float3 ce = (p1 + p2 + p3) / 3.0f;
+		float strength = ShrinkStrength.Compute();
+		float3 shrinkAmount = CalcAmount(ShrinkTexture, input, TransformShrinkTexture, strength);
+
+		float3 newp0 = lerp(p1, ce, shrinkAmount);
+		float3 newp1 = lerp(p2, ce, shrinkAmount);
+		float3 newp2 = lerp(p3, ce, shrinkAmount);
+
+
+		///EXPLODE TRIANGLE WITH TEXTURE
+		float3 faceEdgeA = newp1 - newp0;
+		float3 faceEdgeB = newp0 - newp2;
+		float3 norm = -cross(faceEdgeB, faceEdgeA);
+		norm = normalize(norm);	
+
+		float explodeStrength = ExplodeStrength.Compute();
+		float explodeAmount = CalcAmount(ExplodeTexture, input, TransformExplodeTexture, explodeStrength);
+
+
+		streams = input[0];
+		streams.PositionWS = mul(float4(newp0 + norm * explodeAmount, input[0].Position.w), InstanceWorld[streams.InstanceID].Matrix);
+		streams.ShadingPosition = mul(streams.PositionWS, ViewProjection);
+		streams.TexCoord = input[0].TexCoord;
+		streams.normalWS = mul(lerp(input[0].meshNormal, norm, FlatNormals.Compute()), InstanceWorld[streams.InstanceID].Matrix);
+		gsOut.Append(streams);
+
+		streams = input[1];
+		streams.PositionWS = mul(float4(newp1 + norm * explodeAmount, input[1].Position.w), InstanceWorld[streams.InstanceID].Matrix);
+		streams.ShadingPosition = mul(streams.PositionWS, ViewProjection);
+		streams.TexCoord = input[1].TexCoord;
+		streams.normalWS =  mul(lerp(input[1].meshNormal, norm, FlatNormals.Compute()), InstanceWorld[streams.InstanceID].Matrix);
+		gsOut.Append(streams);
+
+		streams = input[2];
+		streams.PositionWS = mul(float4(newp2 + norm * explodeAmount, input[2].Position.w), InstanceWorld[streams.InstanceID].Matrix);
+		streams.ShadingPosition = mul(streams.PositionWS, ViewProjection);
+		streams.TexCoord = input[2].TexCoord;
+		streams.normalWS = mul(lerp(input[2].meshNormal, norm, FlatNormals.Compute()), InstanceWorld[streams.InstanceID].Matrix);
+		gsOut.Append(streams);
+
+		gsOut.RestartStrip();
+	}
+};
