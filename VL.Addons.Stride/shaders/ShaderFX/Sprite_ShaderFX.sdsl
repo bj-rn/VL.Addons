@@ -1,0 +1,129 @@
+shader Sprite_ShaderFX : Transformation, TransformationInstancing, ShaderUtils, PositionStream4, Texturing, ShadingBase, NormalStream, NormalFromMesh 
+{
+    [Color]
+    float4 Color = float4(1, 0, 0, 1);
+
+    static const float3 QuadPositionsZ[4] = {
+        float3(-1, 0,  1),
+        float3( 1, 0,  1),
+        float3(-1, 0, -1),
+        float3( 1, 0, -1),
+    };
+
+    static const float3 QuadPositions[4] = {
+        float3(-1, 1,  0),
+        float3( 1, 1,  0),
+        float3(-1, -1, 0),
+        float3( 1, -1, 0),
+    };
+
+    static const float3 QuadNormals[4] = {
+        float3(0, 1, 0),
+        float3(0, 1, 0),
+        float3(0, 1, 0),
+        float3(0, 1, 0),
+    };
+
+    static const float2 QuadUV[4] = {
+        float2(0, 1), 
+        float2(1, 1),
+        float2(0, 0),
+        float2(1, 0)
+    };
+
+	cbuffer PerMaterial
+    {
+        stage float4x4 tTex;
+        stage float4x4 tTest;
+        stage bool FaceCamera;
+        stage float2 GridSize;
+        //stage float ControlAmount;
+        
+        stage stream float2 ObjectUV;
+    }
+
+    rgroup PerMaterial 
+    {
+        stage Texture2D SpriteSizeControl;
+        stage Texture2D SpriteTexture;
+        stage Texture2D ObjectTexture;
+        stage SamplerState CustomSampler;
+        stage stream float4 SpriteColor;
+    }
+
+	[maxvertexcount(4)]
+    void GSMain(point Input input[1], inout TriangleStream<Output> gsout)
+    {
+        streams = input[0];
+
+        float2 texCoord = input[0].TexCoord;
+        float3 col0 = SpriteSizeControl.SampleLevel(CustomSampler, texCoord, 0).xyz;
+        streams.SpriteColor = SpriteTexture.SampleLevel(LinearSampler, texCoord, 0);
+
+        float amt = (dot(col0, 0.33));
+
+        for(int i=0; i<4; i++)
+        {
+            // Sprite pos
+            float3 p = mul(QuadPositions[i] * amt, tTex);
+            //p = mul(p, tTex);
+
+            //Make sure quad will face camera
+            if(FaceCamera)
+            {
+                p = mul(p, (float3x3)ViewInverse).xyz;
+            }
+            else
+            {
+                p = mul(p, (float3x3)AngleAxis3x3(1.57079633, float3(1.0, 0.0, 0.0))).xyz;
+            }
+            //Put the geometry relative to the world position
+            p += streams.PositionWS.xyz;
+            
+            //streams.ShadingPosition = mul(streams.Position, tTex);
+            float2 newG_texcoords = QuadUV[i].xy * 2 - 1;
+            float prout = -((1.0 / GridSize.y) + 1.0) * 2.0;
+            float2 x0 = newG_texcoords * float2(1, prout ) * float2((2.0 / GridSize.x), 1.0 / GridSize.y ) * 0.5;
+
+            //Project vertex
+            streams.ShadingPosition = mul(float4(p, streams.PositionWS.w), ViewProjection);
+            //streams.PositionWS = float4(p, 1);//mul(float4(p, 1), World);
+            streams.TexCoord = QuadUV[i];
+            streams.ObjectUV = texCoord + x0  * amt ;
+            //streams.normalWS = mul(QuadNormals[i], tTest);
+
+            gsout.Append(streams);
+        }
+
+        gsout.RestartStrip();
+    }
+
+    //override stage void PSMain() 
+    //{
+    //    base.PSMain();
+    //    //streams.ColorTarget *= streams.SpriteColor * float4(ObjectTexture.Sample(LinearSampler, streams.ObjectUV)); 
+    //}
+
+    stage override float4 Shading()
+    {
+        return base.Shading() * streams.SpriteColor * float4(ObjectTexture.Sample(LinearSampler, streams.ObjectUV));
+    }
+
+    // Rotation with angle (in radians) and axis
+    float3x3 AngleAxis3x3(float angle, float3 axis)
+    {
+        float c, s;
+        sincos(angle, s, c);
+
+        float t = 1 - c;
+        float x = axis.x;
+        float y = axis.y;
+        float z = axis.z;
+
+        return float3x3(
+            t * x * x + c,      t * x * y - s * z,  t * x * z + s * y,
+            t * x * y + s * z,  t * y * y + c,      t * y * z - s * x,
+            t * x * z - s * y,  t * y * z + s * x,  t * z * z + c
+        );
+    }
+};
