@@ -1,4 +1,7 @@
+![Alt VL.Addons](https://raw.githubusercontent.com/bj-rn/VL.Addons/refs/heads/main/resources/splash.jpg 'VL.Addons')
+
 # VL.Addons
+
 [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/VL.Addons?style=flat-square)](https://www.nuget.org/packages/VL.Addons)
 
 A place to gather contributions by the vvvv community that:
