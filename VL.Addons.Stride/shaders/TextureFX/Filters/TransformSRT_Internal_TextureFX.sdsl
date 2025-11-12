@@ -19,13 +19,21 @@ shader TransformSRT_Internal_TextureFX : FilterBase, TextureUtils
 
     float4 Filter(float4 tex0col)
     {
-        float2 uv = r2dCyc(((streams.TexCoord - 0.5) * Scale.Compute() + 0.5+ Translate.Compute() * 2 - 1)* float2(1,-1) * .5, Rotate.Compute()) * float2(1,-1) + 0.5;
-        
+        // (uv * 2 - 1): This scales the UV coordinates from the range [0, 1] to [-1, 1].
+        // float2(1, -1): This flips the Y-axis.
+        // 0.5: This scales down the UV coordinates range.
+        float2 adjustedUV = (streams.TexCoord * 2 - 1) * float2(1, -1) * 0.5;
+    
+        float2 scaledUV = adjustedUV * Scale.Compute();          // Scale the UV
+        float2 rotatedUV = r2dCyc(scaledUV, 1.0 - Rotate.Compute()); // Apply rotation
+        float2 translatedUV = rotatedUV + Translate.Compute(); // Apply translation
+        float2 finalUV = translatedUV * float2(1, -1) + 0.5;      // Flip back the Y and recenter
+
         switch (InterpolationMode)
         {
-            case 0: return Texture0.Sample(CustomSampler, uv);
-            case 1: return SampleCubicBSpline(Texture0, CustomSampler, uv);
-            case 2: return SampleCubicCatmullRom(Texture0, CustomSampler, uv);
+            case 0: return Texture0.Sample(CustomSampler, finalUV);
+            case 1: return SampleCubicBSpline(Texture0, CustomSampler, finalUV);
+            case 2: return SampleCubicCatmullRom(Texture0, CustomSampler, finalUV);
         }
 
         return 1;
