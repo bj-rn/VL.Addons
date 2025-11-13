@@ -3,7 +3,6 @@
 
 shader Rotate_Internal_TextureFX : FilterBase, TextureUtils
 {
-    float4x4 Transform;
     SamplerState CustomSampler;
 
     [Default(1.0f)]
@@ -14,7 +13,7 @@ shader Rotate_Internal_TextureFX : FilterBase, TextureUtils
 
     float4 Filter(float4 tex0col)
     {
-        float2 uv = r2dCyc((streams.TexCoord * 2 - 1)* float2(1,-1) * .5, Rotate.Compute()) * float2(1,-1) + 0.5;
+        float2 uv = r2dCyc((streams.TexCoord * 2 - 1)* float2(1,-1) * .5, -Rotate.Compute()) * float2(1,-1) + 0.5;
 
         switch (InterpolationMode)
         {
