@@ -285,6 +285,12 @@ shader AddonShaderUtils
         return floor(p * x) / x;
     }
 
+    float2 Quantize(float2 p, float2 xy)
+    {
+        xy += 1;
+        return floor(p * xy) / xy;
+    }
+
     float3 Quantize(float3 p, float x)
     {
         x += 1;
