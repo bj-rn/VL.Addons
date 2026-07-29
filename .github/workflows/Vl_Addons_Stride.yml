@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@main
     
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v3
 
     - name: Setup Nuget.exe
-      uses: nuget/setup-nuget@v2.0.0
+      uses: nuget/setup-nuget@v4.0
 
     - name: Patch Version from tag
       run: |
@@ -26,7 +26,7 @@ jobs:
         cd ..
       
     - name: Publish VL Nuget
-      uses: vvvv/PublishVLNuget@1.0.43
+      uses: vvvv/PublishVLNuget@1.0.47
       with:
         nuspec: deployment\VL.Addons.Stride.nuspec
         icon-src: https://raw.githubusercontent.com/bj-rn/VL.Addons/master/resources/icon.png
