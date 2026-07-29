@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="C4Sdul3ooM3QYnxokOnXEa" LanguageVersion="2025.7.4" Version="0.128">
+  <Patch Id="V7DqGaQdT0TLbz6AptxCsc">
+    <Canvas Id="FK8v5hKUJjMMaPblhuqhSO" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="Uje9F39vUgEPbM708vJVHb">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="JX09aNL5HkqO4G3ZCR3eMD">
+        <Canvas Id="M87qE2YX9FcP1xTRWasKF6" CanvasType="Group">
+          <Node Bounds="42,262,79,19" Id="FeuOL7EAiQ7M4uJWvNqIMS">
+            <p:NodeReference LastCategoryFullName="Collections.Combinatorics" LastDependency="VL.Collections.Combinatorics.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Combinations" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="KxwpDIYNCo7QKV0nreHr49" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VaQ4PrRUbhTQR4ubB7CWKf" Name="Input" Kind="InputPin" />
+            <Pin Id="T2Rr0pXQcSyLasPm2TFRuW" Name="Lower Index" Kind="InputPin" />
+            <Pin Id="UMvHYA3zDowPqAcFQnGfoW" Name="Type" Kind="InputPin" />
+            <Pin Id="HUHBGZONjSJMBcAfvZzETB" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="AOrm8IV7zthOCrgCCsil94" Comment="" Bounds="564,80,145,65" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Spread" />
+              <p:TypeArguments>
+                <TypeReference>
+                  <Choice Kind="ImmutableTypeFlag" Name="RGBA" />
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+            <p:Value>
+              <Item>1, 0, 0, 1</Item>
+              <Item>0, 1, 0, 1</Item>
+              <Item>0, 0, 1, 1</Item>
+            </p:Value>
+          </Pad>
+          <Pad Id="Q5ATydEpmV6LBfdRgHRHtU" Comment="Lower Index" Bounds="81,80,35,29" ShowValueBox="true" isIOBox="true" Value="2">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">14</p:fontsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="EKtxezg9iQqOYk0I6iRmNf" Comment="" Bounds="44,350,231,311" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:maxvisibleentries p:Type="Int32">30</p:maxvisibleentries>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="562,262,76,19" Id="OiOZjsjVUTROgYiLyTciGr">
+            <p:NodeReference LastCategoryFullName="Collections.Combinatorics" LastDependency="VL.Collections.Combinatorics.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Permutations" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="FV39ZYrZYVjQZhZuUQelJd" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Mgp1eKrxVxvOLPmYQbe0c4" Name="Input" Kind="InputPin" />
+            <Pin Id="IV0MAujQLZfQHodmJSB1p8" Name="Type" Kind="InputPin" />
+            <Pin Id="SBKOKjXo4ZILjVuESvLyxd" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="302,262,62,19" Id="P8GQhuVdn0oMIjKfevvj2J">
+            <p:NodeReference LastCategoryFullName="Collections.Combinatorics" LastDependency="VL.Collections.Combinatorics.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Variations" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="BECWCzoFg26M1m1Nt5JJCy" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NyAXWOa0iCHPVxSQlRwfPh" Name="Input" Kind="InputPin" />
+            <Pin Id="P6eLO9q2ZKiP9jieufNug4" Name="Lower Index" Kind="InputPin" />
+            <Pin Id="ROygtx4Q0BYMAnaZfGr4mC" Name="Type" Kind="InputPin" />
+            <Pin Id="MqPWiCCC6QvQU9XdbPGDkV" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="VJF34kcdio3LBjF8zIZW2l" Comment="Type" Bounds="635,190,229,29" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Combinatorics.Collections" LastDependency="Combinatorics.dll">
+              <Choice Kind="TypeFlag" Name="GenerateOption" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">14</p:fontsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="766,98,45,19" Id="RLWatlwV7q0PkLVbMHxnmz">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LFO" />
+            </p:NodeReference>
+            <Pin Id="CznXjzyahz3PnxgrRD9NSo" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KyL6My842wPNkj3GN8dAHV" Name="Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IekDaMgYp1LLDeFRrNisdx" Name="New Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MuyT36hfU9WQG80tOKD1NP" Name="Period" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="B4KUaSFVYY2NmFBLPCrI66" Name="Pause" Kind="InputPin" />
+            <Pin Id="HkRmStEQP3WNCVIxp4YZaO" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="PHgYnJkoCr4PeEOaClYIzH" Name="Phase" Kind="OutputPin" />
+            <Pin Id="IOIpPiJbmUnLSSIas5S7ho" Name="On New Cycle" Kind="OutputPin" />
+            <Pin Id="Ht7QSylqWPHL0f2ANpuEE8" Name="Cycles" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="806,158,65,19" Id="G9iDvJJhchxOlmHh4Ntakl">
+            <p:NodeReference LastCategoryFullName="Primitive.Enum" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Ord2Enum" />
+            </p:NodeReference>
+            <Pin Id="EpkuYVsrY2HPboABMZ7TIM" Name="Input" Kind="StateInputPin" />
+            <Pin Id="AnO1TAbCWUyPl756FSdxiC" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="806,128,39,19" Id="VsXScJpkCD2PqQZQTMp1r5">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="MOD" />
+            </p:NodeReference>
+            <Pin Id="TY8e8AZlUKcLWGC1itKXb1" Name="Input" Kind="InputPin" />
+            <Pin Id="FTBA9yhnLRtOQEiJFyCTO1" Name="Input 2" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="BjhY3cLvI8tOqRuKFzOxP3" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Qa9EssTBTeKMWw4dHQSj2t" Comment="" Bounds="304,351,231,311" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Spread" />
+              <p:TypeArguments>
+                <TypeReference LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="TypeFlag" Name="Spread" />
+                  <p:TypeArguments>
+                    <TypeReference LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="RGBA" />
+                    </TypeReference>
+                  </p:TypeArguments>
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:maxvisibleentries p:Type="Int32">30</p:maxvisibleentries>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="JYumFJrdBaQOek7UgOT3KM" Comment="" Bounds="564,351,231,311" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Spread" />
+              <p:TypeArguments>
+                <TypeReference LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="TypeFlag" Name="Spread" />
+                  <p:TypeArguments>
+                    <TypeReference LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="RGBA" />
+                    </TypeReference>
+                  </p:TypeArguments>
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:maxvisibleentries p:Type="Int32">30</p:maxvisibleentries>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="TGE0nsoPG5WOXx4o9egzuv" Bounds="952,88,65,19" ShowValueBox="true" isIOBox="true" Value="Based on:">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="F34I3PW1JOrQE6DEM8FqHe" Bounds="952,108,308,20" ShowValueBox="true" isIOBox="true" Value="https://github.com/eoincampbell/combinatorics">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Link</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="QA3k6e3l8eJQHenj53H1Ji" Name="Create" />
+        <Patch Id="PvaLkggwm0QQDQYm5w1LLM" Name="Update" />
+        <ProcessDefinition Id="UuQbVUHYfcTPcjSpjCpcOu">
+          <Fragment Id="QIhPsuF0a7lM3dvwMzBGgU" Patch="QA3k6e3l8eJQHenj53H1Ji" Enabled="true" />
+          <Fragment Id="AHnA7mtJgJVNX9hFCbruKP" Patch="PvaLkggwm0QQDQYm5w1LLM" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="BpcD585xKT2LtMicCyxmSB" Ids="AOrm8IV7zthOCrgCCsil94,VaQ4PrRUbhTQR4ubB7CWKf" />
+        <Link Id="ScB50u0U1IcPdhxFePesxk" Ids="Q5ATydEpmV6LBfdRgHRHtU,T2Rr0pXQcSyLasPm2TFRuW" />
+        <Link Id="LekZNCSzmXWL8oHl327hTn" Ids="HUHBGZONjSJMBcAfvZzETB,EKtxezg9iQqOYk0I6iRmNf" />
+        <Link Id="SvrRbyCoHNgP6sZ3PNw4KW" Ids="AOrm8IV7zthOCrgCCsil94,Mgp1eKrxVxvOLPmYQbe0c4" />
+        <Link Id="GQ8LnQCuNM7OYt8aozadKp" Ids="Q5ATydEpmV6LBfdRgHRHtU,P6eLO9q2ZKiP9jieufNug4" />
+        <Link Id="SQZOAG4cLmOQA5aPlOaHYe" Ids="AOrm8IV7zthOCrgCCsil94,NyAXWOa0iCHPVxSQlRwfPh" />
+        <Link Id="AJzCAvJJnFNQMJw3O1ixPg" Ids="VJF34kcdio3LBjF8zIZW2l,IV0MAujQLZfQHodmJSB1p8" />
+        <Link Id="DjzGgMgmuA5MbUIA1IOpvw" Ids="VJF34kcdio3LBjF8zIZW2l,ROygtx4Q0BYMAnaZfGr4mC" />
+        <Link Id="HfnQg55Ma1BOGikuoVreYo" Ids="VJF34kcdio3LBjF8zIZW2l,UMvHYA3zDowPqAcFQnGfoW" />
+        <Link Id="L2HSobQiHjmNu9c7U4uOoX" Ids="Ht7QSylqWPHL0f2ANpuEE8,TY8e8AZlUKcLWGC1itKXb1" />
+        <Link Id="M8Tkd0IrctPOCvDLqi7MCt" Ids="BjhY3cLvI8tOqRuKFzOxP3,EpkuYVsrY2HPboABMZ7TIM" />
+        <Link Id="A8KjFYCfuK6QQb43FEVrF5" Ids="AnO1TAbCWUyPl756FSdxiC,VJF34kcdio3LBjF8zIZW2l" />
+        <Link Id="LJfanibrPyVOinXDTl3YOC" Ids="MqPWiCCC6QvQU9XdbPGDkV,Qa9EssTBTeKMWw4dHQSj2t" />
+        <Link Id="G3h8MpzWkFeOuCSwHkFz3L" Ids="SBKOKjXo4ZILjVuESvLyxd,JYumFJrdBaQOek7UgOT3KM" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="KFgIoPjQh1lPhSMZbfISm3" Location="VL.Addons.Collections" Version="0.5.3" />
+  <NugetDependency Id="UEiTiXO1iemMoG5gSiyA1U" Location="VL.CoreLib" Version="2025.7.4" />
+</Document>
