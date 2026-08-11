@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="VrMxNvTX4ttPlXozQi1L8g" LanguageVersion="2025.7.0-0410-g6aae25fc4c" Version="0.128">
-  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2025.7.0-0410-g6aae25fc4c" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="VrMxNvTX4ttPlXozQi1L8g" LanguageVersion="2025.7.4" Version="0.128">
+  <NugetDependency Id="Obeij4R17AsOCwBBPl2pJD" Location="VL.CoreLib" Version="2025.7.4" />
   <Patch Id="J0yvtyHv7cgLnhZr5M0FXV">
     <Canvas Id="GPk4UuQfkelMqyU6MGLaxo" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -42,10 +42,12 @@
             </p:NodeReference>
             <Pin Id="PukbnP0JzI0PxS09wJS6bB" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="IjEEmkmtdcRQNFtDYQeQaF" Name="Bounds" Kind="InputPin" DefaultValue="1386, 103, 585, 585" />
-            <Pin Id="O72qmlH6C8yLpJwJLfj8T9" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
-            <Pin Id="ANGmUAjq0O3QBLpU1Wyfrl" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="ISvRD8SaDEsPc7cQevqWsT" Name="Bound to Document" Kind="InputPin" DefaultValue="True" />
             <Pin Id="SLTpnIWhJKjQGR9y8Ye2BS" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
+            <Pin Id="O72qmlH6C8yLpJwJLfj8T9" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Qg8YAIeMPngMFQ6gihGpWA" Name="Always On Top" Kind="InputPin" IsHidden="true" />
+            <Pin Id="K4z6MoYP5ibM2p6yTTSwiJ" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
+            <Pin Id="ANGmUAjq0O3QBLpU1Wyfrl" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="TT1QjeMAtstNCNA5CI5ODP" Name="Input" Kind="InputPin" />
             <Pin Id="BvfiLpTOvZbOEMCb8u2PWj" Name="Title" Kind="InputPin" DefaultValue="ColorPalette" />
             <Pin Id="KZAsvZPoUwDPcLGGC7FSpk" Name="Clear Color" Kind="InputPin" />
@@ -98,13 +100,11 @@
             <Pin Id="A3v50KWRbLbNd8xevb6lJf" Name="Input" Kind="StateInputPin" />
             <Pin Id="CQUE9tR8zXTO4OSYcFs27y" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="VOpihTxpbA4PJ2dMn2KqtI" Comment="Type" Bounds="162,200,51,44" ShowValueBox="true" isIOBox="true">
-            <p:TypeAnnotation LastCategoryFullName="Stride.Textures.Source" LastDependency="VL.Addons.Stride.vl">
+          <Pad Id="IeVn3P7TEb9MBI9dDnh8xK" Comment="Type" Bounds="162,210,58,15" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="VL.Stride.TextureFX" LastDependency="VL.Addons.Stride.vl">
               <Choice Kind="TypeFlag" Name="PaletteType" />
+              <FullNameCategoryReference ID="VL.Stride.TextureFX" />
             </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:selectionmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.SelectionModeEnum">VerticalList</p:selectionmode>
-            </p:ValueBoxSettings>
           </Pad>
         </Canvas>
         <Patch Id="PUlzAtkreEKOlH9onlCQls" Name="Create" />
@@ -117,11 +117,11 @@
         <Link Id="Ve3Gg5BHvP5MouBAmAGDzn" Ids="IUc3KlLngUQLj0jGxeO5G6,CQGXMsDIuO8NjEzd4pJHCo" />
         <Link Id="RcqLyTUlz42MLLMDF6uqAW" Ids="FMBNmxNvWPdMWgGg0dlrFv,AwRWKvUe8BqNceukPEUsrf" />
         <Link Id="OrmlMUZhSjFLyWEx6a8DBl" Ids="MvMN9zHNcadNKXpso4FrYu,A3v50KWRbLbNd8xevb6lJf" />
-        <Link Id="Im9N1xUVRDRNpUhUMPId6Y" Ids="VOpihTxpbA4PJ2dMn2KqtI,VzClBAEhZ5aPcbNO59qfNC" />
-        <Link Id="ObZPBXO9cINO0f1EfiaUtp" Ids="CQUE9tR8zXTO4OSYcFs27y,VOpihTxpbA4PJ2dMn2KqtI" />
+        <Link Id="ElkPEeKUWdvPdsKgFj0dHH" Ids="CQUE9tR8zXTO4OSYcFs27y,IeVn3P7TEb9MBI9dDnh8xK" />
+        <Link Id="KGY4o3zfCtHLpQmPWCmdKw" Ids="IeVn3P7TEb9MBI9dDnh8xK,VzClBAEhZ5aPcbNO59qfNC" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2025.7.0-0410-g6aae25fc4c" />
+  <NugetDependency Id="Kyr1uN0UX9tOvzKqzsTYZz" Location="VL.Stride" Version="2025.7.4" />
   <NugetDependency Id="Hsmi4uFOMICO4j5SseQKSp" Location="VL.Addons.Stride" Version="0.0.0" />
 </Document>

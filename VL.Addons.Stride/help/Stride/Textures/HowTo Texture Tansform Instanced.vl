@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="S6l1gzOp1C9NiWJfPBuT0S" LanguageVersion="2025.7.0-0410-g6aae25fc4c" Version="0.128">
-  <NugetDependency Id="Q17KbXI0mcuMV42CAG18Pr" Location="VL.CoreLib" Version="2025.7.0-0410-g6aae25fc4c" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="S6l1gzOp1C9NiWJfPBuT0S" LanguageVersion="2025.7.4" Version="0.128">
+  <NugetDependency Id="Q17KbXI0mcuMV42CAG18Pr" Location="VL.CoreLib" Version="2025.7.4" />
   <Patch Id="S25Gr1WMWcMQSRiHRWO4uq">
     <Canvas Id="GH8DZEWEW7hN2B8H0Xzxf8" DefaultCategory="Stride" CanvasType="FullCategory">
       <!--
@@ -193,12 +193,13 @@
               <Pin Id="MNmDd0b8bkZOJjoAMPLqlM" Name="Blend State" Kind="InputPin" />
               <Pin Id="TsfgU6ueT22OBeC0h1XZz8" Name="Rasterizer State" Kind="InputPin" />
               <Pin Id="AeenYu0a3qVPnaU4cCl1t4" Name="Depth Stencil State" Kind="InputPin" />
-              <Pin Id="IAzKyxrvuYoPTdTMJxWNS2" Name="Mesh" Kind="InputPin" />
-              <Pin Id="SrQdb0fghAaOVlppjnhDFD" Name="Instance Count" Kind="InputPin" />
-              <Pin Id="L7jjUaKua7sO73wShaF6eG" Name="Profiling Name" Kind="InputPin" />
               <Pin Id="COcE7gBoz1ZQASpGeyInBn" Name="Topology" Kind="InputPin" />
               <Pin Id="Pp3hcxKm1TNQXjunqzTtfT" Name="Draw Count" Kind="InputPin" />
               <Pin Id="Dycmnep7dAZP8Y7XdS2aKg" Name="Output" Kind="StateOutputPin" />
+              <Pin Id="IAzKyxrvuYoPTdTMJxWNS2" Name="Mesh" Kind="InputPin" />
+              <Pin Id="SrQdb0fghAaOVlppjnhDFD" Name="Instance Count" Kind="InputPin" />
+              <Pin Id="L7jjUaKua7sO73wShaF6eG" Name="Profiling Name" Kind="InputPin" />
+              <Pin Id="L0Stf1vhUvOOd3DBjNuXWo" Name="Enabled" Kind="InputPin" />
             </Node>
             <Node Bounds="364,582,145,19" Id="FIhPbdfQHVMQQzJ7aHkINX">
               <p:NodeReference LastCategoryFullName="Stride.Models.Meshes" LastDependency="VL.Stride.Rendering.Nodes">
@@ -835,7 +836,7 @@
             <Pin Id="NPyC2kpJDxOMZfAKXPCtCF" Name="Compare Function" Kind="InputPin" />
             <Pin Id="HmgOXH0qq9IP6jqKEf1hLY" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="VIsFOb9VuHaLrapPg95mCd" Comment="Filter" Bounds="352,328,214,15" ShowValueBox="true" isIOBox="true" Value="Anisotropic">
+          <Pad Id="VIsFOb9VuHaLrapPg95mCd" Comment="Filter" Bounds="352,328,216,15" ShowValueBox="true" isIOBox="true" Value="Anisotropic">
             <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.dll">
               <Choice Kind="TypeFlag" Name="TextureFilter" />
             </p:TypeAnnotation>
@@ -845,7 +846,7 @@
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="VLxAEjDPfi5PJ5sRZBiAJd" Comment="Address U" Bounds="372,355,79,15" ShowValueBox="true" isIOBox="true" Value="Wrap">
+          <Pad Id="VLxAEjDPfi5PJ5sRZBiAJd" Comment="Address U" Bounds="372,355,81,15" ShowValueBox="true" isIOBox="true" Value="Wrap">
             <p:TypeAnnotation LastCategoryFullName="Stride.Graphics" LastDependency="Stride.dll">
               <Choice Kind="TypeFlag" Name="TextureAddressMode" />
             </p:TypeAnnotation>
@@ -1013,7 +1014,7 @@
             </Patch>
           </Node>
           <ControlPoint Id="OtFhYxucpBJL4CW6GSAdWq" Bounds="747,596" />
-          <Node Bounds="633,159,57,19" Id="GrfAmfCDZBCMYd8yjtAgz6">
+          <Node Bounds="613,160,57,19" Id="GrfAmfCDZBCMYd8yjtAgz6">
             <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Changed" />
@@ -1044,7 +1045,6 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="SceneWindow" />
             </p:NodeReference>
-            <Pin Id="Lbc3RIbhtVTP1xdE8Vv79X" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="EeSmVfpzYv1NpOds52MWhm" Name="Bounds" Kind="InputPin" DefaultValue="1387, 100, 785, 432">
               <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="TypeFlag" Name="Rectangle" />
@@ -1056,10 +1056,15 @@
             <Pin Id="Hn22XL7HetTMU14LERk7mp" Name="Back Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="EMOQiq3wrWbOaeSIgLF4Y4" Name="Depth Buffer Format" Kind="InputPin" IsHidden="true" />
             <Pin Id="TpwNikfKrvYNG9XazY5JI0" Name="Input Priority" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Lbc3RIbhtVTP1xdE8Vv79X" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KYMPBzeHQEOPxQhA7tDPzu" Name="Always On Top" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BB2Jsrai0cGMJpuwapgkKS" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NcECrNPp4ClLL6F7mQexF5" Name="Is Borderless" Kind="InputPin" IsHidden="true" />
             <Pin Id="OtoehHmi5G4N8yVfKx1Haa" Name="Input" Kind="InputPin" />
             <Pin Id="EeoQviGcQc6O47WgG31olj" Name="Camera" Kind="InputPin" />
             <Pin Id="UGaYB0DIPBZO8P8vTMqOY5" Name="Enable Default Camera" Kind="InputPin" />
             <Pin Id="FJwj6e1ps3CMPkbWbit0XL" Name="Title" Kind="InputPin" DefaultValue="How to texture transform instanced" />
+            <Pin Id="NJvYqtAORbPOqNgtTTEa5z" Name="Title Bar Interaction Width" Kind="InputPin" IsHidden="true" />
             <Pin Id="GAQubKz9DavLkc7r2HQWQP" Name="Clear Color" Kind="InputPin" />
             <Pin Id="CSxcGrUKA6lMEyOGKwPCPC" Name="Clear" Kind="InputPin" />
             <Pin Id="BUbAYFdU0QDQLRljtEEjqU" Name="Post Effects" Kind="InputPin" />
@@ -1070,6 +1075,7 @@
             <Pin Id="UMGSr8X1d9CO6MY94IVild" Name="Model Effect Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="E3nciBrc8NDQWHAf0KcSGG" Name="Additional Scene Renderers" Kind="InputPin" IsHidden="true" />
             <Pin Id="NDulGNCmCMNPdS2rFWMuNe" Name="Enabled" Kind="InputPin" />
+            <Pin Id="VINAxYRL6OAQbW4sB4qfRF" Name="Input Source" Kind="InputPin" IsHidden="true" />
             <Pin Id="HCDd7Z7xbfKQKgDfEAgqWB" Name="Present Interval" Kind="InputPin" />
             <Pin Id="MW9jqqmF2KLL8eg0AcjaGg" Name="Output" Kind="OutputPin" />
             <Pin Id="KXlpV2KTSIANHUsMfP6GBl" Name="Client Bounds" Kind="OutputPin" />
@@ -1084,6 +1090,8 @@
             <Pin Id="VrTGFZVSABmPUyIukRVfkY" Name="Present Call Intercept" Kind="InputPin" IsHidden="true" />
             <Pin Id="PDQSBLZm7lsP0bE2gEUh2Q" Name="Back Buffer" Kind="OutputPin" IsHidden="true" />
             <Pin Id="RGpBm6LL2y6NiuY9NMU8sK" Name="Depth Buffer" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="QNS23x9acVkQcXvHmw07mE" Name="Output Color Space" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JfTnFtxFFVTPocqA7huARx" Name="Backbuffer Format" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="170,929,285,19" Id="LAMm0HKPqR4PC5WQyneEo3">
             <p:NodeReference LastCategoryFullName="Stride.Cameras" LastDependency="VL.Stride.vl">
@@ -1230,6 +1238,6 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="JGeaopK3ASqLipgvfkzoPS" Location="VL.Stride" Version="2025.7.0-0410-g6aae25fc4c" />
+  <NugetDependency Id="JGeaopK3ASqLipgvfkzoPS" Location="VL.Stride" Version="2025.7.4" />
   <NugetDependency Id="P3eWMUIhG6nL5vRr3OwQQy" Location="VL.Addons.Stride" Version="0.0.0" />
 </Document>
